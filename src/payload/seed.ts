@@ -126,17 +126,17 @@ async function seedAnnualReport(payload: Payload) {
     },
   ];
 
-  // Six smaller assistances from surplus funds, ₦15,000–₦50,000 each. The
-  // individual amounts are not in docs/09; only their total is derivable, so
-  // it is recorded as a single line rather than invented as six.
-  const beneficiaryTotal = beneficiaries.reduce((t, b) => t + b.raisedKobo, 0);
+  // The six smaller assistances from surplus funds, itemised in docs/01.
+  // They total ₦168,500, which is exactly the gap between the named
+  // beneficiaries and the published ₦5,323,500 — the report reconciles.
   const total = naira(5_323_500);
   const surplusAssistances = [
-    {
-      description:
-        "Six assistances from surplus funds (₦15,000–₦50,000 each) — see TODO-CONTENT.md, individual amounts not yet supplied",
-      amountKobo: total - beneficiaryTotal,
-    },
+    { description: "A vulnerable sister", amountKobo: naira(20_000) },
+    { description: "A revert sister", amountKobo: naira(40_000) },
+    { description: "A child's leg surgery", amountKobo: naira(20_000) },
+    { description: "A caesarean delivery", amountKobo: naira(15_000) },
+    { description: "A brother's debts", amountKobo: naira(23_500) },
+    { description: "A struggling brother", amountKobo: naira(50_000) },
   ];
 
   const data = {

@@ -83,6 +83,7 @@ export interface Config {
     orders: Order;
     media: Media;
     'newsletter-subscribers': NewsletterSubscriber;
+    'contact-messages': ContactMessage;
     users: User;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
@@ -107,6 +108,7 @@ export interface Config {
     orders: OrdersSelect<false> | OrdersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     'newsletter-subscribers': NewsletterSubscribersSelect<false> | NewsletterSubscribersSelect<true>;
+    'contact-messages': ContactMessagesSelect<false> | ContactMessagesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
@@ -961,6 +963,30 @@ export interface NewsletterSubscriber {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact-messages".
+ */
+export interface ContactMessage {
+  id: number;
+  name: string;
+  email: string;
+  phone?: string | null;
+  topic: 'general' | 'consultation' | 'donation' | 'media' | 'distributor' | 'course';
+  subjectLine: string;
+  message: string;
+  /**
+   * Inbox this submission is addressed to.
+   */
+  routedTo?: string | null;
+  /**
+   * Consent to be replied to. Unticked by default on the form.
+   */
+  consent: boolean;
+  status?: ('new' | 'answered' | 'spam') | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
 export interface User {
@@ -1076,6 +1102,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'newsletter-subscribers';
         value: number | NewsletterSubscriber;
+      } | null)
+    | ({
+        relationTo: 'contact-messages';
+        value: number | ContactMessage;
       } | null)
     | ({
         relationTo: 'users';
@@ -1509,6 +1539,23 @@ export interface NewsletterSubscribersSelect<T extends boolean = true> {
   source?: T;
   status?: T;
   subscribedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact-messages_select".
+ */
+export interface ContactMessagesSelect<T extends boolean = true> {
+  name?: T;
+  email?: T;
+  phone?: T;
+  topic?: T;
+  subjectLine?: T;
+  message?: T;
+  routedTo?: T;
+  consent?: T;
+  status?: T;
   updatedAt?: T;
   createdAt?: T;
 }

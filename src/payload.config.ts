@@ -18,6 +18,7 @@ import { Testimonials } from "@/payload/collections/Testimonials";
 import { TeamMembers } from "@/payload/collections/TeamMembers";
 import { FAQs } from "@/payload/collections/FAQs";
 import { NewsletterSubscribers } from "@/payload/collections/NewsletterSubscribers";
+import { ContactMessages } from "@/payload/collections/ContactMessages";
 import { Donations } from "@/payload/collections/Donations";
 // Dawah Institute
 import { Programmes } from "@/payload/collections/Programmes";
@@ -60,6 +61,7 @@ export default buildConfig({
     Orders,
     Media,
     NewsletterSubscribers,
+    ContactMessages,
     Users,
   ],
 

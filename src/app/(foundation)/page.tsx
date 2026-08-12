@@ -3,6 +3,7 @@ import { ArabicQuote } from "@/components/ui/arabic-quote";
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Section } from "@/components/ui/section";
+import { NewsletterForm } from "@/components/site/newsletter-form";
 import { siteConfig } from "@/lib/sites";
 import { getSiteContext } from "@/lib/site-context";
 
@@ -73,9 +74,22 @@ export default async function FoundationHomePage() {
         </div>
 
         <p className="mt-8 text-sm text-charcoal-muted">
-          Scaffold placeholder — content is added from session 3 onwards. See{" "}
+          Scaffold placeholder — the full homepage is assembled in session 8. See{" "}
           <code>TODO-CONTENT.md</code>.
         </p>
+      </Section>
+
+      <Section tone="primary">
+        <div className="max-w-2xl">
+          <h2 className="font-display text-2xl">Stay in touch</h2>
+          <p className="mt-2 text-white/90">
+            Occasional email about the empowerment fund, new classes, and new writing on
+            prophetic medicine.
+          </p>
+          <div className="mt-6">
+            <NewsletterForm source="homepage" />
+          </div>
+        </div>
       </Section>
     </>
   );
