@@ -10,7 +10,7 @@ One Next.js codebase serving three sites for a Nigerian Islamic charity:
 |---|---|---|
 | `assoutudeen.com` | **Assoutudeen Prophetic Medicine Foundation (APMF)** | **MAIN SITE — the parent charity** |
 | `dawah.assoutudeen.com` | Assoutudeen Dawah Institute (ADI) | Subsidiary — education arm |
-| `honey.assoutudeen.com` | Assoutudeen Honey Enterprise (AHE) | Subsidiary — commercial arm |
+| `farms.assoutudeen.com` | Assoutudeen Honey Enterprise (AHE) | Subsidiary — commercial arm |
 
 **The foundation is the primary site.** ADI and AHE sit under it. When a decision affects
 prominence, defaults, shared components or ambiguity about "the website", the foundation

@@ -89,14 +89,14 @@ export const siteConfig: Record<SiteKey, SiteConfig> = {
     basePath: "/honey",
     name: "Assoutudeen Honey Enterprise",
     shortName: "AHE",
-    hostname: "honey.assoutudeen.com",
-    // `farms.` is accepted as well — see TODO-CONTENT.md, the public hostname
-    // for the honey enterprise is not finally settled.
+    hostname: "farms.assoutudeen.com",
+    // `honey.` is kept as an accepted alias so older links keep working; it
+    // should be 301'd to `farms.` at the DNS/host layer before launch.
     hostMatches: [
-      "honey.assoutudeen.com",
       "farms.assoutudeen.com",
-      "honey.localhost",
+      "honey.assoutudeen.com",
       "farms.localhost",
+      "honey.localhost",
     ],
     nav: [
       { label: "Shop", href: "/shop" },

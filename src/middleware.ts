@@ -13,12 +13,12 @@ import {
  *
  *   assoutudeen.com        -> (foundation)   [MAIN SITE, served from the root]
  *   dawah.assoutudeen.com  -> (dawah)        [rewritten to /dawah/*]
- *   honey.assoutudeen.com  -> (honey)        [rewritten to /honey/*]
+ *   farms.assoutudeen.com  -> (honey)        [rewritten to /honey/*]
  *
  * Local development:
  *   localhost:3000         -> foundation
  *   dawah.localhost:3000   -> dawah
- *   honey.localhost:3000   -> honey
+ *   farms.localhost:3000   -> honey
  *   ?_site=dawah           -> override, no /etc/hosts editing needed
  *
  * The internal prefixes never appear in the address bar; they exist only so
