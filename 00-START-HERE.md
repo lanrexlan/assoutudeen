@@ -21,6 +21,9 @@ the book PDF
 | `07-Budget-and-Roadmap.md` | Revised costs, 12-session self-build plan |
 | `08-Content-Checklist.md` | What to gather before you start building |
 | **`09-Claude-Code-Handover.md`** | **The build brief — give this to Claude Code** |
+| **`10-Session-Prompts.md`** | **12 copy-paste prompts, one per build session** |
+| **`11-Empowerment-Model-and-Forms.md`** | **The monthly fund, both form specs, impact data** |
+| `12-GitHub-Guide.md` | What to commit, what never to commit, repo setup |
 | **`CLAUDE.md`** | **Copy to the repo root; Claude Code reads it every session** |
 | `Endless_Blessings_From_the_Creator.pdf` | The book — source for the Remedies Library |
 

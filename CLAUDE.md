@@ -6,11 +6,16 @@ Copy this file to the repository root. Claude Code reads it automatically each s
 
 One Next.js codebase serving three sites for a Nigerian Islamic charity:
 
-| Domain | Entity |
-|---|---|
-| `assoutudeen.com` | Assoutudeen Prophetic Medicine Foundation (APMF) |
-| `dawah.assoutudeen.com` | Assoutudeen Dawah Institute (ADI) |
-| `honey.assoutudeen.com` | Assoutudeen Honey Enterprise (AHE) |
+| Domain | Entity | Role |
+|---|---|---|
+| `assoutudeen.com` | **Assoutudeen Prophetic Medicine Foundation (APMF)** | **MAIN SITE — the parent charity** |
+| `dawah.assoutudeen.com` | Assoutudeen Dawah Institute (ADI) | Subsidiary — education arm |
+| `honey.assoutudeen.com` | Assoutudeen Honey Enterprise (AHE) | Subsidiary — commercial arm |
+
+**The foundation is the primary site.** ADI and AHE sit under it. When a decision affects
+prominence, defaults, shared components or ambiguity about "the website", the foundation
+wins. Both subdomains carry a visible "← Part of Assoutudeen Prophetic Medicine Foundation"
+link home.
 
 Full brief: `docs/09-Claude-Code-Handover.md`. Read it before non-trivial work.
 
@@ -82,14 +87,24 @@ text verbatim from source — never retype or "clean up" an āyah.
 **Performance.** Mobile-first for mid-range Android on patchy data. Homepage < 1 MB.
 Lighthouse mobile ≥ 90. `next/image` always. Defer third-party scripts.
 
-**Transparency.** Appeals display shortfalls honestly. A ₦3,035,000 raise against a
-₦22,000,000 target renders as-is. Never round up, hide, or design around a gap.
+**Beneficiary privacy is the default.** The 2024 and 2025 reports name nobody. Report by
+category ("4 children in secondary school", "a revert sister"). Publish a name or photo only
+with separate, explicit, recorded consent. Never build named-beneficiary pages by default.
+
+**Transparency.** Category totals must reconcile exactly to the stated annual figure — they
+currently do, to the naira. Publish overheads (2025: ₦410,820 operational, ₦275,000 gadgets)
+rather than burying them.
 
 ## Four features that carry the project
 
-1. **Appeals** — named fundraising cases with target/raised progress, updates timeline,
-   annual accountability reports, and a WhatsApp share button that generates a pre-formatted
-   broadcast in APMF's existing emoji format ending "Kindly Rebroadcast!"
+1. **Monthly Empowerment Fund** — a standing contribution circle, NOT public appeals.
+   Public appeals have stopped; do not build per-beneficiary progress bars. Primary
+   conversion is `/empowerment/join` (recurring pledge, Paystack subscription *or* manual
+   monthly transfer — support both). Two intake forms: Join the Fund, and Request
+   Assistance. Impact reported **by category, anonymously** — see `docs/11`. Annual impact
+   reports at `/impact/[year]`, with WhatsApp share keeping APMF's emoji format.
+   Three-year verified total: **₦14,644,520** (2023 ₦5,323,500 · 2024 ₦3,838,500 ·
+   2025 ₦5,482,520).
 2. **Dawah recurrence engine** — seven programmes stored as RRULE-style rules, occurrences
    computed, `.ics` feed. Edge case: Tawheed class is 2nd Sunday *except* when that is also
    the last Sunday.

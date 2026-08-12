@@ -22,6 +22,14 @@ Library).
 
 ---
 
+## Hierarchy — get this right
+
+**`assoutudeen.com` is the main website. It belongs to the foundation, APMF.** The Da'wah
+Institute and the Honey Enterprise are *subsidiaries* on subdomains, not peers. Whenever
+prominence, defaults or shared components are in question, the foundation takes precedence.
+Both subdomains display a persistent "← Part of Assoutudeen Prophetic Medicine Foundation"
+link. Sessions 1–8 build and ship the foundation site; 9–12 add the subsidiaries afterwards.
+
 ## The project in one paragraph
 
 Assoutudeen Prophetic Medicine Foundation (APMF) is a Nigerian Islamic charity in Ede, Osun
@@ -50,7 +58,16 @@ groups `(foundation)`, `(dawah)`, `(honey)`. One repo, one deploy, three front d
 Everything else is a standard content site. These four are where the project earns its keep,
 and none of them is boilerplate. Build them properly.
 
-### 1. The Appeals system — the heart of the site
+### 1. The Monthly Empowerment Fund — the heart of the site
+
+> ⚠️ **SUPERSEDED — read `docs/11-Empowerment-Model-and-Forms.md` instead of this
+> subsection.** APMF has stopped public appeals. The model is now a standing monthly
+> contribution fund with two intake forms (Join the Fund, Request Assistance) and
+> category-based anonymous impact reporting. The historical appeal data below is retained
+> only as the source for the legacy 2023 report page.
+
+<details>
+<summary>Legacy appeals model (2023 only — historical record)</summary>
 
 APMF does not run a grants programme. It runs **named public appeals** for people in
 medical or financial crisis, then publishes exactly what came in — including the shortfalls.
@@ -86,6 +103,8 @@ Requirements:
 - `AnnualReport` collection rendering the fiscal-year page: the At-Tawbah 9:105 verse, the
   beneficiary table, surplus-fund assistances, totals, and the standing offer of bank
   statements on request.
+
+</details>
 
 ### 2. The Dawah recurrence engine
 
