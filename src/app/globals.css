@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Design tokens — docs/05-Design-and-Brand.md
+   Amber fails WCAG AA on white for small text: use it only as a solid button
+   background with dark (charcoal) text, never as a text colour on light ground.
+--------------------------------------------------------------------------- */
+:root {
+  --olive: #2f5d3a;
+  --amber: #d9a441;
+  --teal: #123b35;
+  --sand: #f7f3ea;
+  --charcoal: #2b2b2b;
+
+  /* Derived shades, used for hovers, borders and muted surfaces. */
+  --olive-dark: #24482d;
+  --teal-dark: #0c2b26;
+  --amber-dark: #b9862d;
+  --sand-dark: #ebe3d3;
+  --charcoal-muted: #5c5a55;
+
+  --background: var(--sand);
+  --foreground: var(--charcoal);
+
+  /* Per-site accents. Overridden by [data-site] below; the foundation is the
+     default because it is the main site. */
+  --site-primary: var(--olive);
+  --site-primary-hover: var(--olive-dark);
+  --site-on-primary: #ffffff;
+}
+
+[data-site="dawah"] {
+  --site-primary: var(--teal);
+  --site-primary-hover: var(--teal-dark);
+  --site-on-primary: #ffffff;
+}
+
+[data-site="honey"] {
+  --site-primary: var(--amber);
+  --site-primary-hover: var(--amber-dark);
+  /* Dark text on amber — the only accessible pairing. */
+  --site-on-primary: var(--charcoal);
+}
+
+@theme inline {
+  --color-olive: var(--olive);
+  --color-olive-dark: var(--olive-dark);
+  --color-amber: var(--amber);
+  --color-amber-dark: var(--amber-dark);
+  --color-teal: var(--teal);
+  --color-teal-dark: var(--teal-dark);
+  --color-sand: var(--sand);
+  --color-sand-dark: var(--sand-dark);
+  --color-charcoal: var(--charcoal);
+  --color-charcoal-muted: var(--charcoal-muted);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--site-primary);
+  --color-primary-hover: var(--site-primary-hover);
+  --color-on-primary: var(--site-on-primary);
+
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-fraunces);
+  --font-arabic: var(--font-noto-naskh-arabic);
+}
+
+@layer base {
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-fraunces), Georgia, serif;
+    text-wrap: balance;
+  }
+
+  /* Visible focus for keyboard users on every interactive element. */
+  :where(a, button, input, select, textarea, [tabindex]):focus-visible {
+    outline: 2px solid var(--site-primary);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+/* No carousels, restrained motion — and none at all when it is not wanted. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
