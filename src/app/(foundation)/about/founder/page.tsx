@@ -21,17 +21,25 @@ export const metadata: Metadata = {
 export default function FounderPage() {
   return (
     <>
-      <Section tone="primary">
-        <PageHeader
+      <PageHeader
           eyebrow="About"
           title="Imam Engr. Abd'Waasi Tirmidhi A."
           standfirst="Known as Abu Mubaashir. Founder of the foundation, chief instructor at the Dawah Institute, and author of Endless Blessings From The Creator."
         />
-      </Section>
 
       <Section>
         <div className="grid gap-8 lg:grid-cols-[2fr_1fr]">
           <Prose>
+            <h2>On the public record</h2>
+            <p>
+              He is named on the foundation&apos;s certificate of incorporation as{" "}
+              <strong>Wasiu Tirimisiy Adeniyi</strong> — the legal spelling the
+              Corporate Affairs Commission registered — and serves as{" "}
+              <strong>Chairman</strong> of its board of trustees. He is publicly known
+              as Imam Engr. Abd&apos;Waasi Tirmidhi A. (Abu Mubaashir), which is how he
+              is referred to throughout this site.
+            </p>
+
             <h2>Biography</h2>
             <p>
               <Todo>

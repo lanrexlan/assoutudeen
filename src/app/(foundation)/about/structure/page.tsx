@@ -5,6 +5,7 @@ import { Section } from "@/components/ui/section";
 import { StructureDiagram } from "@/components/site/structure-diagram";
 import { Todo } from "@/components/ui/todo";
 import { siteConfig } from "@/lib/sites";
+import { REGISTRATION } from "@/lib/organisation";
 
 export const metadata: Metadata = {
   title: "Our structure",
@@ -15,13 +16,11 @@ export const metadata: Metadata = {
 export default function StructurePage() {
   return (
     <>
-      <Section tone="primary">
-        <PageHeader
+      <PageHeader
           eyebrow="About"
           title="Our structure"
           standfirst="One charity, two arms. The foundation is the parent; the Dawah Institute and the Honey Enterprise sit beneath it."
         />
-      </Section>
 
       <Section>
         <StructureDiagram />
@@ -32,8 +31,9 @@ export default function StructurePage() {
             The parent body and the registered charity. It receives donations, runs the
             monthly empowerment fund, publishes the annual accounts, and holds
             responsibility for everything done in the Assoutudeen name. Registered with
-            the Corporate Affairs Commission as Incorporated Trustees under{" "}
-            <Todo>CAC registration number</Todo>.
+            the Corporate Affairs Commission as Incorporated Trustees on{" "}
+            {REGISTRATION.incorporatedOnDisplay} under{" "}
+            <strong>{REGISTRATION.number}</strong>.
           </p>
 
           <h2>Assoutudeen Dawah Institute</h2>

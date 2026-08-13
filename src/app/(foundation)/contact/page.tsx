@@ -5,7 +5,6 @@ import { Section } from "@/components/ui/section";
 import { Todo } from "@/components/ui/todo";
 import { ContactForm } from "@/components/site/contact-form";
 import { MapEmbed } from "@/components/site/map-embed";
-import { NewsletterForm } from "@/components/site/newsletter-form";
 import { CONTACT } from "@/lib/sites";
 
 export const metadata: Metadata = {
@@ -21,13 +20,11 @@ const whatsappHref = `https://wa.me/${CONTACT.phoneE164}?text=${encodeURICompone
 export default function ContactPage() {
   return (
     <>
-      <Section tone="primary">
-        <PageHeader
+      <PageHeader
           eyebrow="Contact"
           title="Talk to us"
           standfirst="WhatsApp reaches us fastest. The form below routes your message to the right person."
         />
-      </Section>
 
       <Section>
         <div className="grid gap-4 sm:grid-cols-3">
@@ -108,18 +105,6 @@ export default function ContactPage() {
         </div>
       </Section>
 
-      <Section tone="primary">
-        <div className="max-w-2xl">
-          <h2 className="font-display text-2xl">Stay in touch</h2>
-          <p className="mt-2 text-white/90">
-            Occasional email about the empowerment fund, new classes and new writing on
-            prophetic medicine. No more than we would want to receive ourselves.
-          </p>
-          <div className="mt-6">
-            <NewsletterForm source="contact-page" />
-          </div>
-        </div>
-      </Section>
     </>
   );
 }

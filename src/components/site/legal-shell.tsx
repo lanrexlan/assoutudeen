@@ -21,9 +21,7 @@ export function LegalShell({
 }) {
   return (
     <>
-      <Section tone="primary">
-        <PageHeader eyebrow="Legal" title={title} standfirst={standfirst} />
-      </Section>
+      <PageHeader eyebrow="Legal" title={title} standfirst={standfirst} />
 
       <Section>
         <div className="max-w-2xl rounded-md border border-sand-dark bg-white p-4 text-sm leading-relaxed text-charcoal">

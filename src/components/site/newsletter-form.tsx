@@ -11,7 +11,7 @@ const initialState: FormState = { ok: false, message: "" };
 function SubmitButton() {
   const { pending } = useFormStatus();
   return (
-    <Button type="submit" variant="donate" disabled={pending} className="sm:w-auto">
+    <Button type="submit" variant="donate" disabled={pending}>
       {pending ? "Subscribing…" : "Subscribe"}
     </Button>
   );
@@ -24,10 +24,13 @@ function SubmitButton() {
 export function NewsletterForm({
   source,
   className,
+  compact = false,
 }: {
   /** Which page the signup came from, stored with the subscriber. */
   source?: string;
   className?: string;
+  /** Footer variant: stacked, smaller type. */
+  compact?: boolean;
 }) {
   const [state, formAction] = useActionState(subscribeToNewsletter, initialState);
 
@@ -35,7 +38,10 @@ export function NewsletterForm({
     return (
       <p
         role="status"
-        className={cn("rounded-md bg-white/10 p-4 text-sm text-white", className)}
+        className={cn(
+          "rounded-lg border border-amber/40 bg-white/10 p-4 text-sm text-sand",
+          className,
+        )}
       >
         {state.message}
       </p>
@@ -56,7 +62,7 @@ export function NewsletterForm({
         defaultValue=""
       />
 
-      <div className="flex flex-col gap-3 sm:flex-row">
+      <div className={cn("flex flex-col gap-3", !compact && "sm:flex-row")}>
         <label className="flex-1">
           <span className="sr-only">Email address</span>
           <input
@@ -66,7 +72,7 @@ export function NewsletterForm({
             autoComplete="email"
             placeholder="you@example.com"
             aria-invalid={Boolean(state.errors?.email)}
-            className="min-h-11 w-full rounded-md border border-white/25 bg-white px-3 text-charcoal placeholder:text-charcoal-muted"
+            className="min-h-11 w-full rounded-full border border-white/25 bg-white/10 px-4 text-white placeholder:text-sand/50 focus:border-amber"
           />
         </label>
         <SubmitButton />
@@ -76,17 +82,17 @@ export function NewsletterForm({
         <p className="text-sm text-white">{state.errors.email}</p>
       ) : null}
 
-      <label className="flex items-start gap-3 text-sm text-white/90">
+      <label className="flex items-start gap-3 text-sm text-sand/80">
         <input
           type="checkbox"
           name="consent"
           value="on"
           // Deliberately NOT defaultChecked.
-          className="mt-0.5 size-5 shrink-0 rounded border-white/40"
+          className="mt-0.5 size-6 shrink-0 rounded border-white/40 accent-amber"
         />
         <span>
           I agree to receive occasional email from Assoutudeen Prophetic Medicine
-          Foundation. You can unsubscribe at any time.
+          Foundation. Unsubscribe any time.
         </span>
       </label>
 

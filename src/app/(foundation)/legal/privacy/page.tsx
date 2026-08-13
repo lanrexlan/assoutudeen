@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { LegalShell } from "@/components/site/legal-shell";
 import { Todo } from "@/components/ui/todo";
 import { CONTACT, FOUNDATION_NAME } from "@/lib/sites";
+import { REGISTRATION } from "@/lib/organisation";
 
 export const metadata: Metadata = {
   title: "Privacy policy",
@@ -18,7 +19,8 @@ export default function PrivacyPage() {
       <h2>Who we are</h2>
       <p>
         {FOUNDATION_NAME}, {CONTACT.address}. Registered with the Corporate Affairs
-        Commission as Incorporated Trustees under <Todo>CAC registration number</Todo>.
+        Commission as Incorporated Trustees under {REGISTRATION.number}, incorporated
+        on {REGISTRATION.incorporatedOnDisplay}.
         You can reach us at <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a> or on{" "}
         <a href={`tel:+${CONTACT.phoneE164}`}>{CONTACT.phoneDisplay}</a>.
       </p>

@@ -55,10 +55,15 @@ Every one of these appears on a page as a visible `[TODO: …]` marker, so nothi
 mistaken for a real value. Search the codebase for `<Todo>` to find them all.
 
 ### Blocking before launch
-21. **CAC registration number and date of incorporation.** Shown on About, Structure,
-    Accountability, Privacy and in the footer of all three sites.
-22. **Board of trustees** — full names and roles. The Accountability page carries a
-    placeholder section that should not be published until the list is confirmed.
+21. ~~CAC registration number and date of incorporation.~~ **Resolved from the
+    certificate of incorporation:** CAC/IT/NO 139886, incorporated 28 November 2019 in
+    Abuja. Now shown on About, Structure, Accountability, Privacy and in the footer of
+    all three sites (`src/lib/organisation.ts`).
+22. ~~Board of trustees.~~ **Resolved from the certificate:** Wasiu Tirimisiy Adeniyi
+    (Chairman), Akande Olanrewaju Subair (Secretary), Taiwo Ridwan Ademola. Their
+    personal phone numbers appear on the filed form but are deliberately **not**
+    published. Still open: who holds the other constitutional offices (Financial
+    Secretary, Treasurer, Auditor and the rest).
 23. **Bank transfer details.** docs/01 gives Jaiz Bank 0010939336 marked "verify before
     publishing", so the Accountability page deliberately does **not** print it — a wrong
     digit on a public donations page misdirects a stranger's money. Confirm the bank,
@@ -76,6 +81,13 @@ mistaken for a real value. Search the codebase for `<Todo>` to find them all.
 ### Structure page
 27. Is AHE separately registered with the CAC? Do AHE profits fund APMF, and if so in
     what proportion? The page says plainly that it will state this once known.
+
+### Addresses
+28a. **Two addresses are now in play.** The CAC registered office is *No. 25, Agbonran
+    Junction, Olowobida Agip Area, Ede*, while the operating address in docs/01 is
+    *Assoutudeen Street, Zone 5, Fiwasaye Community, Ede*. Both are shown, labelled —
+    registered office on the Accountability page, operating address everywhere else.
+    Confirm that is correct, and that post reaches the operating address.
 
 ### Contact page
 28. Office hours and whether visits need an appointment.
@@ -100,3 +112,20 @@ mistaken for a real value. Search the codebase for `<Todo>` to find them all.
 34. The āyāt and hadith for the About page's values section, to be copied verbatim with
     diacritics intact.
 35. A photograph of the team or office for the About page.
+
+## Raised by the redesign (session 4)
+
+36. **Logo.** The header, footer and hero use an interim geometric mark
+    (`components/site/brand-mark.tsx`) — an eight-point khatim star inside a mihrab
+    arch. Swapping in the real logo is a one-component change.
+37. **Hero photograph.** The arch beside the headline frames a placeholder. docs/03 asks
+    for the founder teaching or a distribution in progress — not stock honey.
+38. **Registered objects 5 and 6** mention distributing traditional herbal medicine,
+    while APMF now sells honey only and makes no herbal-drug claims. The About page
+    presents all twelve as the *registered constitution* rather than as current
+    activity. Worth a compliance note before launch, and possibly a CAC amendment if
+    the objects no longer describe the work.
+39. **Certificate of incorporation as a downloadable PDF** for the Accountability page.
+40. **Consent checkboxes are 24px controls** rather than 44px. Their labels are the tap
+    target and toggle them, which meets the intent, but a custom control would satisfy
+    the letter of the rule too.

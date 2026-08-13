@@ -1,25 +1,30 @@
 import { cn } from "@/lib/utils";
+import { GiltRule, Kicker, OrnamentField, Starfield } from "@/components/ui/ornament";
+import { Container } from "@/components/ui/container";
 
 /**
  * Long-form reading. Tailwind's typography plugin is deliberately not used —
  * these are the only rules the content pages need, and the homepage budget is
  * under 1 MB.
  */
-export function Prose({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
+export function Prose({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       className={cn(
-        "max-w-2xl text-base leading-relaxed text-charcoal",
-        "[&_p]:mb-4",
-        "[&_h2]:mt-8 [&_h2]:mb-3 [&_h2]:font-display [&_h2]:text-2xl",
-        "[&_h3]:mt-6 [&_h3]:mb-2 [&_h3]:font-display [&_h3]:text-xl",
-        "[&_ul]:mb-4 [&_ul]:list-disc [&_ul]:ps-6 [&_ul]:space-y-2",
-        "[&_ol]:mb-4 [&_ol]:list-decimal [&_ol]:ps-6 [&_ol]:space-y-2",
-        "[&_a]:text-primary [&_a]:underline [&_a]:underline-offset-4",
-        "[&_strong]:font-semibold",
+        "max-w-2xl text-[1.0625rem] leading-[1.75] text-charcoal",
+        "[&_p]:mb-5",
+        "[&_h2]:mt-10 [&_h2]:mb-3 [&_h2]:font-display [&_h2]:text-2xl [&_h2]:text-charcoal",
+        "[&_h3]:mt-8 [&_h3]:mb-2 [&_h3]:font-display [&_h3]:text-xl",
+        "[&_ul]:mb-5 [&_ul]:space-y-2.5 [&_ul]:ps-1",
+        // List markers are gold diamonds rather than bullets.
+        "[&_ul>li]:relative [&_ul>li]:ps-6",
+        "[&_ul>li]:before:absolute [&_ul>li]:before:start-0 [&_ul>li]:before:top-[0.6em]",
+        "[&_ul>li]:before:size-1.5 [&_ul>li]:before:rotate-45 [&_ul>li]:before:bg-amber",
+        "[&_ol]:mb-5 [&_ol]:list-decimal [&_ol]:ps-6 [&_ol]:space-y-2.5",
+        "[&_ol>li]:ps-1 [&_ol]:marker:font-display [&_ol]:marker:text-primary",
+        "[&_a]:font-medium [&_a]:text-primary [&_a]:underline [&_a]:underline-offset-4 [&_a]:decoration-amber [&_a]:decoration-2 hover:[&_a]:decoration-primary",
+        "[&_strong]:font-semibold [&_strong]:text-charcoal",
+        "[&_em]:italic",
         className,
       )}
       {...props}
@@ -27,27 +32,46 @@ export function Prose({
   );
 }
 
-/** Page heading block: eyebrow, title, standfirst. */
+/**
+ * The page hero used by every interior page: deep ink ground, contained
+ * geometry, kicker, display title, standfirst, gold rule.
+ */
 export function PageHeader({
   eyebrow,
   title,
   standfirst,
+  children,
 }: {
   eyebrow?: string;
   title: string;
   standfirst?: string;
+  /** Optional actions or metadata beneath the standfirst. */
+  children?: React.ReactNode;
 }) {
   return (
-    <div className="max-w-3xl">
-      {eyebrow ? (
-        <p className="text-sm uppercase tracking-widest text-white/80">{eyebrow}</p>
-      ) : null}
-      <h1 className="mt-2 font-display text-3xl leading-tight sm:text-4xl">{title}</h1>
-      {standfirst ? (
-        <p className="mt-4 text-base leading-relaxed text-white/90 sm:text-lg">
-          {standfirst}
-        </p>
-      ) : null}
-    </div>
+    <section className="relative overflow-hidden bg-ink py-16 text-sand sm:py-20">
+      <OrnamentField tone="gold" />
+      <Starfield />
+      {/* A single arch of light behind the title, echoing the mihrab. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-1/2 top-0 h-72 w-[36rem] -translate-x-1/2 rounded-b-[50%] bg-[radial-gradient(ellipse_at_top,rgba(217,164,65,0.16),transparent_70%)]"
+      />
+      <Container className="relative">
+        <div className="max-w-3xl">
+          {eyebrow ? <Kicker>{eyebrow}</Kicker> : null}
+          <h1 className="mt-4 font-display text-4xl leading-[1.1] text-white sm:text-5xl">
+            {title}
+          </h1>
+          {standfirst ? (
+            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-sand/85">
+              {standfirst}
+            </p>
+          ) : null}
+          <GiltRule className="mt-7 justify-start" />
+          {children ? <div className="mt-7">{children}</div> : null}
+        </div>
+      </Container>
+    </section>
   );
 }

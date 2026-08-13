@@ -13,7 +13,7 @@ import {
 const initialState: FormState = { ok: false, message: "" };
 
 const inputClass =
-  "min-h-11 w-full rounded-md border border-sand-dark bg-white px-3 text-charcoal placeholder:text-charcoal-muted";
+  "min-h-11 w-full rounded-lg border border-sand-dark bg-white px-3.5 text-charcoal transition-colors placeholder:text-charcoal-muted focus:border-olive";
 
 function Field({
   label,
@@ -137,7 +137,7 @@ export function ContactForm() {
           type="checkbox"
           name="consent"
           value="on"
-          className="mt-0.5 size-5 shrink-0 rounded border-sand-dark"
+          className="mt-0.5 size-6 shrink-0 rounded border-sand-dark accent-olive"
         />
         <span>
           I agree that Assoutudeen Prophetic Medicine Foundation may store this message

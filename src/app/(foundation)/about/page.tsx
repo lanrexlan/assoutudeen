@@ -3,9 +3,10 @@ import Link from "next/link";
 import { ArabicQuote } from "@/components/ui/arabic-quote";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { PageHeader, Prose } from "@/components/ui/prose";
-import { Section } from "@/components/ui/section";
+import { Section, SectionHeading } from "@/components/ui/section";
 import { Todo } from "@/components/ui/todo";
 import { CONTACT } from "@/lib/sites";
+import { PREAMBLE, REGISTERED_OBJECTS, REGISTRATION } from "@/lib/organisation";
 
 export const metadata: Metadata = {
   title: "Who we are",
@@ -16,13 +17,11 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <Section tone="primary">
-        <PageHeader
+      <PageHeader
           eyebrow="About"
           title="Who we are"
           standfirst="An Islamic charity in Ede, Osun State, working where healing by the Sunnah meets practical help for people in difficulty."
         />
-      </Section>
 
       <Section>
         <Prose>
@@ -91,10 +90,12 @@ export default function AboutPage() {
         <Prose className="mt-8">
           <h2>Founded</h2>
           <p>
-            The foundation was established in <Todo>year founded</Todo> and is registered
-            with the Corporate Affairs Commission as Incorporated Trustees under{" "}
-            <Todo>CAC registration number</Todo>. The full registration details, the
-            trustees, and our annual accounts are on the{" "}
+            The foundation was incorporated on{" "}
+            <strong>{REGISTRATION.incorporatedOnDisplay}</strong> by the Corporate
+            Affairs Commission as {REGISTRATION.registeredName}, registration{" "}
+            <strong>{REGISTRATION.number}</strong>. Its registered office is{" "}
+            {REGISTRATION.registeredOffice}. The trustees, the constitution and the
+            annual accounts are on the{" "}
             <Link href="/about/accountability">accountability page</Link>.
           </p>
           <p>
@@ -106,6 +107,36 @@ export default function AboutPage() {
             <Todo>photograph of the team or the office</Todo>
           </p>
         </Prose>
+      </Section>
+
+      {/* The twelve registered objects, verbatim from Article 3 of the filed
+          constitution. Presented as the registered constitution — not as a
+          description of current activity, and not as a health claim. */}
+      <Section tone="ink" size="lg" ornament>
+        <SectionHeading
+          tone="dark"
+          kicker="Article 3 of our constitution"
+          title="What we registered to do"
+          standfirst={PREAMBLE}
+        />
+        <ol className="reveal mx-auto mt-12 grid max-w-4xl gap-x-8 gap-y-4 sm:grid-cols-2">
+          {REGISTERED_OBJECTS.map((object, index) => (
+            <li key={object} className="flex gap-4">
+              <span
+                aria-hidden="true"
+                className="mt-0.5 font-display text-sm text-amber"
+              >
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <span className="text-sm leading-relaxed text-sand/85">{object}</span>
+            </li>
+          ))}
+        </ol>
+        <p className="mx-auto mt-10 max-w-2xl text-sm leading-relaxed text-sand/60">
+          These are the objects as filed with the Corporate Affairs Commission on{" "}
+          {REGISTRATION.incorporatedOnDisplay}. They describe what the foundation is
+          registered to do, not a claim about what any food or remedy can cure.
+        </p>
       </Section>
 
       <Section tone="white">
