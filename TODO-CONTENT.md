@@ -129,3 +129,40 @@ mistaken for a real value. Search the codebase for `<Todo>` to find them all.
 40. **Consent checkboxes are 24px controls** rather than 44px. Their labels are the tap
     target and toggle them, which meets the intent, but a custom control would satisfy
     the letter of the rule too.
+
+## Session 5 — content, verses, and the pages that were missing
+
+### Resolved
+41. ~~Founder biography.~~ Supplied and in `src/lib/founder.ts`: student of knowledge and
+    writer from Ede; BSc and MSc in Civil Engineering with a PhD in progress; Chief Imam
+    of Surulere Mosque and lecturer at Olowobida Central Mosque; studied prophetic
+    medicine under recognised scholars; beekeeper; married with children.
+42. ~~The book's title.~~ It is **Treasure of the Prophetic Medicine** (`src/lib/book.ts`).
+    Everything now reads from there. `docs/01` and `docs/09` still carry the old working
+    title and should be corrected.
+43. ~~Office hours.~~ Monday to Friday, 8:00 – 17:00, in `CONTACT` and shown in the footer
+    and on the contact page. Confirm whether Saturday opening applies.
+44. ~~Qur'anic verses.~~ Eight verses are now on the site, extracted verbatim from the
+    published `quran-json` dataset (Uthmani script, Tanzil-derived) — At-Tawbah 9:105,
+    An-Nahl 16:68–69, Ash-Shu'ara 26:80, Al-Isra 17:82, Al-Fatihah 1:1, Al-Baqarah 2:168
+    and 2:274. Nothing was typed from memory. Add more the same way
+    (`src/lib/verses.ts`), never by retyping.
+45. ~~The bank-statement offer.~~ Removed everywhere, along with the "we publish the
+    shortfalls" framing. Appeals are now described as occasional, alongside the standing
+    monthly fund.
+
+### Still open
+46. **Photographs.** This build environment has no outbound network access beyond the
+    package registries, so no photograph could be fetched. Every image slot is filled
+    with original vector artwork instead (`components/ui/illustration.tsx`), sized and
+    framed exactly as a photograph will be. What is needed:
+    a portrait of the founder; a hero photograph (teaching, or a distribution);
+    the book cover; apiary and product photographs for the honey site.
+    **No stock photograph will be used for the founder or for any beneficiary** — a
+    stranger's face standing in for a real person is a lie the page tells on the
+    foundation's behalf.
+47. **Hadith for the remedy pages** — to be transcribed from the book with their gradings,
+    the same way the verses were sourced.
+48. **The 2024 and 2025 reports**, so those year pages can be built out.
+49. **Paystack checkout.** `/donate` and `/empowerment/join` record intent and take
+    transfers; card payment needs the verified webhook work.

@@ -179,8 +179,8 @@ export default function AccountabilityPage() {
           <p>
             The 2023 report is written and published in the foundation&apos;s own
             format: the beneficiary table with amounts, the assistances made from
-            surplus funds, the totals, and the standing offer of bank statements.
-            Full report pages for each year are the next thing we are building.
+            surplus funds, and the totals. Full report pages for each year are the
+            next thing we are building.
           </p>
           <ul>
             <li>
@@ -199,7 +199,8 @@ export default function AccountabilityPage() {
           <p>
             Independent auditors are appointed by the general meeting each year, and
             the audited statements are annexed to the annual returns filed with the
-            Corporate Affairs Commission.
+            Corporate Affairs Commission — a filing anyone may verify against the
+            public register.
           </p>
 
           <h2>How donations are spent</h2>
@@ -224,12 +225,6 @@ export default function AccountabilityPage() {
             would rather you saw those figures than wondered about them.
           </p>
 
-          <h2>Ask for the bank statements</h2>
-          <p>
-            Anyone who wants the foundation&apos;s bank statements for the past
-            calendar year can ask, and we will provide them. Message us on WhatsApp
-            or email <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>.
-          </p>
         </Prose>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-2">

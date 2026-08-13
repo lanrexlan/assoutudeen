@@ -1,132 +1,132 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import {
+  BookOpenText,
+  GraduationCap,
+  Landmark,
+  Mic,
+  Sprout,
+  UserRound,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
+import { ArchFrame, Medallion } from "@/components/ui/ornament";
+import { LanternScene } from "@/components/ui/illustration";
 import { PageHeader, Prose } from "@/components/ui/prose";
-import { Section } from "@/components/ui/section";
+import { Section, SectionHeading } from "@/components/ui/section";
 import { Todo } from "@/components/ui/todo";
+import { BOOK } from "@/lib/book";
+import { FOUNDER } from "@/lib/founder";
+import { REGISTRATION } from "@/lib/organisation";
+import { siteConfig } from "@/lib/sites";
 
 export const metadata: Metadata = {
   title: "The founder",
-  description:
-    "Imam Engr. Abd'Waasi Tirmidhi A. (Abu Mubaashir) — founder of the Assoutudeen Prophetic Medicine Foundation and author of Endless Blessings From The Creator.",
+  description: `${FOUNDER.name} (${FOUNDER.kunya}) — founder of the Assoutudeen Prophetic Medicine Foundation, Chief Imam of Surulere Mosque, and author of ${BOOK.title}.`,
 };
+
+const ICONS = [GraduationCap, Landmark, Mic, BookOpenText, Sprout];
 
 /**
  * docs/03: "Donors and patients are trusting a person before they trust an
  * institution — this page carries more weight than the About page."
- *
- * The name is spelled exactly as in docs/01. Do not normalise the apostrophes.
  */
 export default function FounderPage() {
   return (
     <>
       <PageHeader
-          eyebrow="About"
-          title="Imam Engr. Abd'Waasi Tirmidhi A."
-          standfirst="Known as Abu Mubaashir. Founder of the foundation, chief instructor at the Dawah Institute, and author of Endless Blessings From The Creator."
-        />
+        eyebrow="About"
+        title={FOUNDER.name}
+        standfirst={`Known as ${FOUNDER.kunya}. ${FOUNDER.summary}`}
+      />
 
-      <Section>
-        <div className="grid gap-8 lg:grid-cols-[2fr_1fr]">
-          <Prose>
-            <h2>On the public record</h2>
-            <p>
-              He is named on the foundation&apos;s certificate of incorporation as{" "}
-              <strong>Wasiu Tirimisiy Adeniyi</strong> — the legal spelling the
-              Corporate Affairs Commission registered — and serves as{" "}
-              <strong>Chairman</strong> of its board of trustees. He is publicly known
-              as Imam Engr. Abd&apos;Waasi Tirmidhi A. (Abu Mubaashir), which is how he
-              is referred to throughout this site.
-            </p>
+      <Section tone="sand" size="lg">
+        <div className="grid gap-10 lg:grid-cols-[1.6fr_1fr]">
+          <div>
+            <Prose>
+              {FOUNDER.biography.map((paragraph) => (
+                <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+              ))}
+            </Prose>
 
-            <h2>Biography</h2>
-            <p>
-              <Todo>
-                full biography — where he was born and raised, how he came to prophetic
-                medicine, and what he does day to day
-              </Todo>
-            </p>
-
-            <h2>Islamic education</h2>
-            <p>
-              <Todo>
-                Islamic education — institutions, years, subjects, any ijāzah held and
-                from whom
-              </Todo>
-            </p>
-
-            <h2>Teachers</h2>
-            <p>
-              <Todo>teachers he studied under, and in which disciplines</Todo>
-            </p>
-
-            <h2>Medical and technical training</h2>
-            <p>
-              The title <em>Engr.</em> reflects formal engineering training —{" "}
-              <Todo>degree, discipline and institution</Todo>. His work in prophetic
-              medicine rests on <Todo>relevant health training or qualifications</Todo>.
-            </p>
-            <p>
-              We would rather leave these blank than overstate them. This page will only
-              claim credentials that can be checked.
-            </p>
-
-            <h2>Years of practice</h2>
-            <p>
-              <Todo>years teaching, and years advising on prophetic medicine</Todo>
-            </p>
-
-            <h2>Publications</h2>
-            <p>
-              <strong>Endless Blessings From The Creator</strong> — 175 pages, around 45
-              natural remedies from the Qur&apos;an and the Sunnah, each traced to its
-              evidence, with commentary from Ibn al-Qayyim&apos;s{" "}
-              <em>At-Tibb an-Nabawiyy</em>. First produced in August 2023.
-            </p>
-            <p>
-              <Todo>any other publications, articles or contributions</Todo>
-            </p>
-
-            <h2>Teaching and speaking</h2>
-            <p>
-              He teaches the weekly Tafsir session, the fortnightly Hadith, Tawheed and
-              Prophetic Medicine classes, and the monthly empowerment lecture through the
-              Assoutudeen Dawah Institute.{" "}
-              <Todo>speaking engagements and external lectures</Todo>
-            </p>
-          </Prose>
-
-          <aside className="space-y-4">
-            <div className="rounded-lg border border-sand-dark bg-white p-5">
-              <div className="flex aspect-3/4 items-center justify-center rounded-md bg-sand-dark/60 p-4 text-center text-sm text-charcoal-muted">
-                <Todo>portrait photograph of the founder</Todo>
-              </div>
-              <p className="mt-3 text-sm text-charcoal-muted">
-                A good portrait matters here more than anywhere else on the site.
-              </p>
+            <div className="mt-10 grid gap-4 sm:grid-cols-2">
+              {FOUNDER.credentials.map((credential, index) => {
+                const Icon = ICONS[index % ICONS.length];
+                return (
+                  <Card key={credential.label} className="reveal gap-3 p-5">
+                    <div className="flex items-center gap-3">
+                      <Medallion tone="soft" className="size-11">
+                        <Icon aria-hidden="true" className="size-5" />
+                      </Medallion>
+                      <CardTitle className="text-base">{credential.label}</CardTitle>
+                    </div>
+                    <CardDescription>{credential.detail}</CardDescription>
+                  </Card>
+                );
+              })}
             </div>
+          </div>
 
-            <Card>
-              <CardTitle>The book</CardTitle>
-              <CardDescription>
-                <em>Endless Blessings From The Creator</em> — 175 pages, ~45 remedies.
-              </CardDescription>
-              <Button asChild variant="secondary">
-                <Link href="/shop">About the book</Link>
-              </Button>
-            </Card>
+          <aside className="space-y-6">
+            <figure>
+              <ArchFrame className="aspect-3/4 w-full">
+                <LanternScene />
+              </ArchFrame>
+              <figcaption className="mt-3 text-sm leading-relaxed text-charcoal-muted">
+                A portrait belongs here.{" "}
+                <Todo>portrait photograph of the founder</Todo> — no stock
+                photograph will stand in for him.
+              </figcaption>
+            </figure>
 
-            <Card>
-              <CardTitle>Study with him</CardTitle>
+            <Card className="gap-3">
+              <div className="flex items-center gap-3">
+                <Medallion tone="soft" className="size-11">
+                  <UserRound aria-hidden="true" className="size-5" />
+                </Medallion>
+                <CardTitle className="text-base">On the public record</CardTitle>
+              </div>
               <CardDescription>
-                Seven recurring classes at the Assoutudeen Dawah Institute.
+                Named on the foundation&apos;s certificate of incorporation as{" "}
+                <strong className="font-semibold text-charcoal">
+                  {FOUNDER.registeredName}
+                </strong>
+                , Chairman of Trustees. {REGISTRATION.number}, registered{" "}
+                {REGISTRATION.incorporatedOnDisplay}.
               </CardDescription>
-              <Button asChild variant="secondary">
-                <a href="https://dawah.assoutudeen.com">Dawah Institute</a>
-              </Button>
             </Card>
           </aside>
+        </div>
+      </Section>
+
+      <Section tone="white" size="lg">
+        <SectionHeading
+          kicker="Study with him"
+          title="What he teaches, and where"
+          standfirst="Five of the Institute's seven programmes are his. All of them are free to attend."
+        />
+
+        <ul className="reveal mx-auto mt-10 grid max-w-3xl gap-3 sm:grid-cols-2">
+          {FOUNDER.teaches.map((item) => (
+            <li
+              key={item}
+              className="flex items-center gap-3 rounded-lg border border-sand-dark bg-sand px-4 py-3"
+            >
+              <Medallion tone="soft" className="size-9">
+                <Mic aria-hidden="true" className="size-4" />
+              </Medallion>
+              <span className="text-sm font-medium">{item}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-10 flex flex-wrap justify-center gap-3">
+          <Button asChild size="lg">
+            <a href={`https://${siteConfig.dawah.hostname}`}>See the class schedule</a>
+          </Button>
+          <Button asChild variant="secondary" size="lg">
+            <Link href="/shop">Read his book</Link>
+          </Button>
         </div>
       </Section>
     </>

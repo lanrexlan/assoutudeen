@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { GiltRule, Kicker, OrnamentField, Starfield } from "@/components/ui/ornament";
+import { Kicker, OrnamentField, Starfield } from "@/components/ui/ornament";
 import { Container } from "@/components/ui/container";
 
 /**
@@ -15,11 +15,14 @@ export function Prose({ className, ...props }: React.ComponentProps<"div">) {
         "[&_p]:mb-5",
         "[&_h2]:mt-10 [&_h2]:mb-3 [&_h2]:font-display [&_h2]:text-2xl [&_h2]:text-charcoal",
         "[&_h3]:mt-8 [&_h3]:mb-2 [&_h3]:font-display [&_h3]:text-xl",
-        "[&_ul]:mb-5 [&_ul]:space-y-2.5 [&_ul]:ps-1",
-        // List markers are gold diamonds rather than bullets.
-        "[&_ul>li]:relative [&_ul>li]:ps-6",
-        "[&_ul>li]:before:absolute [&_ul>li]:before:start-0 [&_ul>li]:before:top-[0.6em]",
-        "[&_ul>li]:before:size-1.5 [&_ul>li]:before:rotate-45 [&_ul>li]:before:bg-amber",
+        "[&_ul]:mb-5 [&_ul]:space-y-3 [&_ul]:ps-1",
+        // List markers are the khatim star, drawn as a masked icon rather than
+        // a bullet or a dash.
+        "[&_ul>li]:relative [&_ul>li]:ps-8",
+        "[&_ul>li]:before:absolute [&_ul>li]:before:start-0 [&_ul>li]:before:top-[0.35em]",
+        "[&_ul>li]:before:size-4 [&_ul>li]:before:bg-amber [&_ul>li]:before:content-['']",
+        "[&_ul>li]:before:[mask-image:var(--star-mask)] [&_ul>li]:before:[mask-size:contain]",
+        "[&_ul>li]:before:[mask-repeat:no-repeat] [&_ul>li]:before:[mask-position:center]",
         "[&_ol]:mb-5 [&_ol]:list-decimal [&_ol]:ps-6 [&_ol]:space-y-2.5",
         "[&_ol>li]:ps-1 [&_ol]:marker:font-display [&_ol]:marker:text-primary",
         "[&_a]:font-medium [&_a]:text-primary [&_a]:underline [&_a]:underline-offset-4 [&_a]:decoration-amber [&_a]:decoration-2 hover:[&_a]:decoration-primary",
@@ -68,7 +71,7 @@ export function PageHeader({
               {standfirst}
             </p>
           ) : null}
-          <GiltRule className="mt-7 justify-start" />
+          <span aria-hidden="true" className="mt-7 block h-0.5 w-16 rounded-full bg-amber" />
           {children ? <div className="mt-7">{children}</div> : null}
         </div>
       </Container>

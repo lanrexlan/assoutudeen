@@ -7,6 +7,7 @@ import { Section, SectionHeading } from "@/components/ui/section";
 import { Todo } from "@/components/ui/todo";
 import { CONTACT } from "@/lib/sites";
 import { PREAMBLE, REGISTERED_OBJECTS, REGISTRATION } from "@/lib/organisation";
+import { VERSES } from "@/lib/verses";
 
 export const metadata: Metadata = {
   title: "Who we are",
@@ -51,9 +52,9 @@ export default function AboutPage() {
           <h2>How we work</h2>
           <ul>
             <li>
-              <strong>We publish what we raise.</strong> Every naira, including the
-              shortfalls. Anyone who wants the foundation&apos;s bank statements for the
-              past year can ask, and we will provide them.
+              <strong>We publish what we raise.</strong> Every year, by category and to
+              the naira. The accounts are audited and filed with the Corporate Affairs
+              Commission, and the totals we publish are the totals we filed.
             </li>
             <li>
               <strong>We name nobody without consent.</strong> People come to us at their
@@ -75,17 +76,7 @@ export default function AboutPage() {
           <h2>Our values, and where they come from</h2>
         </Prose>
 
-        <ArabicQuote
-          className="mt-4 max-w-2xl"
-          arabic="بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ"
-          translation="In the name of Allah, the Most Gracious, the Most Merciful."
-          source="Qur'an, Al-Fātiḥah 1:1"
-        />
-        <p className="mt-3 max-w-2xl text-sm text-charcoal-muted">
-          The verses and hadith this page should carry —{" "}
-          <Todo>chosen āyāt and hadith for the values section, with citations</Todo> —
-          will be copied verbatim from the source, diacritics intact.
-        </p>
+        <ArabicQuote className="mt-4 max-w-2xl" {...VERSES.tawbah105} />
 
         <Prose className="mt-8">
           <h2>Founded</h2>
@@ -115,7 +106,6 @@ export default function AboutPage() {
       <Section tone="ink" size="lg" ornament>
         <SectionHeading
           tone="dark"
-          kicker="Article 3 of our constitution"
           title="What we registered to do"
           standfirst={PREAMBLE}
         />

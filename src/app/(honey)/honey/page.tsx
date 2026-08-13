@@ -5,7 +5,6 @@ import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { Disclaimer } from "@/components/ui/disclaimer";
 import {
-  GiltRule,
   Kicker,
   Medallion,
   OrnamentField,
@@ -44,7 +43,7 @@ export default async function HoneyHomePage() {
               Retail and wholesale, delivered across Nigeria. The trading arm of the
               Assoutudeen Prophetic Medicine Foundation.
             </p>
-            <GiltRule className="mt-8" />
+            <span aria-hidden="true" className="mx-auto mt-8 block h-0.5 w-16 rounded-full bg-amber" />
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <Button asChild variant="donate" size="lg">
                 <Link href={href("/shop")}>Shop honey</Link>

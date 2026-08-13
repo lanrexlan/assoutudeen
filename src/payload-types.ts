@@ -76,6 +76,8 @@ export interface Config {
     'team-members': TeamMember;
     faqs: Faq;
     donations: Donation;
+    pledges: Pledge;
+    'assistance-requests': AssistanceRequest;
     programmes: Programme;
     teachers: Teacher;
     products: Product;
@@ -101,6 +103,8 @@ export interface Config {
     'team-members': TeamMembersSelect<false> | TeamMembersSelect<true>;
     faqs: FaqsSelect<false> | FaqsSelect<true>;
     donations: DonationsSelect<false> | DonationsSelect<true>;
+    pledges: PledgesSelect<false> | PledgesSelect<true>;
+    'assistance-requests': AssistanceRequestsSelect<false> | AssistanceRequestsSelect<true>;
     programmes: ProgrammesSelect<false> | ProgrammesSelect<true>;
     teachers: TeachersSelect<false> | TeachersSelect<true>;
     products: ProductsSelect<false> | ProductsSelect<true>;
@@ -769,6 +773,76 @@ export interface Donation {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pledges".
+ */
+export interface Pledge {
+  id: number;
+  name: string;
+  email: string;
+  phone?: string | null;
+  /**
+   * Pledged amount per month, in kobo.
+   */
+  amountKobo: number;
+  method: 'card' | 'transfer';
+  purpose: 'empowerment' | 'zakat' | 'sadaqah';
+  message?: string | null;
+  /**
+   * Consent to be contacted about the pledge. Unticked on the form.
+   */
+  consent: boolean;
+  status: 'new' | 'active' | 'lapsed' | 'cancelled';
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * Contains health data. Handle under the NDPA 2023.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "assistance-requests".
+ */
+export interface AssistanceRequest {
+  id: number;
+  name: string;
+  phone: string;
+  whatsapp?: string | null;
+  email?: string | null;
+  state?: string | null;
+  lga?: string | null;
+  category: 'medical' | 'financial' | 'shelter' | 'other';
+  /**
+   * In the applicant's own words.
+   */
+  need: string;
+  hospital?: string | null;
+  /**
+   * Amount in kobo (integer). ₦1,000 = 100000 kobo.
+   */
+  amountRequestedKobo?: number | null;
+  refereeName?: string | null;
+  refereePhone?: string | null;
+  /**
+   * Hospital bill, diagnosis or similar, if supplied.
+   */
+  documents?: (number | Media)[] | null;
+  /**
+   * Consent to the foundation storing and verifying these details. Required, and unticked on the form.
+   */
+  consentToProcess: boolean;
+  /**
+   * SEPARATE consent to be named or photographed publicly. Off by default — nothing identifiable is published without it.
+   */
+  consentToBeNamed?: boolean | null;
+  status: 'new' | 'verifying' | 'approved' | 'assisted' | 'declined';
+  /**
+   * Verification notes. Never published.
+   */
+  internalNotes?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "programmes".
  */
 export interface Programme {
@@ -1076,6 +1150,14 @@ export interface PayloadLockedDocument {
         value: number | Donation;
       } | null)
     | ({
+        relationTo: 'pledges';
+        value: number | Pledge;
+      } | null)
+    | ({
+        relationTo: 'assistance-requests';
+        value: number | AssistanceRequest;
+      } | null)
+    | ({
         relationTo: 'programmes';
         value: number | Programme;
       } | null)
@@ -1355,6 +1437,48 @@ export interface DonationsSelect<T extends boolean = true> {
   status?: T;
   paystackRef?: T;
   channel?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pledges_select".
+ */
+export interface PledgesSelect<T extends boolean = true> {
+  name?: T;
+  email?: T;
+  phone?: T;
+  amountKobo?: T;
+  method?: T;
+  purpose?: T;
+  message?: T;
+  consent?: T;
+  status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "assistance-requests_select".
+ */
+export interface AssistanceRequestsSelect<T extends boolean = true> {
+  name?: T;
+  phone?: T;
+  whatsapp?: T;
+  email?: T;
+  state?: T;
+  lga?: T;
+  category?: T;
+  need?: T;
+  hospital?: T;
+  amountRequestedKobo?: T;
+  refereeName?: T;
+  refereePhone?: T;
+  documents?: T;
+  consentToProcess?: T;
+  consentToBeNamed?: T;
+  status?: T;
+  internalNotes?: T;
   updatedAt?: T;
   createdAt?: T;
 }

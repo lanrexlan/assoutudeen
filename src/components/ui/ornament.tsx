@@ -13,7 +13,6 @@ import { cn } from "@/lib/utils";
  * matters on a mid-range Android over patchy data.
  */
 
-/** Eight-point star grid, drawn in a given stroke colour. */
 const geometricTile = (stroke: string, opacity: number) => {
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="168" height="168" viewBox="0 0 168 168">
     <g fill="none" stroke="${stroke}" stroke-opacity="${opacity}" stroke-width="1">
@@ -27,10 +26,6 @@ const geometricTile = (stroke: string, opacity: number) => {
   return `url("data:image/svg+xml,${encodeURIComponent(svg)}")`;
 };
 
-/**
- * Contained geometric field for dark surfaces. Sits inside a `relative`
- * parent, behind its content.
- */
 export function OrnamentField({
   className,
   tone = "gold",
@@ -56,22 +51,28 @@ export function Starfield({ className }: { className?: string }) {
   return <div aria-hidden="true" className={cn("starfield", className)} />;
 }
 
-/**
- * Section divider: a gold hairline with an eight-point star at its centre.
- * The Muezzin medallion idea, reduced to a single stroke weight.
- */
+/** The eight-point khatim star, the site's repeating glyph. */
+export function StarGlyph({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      className={cn("size-4", className)}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.4"
+      strokeLinejoin="round"
+    >
+      <path d="M12 1.8 15 5.7h4.9v4.9L22.8 12l-2.9 1.4v4.9H15L12 22.2 9 18.3H4.1v-4.9L1.2 12l2.9-1.4V5.7H9Z" />
+    </svg>
+  );
+}
+
+/** Section divider: a gold hairline with the star at its centre. */
 export function GiltRule({ className }: { className?: string }) {
   return (
     <div aria-hidden="true" className={cn("gilt-rule", className)}>
-      <svg
-        viewBox="0 0 24 24"
-        className="size-4 shrink-0 text-amber"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.25"
-      >
-        <path d="M12 1.5 15 6 21 6 21 12 22.5 12 21 13.5 21 18 15 18 12 22.5 9 18 3 18 3 13.5 1.5 12 3 12 3 6 9 6 Z" />
-      </svg>
+      <StarGlyph className="size-4 shrink-0 text-amber" />
     </div>
   );
 }
@@ -103,10 +104,7 @@ export function ArchFrame({
   );
 }
 
-/**
- * Round gold medallion holding an icon. Used for the "what we do" quartet and
- * the pillars row — the device both reference sites lean on.
- */
+/** Round gold medallion holding an icon. */
 export function Medallion({
   children,
   className,
@@ -114,15 +112,15 @@ export function Medallion({
 }: {
   children: React.ReactNode;
   className?: string;
-  tone?: "gold" | "outline";
+  tone?: "gold" | "outline" | "soft";
 }) {
   return (
     <span
       className={cn(
         "inline-flex size-14 shrink-0 items-center justify-center rounded-full",
-        tone === "gold"
-          ? "bg-amber text-charcoal shadow-gilt"
-          : "border border-amber/50 bg-transparent text-amber",
+        tone === "gold" && "bg-amber text-charcoal shadow-gilt",
+        tone === "outline" && "border border-amber/50 bg-transparent text-amber",
+        tone === "soft" && "bg-amber/15 text-amber-dark",
         className,
       )}
     >
@@ -132,30 +130,40 @@ export function Medallion({
 }
 
 /**
- * A short gold kicker above a heading. Small caps, wide tracking, with a rule.
+ * The kicker above a heading: an icon and a label.
+ *
+ * It used to be `— label —`, flanked by rules. Two dashes around a word read as
+ * a typewriter fallback rather than a decision, so the rules are gone and the
+ * star glyph — or a section-specific icon — carries it instead.
  */
 export function Kicker({
   children,
   className,
   align = "start",
+  icon: Icon,
 }: {
   children: React.ReactNode;
   className?: string;
   align?: "start" | "center";
+  /** Optional section-specific icon. Defaults to the khatim star. */
+  icon?: React.ComponentType<{ className?: string; "aria-hidden"?: boolean }>;
 }) {
   return (
     <p
       className={cn(
-        "flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-amber",
+        "flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-amber",
         align === "center" && "justify-center",
         className,
       )}
     >
-      <span aria-hidden="true" className="h-px w-6 bg-amber/70" />
+      <span className="inline-flex size-7 items-center justify-center rounded-full bg-amber/15 text-amber">
+        {Icon ? (
+          <Icon aria-hidden className="size-3.5" />
+        ) : (
+          <StarGlyph className="size-3.5" />
+        )}
+      </span>
       {children}
-      {align === "center" ? (
-        <span aria-hidden="true" className="h-px w-6 bg-amber/70" />
-      ) : null}
     </p>
   );
 }

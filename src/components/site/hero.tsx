@@ -1,15 +1,8 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
-import {
-  ArchFrame,
-  GiltRule,
-  Kicker,
-  OrnamentField,
-  Starfield,
-} from "@/components/ui/ornament";
-import { BrandMark } from "@/components/site/brand-mark";
-import { Todo } from "@/components/ui/todo";
+import { ArchFrame, Kicker, OrnamentField, Starfield } from "@/components/ui/ornament";
+import { ApiaryScene } from "@/components/ui/illustration";
 import { REGISTRATION } from "@/lib/organisation";
 
 /**
@@ -20,10 +13,11 @@ import { REGISTRATION } from "@/lib/organisation";
  * uses the *geometry* rather than the costume: no mosque silhouette, no tiled
  * arabesque, no gold gradient text, all of which docs/05 rules out.
  *
- * The arch on the right currently frames a placeholder, because the hero
- * photograph docs/03 asks for (the founder teaching, or a distribution in
- * progress) has not been supplied. It is built to take a `next/image` the
- * moment one arrives.
+ * The arch frames original vector artwork rather than a stock photograph.
+ * docs/03 asks for a real photograph here — the founder teaching, or a
+ * distribution in progress — and the frame is built to take a `next/image` the
+ * moment one exists. Until then a drawing is honest where a stock image would
+ * not be.
  */
 export function Hero({ donateHref, workHref }: { donateHref: string; workHref: string }) {
   return (
@@ -84,25 +78,7 @@ export function Hero({ donateHref, workHref }: { donateHref: string; workHref: s
           {/* Focal arch */}
           <div className="relative mx-auto w-full max-w-sm lg:max-w-md">
             <ArchFrame className="aspect-3/4 w-full shadow-elevated">
-              <div className="relative flex h-full w-full flex-col items-center justify-center gap-5 bg-[linear-gradient(180deg,#0f2f29_0%,#08201c_100%)] p-8 text-center">
-                <OrnamentField tone="gold" className="opacity-70" />
-                <Starfield />
-                <BrandMark className="relative size-20 text-amber" title="Assoutudeen" />
-                <p
-                  dir="rtl"
-                  lang="ar"
-                  className="relative font-arabic text-3xl leading-[2] text-sand"
-                >
-                  بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
-                </p>
-                <GiltRule className="relative w-full" />
-                <p className="relative text-sm text-sand/70">
-                  <Todo className="border-amber/50 bg-amber/15 text-sand">
-                    hero photograph — the founder teaching, or a distribution in
-                    progress
-                  </Todo>
-                </p>
-              </div>
+              <ApiaryScene title="Hives on a hillside at dusk" />
             </ArchFrame>
 
             {/* Gold hairline echo behind the arch. */}

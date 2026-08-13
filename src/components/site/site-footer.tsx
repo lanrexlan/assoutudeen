@@ -1,11 +1,10 @@
 import Link from "next/link";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { OrnamentField, Starfield } from "@/components/ui/ornament";
 import { BrandMark } from "@/components/site/brand-mark";
 import { FoundationLink, foundationUrl } from "@/components/site/foundation-link";
 import { NewsletterForm } from "@/components/site/newsletter-form";
-import { Todo } from "@/components/ui/todo";
 import { CONTACT, FOUNDATION_NAME, siteConfig, type SiteKey } from "@/lib/sites";
 import { REGISTRATION } from "@/lib/organisation";
 import { getSiteContext } from "@/lib/site-context";
@@ -118,8 +117,9 @@ export async function SiteFooter({ site }: { site: SiteKey }) {
                 </a>
               </p>
             </address>
-            <p className="mt-3 text-sm text-sand/55">
-              Office hours: <Todo className="border-white/30 bg-white/10 text-sand">office hours</Todo>
+            <p className="mt-3 flex gap-3 text-sm text-sand/70">
+              <Clock aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-amber" />
+              <span>{CONTACT.officeHours}</span>
             </p>
           </div>
 

@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { Container } from "@/components/ui/container";
-import { GiltRule, Kicker, OrnamentField, Starfield } from "@/components/ui/ornament";
+import { Kicker, OrnamentField, Starfield } from "@/components/ui/ornament";
 
 type SectionProps = React.ComponentProps<"section"> & {
   /**
@@ -108,7 +108,6 @@ export function SectionHeading({
           {standfirst}
         </p>
       ) : null}
-      <GiltRule className={cn("mt-6", align === "center" ? "" : "justify-start")} />
     </div>
   );
 }

@@ -3,7 +3,7 @@ import { adminOrEditor, anyone } from "@/payload/access/roles";
 import { slugField } from "@/payload/fields/slug";
 
 /**
- * One chapter of *Endless Blessings From The Creator* per document.
+ * One chapter of *Treasure of the Prophetic Medicine* per document.
  *
  * These are EDUCATIONAL pages. They may quote Qur'an, hadith and Ibn al-Qayyim
  * freely — and they must never be merged with, or linked as a claim about, a

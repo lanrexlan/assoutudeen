@@ -156,3 +156,133 @@ export async function subscribeToNewsletter(
 
   return { ok: true, message: "Thank you — you are subscribed. You can unsubscribe any time." };
 }
+
+/* ---------------------------------------------------------------------------
+   The Monthly Empowerment Fund: joining it, and asking it for help.
+--------------------------------------------------------------------------- */
+
+const nairaToKobo = (naira: number) => Math.round(naira * 100);
+
+const pledgeSchema = z.object({
+  name: trimmed.min(2, "Please give your name.").max(120),
+  email: trimmed.email("That email address does not look right."),
+  phone: trimmed.max(40).optional().or(z.literal("")),
+  amount: z.coerce
+    .number({ message: "Please choose or enter an amount." })
+    .int("Please give a whole number of naira.")
+    .min(100, "The smallest pledge we can process is ₦100."),
+  method: z.enum(["card", "transfer"]),
+  purpose: z.enum(["empowerment", "zakat", "sadaqah"]),
+  message: trimmed.max(2000).optional().or(z.literal("")),
+  consent: z.literal("on", { message: "Please tick the box so we may contact you." }),
+  website: z.string().optional(),
+});
+
+export async function joinTheFund(
+  _prev: FormState,
+  formData: FormData,
+): Promise<FormState> {
+  const parsed = pledgeSchema.safeParse(Object.fromEntries(formData));
+
+  if (!parsed.success) {
+    return {
+      ok: false,
+      message: "Please check the highlighted fields.",
+      errors: fieldErrors(parsed.error),
+    };
+  }
+
+  const data = parsed.data;
+  if (data.website) return { ok: true, message: "Thank you — your pledge is recorded." };
+
+  const payload = await getPayloadClient();
+  await payload.create({
+    collection: "pledges",
+    overrideAccess: true,
+    data: {
+      name: data.name,
+      email: data.email,
+      phone: data.phone || undefined,
+      amountKobo: nairaToKobo(data.amount),
+      method: data.method,
+      purpose: data.purpose,
+      message: data.message || undefined,
+      consent: true,
+      status: "new",
+    },
+  });
+
+  return {
+    ok: true,
+    message:
+      "Thank you. Your pledge is recorded and someone will be in touch to set it up — usually within two working days.",
+  };
+}
+
+const assistanceSchema = z.object({
+  name: trimmed.min(2, "Please give your name.").max(120),
+  phone: trimmed.min(7, "We need a phone number to reach you on.").max(40),
+  whatsapp: trimmed.max(40).optional().or(z.literal("")),
+  email: trimmed.email("That email address does not look right.").optional().or(z.literal("")),
+  state: trimmed.max(80).optional().or(z.literal("")),
+  lga: trimmed.max(80).optional().or(z.literal("")),
+  category: z.enum(["medical", "financial", "shelter", "other"]),
+  need: trimmed.min(20, "Please tell us a little more about the situation.").max(4000),
+  hospital: trimmed.max(160).optional().or(z.literal("")),
+  amount: z.coerce.number().int().min(0).optional(),
+  refereeName: trimmed.max(120).optional().or(z.literal("")),
+  refereePhone: trimmed.max(40).optional().or(z.literal("")),
+  consentToProcess: z.literal("on", {
+    message: "We cannot look into a request without your permission to hold these details.",
+  }),
+  /** Separate and optional — being helped is never conditional on this. */
+  consentToBeNamed: z.literal("on").optional(),
+  website: z.string().optional(),
+});
+
+export async function requestAssistance(
+  _prev: FormState,
+  formData: FormData,
+): Promise<FormState> {
+  const parsed = assistanceSchema.safeParse(Object.fromEntries(formData));
+
+  if (!parsed.success) {
+    return {
+      ok: false,
+      message: "Please check the highlighted fields.",
+      errors: fieldErrors(parsed.error),
+    };
+  }
+
+  const data = parsed.data;
+  if (data.website) return { ok: true, message: "Thank you — your request has been received." };
+
+  const payload = await getPayloadClient();
+  await payload.create({
+    collection: "assistance-requests",
+    overrideAccess: true,
+    data: {
+      name: data.name,
+      phone: data.phone,
+      whatsapp: data.whatsapp || undefined,
+      email: data.email || undefined,
+      state: data.state || undefined,
+      lga: data.lga || undefined,
+      category: data.category,
+      need: data.need,
+      hospital: data.hospital || undefined,
+      amountRequestedKobo: data.amount ? nairaToKobo(data.amount) : undefined,
+      refereeName: data.refereeName || undefined,
+      refereePhone: data.refereePhone || undefined,
+      consentToProcess: true,
+      consentToBeNamed: data.consentToBeNamed === "on",
+      status: "new",
+    },
+  });
+
+  return {
+    ok: true,
+    message:
+      "Your request has been received. Someone will contact you on the number you gave to talk it through. Nothing you have told us is published, and nothing will be without your separate written permission.",
+  };
+}

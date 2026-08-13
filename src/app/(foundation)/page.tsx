@@ -13,12 +13,13 @@ import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { Medallion } from "@/components/ui/ornament";
 import { Section, SectionHeading } from "@/components/ui/section";
-import { Todo } from "@/components/ui/todo";
 import { Hero } from "@/components/site/hero";
 import { StructureDiagram } from "@/components/site/structure-diagram";
 import { getSiteContext } from "@/lib/site-context";
 import { REGISTRATION } from "@/lib/organisation";
 import { THREE_YEAR_TOTAL_KOBO, YEAR_TOTALS } from "@/lib/impact";
+import { VERSES } from "@/lib/verses";
+import { BOOK } from "@/lib/book";
 import { formatKobo } from "@/payload/fields/money";
 
 /**
@@ -52,7 +53,7 @@ export default async function FoundationHomePage() {
     {
       icon: BookOpenText,
       title: "The book",
-      body: "Endless Blessings From The Creator — 175 pages, referenced chapter by chapter.",
+      body: `${BOOK.title} — ${BOOK.pages} pages, referenced chapter by chapter.`,
       href: "/shop",
     },
   ];
@@ -128,14 +129,14 @@ export default async function FoundationHomePage() {
               align="start"
               tone="dark"
               kicker="Accountability"
-              title="We publish the shortfalls too"
-              standfirst="A kidney transplant appeal in December 2023 needed ₦22,000,000. We raised ₦3,035,000. It is on the record exactly like that, because the record is the point."
+              title="Every naira, on the record"
+              standfirst="Three years of giving, published by year and by category. What comes in is what we report, and what we report is what we file."
             />
             <p className="mt-6 max-w-xl leading-relaxed text-sand/80">
-              Anyone who wants the foundation&apos;s bank statements for the past
-              calendar year can ask, and we will send them. Our constitution binds
-              every naira to the objects it was registered for, and the accounts are
-              audited and filed with the Corporate Affairs Commission each year.
+              Our constitution binds every naira to the objects the foundation was
+              registered for. The accounts are audited by independent auditors each
+              year and filed with the Corporate Affairs Commission, and zakat is held
+              as its own fund with its own rules.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild variant="donate" size="lg">
@@ -180,8 +181,8 @@ export default async function FoundationHomePage() {
       <Section tone="white" size="lg">
         <SectionHeading
           kicker="The empowerment fund"
-          title="A standing circle, not a public appeal"
-          standfirst="Public appeals have stopped. What replaced them is steadier: a monthly contribution circle that meets need as it arises, and reports what it did by category."
+          title="A standing circle, month after month"
+          standfirst="Most of what we do runs through a monthly contribution fund that meets need as it arises. A public appeal is opened only now and then, when a case calls for more than the fund can carry."
         />
 
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
@@ -229,19 +230,8 @@ export default async function FoundationHomePage() {
 
       {/* --- Scripture --------------------------------------------------- */}
       <Section tone="sand" size="lg" ornament>
-        <div className="mx-auto max-w-3xl text-center">
-          <ArabicQuote
-            className="reveal text-start"
-            arabic="بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ"
-            translation="In the name of Allah, the Most Gracious, the Most Merciful."
-            source="Qur'an, Al-Fātiḥah 1:1"
-          />
-          <p className="mt-5 text-sm text-charcoal-muted">
-            The verse this section will carry —{" "}
-            <Todo>At-Tawbah 9:105 in Arabic, copied verbatim from the source</Todo> —
-            is left blank rather than retyped from memory. A mangled āyah costs more
-            than an empty space.
-          </p>
+        <div className="mx-auto max-w-3xl">
+          <ArabicQuote className="reveal" {...VERSES.tawbah105} />
         </div>
       </Section>
 
