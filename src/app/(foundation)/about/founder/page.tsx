@@ -82,9 +82,10 @@ export default function FounderPage() {
 
             <h2>Teaching and speaking</h2>
             <p>
-              He teaches the weekly Tafsir session, the fortnightly Hadith, Tawheed and
-              Prophetic Medicine classes, and the monthly empowerment lecture through the
-              Assoutudeen Dawah Institute.{" "}
+              Through the Assoutudeen Dawah Institute he teaches the weekly Tafsir class
+              on Fridays, the fortnightly Hadith and Prophetic Medicine classes on
+              Saturdays, and the Sunday classes — Fiqh, Virtues of the Companions and
+              Qur&apos;an and Modern Science.{" "}
               <Todo>speaking engagements and external lectures</Todo>
             </p>
           </Prose>
@@ -112,7 +113,7 @@ export default function FounderPage() {
             <Card>
               <CardTitle>Study with him</CardTitle>
               <CardDescription>
-                Seven recurring classes at the Assoutudeen Dawah Institute.
+                Classes every Friday to Sunday at the Assoutudeen Dawah Institute.
               </CardDescription>
               <Button asChild variant="secondary">
                 <a href="https://dawah.assoutudeen.com">Dawah Institute</a>

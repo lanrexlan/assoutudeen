@@ -144,23 +144,35 @@ export default function AccountabilityPage() {
           <Card>
             <CardTitle>Giving by bank transfer</CardTitle>
             <CardDescription>
-              Many donors prefer a transfer to a card, and we support it.
+              Many donors prefer a transfer to a card, and we support it. Both
+              accounts are at Jaiz Bank and have been verified.
             </CardDescription>
-            <div className="text-sm leading-relaxed text-charcoal">
-              <p>
-                Bank: <Todo>confirm the bank and account for public donations</Todo>
-              </p>
-              <p className="mt-2">
-                Account name: <Todo>account name exactly as held</Todo>
-              </p>
-              <p className="mt-2">
-                Account number: <Todo>account number, verified before publishing</Todo>
-              </p>
-              <p className="mt-4 rounded-md bg-sand p-3 text-charcoal-muted">
-                We are deliberately not printing an account number that has not been
-                confirmed. A wrong digit on a public donation page sends someone
-                else&apos;s money to a stranger. Until it is verified, please ask on
-                WhatsApp and we will send the details directly.
+            <div className="space-y-4 text-sm leading-relaxed text-charcoal">
+              <div className="rounded-md bg-sand p-3">
+                <p className="text-xs uppercase tracking-widest text-charcoal-muted">
+                  Nigerian account (₦)
+                </p>
+                <p className="mt-1 font-medium">
+                  Assoutudeen Prophetic Medicine Foundation
+                </p>
+                <p className="font-display text-lg text-olive">0010939336</p>
+                <p className="text-charcoal-muted">Jaiz Bank</p>
+              </div>
+              <div className="rounded-md bg-sand p-3">
+                <p className="text-xs uppercase tracking-widest text-charcoal-muted">
+                  Foreign account
+                </p>
+                <p className="mt-1 font-medium">
+                  Assoutudeen Prophetic Medicine Foundation
+                </p>
+                <p className="font-display text-lg text-olive">0011579597</p>
+                <p className="text-charcoal-muted">
+                  Jaiz Bank · SWIFT JAIZNGLAXXX
+                </p>
+              </div>
+              <p className="text-charcoal-muted">
+                After a transfer, message us on WhatsApp with your name and the
+                amount so we can confirm and send a receipt.
               </p>
             </div>
           </Card>

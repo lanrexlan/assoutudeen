@@ -38,12 +38,15 @@ export default function StructurePage() {
 
           <h2>Assoutudeen Dawah Institute</h2>
           <p>
-            The education arm. It teaches seven recurring classes — the weekly Tafsir
-            session, the fortnightly Hadith, Tawheed and Prophetic Medicine classes, the
-            monthly Fiqh seminar taught by Shaykh Yaaqub Muhibullah Abd&apos;hammed Olore,
-            the monthly empowerment lecture, and a quarterly Fataawah night. The Institute
-            is not separately incorporated and does not hold funds of its own; it operates
-            under the foundation.
+            The education arm. It teaches classes every Friday to Sunday, between Maghrib
+            and Isha — weekly Tafsir on Fridays; Hadith and Prophetic Medicine on
+            Saturdays, alternating fortnightly; and Fiqh, Virtues of the Companions and
+            Qur&apos;an and Modern Science on Sundays. A special monthly Fiqh seminar on
+            business transactions and interpersonal relations runs every last Sunday,
+            taught by Dr Yaaqub Muhibullah Abd&apos;hammed Olore (Mufti li Mahad), and an
+            empowerment session every last Saturday of the quarter. The Institute is not
+            separately incorporated and does not hold funds of its own; it operates under
+            the foundation.
           </p>
 
           <h2>Assoutudeen Honey Enterprise</h2>

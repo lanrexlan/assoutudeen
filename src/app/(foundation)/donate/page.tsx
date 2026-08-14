@@ -13,10 +13,31 @@ export const metadata: Metadata = {
     "Give to the Assoutudeen Prophetic Medicine Foundation — the empowerment fund, medical relief and education. Zakat is held in a separate fund.",
 };
 
+/** Verified accounts (confirmed by the founder). Both are Jaiz Bank. */
+const ACCOUNTS = {
+  naira: {
+    bank: "Jaiz Bank",
+    accountName: "Assoutudeen Prophetic Medicine Foundation",
+    accountNumber: "0010939336",
+    note: "Nigerian naira account",
+  },
+  foreign: {
+    bank: "Jaiz Bank",
+    accountName: "Assoutudeen Prophetic Medicine Foundation",
+    accountNumber: "0011579597",
+    swift: "JAIZNGLAXXX",
+    note: "Foreign account",
+  },
+} as const;
+
+const whatsappHref = `https://wa.me/${CONTACT.phoneE164}?text=${encodeURIComponent(
+  "As-salaamu alaykum. I have just made a transfer to the Assoutudeen Prophetic Medicine Foundation. My name and the amount:",
+)}`;
+
 /**
  * The donation path. Card payments (Paystack) are wired in a later session;
- * until the bank details are verified we deliberately print no account number
- * (TODO #23) — a wrong digit sends a stranger's money elsewhere.
+ * bank transfer works today — the Jaiz accounts below have been confirmed by
+ * the founder (TODO-CONTENT.md #23 is resolved).
  */
 export default function DonatePage() {
   return (
@@ -55,24 +76,73 @@ export default function DonatePage() {
           </Card>
         </div>
 
+        <h2 className="mt-12 font-display text-2xl sm:text-3xl">
+          Give by bank transfer
+        </h2>
+        <p className="mt-2 max-w-2xl text-sm leading-relaxed text-charcoal-muted">
+          Transfer to either account below. Then message us on WhatsApp with
+          your name and what the gift is for, so we can confirm it and send your
+          receipt.
+        </p>
+        <div className="mt-5 grid gap-4 sm:grid-cols-2">
+          <Card>
+            <CardTitle>Nigerian account (₦)</CardTitle>
+            <dl className="space-y-2 text-sm leading-relaxed text-charcoal">
+              <div>
+                <dt className="text-charcoal-muted">Account name</dt>
+                <dd className="font-medium">{ACCOUNTS.naira.accountName}</dd>
+              </div>
+              <div>
+                <dt className="text-charcoal-muted">Account number</dt>
+                <dd className="font-display text-xl text-olive">
+                  {ACCOUNTS.naira.accountNumber}
+                </dd>
+              </div>
+              <div>
+                <dt className="text-charcoal-muted">Bank</dt>
+                <dd className="font-medium">{ACCOUNTS.naira.bank}</dd>
+              </div>
+            </dl>
+          </Card>
+          <Card>
+            <CardTitle>Foreign account</CardTitle>
+            <dl className="space-y-2 text-sm leading-relaxed text-charcoal">
+              <div>
+                <dt className="text-charcoal-muted">Account name</dt>
+                <dd className="font-medium">{ACCOUNTS.foreign.accountName}</dd>
+              </div>
+              <div>
+                <dt className="text-charcoal-muted">Account number</dt>
+                <dd className="font-display text-xl text-olive">
+                  {ACCOUNTS.foreign.accountNumber}
+                </dd>
+              </div>
+              <div>
+                <dt className="text-charcoal-muted">Bank</dt>
+                <dd className="font-medium">{ACCOUNTS.foreign.bank}</dd>
+              </div>
+              <div>
+                <dt className="text-charcoal-muted">SWIFT code</dt>
+                <dd className="font-medium">{ACCOUNTS.foreign.swift}</dd>
+              </div>
+            </dl>
+          </Card>
+        </div>
+
         <Prose className="mt-12">
-          <h2>The simplest way to give today</h2>
+          <h2>Confirm your transfer</h2>
           <p>
-            Message us on WhatsApp —{" "}
+            After you transfer, message us on WhatsApp —{" "}
             <a
-              href={`https://wa.me/${CONTACT.phoneE164}?text=${encodeURIComponent(
-                "As-salaamu alaykum. I would like to donate to the Assoutudeen Prophetic Medicine Foundation.",
-              )}`}
+              href={whatsappHref}
               target="_blank"
               rel="noopener noreferrer"
             >
               {CONTACT.phoneDisplay}
             </a>{" "}
-            — or email{" "}
-            <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>, and we will
-            send you the verified bank details. We are deliberately not printing
-            an account number on this page until it has been confirmed; a wrong
-            digit on a public donations page misdirects someone else&apos;s money.
+            — or email <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>,
+            with your name and the amount. We confirm every gift and send a
+            receipt; bank statements for the past year are available on request.
           </p>
           <p>
             Online card giving through Paystack arrives in a later session.{" "}

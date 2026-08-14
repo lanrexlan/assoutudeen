@@ -22,10 +22,15 @@ Full brief: `docs/09-Claude-Code-Handover.md`. Read it before non-trivial work.
 ## Facts
 
 - Founder / author / chief instructor: **Imam Engr. Abd'Waasi Tirmidhi A. (Abu Mubaashir)**
-- Second teacher: Shaykh Yaaqub Muhibullah Abd'hammed Olore (monthly Fiqh seminar)
+- Second teacher: **Dr Yaaqub Muhibullah Abd'hammed Olore (Mufti li Mahad)** — special
+  monthly Fiqh seminar, last Sunday of each month, on Business Transactions and
+  Interpersonal Relations
 - Address: Assoutudeen Street, Zone 5, Fiwasaye Community, Ede, Osun State, Nigeria
 - Phone / WhatsApp: 08161882470 · Email: `info@assoutudeen.com`
 - Book: *Endless Blessings From The Creator*, 175 pages, ~45 prophetic remedies
+- Donation accounts (verified): both at **Jaiz Bank**, name "Assoutudeen Prophetic
+  Medicine Foundation" — naira **0010939336** · foreign **0011579597**, SWIFT
+  **JAIZNGLAXXX**
 - Legacy site to 301-redirect: `thepropheticmedicine.com.ng`
 - Timezone: **Africa/Lagos**, UTC+1, no DST. Currency: **NGN (₦)**. Locale: `en-NG`.
 
@@ -105,9 +110,12 @@ rather than burying them.
    reports at `/impact/[year]`, with WhatsApp share keeping APMF's emoji format.
    Three-year verified total: **₦14,644,520** (2023 ₦5,323,500 · 2024 ₦3,838,500 ·
    2025 ₦5,482,520).
-2. **Dawah recurrence engine** — seven programmes stored as RRULE-style rules, occurrences
-   computed, `.ics` feed. Edge case: Tawheed class is 2nd Sunday *except* when that is also
-   the last Sunday.
+2. **Dawah recurrence engine** — programmes stored as RRULE-style rules, occurrences
+   computed, `.ics` feed. Confirmed cadence (client): weekly Tafsir Fridays; Hadith and
+   Prophetic Medicine Saturdays, alternating fortnightly; Fiqh, Virtues of the Companions
+   and Qur'an and Modern Science Sundays; special Fiqh seminar every last Sunday; quarterly
+   empowerment every last Saturday of the quarter. Classes run between Maghrib and Isha
+   (empowerment proposed Saturday mornings). Venue unconfirmed.
 3. **Honey ambassador system** — referral codes, new-customer-only attribution, first code
    wins, 5 L minimum qualifying order, automated public leaderboard, CMS-configurable prize
    tiers.

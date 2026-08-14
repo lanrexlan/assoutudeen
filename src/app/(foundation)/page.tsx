@@ -37,7 +37,10 @@ export default async function FoundationHomePage() {
     },
     { value: "11", label: "beneficiaries supported in the 2023 report alone" },
     { value: "175", label: "pages of prophetic remedies in the book" },
-    { value: "7", label: "weekly and monthly programmes at the Dawah Institute" },
+    {
+      value: "8",
+      label: "programmes at the Dawah Institute — Friday to Sunday, plus monthly and quarterly sessions",
+    },
   ];
 
   const pillars = [
@@ -49,7 +52,7 @@ export default async function FoundationHomePage() {
     },
     {
       title: "Dawah Institute",
-      body: "Seven recurring classes in Ede — Tafsir, Hadith, Tawheed, Prophetic Medicine, the monthly Fiqh seminar, the empowerment lecture and Fataawah night.",
+      body: "Classes run every Friday to Sunday evening in Ede — Tafsir, Hadith, Prophetic Medicine, Fiqh, Virtues of the Companions and Qur'an and Modern Science — plus a monthly Fiqh seminar and quarterly empowerment.",
       href: href("/dawah"),
       cta: "Visit the institute",
     },
@@ -256,8 +259,8 @@ export default async function FoundationHomePage() {
             <div>
               <CardTitle>Assoutudeen Dawah Institute</CardTitle>
               <CardDescription className="mt-2">
-                Seven recurring classes taught by Imam Abd&apos;Waasi Tirmidhi and
-                guest scholars.
+                Friday-to-Sunday classes taught by Imam Abd&apos;Waasi Tirmidhi
+                and guest scholars.
               </CardDescription>
             </div>
             <Button asChild variant="link" className="self-start px-0">

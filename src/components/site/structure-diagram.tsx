@@ -48,9 +48,10 @@ export function StructureDiagram() {
               </p>
               <p className="mt-1 font-display text-lg">{siteConfig.dawah.name}</p>
               <p className="mt-2 text-sm leading-relaxed text-charcoal">
-                The teaching arm. Seven recurring classes — Tafsir, Hadith, Tawheed,
-                Prophetic Medicine, the monthly Fiqh seminar, the monthly empowerment
-                lecture, and Fataawah night. It does not hold donations of its own.
+                The teaching arm. Classes every Friday to Sunday evening — Tafsir,
+                Hadith, Prophetic Medicine, Fiqh, Virtues of the Companions and
+                Qur&apos;an and Modern Science — plus a monthly Fiqh seminar and a
+                quarterly empowerment session. It does not hold donations of its own.
               </p>
               <p className="mt-3 text-sm">
                 <a href={dawahUrl} className="text-teal underline underline-offset-4">

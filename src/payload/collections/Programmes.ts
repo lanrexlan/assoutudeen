@@ -7,9 +7,11 @@ import { slugField } from "@/payload/fields/slug";
  * the schedule going stale. Occurrences are computed in `lib/recurrence`
  * (session 9) from `recurrenceRule`.
  *
- * Edge case to preserve: the Tawheed class is the 2nd Sunday EXCEPT when the
- * 2nd Sunday is also the last Sunday of the month, when it does not run.
- * RRULE alone cannot express that, so `recurrenceException` names it.
+ * Confirmed cadence (client): weekly Tafsir on Fridays; Hadith and Prophetic
+ * Medicine on Saturdays, alternating fortnightly; Fiqh, Virtues of the
+ * Companions and Qur'an and Modern Science on Sundays; a special Fiqh seminar
+ * every last Sunday; and empowerment every last Saturday of the quarter.
+ * `recurrenceException` names anything a plain RRULE cannot express.
  */
 export const Programmes: CollectionConfig = {
   slug: "programmes",

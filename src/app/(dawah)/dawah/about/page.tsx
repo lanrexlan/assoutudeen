@@ -8,21 +8,18 @@ import { Todo } from "@/components/ui/todo";
 import { foundationUrl } from "@/components/site/foundation-link";
 import { getSiteContext } from "@/lib/site-context";
 
+import { DAWAH_CLASSES, MONTHLY_FIQH_SEMINAR } from "@/lib/dawah-schedule";
+
 export const metadata: Metadata = {
   title: "About the Institute",
   description:
-    "The Assoutudeen Dawah Institute is the education arm of the Assoutudeen Prophetic Medicine Foundation — seven recurring programmes taught in Ede.",
+    "The Assoutudeen Dawah Institute is the education arm of the Assoutudeen Prophetic Medicine Foundation — recurring classes taught in Ede, Friday to Sunday.",
 };
 
-/** The seven programmes, exactly as named in CLAUDE.md. */
+/** The confirmed programmes, from lib/dawah-schedule.ts. */
 const PROGRAMMES = [
-  "Tafsir",
-  "Hadith",
-  "Tawheed",
-  "Prophetic Medicine",
-  "Monthly Fiqh seminar",
-  "Empowerment lecture",
-  "Fataawah night",
+  ...DAWAH_CLASSES.map((session) => session.title),
+  MONTHLY_FIQH_SEMINAR.title,
 ];
 
 export default async function AboutPage() {
@@ -34,7 +31,7 @@ export default async function AboutPage() {
         <PageHeader
           eyebrow="The institute"
           title="About the Institute"
-          standfirst="The education arm of the Assoutudeen Prophetic Medicine Foundation — seven recurring programmes, free and open."
+          standfirst="The education arm of the Assoutudeen Prophetic Medicine Foundation — recurring classes every Friday to Sunday, free and open."
         />
       </Section>
 
@@ -43,31 +40,31 @@ export default async function AboutPage() {
           <h2>What the Institute is</h2>
           <p>
             The Assoutudeen Dawah Institute is where the foundation teaches. It
-            runs seven recurring programmes in Ede, Osun State, led by the
-            foundation&apos;s founder and chief instructor, Imam Engr.
-            Abd&apos;Waasi Tirmidhi A. (Abu Mubaashir), with guest scholars. The
-            classes are free and open to the community.
+            runs classes every Friday to Sunday in Ede, Osun State — between
+            Maghrib and Isha — led by the foundation&apos;s founder and chief
+            instructor, Imam Engr. Abd&apos;Waasi Tirmidhi A. (Abu Mubaashir),
+            with guest scholars. The classes are free and open to the community.
           </p>
 
-          <h2>The seven programmes</h2>
+          <h2>The programmes</h2>
           <ul>
             {PROGRAMMES.map((name) => (
               <li key={name}>{name}</li>
             ))}
           </ul>
           <p>
-            <Todo>
-              class times and venues for the seven programmes — currently
-              unconfirmed
-            </Todo>
+            On top of the weekly classes, a special Fiqh seminar on business
+            transactions and interpersonal relations runs every last Sunday of
+            the month, and an empowerment session every last Saturday of the
+            quarter. <Todo>venue or platform — unconfirmed</Todo>
           </p>
 
           <h2>Teachers</h2>
           <p>
             The chief instructor is Imam Engr. Abd&apos;Waasi Tirmidhi A. (Abu
             Mubaashir), author of <i>Endless Blessings From The Creator</i>. The
-            monthly Fiqh seminar is taught by Shaykh Yaaqub Muhibullah
-            Abd&apos;hammed Olore. See the{" "}
+            monthly Fiqh seminar is taught by Dr Yaaqub Muhibullah
+            Abd&apos;hammed Olore (Mufti li Mahad). See the{" "}
             <Link href={href("/teachers")} className="underline underline-offset-4">
               teachers page
             </Link>{" "}
@@ -98,7 +95,7 @@ export default async function AboutPage() {
             <div>
               <CardTitle>Programmes</CardTitle>
               <CardDescription className="mt-2">
-                The seven recurring classes, what each one covers, and who
+                The Friday-to-Sunday classes, what each one covers, and who
                 teaches it.
               </CardDescription>
             </div>

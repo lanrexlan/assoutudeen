@@ -28,7 +28,7 @@ export default async function OurWorkPage() {
     },
     {
       title: "Dawah education",
-      body: "The Assoutudeen Dawah Institute runs seven recurring classes in Ede — Tafsir, Hadith, Tawheed, Prophetic Medicine, the monthly Fiqh seminar, the empowerment lecture and Fataawah night.",
+      body: "The Assoutudeen Dawah Institute runs classes every Friday to Sunday in Ede — Tafsir, Hadith, Prophetic Medicine, Fiqh, Virtues of the Companions and Qur'an and Modern Science — plus a monthly Fiqh seminar and quarterly empowerment.",
       href: href("/dawah"),
       cta: "Visit the institute",
     },
