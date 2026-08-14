@@ -7,12 +7,12 @@ import { Todo } from "@/components/ui/todo";
 export const metadata: Metadata = {
   title: "Teachers",
   description:
-    "Imam Engr. Abd'Waasi Tirmidhi A. (Abu Mubaashir) and Shaykh Yaaqub Muhibullah Abd'hammed Olore — the teachers of the Assoutudeen Dawah Institute.",
+    "Imam Engr. Abd'Waasi Tirmidhi A. (Abu Mubaashir) and Dr Yaaqub Muhibullah Abd'hammed Olore (Mufti li Mahad) — the teachers of the Assoutudeen Dawah Institute.",
 };
 
 /**
- * The two verified teachers (CLAUDE.md). Full biographies are unconfirmed and
- * shown as placeholders — see TODO-CONTENT.md #26.
+ * The two confirmed teachers. Full biographies are unconfirmed and shown as
+ * placeholders — see TODO-CONTENT.md #26.
  */
 export default function TeachersPage() {
   return (
@@ -39,10 +39,12 @@ export default function TeachersPage() {
           </Card>
           <Card>
             <CardTitle>
-              Shaykh Yaaqub Muhibullah Abd&apos;hammed Olore
+              Dr Yaaqub Muhibullah Abd&apos;hammed Olore
             </CardTitle>
             <CardDescription className="mt-2">
-              Guest scholar of the monthly Fiqh seminar.
+              Mufti li Mahad. Teaches the special monthly Fiqh seminar on
+              business transactions and interpersonal relations, every last
+              Sunday of the month.
             </CardDescription>
           </Card>
         </div>

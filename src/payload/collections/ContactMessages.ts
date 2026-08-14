@@ -26,7 +26,9 @@ export const ContactMessages: CollectionConfig = {
   },
   fields: [
     { name: "name", type: "text", required: true },
-    { name: "email", type: "email", required: true },
+    // Optional because the phone-first assistance form has no email field;
+    // the general contact form still requires it via its Zod schema.
+    { name: "email", type: "email" },
     { name: "phone", type: "text" },
     {
       name: "topic",

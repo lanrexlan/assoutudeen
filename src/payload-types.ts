@@ -968,9 +968,9 @@ export interface NewsletterSubscriber {
 export interface ContactMessage {
   id: number;
   name: string;
-  email: string;
+  email?: string | null;
   phone?: string | null;
-  topic: 'general' | 'consultation' | 'donation' | 'media' | 'distributor' | 'course';
+  topic: 'general' | 'consultation' | 'donation' | 'media' | 'distributor' | 'course' | 'assistance';
   subjectLine: string;
   message: string;
   /**

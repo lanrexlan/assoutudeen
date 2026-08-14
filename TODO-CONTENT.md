@@ -9,12 +9,21 @@ Add answers here as they are confirmed, then remove the item.
 2. Board of trustees — names and roles
 3. Book price and formats (paperback / PDF / EPUB)
 4. Honey price list, pack sizes, delivery zones and rates
-5. Class times, venue or platform, and language for the seven programmes
+5. ~~Class times, venue or platform, and language for the seven programmes~~
+   **Partially resolved:** classes run every Friday to Sunday between Maghrib and Isha —
+   weekly Tafsir (Fridays); Hadith and Prophetic Medicine alternating fortnightly
+   (Saturdays); Fiqh, Virtues of the Companions and Qur'an and Modern Science (Sundays);
+   a special Fiqh seminar every last Sunday of the month; and empowerment every last
+   Saturday of the quarter (proposed Saturday mornings). The **venue/platform and
+   language are still unknown.**
 6. 2024 and 2025 accountability reports
 7. Photo and story consent status (nothing named is published without recorded consent)
 8. Whether the ambassador contest becomes a permanent programme
 9. Whether AHE profits fund APMF, and whether to state it publicly
-10. Confirmation that Jaiz 0010939336 is the public donation account
+10. ~~Confirmation that Jaiz 0010939336 is the public donation account~~ **Resolved:**
+    confirmed by the founder and published. Naira account 0010939336; foreign account
+    0011579597, SWIFT JAIZNGLAXXX — both Jaiz Bank, account name "Assoutudeen Prophetic
+    Medicine Foundation" (see #23).
 
 ## Raised by this scaffold (session 1)
 
@@ -59,10 +68,11 @@ mistaken for a real value. Search the codebase for `<Todo>` to find them all.
     Accountability, Privacy and in the footer of all three sites.
 22. **Board of trustees** — full names and roles. The Accountability page carries a
     placeholder section that should not be published until the list is confirmed.
-23. **Bank transfer details.** docs/01 gives Jaiz Bank 0010939336 marked "verify before
-    publishing", so the Accountability page deliberately does **not** print it — a wrong
-    digit on a public donations page misdirects a stranger's money. Confirm the bank,
-    account name and number and it goes straight in.
+23. ~~**Bank transfer details.** docs/01 gives Jaiz Bank 0010939336 marked "verify before
+    publishing"~~ **Resolved:** both accounts confirmed by the founder and now published
+    on the Donate and Accountability pages — naira 0010939336, foreign 0011579597
+    (SWIFT JAIZNGLAXXX), both Jaiz Bank, account name "Assoutudeen Prophetic Medicine
+    Foundation".
 24. **A named financial contact** — person, role and a direct email — for the
     Accountability page.
 25. **Data protection contact** for the privacy policy, plus whether APMF meets the NDPC
@@ -100,3 +110,17 @@ mistaken for a real value. Search the codebase for `<Todo>` to find them all.
 34. The āyāt and hadith for the About page's values section, to be copied verbatim with
     diacritics intact.
 35. A photograph of the team or office for the About page.
+
+## Raised by the confirmed content (session 6)
+
+36. **Assistance-request intake storage.** The Request Assistance form stores
+    submissions in `contact-messages` (topic `assistance`) so they reach the same inbox
+    the team already watches. docs/11 specifies a dedicated `AssistanceRequest`
+    collection with a review workflow (new → under-review → verified → approved →
+    assisted → declined), internal reviewer notes, and encrypted health data at rest —
+    build it before launch.
+37. **Empowerment timing.** The quarterly empowerment session is currently "proposed" for
+    Saturday mornings — confirm the final time and the site copy is updated.
+38. **Teacher title.** The monthly Fiqh seminar teacher is published as "Dr Yaaqub
+    Muhibullah Abd'hammed Olore (Mufti li Mahad)" per the founder. CLAUDE.md has been
+    updated to match.

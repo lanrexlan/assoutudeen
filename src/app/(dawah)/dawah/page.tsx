@@ -5,6 +5,12 @@ import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Section } from "@/components/ui/section";
 import { siteConfig } from "@/lib/sites";
 import { getSiteContext } from "@/lib/site-context";
+import {
+  CLASS_TIME_WINDOW,
+  DAWAH_CLASSES,
+  MONTHLY_FIQH_SEMINAR,
+  QUARTERLY_EMPOWERMENT,
+} from "@/lib/dawah-schedule";
 
 export const metadata: Metadata = {
   title: {
@@ -12,21 +18,17 @@ export const metadata: Metadata = {
     template: `%s · ${siteConfig.dawah.shortName}`,
   },
   description:
-    "Seven recurring classes in Ede — Tafsir, Hadith, Tawheed, Prophetic Medicine, the monthly Fiqh seminar, the empowerment lecture and Fataawah night.",
+    "Classes every Friday to Sunday in Ede — Tafsir, Hadith, Prophetic Medicine, Fiqh, Virtues of the Companions and Qur'an and Modern Science, plus a monthly Fiqh seminar and quarterly empowerment.",
 };
 
-/** Homepage for the Dawah Institute. Class times and venues are still unconfirmed. */
+/** Homepage for the Dawah Institute. Schedule confirmed; venue still open. */
 export default async function DawahHomePage() {
   const { href } = await getSiteContext("dawah");
 
   const programmes = [
-    "Tafsir",
-    "Hadith",
-    "Tawheed",
-    "Prophetic Medicine",
-    "Monthly Fiqh seminar",
-    "Empowerment lecture",
-    "Fataawah night",
+    ...DAWAH_CLASSES.map((session) => `${session.title} · ${session.day}`),
+    `${MONTHLY_FIQH_SEMINAR.title} · every last Sunday`,
+    `${QUARTERLY_EMPOWERMENT.title} · every last Saturday of the quarter`,
   ];
 
   return (
@@ -39,8 +41,9 @@ export default async function DawahHomePage() {
           Learning the deen, together, every week
         </h1>
         <p className="mt-4 max-w-xl text-base leading-relaxed text-white/90 sm:text-lg">
-          Seven recurring programmes taught by Imam Engr. Abd&apos;Waasi
-          Tirmidhi A. (Abu Mubaashir) and guest scholars.
+          Classes run every Friday to Sunday, {CLASS_TIME_WINDOW.toLowerCase()},
+          taught by Imam Engr. Abd&apos;Waasi Tirmidhi A. (Abu Mubaashir) and
+          guest scholars.
         </p>
         <div className="mt-7 flex flex-wrap gap-3">
           <Button asChild variant="secondary" size="lg" className="border-transparent">
@@ -53,7 +56,7 @@ export default async function DawahHomePage() {
       </Section>
 
       <Section tone="white">
-        <h2 className="font-display text-2xl sm:text-3xl">Seven programmes</h2>
+        <h2 className="font-display text-2xl sm:text-3xl">The programmes</h2>
         <ul className="mt-6 grid list-none gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {programmes.map((name, index) => (
             <li
@@ -78,8 +81,9 @@ export default async function DawahHomePage() {
             <div>
               <CardTitle>Teachers</CardTitle>
               <CardDescription>
-                The founder and chief instructor, with a monthly Fiqh seminar by
-                Shaykh Yaaqub Muhibullah Abd&apos;hammed Olore.
+                The founder and chief instructor, with a monthly Fiqh seminar on
+                business transactions and interpersonal relations by Dr Yaaqub
+                Muhibullah Abd&apos;hammed Olore (Mufti li Mahad).
               </CardDescription>
             </div>
             <Button asChild variant="link" className="self-start px-0">
@@ -90,8 +94,10 @@ export default async function DawahHomePage() {
             <div>
               <CardTitle>The schedule</CardTitle>
               <CardDescription>
-                Each class is stored as a recurrence rule, so the schedule is
-                computed — it never goes stale by hand.
+                Fridays to Sundays between Maghrib and Isha, a special Fiqh
+                seminar every last Sunday, and empowerment every last Saturday
+                of the quarter — each class stored as a recurrence rule, so the
+                schedule never goes stale by hand.
               </CardDescription>
             </div>
             <Button asChild variant="link" className="self-start px-0">

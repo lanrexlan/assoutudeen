@@ -13,6 +13,7 @@ export const CONTACT_SUBJECTS = [
   "media",
   "distributor",
   "course",
+  "assistance",
 ] as const;
 
 export type ContactSubject = (typeof CONTACT_SUBJECTS)[number];
@@ -66,6 +67,13 @@ export const CONTACT_ROUTES: Record<ContactSubject, Route> = {
     label: "Classes at the Dawah Institute",
     inbox: "dawah@assoutudeen.com",
     confirmed: false,
+  },
+  assistance: {
+    value: "assistance",
+    label: "Request assistance (empowerment fund)",
+    inbox: "info@assoutudeen.com",
+    confirmed: true,
+    hint: "Applications to the empowerment fund for help.",
   },
 };
 
