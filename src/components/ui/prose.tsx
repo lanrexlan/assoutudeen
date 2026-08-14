@@ -40,11 +40,13 @@ export function PageHeader({
   return (
     <div className="max-w-3xl">
       {eyebrow ? (
-        <p className="text-sm uppercase tracking-widest text-white/80">{eyebrow}</p>
+        <p className="text-sm uppercase tracking-widest text-on-primary/80">
+          {eyebrow}
+        </p>
       ) : null}
       <h1 className="mt-2 font-display text-3xl leading-tight sm:text-4xl">{title}</h1>
       {standfirst ? (
-        <p className="mt-4 text-base leading-relaxed text-white/90 sm:text-lg">
+        <p className="mt-4 text-base leading-relaxed text-on-primary/90 sm:text-lg">
           {standfirst}
         </p>
       ) : null}

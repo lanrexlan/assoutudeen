@@ -52,7 +52,12 @@ function SubmitButton() {
  * the message is addressed to — see lib/contact-routing.ts. Submissions are
  * stored in the CMS immediately, so nothing depends on email working.
  */
-export function ContactForm() {
+export function ContactForm({
+  privacyHref = "/legal/privacy",
+}: {
+  /** Where the consent line links. Subdomains point at the foundation's copy. */
+  privacyHref?: string;
+}) {
   const [state, formAction] = useActionState(submitContactForm, initialState);
   const [topic, setTopic] = useState<ContactSubject>("general");
 
@@ -142,7 +147,7 @@ export function ContactForm() {
         <span>
           I agree that Assoutudeen Prophetic Medicine Foundation may store this message
           and contact me about it. See the{" "}
-          <a href="/legal/privacy" className="underline underline-offset-4">
+          <a href={privacyHref} className="underline underline-offset-4">
             privacy policy
           </a>
           .
