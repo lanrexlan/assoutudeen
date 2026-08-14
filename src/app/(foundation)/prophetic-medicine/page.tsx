@@ -10,6 +10,10 @@ import { RemedyScene } from "@/components/ui/illustration";
 import { PageHeader, Prose } from "@/components/ui/prose";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { Todo } from "@/components/ui/todo";
+import {
+  TestimonyDisclaimer,
+  TestimonyWall,
+} from "@/components/site/testimony-wall";
 import { BOOK } from "@/lib/book";
 import { VERSES, VERSE_TEXT_SOURCE } from "@/lib/verses";
 
@@ -164,7 +168,20 @@ export default function PropheticMedicinePage() {
         </div>
       </Section>
 
-      <Section tone="white" size="md">
+      {/* --- What people have written --------------------------------- */}
+      <Section tone="white" size="lg">
+        <SectionHeading
+          kicker="From the archive"
+          title="What people have written to us"
+          standfirst="A few of the messages the foundation has been sent over the years, published anonymously. They are personal experiences, not evidence — read the note below before you read them."
+        />
+
+        <TestimonyDisclaimer className="mt-8" />
+
+        <TestimonyWall className="mt-10" />
+      </Section>
+
+      <Section tone="sand" size="md">
         <div className="mx-auto max-w-3xl">
           <Disclaimer>
             <span className="flex items-start gap-3">

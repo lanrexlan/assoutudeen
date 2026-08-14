@@ -54,10 +54,11 @@ export const FOUNDER = {
   ],
 
   teaches: [
-    "Weekly Tafsir session",
-    "Fortnightly Hadith session",
-    "Fortnightly Tawheed class",
-    "Fortnightly Prophetic Medicine class",
-    "Monthly empowerment lecture",
+    "Weekly Tafsir — Fridays",
+    "Hadith — alternate Saturdays",
+    "Prophetic Medicine — alternate Saturdays",
+    "Fiqh — Sundays",
+    "Virtues of the Companions — Sundays",
+    "Qur'an and Modern Science — Sundays",
   ],
 } as const;

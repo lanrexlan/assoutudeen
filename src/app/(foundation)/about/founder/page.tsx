@@ -103,7 +103,7 @@ export default function FounderPage() {
         <SectionHeading
           kicker="Study with him"
           title="What he teaches, and where"
-          standfirst="Five of the Institute's seven programmes are his. All of them are free to attend."
+          standfirst="Six of the Institute's seven programmes are his, taught Friday to Sunday between Maghrib and Isha. All of them are free to attend."
         />
 
         <ul className="reveal mx-auto mt-10 grid max-w-3xl gap-3 sm:grid-cols-2">

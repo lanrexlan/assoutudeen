@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { BadgeCheck, Landmark, ScrollText, Users } from "lucide-react";
+import { BadgeCheck, ScrollText, Users } from "lucide-react";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Medallion } from "@/components/ui/ornament";
 import { PageHeader, Prose } from "@/components/ui/prose";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { Todo } from "@/components/ui/todo";
+import { BankDetails } from "@/components/site/bank-details";
 import { CONTACT } from "@/lib/sites";
 import { formatKobo } from "@/payload/fields/money";
 import { OVERHEADS_2025, THREE_YEAR_TOTAL_KOBO, YEAR_TOTALS } from "@/lib/impact";
@@ -227,38 +228,11 @@ export default function AccountabilityPage() {
 
         </Prose>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-2">
-          <Card className="reveal">
-            <div className="flex items-start gap-4">
-              <Medallion tone="outline">
-                <Landmark aria-hidden="true" className="size-6" />
-              </Medallion>
-              <div>
-                <CardTitle>Giving by bank transfer</CardTitle>
-                <CardDescription>
-                  Many donors prefer a transfer to a card, and we support it.
-                </CardDescription>
-              </div>
-            </div>
-            <div className="text-sm leading-relaxed text-charcoal">
-              <p>
-                Bank: <Todo>confirm the bank and account for public donations</Todo>
-              </p>
-              <p className="mt-2">
-                Account name: <Todo>account name exactly as held</Todo>
-              </p>
-              <p className="mt-2">
-                Account number: <Todo>account number, verified before publishing</Todo>
-              </p>
-              <p className="mt-4 rounded-md border border-sand-dark bg-sand p-3 text-charcoal-muted">
-                We are deliberately not printing an account number that has not been
-                confirmed. A wrong digit on a public donation page sends someone
-                else&apos;s money to a stranger. Until it is verified, please ask on
-                WhatsApp and we will send the details directly.
-              </p>
-            </div>
-          </Card>
+        <div className="mt-12">
+          <BankDetails />
+        </div>
 
+        <div className="mt-6 grid gap-6 lg:grid-cols-2">
           <Card className="reveal">
             <CardTitle>Questions about money</CardTitle>
             <CardDescription>

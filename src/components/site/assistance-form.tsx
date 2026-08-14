@@ -21,6 +21,26 @@ const CATEGORIES = [
   { value: "other", label: "Something else" },
 ];
 
+/**
+ * How applicants describe their own situation. Tick as many as apply — this is
+ * what lets the foundation report its work by category without ever naming
+ * anybody.
+ */
+const CIRCUMSTANCES = [
+  { value: "widow", label: "Widow" },
+  { value: "widower", label: "Widower" },
+  { value: "orphan", label: "Orphan" },
+  { value: "elderly", label: "Elderly" },
+  { value: "disability", label: "Living with a disability" },
+  { value: "chronically-ill", label: "Chronically ill" },
+  { value: "revert", label: "Revert to Islam" },
+  { value: "student", label: "Student" },
+  { value: "unemployed", label: "Out of work" },
+  { value: "displaced", label: "Displaced" },
+  { value: "sole-carer", label: "Caring for dependants alone" },
+  { value: "other", label: "Other" },
+];
+
 function SubmitButton() {
   const { pending } = useFormStatus();
   return (
@@ -66,8 +86,8 @@ export function AssistanceForm() {
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
-        <Field label="WhatsApp number" optional error={state.errors?.whatsapp}>
-          <input name="whatsapp" inputMode="tel" className={inputClass} />
+        <Field label="WhatsApp number" error={state.errors?.whatsapp}>
+          <input name="whatsapp" required inputMode="tel" className={inputClass} />
         </Field>
         <Field label="Email address" optional error={state.errors?.email}>
           <input type="email" name="email" className={inputClass} />
@@ -75,11 +95,11 @@ export function AssistanceForm() {
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
-        <Field label="State" optional error={state.errors?.state}>
-          <input name="state" className={inputClass} />
+        <Field label="State of origin" error={state.errors?.state}>
+          <input name="state" required className={inputClass} />
         </Field>
-        <Field label="Local government area" optional error={state.errors?.lga}>
-          <input name="lga" className={inputClass} />
+        <Field label="Local government area" error={state.errors?.lga}>
+          <input name="lga" required className={inputClass} />
         </Field>
       </div>
 
@@ -103,6 +123,32 @@ export function AssistanceForm() {
           <input name="hospital" className={inputClass} />
         </Field>
       ) : null}
+
+      <fieldset>
+        <legend className="mb-2 text-sm font-medium text-charcoal">
+          Does any of this describe your situation?
+        </legend>
+        <p className="mb-3 text-sm text-charcoal-muted">
+          Tick as many as apply, or none. It helps us report what the fund does
+          without ever naming anyone.
+        </p>
+        <div className="grid gap-x-4 gap-y-1 sm:grid-cols-2">
+          {CIRCUMSTANCES.map((item) => (
+            <label
+              key={item.value}
+              className="flex min-h-11 items-center gap-3 text-sm text-charcoal"
+            >
+              <input
+                type="checkbox"
+                name="circumstances"
+                value={item.value}
+                className="size-5 shrink-0 rounded border-sand-dark accent-olive"
+              />
+              {item.label}
+            </label>
+          ))}
+        </div>
+      </fieldset>
 
       <Field
         label="Tell us what is happening"
@@ -129,13 +175,13 @@ export function AssistanceForm() {
       <div className="grid gap-4 sm:grid-cols-2">
         <Field
           label="Someone who can vouch for you"
-          optional
           error={state.errors?.refereeName}
+          hint="An imam, a doctor, a teacher or a community leader who knows your situation."
         >
-          <input name="refereeName" className={inputClass} />
+          <input name="refereeName" required className={inputClass} />
         </Field>
-        <Field label="Their phone number" optional error={state.errors?.refereePhone}>
-          <input name="refereePhone" inputMode="tel" className={inputClass} />
+        <Field label="Their phone number" error={state.errors?.refereePhone}>
+          <input name="refereePhone" required inputMode="tel" className={inputClass} />
         </Field>
       </div>
 

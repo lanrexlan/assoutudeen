@@ -25,7 +25,7 @@ export function StructureDiagram() {
       host: siteConfig.dawah.hostname,
       accent: "border-t-teal",
       link: "text-teal",
-      body: "The teaching arm. Seven recurring classes — Tafsir, Hadith, Tawheed, Prophetic Medicine, the monthly Fiqh seminar, the empowerment lecture and Fataawah night. It is not separately incorporated and holds no funds of its own.",
+      body: "The teaching arm. Seven classes across Friday, Saturday and Sunday evenings — Tafsir, Hadith, Prophetic Medicine, Fiqh, Virtues of the Companions, Qur'an and Modern Science, and the monthly seminar. It is not separately incorporated and holds no funds of its own.",
     },
     {
       icon: Sprout,

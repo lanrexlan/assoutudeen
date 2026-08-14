@@ -32,7 +32,7 @@ export default function AboutPage() {
             We teach and publish on prophetic medicine — the remedies of the Qur&apos;an
             and the Sunnah, traced to their evidence. We run a monthly empowerment fund
             that helps Muslims in medical or financial difficulty. And through the
-            Assoutudeen Dawah Institute we teach seven recurring classes, free and open.
+            Assoutudeen Dawah Institute we teach seven classes from Friday to Sunday, free and open.
           </p>
           <p>
             The foundation is based on Assoutudeen Street, Ede, and most of the people

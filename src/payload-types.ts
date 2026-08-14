@@ -805,10 +805,10 @@ export interface AssistanceRequest {
   id: number;
   name: string;
   phone: string;
-  whatsapp?: string | null;
+  whatsapp: string;
   email?: string | null;
-  state?: string | null;
-  lga?: string | null;
+  state: string;
+  lga: string;
   category: 'medical' | 'financial' | 'shelter' | 'other';
   /**
    * In the applicant's own words.
@@ -819,8 +819,27 @@ export interface AssistanceRequest {
    * Amount in kobo (integer). ₦1,000 = 100000 kobo.
    */
   amountRequestedKobo?: number | null;
-  refereeName?: string | null;
-  refereePhone?: string | null;
+  refereeName: string;
+  refereePhone: string;
+  /**
+   * How the applicant describes their situation. Used for category-level reporting, which is the only way impact is ever published.
+   */
+  circumstances?:
+    | (
+        | 'widow'
+        | 'widower'
+        | 'orphan'
+        | 'elderly'
+        | 'disability'
+        | 'chronically-ill'
+        | 'revert'
+        | 'student'
+        | 'unemployed'
+        | 'displaced'
+        | 'sole-carer'
+        | 'other'
+      )[]
+    | null;
   /**
    * Hospital bill, diagnosis or similar, if supplied.
    */
@@ -875,7 +894,7 @@ export interface Programme {
   /**
    * Handled explicitly by the recurrence engine.
    */
-  recurrenceException?: ('none' | 'skip-second-sunday-when-last') | null;
+  recurrenceException?: ('none' | 'alternates-saturday' | 'skip-second-sunday-when-last') | null;
   /**
    * 24-hour local time (Africa/Lagos). Unconfirmed for most classes.
    */
@@ -1474,6 +1493,7 @@ export interface AssistanceRequestsSelect<T extends boolean = true> {
   amountRequestedKobo?: T;
   refereeName?: T;
   refereePhone?: T;
+  circumstances?: T;
   documents?: T;
   consentToProcess?: T;
   consentToBeNamed?: T;

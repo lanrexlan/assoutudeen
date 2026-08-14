@@ -1,79 +1,123 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CalendarDays, Images, Megaphone, Video } from "lucide-react";
+import { ExternalLink, PlayCircle, Video } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Medallion } from "@/components/ui/ornament";
 import { PageHeader } from "@/components/ui/prose";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { Todo } from "@/components/ui/todo";
+import {
+  FACEBOOK_PAGE,
+  LECTURES,
+  LECTURE_CATEGORIES,
+  lecturesIn,
+} from "@/lib/lectures";
 import { CONTACT, siteConfig } from "@/lib/sites";
+import { REGISTRATION } from "@/lib/organisation";
+import { FOUNDER } from "@/lib/founder";
 
 export const metadata: Metadata = {
   title: "Media",
-  description:
-    "News, photographs, recorded lectures and upcoming programmes from the Assoutudeen Prophetic Medicine Foundation.",
+  description: `${LECTURES.length} recorded lectures — Tafsir, prophetic medicine, the monthly fiqh seminar and the weekly halqah — from the Assoutudeen Prophetic Medicine Foundation.`,
 };
 
-const STRANDS = [
-  {
-    icon: Megaphone,
-    title: "News and announcements",
-    body: "Programme announcements, Ramadan and Eid campaigns, and notes on what the fund has done.",
-    status: "Publishing from the CMS as soon as the first posts are written.",
-  },
-  {
-    icon: Images,
-    title: "Photographs",
-    body: "Organised by event, lazy-loaded, and published only where the people in them have agreed to appear.",
-    status: "Waiting on photographs and consent records.",
-  },
-  {
-    icon: Video,
-    title: "Lectures",
-    body: "Recordings from the seven programmes, grouped by series.",
-    status: "Lives on the Dawah Institute site, where the classes are.",
-  },
-  {
-    icon: CalendarDays,
-    title: "What is on",
-    body: "Every class computed from its recurrence rule, so the calendar is never out of date.",
-    status: "The schedule engine is the next thing being built.",
-  },
-];
+/** How many to list per category before linking out to the full archive. */
+const PER_CATEGORY = 6;
 
 export default function MediaPage() {
   return (
     <>
       <PageHeader
         eyebrow="Media"
-        title="News, photographs and lectures"
-        standfirst="What the foundation has been doing, and what is coming up. Most of it is published from the newsroom in the CMS as it is written."
-      />
+        title="Lectures and recordings"
+        standfirst={`${LECTURES.length} recorded sessions, published as they are taught — Tafsir on Friday evenings, prophetic medicine and hadith on Saturdays, fiqh on Sundays, and the monthly seminar.`}
+      >
+        <Button asChild variant="donate" size="lg">
+          <a href={FACEBOOK_PAGE} target="_blank" rel="noopener noreferrer">
+            <Video aria-hidden="true" />
+            The full archive on Facebook
+          </a>
+        </Button>
+      </PageHeader>
 
-      <Section tone="sand" size="lg">
-        <SectionHeading
-          kicker="Four strands"
-          title="Where each kind of thing lives"
-          standfirst="This page is deliberately honest about what is ready and what is not."
-        />
+      {LECTURE_CATEGORIES.map((category, index) => {
+        const items = lecturesIn(category.key);
+        if (items.length === 0) return null;
+        const shown = items.slice(0, PER_CATEGORY);
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2">
-          {STRANDS.map(({ icon: Icon, ...strand }) => (
-            <Card key={strand.title} className="reveal">
-              <div className="flex items-center gap-3">
-                <Medallion tone="soft" className="size-11">
-                  <Icon aria-hidden="true" className="size-5" />
-                </Medallion>
-                <CardTitle>{strand.title}</CardTitle>
-              </div>
-              <CardDescription>{strand.body}</CardDescription>
-              <p className="mt-auto rounded-md border border-sand-dark bg-sand px-3 py-2 text-sm text-charcoal-muted">
-                {strand.status}
+        return (
+          <Section
+            key={category.key}
+            tone={index % 2 === 0 ? "sand" : "white"}
+            size="lg"
+            ornament={index % 2 === 0}
+          >
+            <SectionHeading
+              kicker={`${items.length} recording${items.length === 1 ? "" : "s"}`}
+              title={category.label}
+              standfirst={category.blurb}
+            />
+
+            <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {shown.map((lecture) => (
+                <li key={lecture.id}>
+                  <a
+                    href={lecture.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="lift flex h-full flex-col gap-3 rounded-xl border border-sand-dark bg-white p-5 shadow-sm hover:border-amber"
+                  >
+                    <div className="flex items-center gap-3">
+                      <Medallion tone="soft" className="size-11">
+                        <PlayCircle aria-hidden="true" className="size-5" />
+                      </Medallion>
+                      {lecture.series ? (
+                        <span className="text-xs font-semibold uppercase tracking-widest text-amber-dark">
+                          {lecture.series}
+                        </span>
+                      ) : null}
+                    </div>
+                    <p className="font-display text-base leading-snug text-charcoal">
+                      {lecture.title}
+                    </p>
+                    {lecture.lecturer ? (
+                      <p className="text-sm text-charcoal-muted">{lecture.lecturer}</p>
+                    ) : null}
+                    <span className="mt-auto inline-flex items-center gap-1.5 pt-2 text-sm font-semibold text-olive">
+                      Watch
+                      <ExternalLink aria-hidden="true" className="size-3.5" />
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+
+            {items.length > shown.length ? (
+              <p className="mt-8 text-center text-sm text-charcoal-muted">
+                {items.length - shown.length} more in this series —{" "}
+                <a
+                  href={FACEBOOK_PAGE}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-olive underline decoration-amber decoration-2 underline-offset-4"
+                >
+                  see them all
+                </a>
+                .
               </p>
-            </Card>
-          ))}
-        </div>
+            ) : null}
+          </Section>
+        );
+      })}
+
+      {/* --- Why they are links -------------------------------------------- */}
+      <Section tone="sand" size="md">
+        <p className="mx-auto max-w-2xl text-center text-sm leading-relaxed text-charcoal-muted">
+          Recordings open on Facebook rather than playing here. Embedding the player
+          would load third-party scripts and cookies on every visit, which costs
+          mobile data this audience pays for — and would need a cookie banner before
+          it could run at all.
+        </p>
       </Section>
 
       {/* --- For journalists ------------------------------------------------ */}
@@ -83,15 +127,18 @@ export default function MediaPage() {
             tone="dark"
             kicker="For journalists"
             title="The facts, in one place"
-            standfirst="If you are writing about the foundation, everything below is on the public record and can be verified against the CAC register."
+            standfirst="Everything below is on the public record and can be checked against the CAC register."
           />
 
           <ul className="reveal mt-10 grid gap-3 sm:grid-cols-2">
             {[
-              ["Registered name", "Incorporated Trustees of Assoutudeen Prophetic Medicine Foundation"],
-              ["Registration", "CAC/IT/NO 139886, 28 November 2019"],
+              ["Registered name", REGISTRATION.registeredName],
+              [
+                "Registration",
+                `${REGISTRATION.number}, ${REGISTRATION.incorporatedOnDisplay}`,
+              ],
               ["Based in", "Ede, Osun State, Nigeria"],
-              ["Founder", "Imam Engr. Abd'Wasiu Tirmidhi Adeniyi (Abu Mubaashir)"],
+              ["Founder", `${FOUNDER.name} (${FOUNDER.kunya})`],
               ["Arms", `${siteConfig.dawah.name} · ${siteConfig.honey.name}`],
               ["Press contact", CONTACT.email],
             ].map(([term, value]) => (

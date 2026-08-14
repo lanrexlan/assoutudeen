@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BookOpen, CalendarDays, Mic, Users } from "lucide-react";
+import { BookOpen, CalendarDays, HandHeart, Mic, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
@@ -10,22 +10,22 @@ import {
   Starfield,
 } from "@/components/ui/ornament";
 import { Section, SectionHeading } from "@/components/ui/section";
-import { Todo } from "@/components/ui/todo";
 import { siteConfig } from "@/lib/sites";
 import { getSiteContext } from "@/lib/site-context";
+import {
+  EMPOWERMENT_PROGRAMME,
+  PROGRAMMES,
+  TEACHING_WINDOW,
+} from "@/lib/programmes";
 
 /** The Dawah Institute front door. The schedule engine arrives in session 9. */
 export default async function DawahHomePage() {
   const { href } = await getSiteContext("dawah");
 
-  const programmes = [
-    { title: "Weekly Tafsir", cadence: "Every Friday", teacher: "Imam Engr. Tirimidhi Abd'waasi" },
-    { title: "Fortnightly Hadith", cadence: "2nd Saturday", teacher: "Imam Engr. Tirimidhi Abd'waasi" },
-    { title: "Fortnightly Tawheed", cadence: "2nd Sunday", teacher: "Imam Engr. Tirimidhi Abd'waasi" },
-    { title: "Prophetic Medicine", cadence: "2nd Saturday", teacher: "Imam Engr. Tirimidhi Abd'waasi" },
-    { title: "Monthly Fiqh Seminar", cadence: "Last Sunday", teacher: "Shaykh Yaaqub Muhibullah Abd'hammed Olore" },
-    { title: "Empowerment Lecture", cadence: "Last Monday", teacher: "Assoutudeen Prophetic Medicine Foundation" },
-    { title: "Fataawah Night", cadence: "Quarterly", teacher: "A group of scholars" },
+  const days = [
+    { day: "Friday" as const, label: "Friday" },
+    { day: "Saturday" as const, label: "Saturday" },
+    { day: "Sunday" as const, label: "Sunday" },
   ];
 
   return (
@@ -41,53 +41,101 @@ export default async function DawahHomePage() {
           <div className="mx-auto max-w-3xl">
             <Kicker align="center">Assoutudeen Dawah Institute</Kicker>
             <h1 className="mt-5 font-display text-4xl leading-[1.1] text-white sm:text-5xl">
-              Learn the deen, one rule at a time
+              Friday to Sunday, between Maghrib and Isha
             </h1>
             <p className="mt-6 text-lg leading-relaxed text-sand/85">
-              Seven recurring classes taught in Ede. Every one of them follows a rule
-              rather than a date, so the schedule never goes stale and &ldquo;what is
-              on this week?&rdquo; always has an answer.
+              Seven classes across three evenings, taught in Ede. Free, open, and
+              recorded — so a missed week is never a lost one.
             </p>
-            <span aria-hidden="true" className="mx-auto mt-8 block h-0.5 w-16 rounded-full bg-amber" />
+            <span
+              aria-hidden="true"
+              className="mx-auto mt-8 block h-0.5 w-16 rounded-full bg-amber"
+            />
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <Button asChild variant="donate" size="lg">
                 <Link href={href("/schedule")}>See the schedule</Link>
               </Button>
               <Button asChild variant="ghostLight" size="lg">
-                <Link href={href("/programmes")}>Browse the programmes</Link>
+                <Link href={href("/library")}>Watch a lecture</Link>
               </Button>
             </div>
           </div>
         </Container>
       </section>
 
+      {/* --- The week ------------------------------------------------------ */}
       <Section tone="sand" size="lg" ornament>
         <SectionHeading
-          kicker="The seven"
-          title="Every class, every month"
-          standfirst="Times, venues and language are being confirmed — see the note below. The cadences here are the ones the Institute has kept for years."
+          kicker="The teaching week"
+          title="Three evenings, seven classes"
+          standfirst={`Everything runs ${TEACHING_WINDOW.toLowerCase()}. The Saturday pair alternate, so each one falls every other week.`}
         />
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {programmes.map((programme) => (
-            <Card key={programme.title} className="reveal">
-              <div className="flex items-center gap-3">
-                <Medallion tone="outline" className="size-11">
-                  <CalendarDays aria-hidden="true" className="size-5" />
-                </Medallion>
-                <span className="text-xs font-semibold uppercase tracking-widest text-teal">
-                  {programme.cadence}
-                </span>
+        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+          {days.map(({ day, label }) => {
+            const classes = PROGRAMMES.filter((p) => p.day === day);
+            return (
+              <div key={day} className="reveal">
+                <div className="flex items-center gap-3 border-b border-sand-dark pb-3">
+                  <Medallion tone="soft" className="size-11">
+                    <CalendarDays aria-hidden="true" className="size-5" />
+                  </Medallion>
+                  <h3 className="font-display text-xl">{label}</h3>
+                </div>
+                <ul className="mt-4 space-y-4">
+                  {classes.map((programme) => (
+                    <li
+                      key={programme.slug}
+                      className="rounded-lg border border-sand-dark bg-white p-5 shadow-sm"
+                    >
+                      <p className="text-xs font-semibold uppercase tracking-widest text-teal">
+                        {programme.cadence}
+                      </p>
+                      <p className="mt-2 font-display text-lg">{programme.title}</p>
+                      <p className="mt-2 text-sm leading-relaxed text-charcoal-muted">
+                        {programme.description}
+                      </p>
+                      <p className="mt-3 text-sm text-charcoal">{programme.teacher}</p>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <CardTitle>{programme.title}</CardTitle>
-              <CardDescription>{programme.teacher}</CardDescription>
-            </Card>
-          ))}
+            );
+          })}
         </div>
+      </Section>
 
-        <p className="mx-auto mt-10 max-w-2xl text-center text-sm text-charcoal-muted">
-          <Todo>class times, venue or platform, and language of instruction</Todo>
-        </p>
+      {/* --- Empowerment --------------------------------------------------- */}
+      <Section tone="ink" size="lg" ornament>
+        <div className="mx-auto max-w-3xl text-center">
+          <Medallion className="mx-auto">
+            <HandHeart aria-hidden="true" className="size-6" />
+          </Medallion>
+          <h2 className="mt-6 font-display text-3xl text-white">
+            {EMPOWERMENT_PROGRAMME.title}
+          </h2>
+          <p className="mt-4 leading-relaxed text-sand/85">
+            {EMPOWERMENT_PROGRAMME.description}
+          </p>
+          <dl className="mt-8 flex flex-wrap justify-center gap-x-10 gap-y-4 text-sm">
+            <div>
+              <dt className="text-sand/55">When</dt>
+              <dd className="mt-1 font-medium text-amber">
+                {EMPOWERMENT_PROGRAMME.cadence}
+              </dd>
+            </div>
+            <div>
+              <dt className="text-sand/55">Time</dt>
+              <dd className="mt-1 font-medium text-amber">
+                {EMPOWERMENT_PROGRAMME.time}
+              </dd>
+            </div>
+          </dl>
+          <p className="mt-6 text-sm text-sand/60">
+            This is the foundation&apos;s gathering rather than a class — the fund&apos;s
+            work is reported and distributed there, alongside a lecture.
+          </p>
+        </div>
       </Section>
 
       <Section tone="white" size="lg">
@@ -96,20 +144,23 @@ export default async function DawahHomePage() {
             {
               icon: Users,
               title: "Teachers",
-              body: "Imam Engr. Abd'Waasi Tirmidhi (Abu Mubaashir) and Shaykh Yaaqub Muhibullah Abd'hammed Olore.",
+              body: "Imam Engr. Abd'Wasiu Tirmidhi Adeniyi, and Shaykh (Dr) Yaaqub Muhibullah Abd'hammed Olore for the monthly seminar.",
               href: "/teachers",
+              cta: "Meet the teachers",
             },
             {
               icon: BookOpen,
               title: "Library",
-              body: "Recorded lectures and notes, grouped by programme and date.",
+              body: "Recordings of the Tafsir, halqah, fiqh and prophetic medicine sessions, grouped by series.",
               href: "/library",
+              cta: "Browse the library",
             },
             {
               icon: Mic,
               title: "Attend",
               body: "Everything is free and open. Subscribe once to the calendar and never miss a session.",
               href: "/schedule",
+              cta: "Add to calendar",
             },
           ].map(({ icon: Icon, ...item }) => (
             <Card key={item.title} variant="arch" className="reveal items-center">
@@ -122,7 +173,7 @@ export default async function DawahHomePage() {
                 href={href(item.href)}
                 className="mt-auto inline-flex min-h-11 items-center text-sm font-semibold text-teal underline-offset-4 hover:underline"
               >
-                {item.title === "Attend" ? "Add to calendar" : `Visit ${item.title.toLowerCase()}`}
+                {item.cta}
               </Link>
             </Card>
           ))}

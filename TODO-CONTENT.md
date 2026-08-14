@@ -166,3 +166,44 @@ mistaken for a real value. Search the codebase for `<Todo>` to find them all.
 48. **The 2024 and 2025 reports**, so those year pages can be built out.
 49. **Paystack checkout.** `/donate` and `/empowerment/join` record intent and take
     transfers; card payment needs the verified webhook work.
+
+## Session 6 — testimonies, lectures, accounts and the timetable
+
+### Resolved
+50. ~~Bank details.~~ Both accounts are now published on `/donate` and the accountability
+    page, from `src/lib/banking.ts`: Jaiz Bank **0010939336** (naira) and Jaiz Bank
+    **0011579597**, SWIFT **JAIZNGLAXXX** (foreign). Account numbers are set in a
+    tabular font and spaced, because a misread digit is the most expensive error a
+    donor can make.
+51. ~~Video links.~~ 86 recordings from the Facebook page are catalogued in
+    `src/lib/lectures.ts` and published on `/media`, grouped into Tafsir, prophetic
+    medicine, the Sunday fiqh class, the monthly seminar, the weekly halqah,
+    empowerment and reminders. They open on Facebook rather than embedding: the
+    player would load third-party scripts and cookies on every page view.
+52. ~~The timetable.~~ `src/lib/programmes.ts` now holds the real schedule — Tafsir on
+    Fridays; Hadith and Prophetic Medicine on alternating Saturdays; Fiqh, Virtues of
+    the Companions, and Qur'an and Modern Science on Sundays; the monthly seminar on
+    the last Sunday; everything between Maghrib and Isha.
+53. ~~Assistance form.~~ WhatsApp number, state of origin, LGA, referee name and referee
+    phone are now all required, and applicants can tick the circumstances that apply
+    (widow, widower, orphan, elderly, disability, chronically ill, revert, student, out
+    of work, displaced, sole carer, other).
+
+### Open, and needing your answer
+54. **The empowerment programme: monthly or quarterly?** Your note said "last Saturday
+    of the month" in one line and "every last Saturday of the quarter month" in the
+    next. The site currently says **last Saturday of the quarter**, from the itemised
+    list. Say the word and it becomes monthly.
+55. **Saturday morning is marked "proposed"** for the empowerment gathering, as you
+    described it. Confirm the time and it loses the qualifier.
+56. **Testimonies — what was left out, and why.** Seven accounts are published, all
+    anonymous. The archive's 21 others are not, on three grounds set out in
+    `src/lib/testimonies.ts`: named-disease cure claims (Covid-19, hepatitis B,
+    diabetes, thyroid, fibroids, rheumatoid arthritis) which a charity that also sells
+    honey may not advertise and which could lead a reader to delay hospital treatment;
+    intimate sexual-health consultations; and the fact that the collation is itself
+    marked confidential with no consent on file. **Get written consent from any sender
+    whose account you want attributed**, and take advice before publishing any
+    disease-recovery claim.
+57. **Facebook page link** is assumed to be `facebook.com/apmfnigeria` from the export.
+    Confirm, and send the other social handles.

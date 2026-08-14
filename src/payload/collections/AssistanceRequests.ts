@@ -29,15 +29,21 @@ export const AssistanceRequests: CollectionConfig = {
       type: "row",
       fields: [
         { name: "phone", type: "text", required: true, admin: { width: "50%" } },
-        { name: "whatsapp", type: "text", admin: { width: "50%" } },
+        { name: "whatsapp", type: "text", required: true, admin: { width: "50%" } },
       ],
     },
     { name: "email", type: "email" },
     {
       type: "row",
       fields: [
-        { name: "state", type: "text", admin: { width: "50%" } },
-        { name: "lga", type: "text", label: "LGA", admin: { width: "50%" } },
+        { name: "state", type: "text", required: true, admin: { width: "50%" } },
+        {
+          name: "lga",
+          type: "text",
+          label: "Local government area",
+          required: true,
+          admin: { width: "50%" },
+        },
       ],
     },
     {
@@ -67,8 +73,31 @@ export const AssistanceRequests: CollectionConfig = {
     {
       type: "row",
       fields: [
-        { name: "refereeName", type: "text", admin: { width: "50%" } },
-        { name: "refereePhone", type: "text", admin: { width: "50%" } },
+        { name: "refereeName", type: "text", required: true, admin: { width: "50%" } },
+        { name: "refereePhone", type: "text", required: true, admin: { width: "50%" } },
+      ],
+    },
+    {
+      name: "circumstances",
+      type: "select",
+      hasMany: true,
+      admin: {
+        description:
+          "How the applicant describes their situation. Used for category-level reporting, which is the only way impact is ever published.",
+      },
+      options: [
+        { label: "Widow", value: "widow" },
+        { label: "Widower", value: "widower" },
+        { label: "Orphan", value: "orphan" },
+        { label: "Elderly", value: "elderly" },
+        { label: "Living with a disability", value: "disability" },
+        { label: "Chronically ill", value: "chronically-ill" },
+        { label: "Revert to Islam", value: "revert" },
+        { label: "Student", value: "student" },
+        { label: "Out of work", value: "unemployed" },
+        { label: "Displaced", value: "displaced" },
+        { label: "Caring for dependants alone", value: "sole-carer" },
+        { label: "Other", value: "other" },
       ],
     },
     {

@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Banknote, CreditCard, HeartHandshake, Repeat, Shield } from "lucide-react";
+import { CreditCard, HeartHandshake, Repeat, Shield } from "lucide-react";
 import { ArabicQuote } from "@/components/ui/arabic-quote";
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Medallion } from "@/components/ui/ornament";
 import { PageHeader, Prose } from "@/components/ui/prose";
 import { Section, SectionHeading } from "@/components/ui/section";
-import { Todo } from "@/components/ui/todo";
+import { BankDetails } from "@/components/site/bank-details";
 import { CONTACT } from "@/lib/sites";
 import { REGISTRATION } from "@/lib/organisation";
 import { VERSES } from "@/lib/verses";
@@ -78,8 +78,8 @@ export default function DonatePage() {
               <p className="mt-1 text-charcoal-muted">
                 Paystack is being wired up with a signed, verified webhook, because a
                 donation should only be recorded once the bank has actually confirmed
-                it. Until that is finished, give by transfer or on WhatsApp and we will
-                confirm receipt personally.
+                it. Until that is finished, please give by transfer using the details
+                beside this — or message us and we will confirm receipt personally.
               </p>
               <div className="mt-4 flex flex-wrap gap-3">
                 <Button asChild variant="donate">
@@ -95,26 +95,7 @@ export default function DonatePage() {
           </div>
 
           <div className="space-y-4">
-            <Card className="reveal">
-              <div className="flex items-center gap-3">
-                <Medallion tone="soft" className="size-11">
-                  <Banknote aria-hidden="true" className="size-5" />
-                </Medallion>
-                <CardTitle>By bank transfer</CardTitle>
-              </div>
-              <CardDescription>
-                Bank: <Todo>bank for public donations</Todo>
-                <br />
-                Account name: <Todo>account name exactly as held</Todo>
-                <br />
-                Account number: <Todo>account number, verified before publishing</Todo>
-              </CardDescription>
-              <p className="rounded-md border border-sand-dark bg-sand p-3 text-sm text-charcoal-muted">
-                We will not print an account number that has not been confirmed to us in
-                writing — one wrong digit on a public page sends your money to a
-                stranger. Ask on WhatsApp and we will send the details directly.
-              </p>
-            </Card>
+            <BankDetails className="sm:grid-cols-1" />
 
             <Card className="reveal">
               <div className="flex items-center gap-3">

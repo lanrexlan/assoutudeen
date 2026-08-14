@@ -15,6 +15,7 @@ import { Medallion } from "@/components/ui/ornament";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { Hero } from "@/components/site/hero";
 import { StructureDiagram } from "@/components/site/structure-diagram";
+import { TestimonyWall } from "@/components/site/testimony-wall";
 import { getSiteContext } from "@/lib/site-context";
 import { REGISTRATION } from "@/lib/organisation";
 import { THREE_YEAR_TOTAL_KOBO, YEAR_TOTALS } from "@/lib/impact";
@@ -47,7 +48,7 @@ export default async function FoundationHomePage() {
     {
       icon: GraduationCap,
       title: "Dawah education",
-      body: "Seven recurring classes taught in Ede — Tafsir, Hadith, Tawheed, Fiqh and more. Free and open.",
+      body: "Classes Friday to Sunday in Ede — Tafsir, Hadith, Prophetic Medicine, Fiqh and more. Free and open.",
       href: "/our-work",
     },
     {
@@ -72,7 +73,7 @@ export default async function FoundationHomePage() {
                 label: "Raised and accounted for, 2023–2025",
               },
               { value: "11", label: "Beneficiaries in 2023 alone" },
-              { value: "7", label: "Recurring classes each month" },
+              { value: "7", label: "Classes every week, Friday to Sunday" },
               {
                 value: REGISTRATION.incorporatedOnDisplay.slice(-4),
                 label: "Registered with the CAC",
@@ -232,6 +233,24 @@ export default async function FoundationHomePage() {
       <Section tone="sand" size="lg" ornament>
         <div className="mx-auto max-w-3xl">
           <ArabicQuote className="reveal" {...VERSES.tawbah105} />
+        </div>
+      </Section>
+
+      {/* --- Testimonies -------------------------------------------------- */}
+      <Section tone="white" size="lg">
+        <SectionHeading
+          kicker="From the archive"
+          title="What people have written to us"
+          standfirst="Messages the foundation has been sent over the years, published anonymously. Personal experiences rather than evidence — the full note sits with them."
+        />
+        <TestimonyWall className="mt-12" limit={3} />
+        <div className="mt-4 text-center">
+          <Link
+            href={href("/prophetic-medicine")}
+            className="inline-flex min-h-11 items-center font-medium text-olive underline decoration-amber decoration-2 underline-offset-4"
+          >
+            Read more, and the note that goes with them
+          </Link>
         </div>
       </Section>
 

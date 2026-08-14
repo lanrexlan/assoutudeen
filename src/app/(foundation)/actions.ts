@@ -222,16 +222,18 @@ export async function joinTheFund(
 const assistanceSchema = z.object({
   name: trimmed.min(2, "Please give your name.").max(120),
   phone: trimmed.min(7, "We need a phone number to reach you on.").max(40),
-  whatsapp: trimmed.max(40).optional().or(z.literal("")),
+  whatsapp: trimmed.min(7, "Please give a WhatsApp number — it is how we will reach you.").max(40),
   email: trimmed.email("That email address does not look right.").optional().or(z.literal("")),
-  state: trimmed.max(80).optional().or(z.literal("")),
-  lga: trimmed.max(80).optional().or(z.literal("")),
+  state: trimmed.min(2, "Please give your state of origin.").max(80),
+  lga: trimmed.min(2, "Please give your local government area.").max(80),
   category: z.enum(["medical", "financial", "shelter", "other"]),
+  /** Checkbox group; a single value arrives as a string. */
+  circumstances: z.union([z.string(), z.array(z.string())]).optional(),
   need: trimmed.min(20, "Please tell us a little more about the situation.").max(4000),
   hospital: trimmed.max(160).optional().or(z.literal("")),
   amount: z.coerce.number().int().min(0).optional(),
-  refereeName: trimmed.max(120).optional().or(z.literal("")),
-  refereePhone: trimmed.max(40).optional().or(z.literal("")),
+  refereeName: trimmed.min(2, "Please give the name of someone who can vouch for you.").max(120),
+  refereePhone: trimmed.min(7, "We need a phone number for your referee.").max(40),
   consentToProcess: z.literal("on", {
     message: "We cannot look into a request without your permission to hold these details.",
   }),
@@ -244,7 +246,12 @@ export async function requestAssistance(
   _prev: FormState,
   formData: FormData,
 ): Promise<FormState> {
-  const parsed = assistanceSchema.safeParse(Object.fromEntries(formData));
+  // A checkbox group can appear many times, so it is read before flattening.
+  const circumstances = formData.getAll("circumstances").map(String);
+  const parsed = assistanceSchema.safeParse({
+    ...Object.fromEntries(formData),
+    circumstances,
+  });
 
   if (!parsed.success) {
     return {
@@ -264,16 +271,17 @@ export async function requestAssistance(
     data: {
       name: data.name,
       phone: data.phone,
-      whatsapp: data.whatsapp || undefined,
+      whatsapp: data.whatsapp,
       email: data.email || undefined,
-      state: data.state || undefined,
-      lga: data.lga || undefined,
+      state: data.state,
+      lga: data.lga,
       category: data.category,
+      circumstances: circumstances as never,
       need: data.need,
       hospital: data.hospital || undefined,
       amountRequestedKobo: data.amount ? nairaToKobo(data.amount) : undefined,
-      refereeName: data.refereeName || undefined,
-      refereePhone: data.refereePhone || undefined,
+      refereeName: data.refereeName,
+      refereePhone: data.refereePhone,
       consentToProcess: true,
       consentToBeNamed: data.consentToBeNamed === "on",
       status: "new",
