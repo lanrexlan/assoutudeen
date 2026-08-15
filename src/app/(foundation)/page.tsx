@@ -64,9 +64,9 @@ export default async function FoundationHomePage() {
       <Hero donateHref={href("/donate")} workHref={href("/prophetic-medicine")} />
 
       {/* --- Proof bar: real, published numbers only -------------------- */}
-      <section className="relative border-b border-sand-dark bg-white">
+      <section className="relative border-b border-chalk-dark bg-white">
         <Container>
-          <dl className="grid grid-cols-2 divide-sand-dark sm:grid-cols-4 sm:divide-x">
+          <dl className="grid grid-cols-2 divide-chalk-dark sm:grid-cols-4 sm:divide-x">
             {[
               {
                 value: formatKobo(THREE_YEAR_TOTAL_KOBO),
@@ -82,7 +82,7 @@ export default async function FoundationHomePage() {
               <div key={stat.label} className="reveal px-2 py-8 text-center">
                 <dt className="sr-only">{stat.label}</dt>
                 <dd>
-                  <span className="block font-display text-2xl text-olive sm:text-3xl">
+                  <span className="block font-display text-2xl text-oxblood sm:text-3xl">
                     {stat.value}
                   </span>
                   <span className="mt-2 block text-xs leading-snug text-charcoal-muted sm:text-sm">
@@ -96,7 +96,7 @@ export default async function FoundationHomePage() {
       </section>
 
       {/* --- What we do -------------------------------------------------- */}
-      <Section tone="sand" size="lg" ornament>
+      <Section tone="chalk" size="lg" ornament>
         <SectionHeading
           kicker="What we do"
           title="Four kinds of work, one intention"
@@ -105,7 +105,7 @@ export default async function FoundationHomePage() {
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {work.map(({ icon: Icon, ...item }) => (
-            <Card key={item.title} variant="arch" className="reveal items-center">
+            <Card key={item.title} variant="seal" className="reveal items-center">
               <Medallion className="mx-auto">
                 <Icon aria-hidden="true" className="size-6" />
               </Medallion>
@@ -113,7 +113,7 @@ export default async function FoundationHomePage() {
               <CardDescription>{item.body}</CardDescription>
               <Link
                 href={href(item.href)}
-                className="mt-auto inline-flex min-h-11 items-center text-sm font-semibold text-olive underline-offset-4 hover:underline"
+                className="mt-auto inline-flex min-h-11 items-center text-sm font-semibold text-oxblood underline-offset-4 hover:underline"
               >
                 Read more
               </Link>
@@ -133,7 +133,7 @@ export default async function FoundationHomePage() {
               title="Every naira, on the record"
               standfirst="Three years of giving, published by year and by category. What comes in is what we report, and what we report is what we file."
             />
-            <p className="mt-6 max-w-xl leading-relaxed text-sand/80">
+            <p className="mt-6 max-w-xl leading-relaxed text-chalk/80">
               Our constitution binds every naira to the objects the foundation was
               registered for. The accounts are audited by independent auditors each
               year and filed with the Corporate Affairs Commission, and zakat is held
@@ -157,10 +157,10 @@ export default async function FoundationHomePage() {
               >
                 <span className="font-display text-xl text-white">{year.year}</span>
                 <span className="text-right">
-                  <span className="block font-display text-2xl text-amber">
+                  <span className="block font-display text-2xl text-apricot">
                     {formatKobo(year.raisedKobo)}
                   </span>
-                  <span className="text-xs text-sand/60">
+                  <span className="text-xs text-chalk/60">
                     {year.beneficiaries
                       ? `${year.beneficiaries} beneficiaries`
                       : "report in preparation"}
@@ -168,9 +168,9 @@ export default async function FoundationHomePage() {
                 </span>
               </li>
             ))}
-            <li className="flex items-baseline justify-between gap-4 rounded-lg border border-amber/40 bg-amber/10 p-5">
+            <li className="flex items-baseline justify-between gap-4 rounded-lg border border-apricot/40 bg-apricot/10 p-5">
               <span className="font-display text-xl text-white">Total</span>
-              <span className="font-display text-2xl text-amber">
+              <span className="font-display text-2xl text-apricot">
                 {formatKobo(THREE_YEAR_TOTAL_KOBO)}
               </span>
             </li>
@@ -212,7 +212,7 @@ export default async function FoundationHomePage() {
             },
           ].map(({ icon: Icon, ...item }) => (
             <Card key={item.title} className="reveal">
-              <Medallion tone={item.primary ? "gold" : "outline"}>
+              <Medallion tone={item.primary ? "accent" : "outline"}>
                 <Icon aria-hidden="true" className="size-6" />
               </Medallion>
               <CardTitle>{item.title}</CardTitle>
@@ -230,7 +230,7 @@ export default async function FoundationHomePage() {
       </Section>
 
       {/* --- Scripture --------------------------------------------------- */}
-      <Section tone="sand" size="lg" ornament>
+      <Section tone="chalk" size="lg" ornament>
         <div className="mx-auto max-w-3xl">
           <ArabicQuote className="reveal" {...VERSES.baqarah261} />
         </div>
@@ -247,7 +247,7 @@ export default async function FoundationHomePage() {
         <div className="mt-4 text-center">
           <Link
             href={href("/prophetic-medicine")}
-            className="inline-flex min-h-11 items-center font-medium text-olive underline decoration-amber decoration-2 underline-offset-4"
+            className="inline-flex min-h-11 items-center font-medium text-oxblood underline decoration-apricot decoration-2 underline-offset-4"
           >
             Read more, and the note that goes with them
           </Link>

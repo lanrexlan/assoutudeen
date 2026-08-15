@@ -23,8 +23,8 @@ export function StructureDiagram() {
       name: siteConfig.dawah.name,
       href: dawahUrl,
       host: siteConfig.dawah.hostname,
-      accent: "border-t-teal",
-      link: "text-teal",
+      accent: "border-t-sage",
+      link: "text-sage",
       body: "The teaching arm. Seven classes across Friday, Saturday and Sunday evenings — Tafsir, Hadith, Prophetic Medicine, Fiqh, Virtues of the Companions, Qur'an and Modern Science, and the monthly seminar. It is not separately incorporated and holds no funds of its own.",
     },
     {
@@ -33,8 +33,8 @@ export function StructureDiagram() {
       name: siteConfig.honey.name,
       href: honeyUrl,
       host: siteConfig.honey.hostname,
-      accent: "border-t-amber",
-      link: "text-amber-dark",
+      accent: "border-t-apricot",
+      link: "text-apricot-dark",
       body: "The trading arm, selling pure honey by the litre to retail and wholesale customers. It is a business rather than a charity, and its books are kept separate from the foundation's.",
     },
   ];
@@ -44,13 +44,13 @@ export function StructureDiagram() {
       <ul className="list-none">
         <li>
           {/* Parent */}
-          <div className="relative overflow-hidden rounded-xl bg-olive p-6 text-white shadow-elevated sm:p-8">
+          <div className="relative overflow-hidden rounded-xl bg-oxblood p-6 text-white shadow-elevated sm:p-8">
             <div className="flex flex-wrap items-start gap-5">
               <Medallion>
                 <Landmark aria-hidden="true" className="size-6" />
               </Medallion>
               <div className="min-w-56 flex-1">
-                <p className="text-xs uppercase tracking-[0.2em] text-amber">
+                <p className="text-xs uppercase tracking-[0.2em] text-apricot">
                   Parent charity
                 </p>
                 <p className="mt-1 font-display text-xl leading-tight sm:text-2xl">
@@ -64,7 +64,7 @@ export function StructureDiagram() {
                 <p className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
                   <a
                     href={foundationUrl}
-                    className="inline-flex min-h-11 items-center underline decoration-amber decoration-2 underline-offset-4"
+                    className="inline-flex min-h-11 items-center underline decoration-apricot decoration-2 underline-offset-4"
                   >
                     assoutudeen.com
                   </a>
@@ -76,10 +76,10 @@ export function StructureDiagram() {
 
           {/* Connector — decorative; screen readers get the nesting instead. */}
           <div aria-hidden="true" className="relative h-10">
-            <span className="absolute left-1/2 top-0 h-10 w-px -translate-x-1/2 bg-sand-deep" />
-            <span className="absolute left-1/2 top-1/2 hidden h-px w-1/2 max-w-md -translate-x-1/2 bg-sand-deep sm:block" />
-            <span className="absolute left-1/4 top-1/2 hidden h-1/2 w-px bg-sand-deep sm:block" />
-            <span className="absolute left-3/4 top-1/2 hidden h-1/2 w-px bg-sand-deep sm:block" />
+            <span className="absolute left-1/2 top-0 h-10 w-px -translate-x-1/2 bg-chalk-deep" />
+            <span className="absolute left-1/2 top-1/2 hidden h-px w-1/2 max-w-md -translate-x-1/2 bg-chalk-deep sm:block" />
+            <span className="absolute left-1/4 top-1/2 hidden h-1/2 w-px bg-chalk-deep sm:block" />
+            <span className="absolute left-3/4 top-1/2 hidden h-1/2 w-px bg-chalk-deep sm:block" />
           </div>
 
           {/* Subsidiaries */}
@@ -87,7 +87,7 @@ export function StructureDiagram() {
             {arms.map(({ icon: Icon, ...arm }) => (
               <li
                 key={arm.name}
-                className={`lift rounded-xl border border-sand-dark border-t-4 bg-white p-6 shadow-sm ${arm.accent}`}
+                className={`lift rounded-xl border border-chalk-dark border-t-4 bg-white p-6 shadow-sm ${arm.accent}`}
               >
                 <div className="flex items-center gap-3">
                   <Medallion tone="outline" className="size-11">

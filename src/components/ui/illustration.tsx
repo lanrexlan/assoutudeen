@@ -28,12 +28,12 @@ export function ApiaryScene({ className, title = "Hives on a hillside" }: Props)
     >
       <defs>
         <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#0f2f29" />
-          <stop offset="100%" stopColor="#08201c" />
+          <stop offset="0%" stopColor="#351826" />
+          <stop offset="100%" stopColor="#24101a" />
         </linearGradient>
         <linearGradient id="glow" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#d9a441" stopOpacity="0.30" />
-          <stop offset="100%" stopColor="#d9a441" stopOpacity="0" />
+          <stop offset="0%" stopColor="#e0a06a" stopOpacity="0.30" />
+          <stop offset="100%" stopColor="#e0a06a" stopOpacity="0" />
         </linearGradient>
       </defs>
 
@@ -41,7 +41,7 @@ export function ApiaryScene({ className, title = "Hives on a hillside" }: Props)
       <ellipse cx="200" cy="150" rx="190" ry="150" fill="url(#glow)" />
 
       {/* Stars */}
-      <g fill="#f0dcb2" opacity="0.7">
+      <g fill="#f6e2cd" opacity="0.7">
         {[
           [56, 70], [120, 44], [300, 62], [348, 118], [92, 132], [252, 36], [188, 92],
         ].map(([cx, cy], i) => (
@@ -53,17 +53,17 @@ export function ApiaryScene({ className, title = "Hives on a hillside" }: Props)
       <g transform="translate(300 96)">
         <path
           d="M0 -26a26 26 0 1 0 14 48A21 21 0 1 1 0 -26Z"
-          fill="#d9a441"
+          fill="#e0a06a"
           opacity="0.9"
         />
       </g>
 
       {/* Hills */}
-      <path d="M0 330c70-40 120-40 190-8s140 26 210-10v188H0Z" fill="#0f2f29" />
-      <path d="M0 380c80-34 130-28 210 4s120 22 190-6v122H0Z" fill="#123b35" />
+      <path d="M0 330c70-40 120-40 190-8s140 26 210-10v188H0Z" fill="#351826" />
+      <path d="M0 380c80-34 130-28 210 4s120 22 190-6v122H0Z" fill="#55614f" />
 
       {/* Hives */}
-      <g fill="none" stroke="#d9a441" strokeWidth="2.2" strokeLinecap="round">
+      <g fill="none" stroke="#e0a06a" strokeWidth="2.2" strokeLinecap="round">
         {[
           [96, 392, 1], [200, 410, 1.18], [300, 386, 0.92],
         ].map(([x, y, s], i) => (
@@ -76,13 +76,13 @@ export function ApiaryScene({ className, title = "Hives on a hillside" }: Props)
       </g>
 
       {/* Bees */}
-      <g fill="#f0dcb2" opacity="0.85">
+      <g fill="#f6e2cd" opacity="0.85">
         {[
           [140, 320], [246, 344], [176, 288],
         ].map(([cx, cy], i) => (
           <g key={i} transform={`translate(${cx} ${cy})`}>
             <ellipse rx="3.4" ry="2.2" />
-            <path d="M-3 -2.6a4 4 0 0 1 6 0" fill="none" stroke="#f0dcb2" strokeWidth="1" />
+            <path d="M-3 -2.6a4 4 0 0 1 6 0" fill="none" stroke="#f6e2cd" strokeWidth="1" />
           </g>
         ))}
       </g>
@@ -90,7 +90,7 @@ export function ApiaryScene({ className, title = "Hives on a hillside" }: Props)
   );
 }
 
-/** An open book under an arch — for the book and library slots. */
+/** An open book under an seal — for the book and library slots. */
 export function BookScene({ className, title = "An open book" }: Props) {
   return (
     <svg
@@ -102,8 +102,8 @@ export function BookScene({ className, title = "An open book" }: Props) {
     >
       <defs>
         <linearGradient id="bookbg" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#123b35" />
-          <stop offset="100%" stopColor="#08201c" />
+          <stop offset="0%" stopColor="#55614f" />
+          <stop offset="100%" stopColor="#24101a" />
         </linearGradient>
       </defs>
       <rect width="400" height="400" fill="url(#bookbg)" />
@@ -112,21 +112,21 @@ export function BookScene({ className, title = "An open book" }: Props) {
       <path
         d="M120 330V180a80 80 0 0 1 160 0v150"
         fill="none"
-        stroke="#d9a441"
+        stroke="#e0a06a"
         strokeOpacity="0.35"
         strokeWidth="2"
       />
 
       {/* Book */}
-      <g stroke="#d9a441" strokeWidth="2.4" fill="none" strokeLinejoin="round">
+      <g stroke="#e0a06a" strokeWidth="2.4" fill="none" strokeLinejoin="round">
         <path d="M200 250c-26-22-58-28-88-24v-96c30-4 62 2 88 24 26-22 58-28 88-24v96c-30-4-62 2-88 24Z" />
         <path d="M200 154v96" />
         <path d="M130 158c18-2 38 2 52 12M130 182c18-2 38 2 52 12M218 170c14-10 34-14 52-12M218 194c14-10 34-14 52-12" strokeWidth="1.5" strokeOpacity="0.75" />
       </g>
 
       {/* Light above */}
-      <circle cx="200" cy="104" r="7" fill="#d9a441" />
-      <g stroke="#d9a441" strokeWidth="1.4" opacity="0.6">
+      <circle cx="200" cy="104" r="7" fill="#e0a06a" />
+      <g stroke="#e0a06a" strokeWidth="1.4" opacity="0.6">
         <path d="M200 84v-14M200 138v-12M172 104h-14M242 104h-14" />
       </g>
     </svg>
@@ -143,10 +143,10 @@ export function GivingScene({ className, title = "A hand offering a seedling" }:
       className={cn(frame, className)}
       preserveAspectRatio="xMidYMid slice"
     >
-      <rect width="400" height="400" fill="#0f2f29" />
-      <circle cx="200" cy="176" r="118" fill="#123b35" />
+      <rect width="400" height="400" fill="#351826" />
+      <circle cx="200" cy="176" r="118" fill="#55614f" />
 
-      <g fill="none" stroke="#d9a441" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+      <g fill="none" stroke="#e0a06a" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
         {/* Cupped hands */}
         <path d="M112 244c0 40 40 66 88 66s88-26 88-66" />
         <path d="M112 244c-10-14-6-30 8-32 10-2 18 6 22 18" />
@@ -158,7 +158,7 @@ export function GivingScene({ className, title = "A hand offering a seedling" }:
       </g>
 
       {/* Falling light */}
-      <g stroke="#f0dcb2" strokeWidth="1.2" opacity="0.5">
+      <g stroke="#f6e2cd" strokeWidth="1.2" opacity="0.5">
         <path d="M150 92v22M200 76v26M250 92v22" />
       </g>
     </svg>
@@ -175,10 +175,10 @@ export function RemedyScene({ className, title = "Mortar, pestle and herbs" }: P
       className={cn(frame, className)}
       preserveAspectRatio="xMidYMid slice"
     >
-      <rect width="400" height="400" fill="#0f2f29" />
-      <circle cx="200" cy="200" r="130" fill="#123b35" />
+      <rect width="400" height="400" fill="#351826" />
+      <circle cx="200" cy="200" r="130" fill="#55614f" />
 
-      <g fill="none" stroke="#d9a441" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+      <g fill="none" stroke="#e0a06a" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
         {/* Mortar */}
         <path d="M138 244h124c0 34-28 58-62 58s-62-24-62-58Z" />
         <path d="M126 240h148" strokeWidth="3" />
@@ -222,16 +222,16 @@ export function TurbanBust({
     >
       <defs>
         <linearGradient id="bustbg" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#12332c" />
-          <stop offset="100%" stopColor="#08201c" />
+          <stop offset="0%" stopColor="#3a1a28" />
+          <stop offset="100%" stopColor="#24101a" />
         </linearGradient>
         <linearGradient id="form" x1="0.2" y1="0" x2="0.9" y2="1">
-          <stop offset="0%" stopColor="#f3ead9" />
-          <stop offset="100%" stopColor="#d9cbb0" />
+          <stop offset="0%" stopColor="#f0ebe2" />
+          <stop offset="100%" stopColor="#d5cbbd" />
         </linearGradient>
         <linearGradient id="wrap" x1="0" y1="0" x2="1" y2="0.6">
           <stop offset="0%" stopColor="#ffffff" />
-          <stop offset="100%" stopColor="#e6dcc8" />
+          <stop offset="100%" stopColor="#e5ded4" />
         </linearGradient>
       </defs>
 
@@ -248,7 +248,7 @@ export function TurbanBust({
       {/* Seam down the robe */}
       <path
         d="M150 274v126"
-        stroke="#c8b795"
+        stroke="#cbb9a4"
         strokeWidth="1.5"
         fill="none"
         opacity="0.8"
@@ -257,13 +257,13 @@ export function TurbanBust({
       <path
         d="M124 276c8 16 16 24 26 24s18-8 26-24"
         fill="none"
-        stroke="#c8b795"
+        stroke="#cbb9a4"
         strokeWidth="2.5"
         strokeLinecap="round"
       />
 
       {/* Neck */}
-      <path d="M134 232h32v42c0 6-32 6-32 0Z" fill="#e6dcc8" />
+      <path d="M134 232h32v42c0 6-32 6-32 0Z" fill="#e5ded4" />
 
       {/* Head — a blank form. No eyes, nose or mouth, by design. */}
       <ellipse cx="150" cy="184" rx="42" ry="50" fill="url(#form)" />
@@ -271,33 +271,33 @@ export function TurbanBust({
       <path
         d="M108 184c-5 0-8 5-6 11 2 5 6 7 9 5"
         fill="none"
-        stroke="#c8b795"
+        stroke="#cbb9a4"
         strokeWidth="2"
       />
       <path
         d="M192 184c5 0 8 5 6 11-2 5-6 7-9 5"
         fill="none"
-        stroke="#c8b795"
+        stroke="#cbb9a4"
         strokeWidth="2"
       />
 
       {/* Beard, as a shape rather than hair */}
       <path
         d="M112 196c3 32 18 52 38 52s35-20 38-52c-9 18-22 28-38 28s-29-10-38-28Z"
-        fill="#cdbe9f"
+        fill="#cfc3b2"
       />
 
       {/* The tail of the cloth, falling behind the shoulder */}
       <path
         d="M186 138c18 10 26 32 22 58-3 20-11 36-23 46"
         fill="none"
-        stroke="#e6dcc8"
+        stroke="#e5ded4"
         strokeWidth="13"
         strokeLinecap="round"
       />
 
       {/* Turban — the crown, then wrapped bands resting at the hairline */}
-      <g fill="url(#wrap)" stroke="#c8b795" strokeWidth="1.4">
+      <g fill="url(#wrap)" stroke="#cbb9a4" strokeWidth="1.4">
         <path d="M108 120c0-30 19-52 42-52s42 22 42 52c0 8-5 13-13 13h-58c-8 0-13-5-13-13Z" />
         <path d="M100 128c0-10 9-17 23-17h54c14 0 23 7 23 17s-9 17-23 17h-54c-14 0-23-7-23-17Z" />
         <path d="M104 148c0-9 8-15 21-15h50c13 0 21 6 21 15s-8 15-21 15h-50c-13 0-21-6-21-15Z" />
@@ -306,21 +306,21 @@ export function TurbanBust({
       <path
         d="M104 148c0-9 8-15 21-15h50c13 0 21 6 21 15"
         fill="none"
-        stroke="#d9a441"
+        stroke="#e0a06a"
         strokeWidth="3"
         strokeLinecap="round"
       />
 
       {/* Wrap creases */}
-      <g stroke="#c8b795" strokeWidth="1.1" fill="none" opacity="0.9">
+      <g stroke="#cbb9a4" strokeWidth="1.1" fill="none" opacity="0.9">
         <path d="M120 110c13-8 38-10 64-5M112 134c22-6 60-6 80 0M114 154c20-5 56-5 74 0" />
       </g>
     </svg>
   );
 }
 
-/** A lantern in an arch — used where a portrait will eventually go. */
-export function LanternScene({ className, title = "A lantern in an arch" }: Props) {
+/** A lantern in an seal — used where a portrait will eventually go. */
+export function LanternScene({ className, title = "A lantern in an seal" }: Props) {
   return (
     <svg
       viewBox="0 0 300 400"
@@ -331,14 +331,14 @@ export function LanternScene({ className, title = "A lantern in an arch" }: Prop
     >
       <defs>
         <radialGradient id="lamp" cx="50%" cy="45%" r="50%">
-          <stop offset="0%" stopColor="#d9a441" stopOpacity="0.45" />
-          <stop offset="100%" stopColor="#d9a441" stopOpacity="0" />
+          <stop offset="0%" stopColor="#e0a06a" stopOpacity="0.45" />
+          <stop offset="100%" stopColor="#e0a06a" stopOpacity="0" />
         </radialGradient>
       </defs>
-      <rect width="300" height="400" fill="#0f2f29" />
+      <rect width="300" height="400" fill="#351826" />
       <rect width="300" height="400" fill="url(#lamp)" />
 
-      <g fill="none" stroke="#d9a441" strokeWidth="2.2" strokeLinejoin="round" strokeLinecap="round">
+      <g fill="none" stroke="#e0a06a" strokeWidth="2.2" strokeLinejoin="round" strokeLinecap="round">
         <path d="M70 360V190a80 80 0 0 1 160 0v170" strokeOpacity="0.4" />
         <path d="M150 60v34" />
         <path d="M124 118h52l14 26-14 96h-52l-14-96Z" />
@@ -347,7 +347,7 @@ export function LanternScene({ className, title = "A lantern in an arch" }: Prop
         <path d="M150 168v44" strokeOpacity="0.7" />
         <circle cx="150" cy="104" r="10" />
       </g>
-      <circle cx="150" cy="196" r="16" fill="#d9a441" opacity="0.55" />
+      <circle cx="150" cy="196" r="16" fill="#e0a06a" opacity="0.55" />
     </svg>
   );
 }

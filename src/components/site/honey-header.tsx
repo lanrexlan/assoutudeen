@@ -14,7 +14,7 @@ export async function HoneyHeader() {
         <Link
           href={href("/cart")}
           aria-label="Basket"
-          className="flex size-11 shrink-0 items-center justify-center rounded-full border border-white/25 text-amber transition-colors hover:border-amber hover:bg-white/10"
+          className="flex size-11 shrink-0 items-center justify-center rounded-full border border-white/25 text-apricot transition-colors hover:border-apricot hover:bg-white/10"
         >
           <ShoppingBag className="size-5" aria-hidden="true" />
         </Link>

@@ -1,19 +1,19 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
-import { ArchFrame, Kicker, OrnamentField, Starfield } from "@/components/ui/ornament";
+import { SealFrame, Kicker, OrnamentField, Starfield } from "@/components/ui/ornament";
 import { ApiaryScene } from "@/components/ui/illustration";
 import { REGISTRATION } from "@/lib/organisation";
 
 /**
  * The foundation's hero.
  *
- * The composition borrows the depth and gold hairlines of a dark Islamic
- * reference design, and the arch-framed focal image of a lighter one — but it
+ * The composition borrows the depth and accent hairlines of a dark Islamic
+ * reference design, and the seal-framed focal image of a lighter one — but it
  * uses the *geometry* rather than the costume: no mosque silhouette, no tiled
- * arabesque, no gold gradient text, all of which docs/05 rules out.
+ * arabesque, no accent gradient text, all of which docs/05 rules out.
  *
- * The arch frames original vector artwork rather than a stock photograph.
+ * The seal frames original vector artwork rather than a stock photograph.
  * docs/03 asks for a real photograph here — the founder teaching, or a
  * distribution in progress — and the frame is built to take a `next/image` the
  * moment one exists. Until then a drawing is honest where a stock image would
@@ -21,10 +21,10 @@ import { REGISTRATION } from "@/lib/organisation";
  */
 export function Hero({ donateHref, workHref }: { donateHref: string; workHref: string }) {
   return (
-    <section className="relative overflow-hidden bg-ink text-sand">
-      <OrnamentField tone="gold" />
+    <section className="relative overflow-hidden bg-ink text-chalk">
+      <OrnamentField tone="accent" />
       <Starfield />
-      {/* Light spilling from the top of the arch. */}
+      {/* Light spilling from the top of the seal. */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute left-1/2 top-0 h-[28rem] w-[46rem] -translate-x-1/2 rounded-b-full bg-[radial-gradient(ellipse_at_top,rgba(217,164,65,0.18),transparent_65%)]"
@@ -37,10 +37,10 @@ export function Hero({ donateHref, workHref }: { donateHref: string; workHref: s
 
             <h1 className="mt-5 font-display text-4xl leading-[1.08] text-white sm:text-5xl lg:text-6xl">
               Healing by the Sunnah.
-              <span className="block text-amber">Empowering the ummah.</span>
+              <span className="block text-apricot">Empowering the ummah.</span>
             </h1>
 
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-sand/85">
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-chalk/85">
               A registered Islamic charity in Ede. We publish the remedies of the
               Qur&apos;an and the Sunnah with their evidence attached, we fund
               treatment for Muslims in difficulty, and we account for every naira
@@ -59,32 +59,32 @@ export function Hero({ donateHref, workHref }: { donateHref: string; workHref: s
             {/* Proof, immediately under the fold-line: registration, not a slogan. */}
             <dl className="mt-10 flex flex-wrap gap-x-8 gap-y-4 border-t border-white/10 pt-6 text-sm">
               <div>
-                <dt className="text-sand/55">Registered charity</dt>
+                <dt className="text-chalk/55">Registered charity</dt>
                 <dd className="mt-0.5 font-medium text-white">{REGISTRATION.number}</dd>
               </div>
               <div>
-                <dt className="text-sand/55">Incorporated</dt>
+                <dt className="text-chalk/55">Incorporated</dt>
                 <dd className="mt-0.5 font-medium text-white">
                   {REGISTRATION.incorporatedOnDisplay}
                 </dd>
               </div>
               <div>
-                <dt className="text-sand/55">Accounts</dt>
+                <dt className="text-chalk/55">Accounts</dt>
                 <dd className="mt-0.5 font-medium text-white">Published every year</dd>
               </div>
             </dl>
           </div>
 
-          {/* Focal arch */}
+          {/* Focal seal */}
           <div className="relative mx-auto w-full max-w-sm lg:max-w-md">
-            <ArchFrame className="aspect-3/4 w-full shadow-elevated">
+            <SealFrame className="aspect-3/4 w-full shadow-elevated">
               <ApiaryScene title="Hives on a hillside at dusk" />
-            </ArchFrame>
+            </SealFrame>
 
-            {/* Gold hairline echo behind the arch. */}
+            {/* Accent hairline echo behind the seal. */}
             <div
               aria-hidden="true"
-              className="arch pointer-events-none absolute -inset-4 -z-10 border border-amber/20"
+              className="seal pointer-events-none absolute -inset-4 -z-10 border border-apricot/20"
             />
           </div>
         </div>

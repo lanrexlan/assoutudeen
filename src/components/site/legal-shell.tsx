@@ -23,7 +23,7 @@ export function LegalShell({
       <PageHeader eyebrow="Legal" title={title} standfirst={standfirst} />
 
       <Section>
-        <div className="max-w-2xl rounded-md border border-sand-dark bg-white p-4 text-sm leading-relaxed text-charcoal">
+        <div className="max-w-2xl rounded-md border border-chalk-dark bg-white p-4 text-sm leading-relaxed text-charcoal">
           <p className="font-semibold">This page is a draft.</p>
           <p className="mt-1 text-charcoal-muted">
             It sets out the structure and the obligations that apply. The marked gaps must

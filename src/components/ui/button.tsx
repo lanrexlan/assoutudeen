@@ -5,8 +5,8 @@ import { cn } from "@/lib/utils";
 /**
  * Every size meets the 44px minimum tap target.
  *
- * `donate` is the amber call to action with charcoal text — the only
- * accessible way to use amber, and the one button that must be recognisable
+ * `donate` is the apricot call to action with charcoal text — the only
+ * accessible way to use apricot, and the one button that must be recognisable
  * across all three sites.
  */
 const buttonVariants = cva(
@@ -23,15 +23,15 @@ const buttonVariants = cva(
         primary:
           "bg-primary text-on-primary shadow-soft hover:bg-primary-hover hover:shadow-elevated",
         secondary:
-          "border border-sand-deep bg-white text-charcoal hover:border-charcoal-faint hover:bg-sand",
+          "border border-chalk-deep bg-white text-charcoal hover:border-charcoal-faint hover:bg-chalk",
         outline:
           "border border-current bg-transparent text-primary hover:bg-primary hover:text-on-primary",
         /** For dark surfaces: a hairline that fills on hover. */
         ghostLight:
-          "border border-white/30 bg-white/5 text-white hover:border-amber hover:bg-white/10",
-        ghost: "text-charcoal hover:bg-sand-dark/60",
+          "border border-white/30 bg-white/5 text-white hover:border-apricot hover:bg-white/10",
+        ghost: "text-charcoal hover:bg-chalk-dark/60",
         donate:
-          "bg-amber text-charcoal shadow-gilt hover:bg-amber-dark hover:text-white",
+          "bg-apricot text-charcoal shadow-accent hover:bg-apricot-dark hover:text-white",
         link: "text-primary underline underline-offset-4 hover:no-underline",
       },
       size: {

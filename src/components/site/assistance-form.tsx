@@ -142,7 +142,7 @@ export function AssistanceForm() {
                 type="checkbox"
                 name="circumstances"
                 value={item.value}
-                className="size-5 shrink-0 rounded border-sand-dark accent-olive"
+                className="size-5 shrink-0 rounded border-chalk-dark accent-oxblood"
               />
               {item.label}
             </label>
@@ -185,7 +185,7 @@ export function AssistanceForm() {
         </Field>
       </div>
 
-      <p className="rounded-lg border border-sand-dark bg-sand p-4 text-sm leading-relaxed text-charcoal-muted">
+      <p className="rounded-lg border border-chalk-dark bg-chalk p-4 text-sm leading-relaxed text-charcoal-muted">
         Hospital bills, a diagnosis or similar documents help us verify a case quickly.
         Please do not attach them here — someone will ask for them on WhatsApp once we
         have read your request, so they never sit on a public form.
@@ -204,7 +204,7 @@ export function AssistanceForm() {
       </Consent>
 
       {state.message && !state.ok ? (
-        <p role="alert" className="text-sm font-medium text-olive-dark">
+        <p role="alert" className="text-sm font-medium text-oxblood-dark">
           {state.message}
         </p>
       ) : null}

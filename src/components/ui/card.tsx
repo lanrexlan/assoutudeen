@@ -2,29 +2,50 @@ import { cn } from "@/lib/utils";
 
 type CardProps = React.ComponentProps<"div"> & {
   /**
-   * `plain` — white card on sand
-   * `arch`  — arch-topped card, the signature treatment for feature cards
+   * `plain` — white card on chalk
+   * `seal`  — seal-topped card, the signature treatment for feature cards
    * `ink`   — for dark bands
    */
-  variant?: "plain" | "arch" | "ink";
+  variant?: "plain" | "seal" | "ink";
 };
 
-export function Card({ className, variant = "plain", ...props }: CardProps) {
+export function Card({
+  className,
+  variant = "plain",
+  children,
+  ...props
+}: CardProps) {
+  /* The seal is a clip-path, and clip-path cuts a border away at the
+     diagonals. So the hairline is a 1px parent behind the white face. */
+  if (variant === "seal") {
+    return (
+      <div
+        data-slot="card"
+        className={cn("lift seal relative bg-chalk-dark p-px shadow-sm", className)}
+        {...props}
+      >
+        <div className="seal flex h-full flex-col gap-4 bg-white p-6 text-center text-charcoal">
+          {children}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div
       data-slot="card"
       className={cn(
         "lift relative flex flex-col gap-4 p-6 text-charcoal",
         variant === "plain" &&
-          "rounded-lg border border-sand-dark bg-white shadow-sm",
-        variant === "arch" &&
-          "rounded-b-lg rounded-t-[3rem] border border-sand-dark bg-white pt-8 text-center shadow-sm",
+          "rounded-lg border border-chalk-dark bg-white shadow-sm",
         variant === "ink" &&
-          "rounded-lg border border-white/12 bg-ink-raised text-sand shadow-elevated",
+          "rounded-lg border border-white/12 bg-ink-raised text-chalk shadow-elevated",
         className,
       )}
       {...props}
-    />
+    >
+      {children}
+    </div>
   );
 }
 
@@ -48,7 +69,7 @@ export function CardDescription({
   return (
     <p
       className={cn(
-        "text-sm leading-relaxed text-charcoal-muted [.bg-ink-raised_&]:text-sand/75",
+        "text-sm leading-relaxed text-charcoal-muted [.bg-ink-raised_&]:text-chalk/75",
         className,
       )}
       {...props}

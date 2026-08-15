@@ -92,7 +92,7 @@ export default function OurWorkPage() {
       </PageHeader>
 
       {/* --- Verse -------------------------------------------------------- */}
-      <Section tone="sand" size="md">
+      <Section tone="chalk" size="md">
         <ArabicQuote className="reveal mx-auto max-w-3xl" {...VERSES.insan8} />
       </Section>
 
@@ -106,7 +106,7 @@ export default function OurWorkPage() {
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {CATEGORIES.map(({ icon: Icon, ...item }) => (
-            <Card key={item.title} variant="arch" className="reveal items-center">
+            <Card key={item.title} variant="seal" className="reveal items-center">
               <Medallion className="mx-auto">
                 <Icon aria-hidden="true" className="size-6" />
               </Medallion>
@@ -132,12 +132,12 @@ export default function OurWorkPage() {
               key={step.title}
               className="flex gap-5 rounded-lg border border-white/12 bg-ink-raised p-5"
             >
-              <span className="flex size-10 shrink-0 items-center justify-center rounded-full border border-amber/40 font-display text-amber">
+              <span className="flex size-10 shrink-0 items-center justify-center rounded-full border border-apricot/40 font-display text-apricot">
                 {index + 1}
               </span>
               <div>
                 <p className="font-display text-lg text-white">{step.title}</p>
-                <p className="mt-1 text-sm leading-relaxed text-sand/75">{step.body}</p>
+                <p className="mt-1 text-sm leading-relaxed text-chalk/75">{step.body}</p>
               </div>
             </li>
           ))}
@@ -145,7 +145,7 @@ export default function OurWorkPage() {
       </Section>
 
       {/* --- What it has done ---------------------------------------------- */}
-      <Section tone="sand" size="lg">
+      <Section tone="chalk" size="lg">
         <SectionHeading
           kicker="What it has done"
           title={`${formatKobo(THREE_YEAR_TOTAL_KOBO)} over three years`}
@@ -156,10 +156,10 @@ export default function OurWorkPage() {
           {YEAR_TOTALS.map((year) => (
             <li
               key={year.year}
-              className="rounded-lg border border-sand-dark bg-white p-6 text-center shadow-sm"
+              className="rounded-lg border border-chalk-dark bg-white p-6 text-center shadow-sm"
             >
               <p className="font-display text-lg">{year.year}</p>
-              <p className="mt-2 font-display text-2xl text-olive">
+              <p className="mt-2 font-display text-2xl text-oxblood">
                 {formatKobo(year.raisedKobo)}
               </p>
               <p className="mt-2 text-sm text-charcoal-muted">
@@ -201,7 +201,7 @@ export default function OurWorkPage() {
         <IntakeNotice className="mx-auto mb-10 max-w-3xl" />
 
         <div className="grid gap-6 lg:grid-cols-2">
-          <Card className="reveal border-olive/25">
+          <Card className="reveal border-oxblood/25">
             <Medallion>
               <Repeat aria-hidden="true" className="size-6" />
             </Medallion>
@@ -231,14 +231,14 @@ export default function OurWorkPage() {
         </div>
 
         <p className="mt-10 flex items-center justify-center gap-3 text-sm text-charcoal-muted">
-          <Shield aria-hidden="true" className="size-4 text-amber" />
+          <Shield aria-hidden="true" className="size-4 text-apricot" />
           Zakat is held as a separate fund, with its own eligibility rules.
         </p>
       </Section>
 
-      <Section tone="sand" size="md">
+      <Section tone="chalk" size="md">
         <div className="mx-auto max-w-3xl text-center">
-          <HandCoins aria-hidden="true" className="mx-auto size-8 text-amber" />
+          <HandCoins aria-hidden="true" className="mx-auto size-8 text-apricot" />
           <p className="mt-4 font-display text-2xl">
             Give once, or give every month.
           </p>

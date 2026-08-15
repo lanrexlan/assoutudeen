@@ -28,13 +28,13 @@ const geometricTile = (stroke: string, opacity: number) => {
 
 export function OrnamentField({
   className,
-  tone = "gold",
+  tone = "accent",
 }: {
   className?: string;
-  tone?: "gold" | "light" | "dark";
+  tone?: "accent" | "light" | "dark";
 }) {
   const stroke =
-    tone === "gold" ? "%23D9A441" : tone === "light" ? "%23FFFFFF" : "%232F5D3A";
+    tone === "accent" ? "%23E0A06A" : tone === "light" ? "%23FFFFFF" : "%236B2233";
   const opacity = tone === "dark" ? 0.16 : 0.22;
 
   return (
@@ -68,20 +68,23 @@ export function StarGlyph({ className }: { className?: string }) {
   );
 }
 
-/** Section divider: a gold hairline with the star at its centre. */
-export function GiltRule({ className }: { className?: string }) {
+/** Section divider: an apricot hairline with the star at its centre. */
+export function RuleMark({ className }: { className?: string }) {
   return (
-    <div aria-hidden="true" className={cn("gilt-rule", className)}>
-      <StarGlyph className="size-4 shrink-0 text-amber" />
+    <div aria-hidden="true" className={cn("rule-mark", className)}>
+      <StarGlyph className="size-4 shrink-0 text-apricot" />
     </div>
   );
 }
 
 /**
- * Mihrab arch frame. The signature shape: a pointed-shouldered arch with a
- * gold hairline inside it, wrapping an image or an illustration.
+ * The seal frame. The signature shape: an eight-sided cut-corner frame with an
+ * apricot hairline inside it, wrapping an image or an illustration.
+ *
+ * clip-path clips the border away, so the hairline is the outer element and the
+ * content sits in a second, inset seal.
  */
-export function ArchFrame({
+export function SealFrame({
   children,
   className,
   innerClassName,
@@ -92,35 +95,36 @@ export function ArchFrame({
 }) {
   return (
     <div
-      className={cn(
-        "arch relative overflow-hidden border border-amber/45 bg-ink-raised p-1.5",
-        className,
-      )}
+      className={cn("seal relative overflow-hidden bg-apricot/45 p-px", className)}
     >
-      <div className={cn("arch relative h-full w-full overflow-hidden", innerClassName)}>
-        {children}
+      <div className="seal relative h-full w-full overflow-hidden bg-ink-raised p-1.5">
+        <div
+          className={cn("seal relative h-full w-full overflow-hidden", innerClassName)}
+        >
+          {children}
+        </div>
       </div>
     </div>
   );
 }
 
-/** Round gold medallion holding an icon. */
+/** Seal-shaped medallion holding an icon. */
 export function Medallion({
   children,
   className,
-  tone = "gold",
+  tone = "accent",
 }: {
   children: React.ReactNode;
   className?: string;
-  tone?: "gold" | "outline" | "soft";
+  tone?: "accent" | "outline" | "soft";
 }) {
   return (
     <span
       className={cn(
-        "inline-flex size-14 shrink-0 items-center justify-center rounded-full",
-        tone === "gold" && "bg-amber text-charcoal shadow-gilt",
-        tone === "outline" && "border border-amber/50 bg-transparent text-amber",
-        tone === "soft" && "bg-amber/15 text-amber-dark",
+        "seal seal-sm inline-flex size-14 shrink-0 items-center justify-center",
+        tone === "accent" && "bg-apricot text-charcoal shadow-accent",
+        tone === "outline" && "border border-apricot/50 bg-transparent text-apricot",
+        tone === "soft" && "bg-apricot/15 text-apricot-dark",
         className,
       )}
     >
@@ -151,12 +155,12 @@ export function Kicker({
   return (
     <p
       className={cn(
-        "flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-amber",
+        "flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-apricot-dark",
         align === "center" && "justify-center",
         className,
       )}
     >
-      <span className="inline-flex size-7 items-center justify-center rounded-full bg-amber/15 text-amber">
+      <span className="seal inline-flex size-7 items-center justify-center bg-apricot/18 text-apricot-dark [--c:0.4375rem]">
         {Icon ? (
           <Icon aria-hidden className="size-3.5" />
         ) : (

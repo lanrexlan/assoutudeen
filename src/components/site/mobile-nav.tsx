@@ -40,7 +40,7 @@ export function MobileNav({
         aria-controls="mobile-nav-panel"
         aria-label={open ? "Close menu" : "Open menu"}
         onClick={() => setOpen((v) => !v)}
-        className="flex size-11 items-center justify-center rounded-full border border-white/25 text-current transition-colors hover:border-amber hover:bg-white/10"
+        className="flex size-11 items-center justify-center rounded-full border border-white/25 text-current transition-colors hover:border-apricot hover:bg-white/10"
       >
         {open ? (
           <X className="size-5" aria-hidden="true" />
@@ -67,7 +67,7 @@ export function MobileNav({
                 >
                   <span
                     aria-hidden="true"
-                    className="me-3 size-1.5 rotate-45 bg-amber"
+                    className="me-3 size-1.5 rotate-45 bg-apricot"
                   />
                   {item.label}
                 </Link>

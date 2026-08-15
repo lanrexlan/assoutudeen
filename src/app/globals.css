@@ -1,49 +1,46 @@
 @import "tailwindcss";
 
-/* ---------------------------------------------------------------------------
-   Design tokens — docs/05-Design-and-Brand.md
+/* Brand — oxblood, sage and apricot. Deliberately not the olive-and-gold
+   every charity site reaches for. Oxblood carries authority, sage cools it,
+   apricot is the only warm note and it is rationed.
 
-   The five brand colours are fixed. Everything else here is a shade, a tint or
-   a surface derived from them, so the palette gains depth without gaining new
-   hues.
-
-   Amber fails WCAG AA on white for small text: it is used as a solid button
-   background with charcoal text, as rules, medallions and hairlines, and never
-   as small text on a light ground. There is no gold gradient text anywhere —
-   docs/05 rules it out explicitly, along with mosque-silhouette backgrounds,
-   tiled arabesque wallpaper, autoplay audio and carousels.
---------------------------------------------------------------------------- */
+   Apricot fails WCAG AA on white for small text: it is a solid button ground
+   with charcoal text, a hairline, a focus ring — never small text on a light
+   surface. Sage is likewise too light for body copy; sage-dark is the text
+   grade. No gradient text anywhere. */
 :root {
   /* Brand */
-  --olive: #2f5d3a;
-  --amber: #d9a441;
-  --teal: #123b35;
-  --sand: #f7f3ea;
-  --charcoal: #2b2b2b;
+  --oxblood: #6b2233;
+  --sage: #7e8b7a;
+  --apricot: #e0a06a;
+  --chalk: #f4f1ec;
+  --charcoal: #2b2529;
 
   /* Derived shades */
-  --olive-dark: #24482d;
-  --olive-deep: #1a3521;
-  --olive-tint: #e8efe9;
-  --teal-dark: #0c2b26;
-  /* The deepest surface: hero and footer ground. Still the brand teal, just
-     taken down far enough to let gold and white sit on it comfortably. */
-  --ink: #08201c;
-  --ink-raised: #0f2f29;
-  --amber-dark: #a8761f;
-  --amber-soft: #f0dcb2;
-  --sand-dark: #e6dcc8;
-  --sand-deep: #d8cbb0;
-  --charcoal-muted: #5c5a55;
-  --charcoal-faint: #8a8781;
+  --oxblood-dark: #571b29;
+  --oxblood-deep: #3a1420;
+  --oxblood-tint: #f2e6e8;
+  --sage-dark: #55614f;
+  --sage-deep: #3c463a;
+  --sage-tint: #e9ede7;
+  /* The deepest surface: hero and footer ground. Oxblood taken far enough
+     down that apricot and white sit on it comfortably. */
+  --ink: #24101a;
+  --ink-raised: #351826;
+  --apricot-dark: #a26a3a;
+  --apricot-soft: #f6e2cd;
+  --chalk-dark: #e5ded4;
+  --chalk-deep: #d5cbbd;
+  --charcoal-muted: #5b5359;
+  --charcoal-faint: #8b8288;
 
-  --background: var(--sand);
+  --background: var(--chalk);
   --foreground: var(--charcoal);
 
   /* Per-site accent. The foundation is the default because it is the main site. */
-  --site-primary: var(--olive);
-  --site-primary-hover: var(--olive-dark);
-  --site-primary-deep: var(--olive-deep);
+  --site-primary: var(--oxblood);
+  --site-primary-hover: var(--oxblood-dark);
+  --site-primary-deep: var(--oxblood-deep);
   --site-on-primary: #ffffff;
 
   /* Shape and elevation */
@@ -51,49 +48,52 @@
   --radius: 0.625rem;
   --radius-lg: 1rem;
   --radius-xl: 1.5rem;
-  /* The mihrab arch — the signature shape of this site. */
-  --arch: 50% 50% 0 0 / 45% 45% 0 0;
+  /* The seal — the signature shape of this site. An eight-sided cut-corner
+     frame taken from the khatim star, replacing the mihrab arch. */
+  --seal-cut: 1.25rem;
 
   /* The khatim star, used as a list marker via mask-image so it takes the
      surrounding colour. Kept here so markup never repeats the path. */
   --star-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M12 1.5 15.2 5.6h5.2v5.2L23.5 12l-3.1 1.2v5.2h-5.2L12 22.5 8.8 18.4H3.6v-5.2L0.5 12l3.1-1.2V5.6h5.2Z'/%3E%3C/svg%3E");
 
-  --shadow-sm: 0 1px 2px rgb(8 32 28 / 0.06), 0 1px 3px rgb(8 32 28 / 0.05);
-  --shadow: 0 4px 12px rgb(8 32 28 / 0.07), 0 2px 4px rgb(8 32 28 / 0.05);
-  --shadow-lg: 0 18px 40px -12px rgb(8 32 28 / 0.22), 0 6px 14px rgb(8 32 28 / 0.08);
-  --shadow-gold: 0 10px 30px -12px rgb(169 118 31 / 0.45);
+  --shadow-sm: 0 1px 2px rgb(36 16 26 / 0.06), 0 1px 3px rgb(36 16 26 / 0.05);
+  --shadow: 0 4px 12px rgb(36 16 26 / 0.08), 0 2px 4px rgb(36 16 26 / 0.05);
+  --shadow-lg: 0 18px 40px -12px rgb(36 16 26 / 0.24), 0 6px 14px rgb(36 16 26 / 0.09);
+  --shadow-accent: 0 10px 30px -12px rgb(162 106 58 / 0.45);
 }
 
 [data-site="dawah"] {
-  --site-primary: var(--teal);
-  --site-primary-hover: var(--teal-dark);
+  --site-primary: var(--sage-dark);
+  --site-primary-hover: var(--sage-deep);
   --site-primary-deep: var(--ink);
   --site-on-primary: #ffffff;
 }
 
 [data-site="honey"] {
-  --site-primary: var(--amber);
-  --site-primary-hover: var(--amber-dark);
-  --site-primary-deep: var(--amber-dark);
-  /* Dark text on amber — the only accessible pairing. */
+  --site-primary: var(--apricot);
+  --site-primary-hover: var(--apricot-dark);
+  --site-primary-deep: var(--apricot-dark);
+  /* Dark text on apricot — the only accessible pairing. */
   --site-on-primary: var(--charcoal);
 }
 
 @theme inline {
-  --color-olive: var(--olive);
-  --color-olive-dark: var(--olive-dark);
-  --color-olive-deep: var(--olive-deep);
-  --color-olive-tint: var(--olive-tint);
-  --color-amber: var(--amber);
-  --color-amber-dark: var(--amber-dark);
-  --color-amber-soft: var(--amber-soft);
-  --color-teal: var(--teal);
-  --color-teal-dark: var(--teal-dark);
+  --color-oxblood: var(--oxblood);
+  --color-oxblood-dark: var(--oxblood-dark);
+  --color-oxblood-deep: var(--oxblood-deep);
+  --color-oxblood-tint: var(--oxblood-tint);
+  --color-apricot: var(--apricot);
+  --color-apricot-dark: var(--apricot-dark);
+  --color-apricot-soft: var(--apricot-soft);
+  --color-sage: var(--sage);
+  --color-sage-dark: var(--sage-dark);
+  --color-sage-deep: var(--sage-deep);
+  --color-sage-tint: var(--sage-tint);
   --color-ink: var(--ink);
   --color-ink-raised: var(--ink-raised);
-  --color-sand: var(--sand);
-  --color-sand-dark: var(--sand-dark);
-  --color-sand-deep: var(--sand-deep);
+  --color-chalk: var(--chalk);
+  --color-chalk-dark: var(--chalk-dark);
+  --color-chalk-deep: var(--chalk-deep);
   --color-charcoal: var(--charcoal);
   --color-charcoal-muted: var(--charcoal-muted);
   --color-charcoal-faint: var(--charcoal-faint);
@@ -105,21 +105,21 @@
   --color-primary-deep: var(--site-primary-deep);
   --color-on-primary: var(--site-on-primary);
 
-  --font-sans: var(--font-inter);
-  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-manrope);
+  --font-display: var(--font-petrona);
   --font-brand: var(--font-montserrat);
   --font-arabic: var(--font-noto-naskh-arabic);
 
   --shadow-soft: var(--shadow);
   --shadow-elevated: var(--shadow-lg);
-  --shadow-gilt: var(--shadow-gold);
+  --shadow-accent: var(--shadow-accent);
 }
 
 @layer base {
   body {
     background-color: var(--background);
     color: var(--foreground);
-    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    font-family: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
@@ -128,7 +128,7 @@
   h2,
   h3,
   h4 {
-    font-family: var(--font-fraunces), Georgia, serif;
+    font-family: var(--font-petrona), Georgia, serif;
     font-weight: 600;
     text-wrap: balance;
     letter-spacing: -0.01em;
@@ -139,19 +139,19 @@
   }
 
   ::selection {
-    background: var(--amber);
+    background: var(--apricot);
     color: var(--charcoal);
   }
 
   :where(a, button, input, select, textarea, [tabindex]):focus-visible {
-    outline: 2px solid var(--amber);
+    outline: 2px solid var(--apricot);
     outline-offset: 2px;
     border-radius: 2px;
   }
 
   /* Scrollbar, dark-surface aware. Cosmetic only. */
   * {
-    scrollbar-color: var(--sand-deep) transparent;
+    scrollbar-color: var(--chalk-deep) transparent;
   }
 }
 
@@ -186,35 +186,54 @@
     inset: 0;
     pointer-events: none;
     background-image:
-      radial-gradient(1.5px 1.5px at 12% 22%, rgb(240 220 178 / 0.55), transparent),
-      radial-gradient(1.5px 1.5px at 78% 14%, rgb(240 220 178 / 0.4), transparent),
+      radial-gradient(1.5px 1.5px at 12% 22%, rgb(240 205 175 / 0.55), transparent),
+      radial-gradient(1.5px 1.5px at 78% 14%, rgb(240 205 175 / 0.4), transparent),
       radial-gradient(1px 1px at 34% 68%, rgb(255 255 255 / 0.35), transparent),
-      radial-gradient(1px 1px at 62% 46%, rgb(240 220 178 / 0.4), transparent),
+      radial-gradient(1px 1px at 62% 46%, rgb(240 205 175 / 0.4), transparent),
       radial-gradient(1.5px 1.5px at 88% 74%, rgb(255 255 255 / 0.25), transparent),
-      radial-gradient(1px 1px at 22% 88%, rgb(240 220 178 / 0.3), transparent);
+      radial-gradient(1px 1px at 22% 88%, rgb(240 205 175 / 0.3), transparent);
   }
 
-  /* The mihrab arch, used for hero frames and portraits. */
-  .arch {
-    border-radius: var(--arch);
+  /* --- The seal ----------------------------------------------------------
+     The signature shape, replacing the mihrab arch. Eight sides, cut from the
+     corners of a rectangle — the outline of the khatim star reduced to a
+     frame. clip-path cannot carry a border, so a bordered seal is two nested
+     elements: the outer one is the hairline, the inner one the content.
+  ------------------------------------------------------------------------ */
+  .seal {
+    --c: var(--seal-cut);
+    clip-path: polygon(
+      var(--c) 0,
+      calc(100% - var(--c)) 0,
+      100% var(--c),
+      100% calc(100% - var(--c)),
+      calc(100% - var(--c)) 100%,
+      var(--c) 100%,
+      0 calc(100% - var(--c)),
+      0 var(--c)
+    );
+  }
+  /* Small surfaces need a shallower cut or the shape eats the content. */
+  .seal-sm {
+    --c: 0.625rem;
   }
 
-  /* Hairline gold rule with a diamond at its centre — the section divider. */
-  .gilt-rule {
+  /* Section divider: a hairline with the star at its centre. */
+  .rule-mark {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.75rem;
   }
-  .gilt-rule::before,
-  .gilt-rule::after {
+  .rule-mark::before,
+  .rule-mark::after {
     content: "";
     height: 1px;
     width: clamp(2rem, 12vw, 6rem);
     background: linear-gradient(
       to right,
       transparent,
-      var(--amber),
+      var(--apricot),
       transparent
     );
   }

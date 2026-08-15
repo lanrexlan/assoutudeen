@@ -39,9 +39,9 @@ export default function AccountabilityPage() {
       />
 
       {/* --- Registration card ------------------------------------------ */}
-      <Section tone="sand" size="md">
+      <Section tone="chalk" size="md">
         <div className="reveal grid gap-6 lg:grid-cols-[1.2fr_1fr]">
-          <Card className="border-olive/20">
+          <Card className="border-oxblood/20">
             <div className="flex items-start gap-4">
               <Medallion>
                 <BadgeCheck aria-hidden="true" className="size-6" />
@@ -99,7 +99,7 @@ export default function AccountabilityPage() {
               {TRUSTEES.map((trustee) => (
                 <li
                   key={trustee.name}
-                  className="flex items-baseline justify-between gap-4 border-b border-sand-dark pb-3 last:border-0"
+                  className="flex items-baseline justify-between gap-4 border-b border-chalk-dark pb-3 last:border-0"
                 >
                   <span className="font-medium text-charcoal">{trustee.name}</span>
                   <span className="shrink-0 text-sm text-charcoal-muted">
@@ -134,10 +134,10 @@ export default function AccountabilityPage() {
               className="rounded-lg border border-white/12 bg-ink-raised p-6 text-center"
             >
               <p className="font-display text-lg text-white">{year.year}</p>
-              <p className="mt-2 font-display text-2xl text-amber">
+              <p className="mt-2 font-display text-2xl text-apricot">
                 {formatKobo(year.raisedKobo)}
               </p>
-              <p className="mt-2 text-sm text-sand/65">
+              <p className="mt-2 text-sm text-chalk/65">
                 {year.beneficiaries
                   ? `${year.beneficiaries} beneficiaries`
                   : "beneficiary count to confirm"}
@@ -174,7 +174,7 @@ export default function AccountabilityPage() {
       </Section>
 
       {/* --- Reports, spending, bank ------------------------------------- */}
-      <Section tone="sand" size="lg">
+      <Section tone="chalk" size="lg">
         <Prose>
           <h2>Annual reports</h2>
           <p>

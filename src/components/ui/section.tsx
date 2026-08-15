@@ -5,12 +5,12 @@ import { Kicker, OrnamentField, Starfield } from "@/components/ui/ornament";
 type SectionProps = React.ComponentProps<"section"> & {
   /**
    * Background treatment.
-   *  sand     the default page ground
+   *  chalk     the default page ground
    *  white    a raised, quieter band
    *  primary  the site accent
    *  ink      the deepest surface, with starfield and geometry
    */
-  tone?: "sand" | "white" | "primary" | "ink";
+  tone?: "chalk" | "white" | "primary" | "ink";
   width?: React.ComponentProps<typeof Container>["width"];
   contained?: boolean;
   /** Add the contained geometric ornament behind the content. */
@@ -19,10 +19,10 @@ type SectionProps = React.ComponentProps<"section"> & {
 };
 
 const tones = {
-  sand: "bg-sand text-charcoal",
+  chalk: "bg-chalk text-charcoal",
   white: "bg-white text-charcoal",
   primary: "bg-primary text-on-primary",
-  ink: "bg-ink text-sand",
+  ink: "bg-ink text-chalk",
 } as const;
 
 const sizes = {
@@ -33,7 +33,7 @@ const sizes = {
 
 export function Section({
   className,
-  tone = "sand",
+  tone = "chalk",
   width = "default",
   contained = true,
   ornament = false,
@@ -50,7 +50,7 @@ export function Section({
     >
       {ornament ? (
         <>
-          <OrnamentField tone={dark ? "gold" : "dark"} />
+          <OrnamentField tone={dark ? "accent" : "dark"} />
           {tone === "ink" ? <Starfield /> : null}
         </>
       ) : null}
@@ -62,7 +62,7 @@ export function Section({
 }
 
 /**
- * Centred section heading: kicker, title, standfirst, gold rule. This is the
+ * Centred section heading: kicker, title, standfirst, accent rule. This is the
  * rhythm that repeats down every page.
  */
 export function SectionHeading({
@@ -77,7 +77,7 @@ export function SectionHeading({
   title: string;
   standfirst?: string;
   align?: "start" | "center";
-  /** `light` for sand and white bands, `dark` for ink and primary. */
+  /** `light` for chalk and white bands, `dark` for ink and primary. */
   tone?: "light" | "dark";
   className?: string;
 }) {
@@ -102,7 +102,7 @@ export function SectionHeading({
         <p
           className={cn(
             "mt-4 text-base leading-relaxed sm:text-lg",
-            tone === "dark" ? "text-sand/80" : "text-charcoal-muted",
+            tone === "dark" ? "text-chalk/80" : "text-charcoal-muted",
           )}
         >
           {standfirst}

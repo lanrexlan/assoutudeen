@@ -36,27 +36,27 @@ export async function SiteHeader({
   return (
     <header className="relative z-50">
       {/* Utility strip */}
-      <div className="border-b border-white/10 bg-ink text-sand/75">
+      <div className="border-b border-white/10 bg-ink text-chalk/75">
         <Container>
           <div className="flex flex-wrap items-center gap-x-6 py-1 text-sm">
             <a
               href={`tel:+${CONTACT.phoneE164}`}
-              className="flex min-h-11 items-center gap-2 hover:text-amber"
+              className="flex min-h-11 items-center gap-2 hover:text-apricot"
             >
-              <Phone aria-hidden="true" className="size-3.5 text-amber" />
+              <Phone aria-hidden="true" className="size-3.5 text-apricot" />
               {CONTACT.phoneDisplay}
             </a>
             <a
               href={`mailto:${CONTACT.email}`}
-              className="hidden min-h-11 items-center gap-2 hover:text-amber sm:flex"
+              className="hidden min-h-11 items-center gap-2 hover:text-apricot sm:flex"
             >
-              <Mail aria-hidden="true" className="size-3.5 text-amber" />
+              <Mail aria-hidden="true" className="size-3.5 text-apricot" />
               {CONTACT.email}
             </a>
             {isSubsidiary ? (
-              <FoundationLink className="ms-auto text-sand/75 hover:text-amber" />
+              <FoundationLink className="ms-auto text-chalk/75 hover:text-apricot" />
             ) : (
-              <p className="ms-auto hidden min-h-11 items-center text-sand/60 lg:flex">
+              <p className="ms-auto hidden min-h-11 items-center text-chalk/60 lg:flex">
                 Ede, Osun State · Nigeria
               </p>
             )}
@@ -84,7 +84,7 @@ export async function SiteHeader({
                     <span className="block font-brand text-xl font-extrabold uppercase tracking-[0.06em] text-white">
                       {config.shortName}
                     </span>
-                    <span className="mt-1.5 block font-brand text-[0.62rem] font-medium leading-tight tracking-[0.04em] text-sand/75">
+                    <span className="mt-1.5 block font-brand text-[0.62rem] font-medium leading-tight tracking-[0.04em] text-chalk/75">
                       {site === "dawah"
                         ? "Assoutudeen Dawah Institute"
                         : "Assoutudeen Honey Enterprise"}
@@ -101,7 +101,7 @@ export async function SiteHeader({
                     <Link
                       href={item.href}
                       className={cn(
-                        "relative flex min-h-11 items-center rounded-full px-3.5 text-sm text-sand/85",
+                        "relative flex min-h-11 items-center rounded-full px-3.5 text-sm text-chalk/85",
                         "transition-colors hover:bg-white/10 hover:text-white",
                       )}
                     >
@@ -127,7 +127,7 @@ export async function SiteHeader({
   );
 }
 
-/** The foundation's Donate button — amber, always visible, never in the menu. */
+/** The foundation's Donate button — apricot, always visible, never in the menu. */
 export function DonateAction({ href }: { href: string }) {
   return (
     <Button asChild variant="donate" className="shrink-0">

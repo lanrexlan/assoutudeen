@@ -17,7 +17,7 @@ export function BankDetails({ className }: { className?: string }) {
       {BANK_ACCOUNTS.map((account, index) => (
         <Card key={account.accountNumber} className="reveal">
           <div className="flex items-center gap-3">
-            <Medallion tone={index === 0 ? "gold" : "outline"} className="size-11">
+            <Medallion tone={index === 0 ? "accent" : "outline"} className="size-11">
               {index === 0 ? (
                 <Building2 aria-hidden="true" className="size-5" />
               ) : (
@@ -40,7 +40,7 @@ export function BankDetails({ className }: { className?: string }) {
               <dt className="text-xs uppercase tracking-widest text-charcoal-muted">
                 Account number
               </dt>
-              <dd className="mt-0.5 font-mono text-lg font-semibold tracking-[0.15em] text-olive">
+              <dd className="mt-0.5 font-mono text-lg font-semibold tracking-[0.15em] text-oxblood">
                 {account.accountNumber}
               </dd>
             </div>
@@ -55,7 +55,7 @@ export function BankDetails({ className }: { className?: string }) {
                 <dt className="text-xs uppercase tracking-widest text-charcoal-muted">
                   SWIFT code
                 </dt>
-                <dd className="mt-0.5 font-mono text-base font-semibold tracking-[0.12em] text-olive">
+                <dd className="mt-0.5 font-mono text-base font-semibold tracking-[0.12em] text-oxblood">
                   {account.swift}
                 </dd>
               </div>

@@ -25,8 +25,8 @@ export default async function HoneyHomePage() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-ink text-sand">
-        <OrnamentField tone="gold" />
+      <section className="relative overflow-hidden bg-ink text-chalk">
+        <OrnamentField tone="accent" />
         <Starfield />
         <div
           aria-hidden="true"
@@ -38,11 +38,11 @@ export default async function HoneyHomePage() {
             <h1 className="mt-5 font-display text-4xl leading-[1.1] text-white sm:text-5xl">
               Pure honey, sold by the litre
             </h1>
-            <p className="mt-6 text-lg leading-relaxed text-sand/85">
+            <p className="mt-6 text-lg leading-relaxed text-chalk/85">
               Retail and wholesale, delivered across Nigeria. The trading arm of the
               Assoutudeen Prophetic Medicine Foundation.
             </p>
-            <span aria-hidden="true" className="mx-auto mt-8 block h-0.5 w-16 rounded-full bg-amber" />
+            <span aria-hidden="true" className="mx-auto mt-8 block h-0.5 w-16 rounded-full bg-apricot" />
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <Button asChild variant="donate" size="lg">
                 <Link href={href("/shop")}>Shop honey</Link>
@@ -55,7 +55,7 @@ export default async function HoneyHomePage() {
         </Container>
       </section>
 
-      <Section tone="sand" size="lg" ornament>
+      <Section tone="chalk" size="lg" ornament>
         <SectionHeading
           kicker="Why buy from us"
           title="Honey you can actually trace"
@@ -83,7 +83,7 @@ export default async function HoneyHomePage() {
               href: "/shop",
             },
           ].map(({ icon: Icon, ...item }) => (
-            <Card key={item.title} variant="arch" className="reveal items-center">
+            <Card key={item.title} variant="seal" className="reveal items-center">
               <Medallion className="mx-auto">
                 <Icon aria-hidden="true" className="size-6" />
               </Medallion>
@@ -91,7 +91,7 @@ export default async function HoneyHomePage() {
               <CardDescription>{item.body}</CardDescription>
               <Link
                 href={href(item.href)}
-                className="mt-auto inline-flex min-h-11 items-center text-sm font-semibold text-amber-dark underline-offset-4 hover:underline"
+                className="mt-auto inline-flex min-h-11 items-center text-sm font-semibold text-apricot-dark underline-offset-4 hover:underline"
               >
                 Read more
               </Link>

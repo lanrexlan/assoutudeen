@@ -20,12 +20,12 @@ export function Prose({ className, ...props }: React.ComponentProps<"div">) {
         // a bullet or a dash.
         "[&_ul>li]:relative [&_ul>li]:ps-8",
         "[&_ul>li]:before:absolute [&_ul>li]:before:start-0 [&_ul>li]:before:top-[0.35em]",
-        "[&_ul>li]:before:size-4 [&_ul>li]:before:bg-amber [&_ul>li]:before:content-['']",
+        "[&_ul>li]:before:size-4 [&_ul>li]:before:bg-apricot [&_ul>li]:before:content-['']",
         "[&_ul>li]:before:[mask-image:var(--star-mask)] [&_ul>li]:before:[mask-size:contain]",
         "[&_ul>li]:before:[mask-repeat:no-repeat] [&_ul>li]:before:[mask-position:center]",
         "[&_ol]:mb-5 [&_ol]:list-decimal [&_ol]:ps-6 [&_ol]:space-y-2.5",
         "[&_ol>li]:ps-1 [&_ol]:marker:font-display [&_ol]:marker:text-primary",
-        "[&_a]:font-medium [&_a]:text-primary [&_a]:underline [&_a]:underline-offset-4 [&_a]:decoration-amber [&_a]:decoration-2 hover:[&_a]:decoration-primary",
+        "[&_a]:font-medium [&_a]:text-primary [&_a]:underline [&_a]:underline-offset-4 [&_a]:decoration-apricot [&_a]:decoration-2 hover:[&_a]:decoration-primary",
         "[&_strong]:font-semibold [&_strong]:text-charcoal",
         "[&_em]:italic",
         className,
@@ -37,7 +37,7 @@ export function Prose({ className, ...props }: React.ComponentProps<"div">) {
 
 /**
  * The page hero used by every interior page: deep ink ground, contained
- * geometry, kicker, display title, standfirst, gold rule.
+ * geometry, kicker, display title, standfirst, accent rule.
  */
 export function PageHeader({
   eyebrow,
@@ -52,10 +52,10 @@ export function PageHeader({
   children?: React.ReactNode;
 }) {
   return (
-    <section className="relative overflow-hidden bg-ink py-16 text-sand sm:py-20">
-      <OrnamentField tone="gold" />
+    <section className="relative overflow-hidden bg-ink py-16 text-chalk sm:py-20">
+      <OrnamentField tone="accent" />
       <Starfield />
-      {/* A single arch of light behind the title, echoing the mihrab. */}
+      {/* A single seal of light behind the title, echoing the mihrab. */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute left-1/2 top-0 h-72 w-[36rem] -translate-x-1/2 rounded-b-[50%] bg-[radial-gradient(ellipse_at_top,rgba(217,164,65,0.16),transparent_70%)]"
@@ -67,11 +67,11 @@ export function PageHeader({
             {title}
           </h1>
           {standfirst ? (
-            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-sand/85">
+            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-chalk/85">
               {standfirst}
             </p>
           ) : null}
-          <span aria-hidden="true" className="mt-7 block h-0.5 w-16 rounded-full bg-amber" />
+          <span aria-hidden="true" className="mt-7 block h-0.5 w-16 rounded-full bg-apricot" />
           {children ? <div className="mt-7">{children}</div> : null}
         </div>
       </Container>

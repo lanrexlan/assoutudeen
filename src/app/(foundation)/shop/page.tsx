@@ -3,7 +3,7 @@ import Link from "next/link";
 import { BookOpenText, GraduationCap, MessageCircle, Sprout } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
-import { ArchFrame, Medallion } from "@/components/ui/ornament";
+import { SealFrame, Medallion } from "@/components/ui/ornament";
 import { BookScene } from "@/components/ui/illustration";
 import { PageHeader, Prose } from "@/components/ui/prose";
 import { Section, SectionHeading } from "@/components/ui/section";
@@ -29,12 +29,12 @@ export default function ShopPage() {
       />
 
       {/* --- The book ------------------------------------------------------ */}
-      <Section tone="sand" size="lg">
+      <Section tone="chalk" size="lg">
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1fr] lg:items-center">
           <figure className="reveal mx-auto w-full max-w-sm">
-            <ArchFrame className="aspect-3/4 w-full">
+            <SealFrame className="aspect-3/4 w-full">
               <BookScene title={BOOK.title} />
-            </ArchFrame>
+            </SealFrame>
 
           </figure>
 
@@ -62,7 +62,7 @@ export default function ShopPage() {
               </ul>
             </Prose>
 
-            <div className="mt-8 rounded-lg border border-sand-dark bg-white p-5">
+            <div className="mt-8 rounded-lg border border-chalk-dark bg-white p-5">
               <p className="text-sm text-charcoal-muted">Price and formats</p>
               <p className="mt-2 leading-relaxed text-charcoal">
                 Printed in Ede in limited runs, so the price moves with the print
@@ -101,12 +101,12 @@ export default function ShopPage() {
           {BOOK.remedySample.map((remedy) => (
             <li
               key={remedy}
-              className="rounded-full border border-white/15 bg-ink-raised px-4 py-2 text-sm text-sand/85"
+              className="rounded-full border border-white/15 bg-ink-raised px-4 py-2 text-sm text-chalk/85"
             >
               {remedy}
             </li>
           ))}
-          <li className="rounded-full border border-amber/40 bg-amber/10 px-4 py-2 text-sm text-amber">
+          <li className="rounded-full border border-apricot/40 bg-apricot/10 px-4 py-2 text-sm text-apricot">
             and more
           </li>
         </ul>
@@ -146,7 +146,7 @@ export default function ShopPage() {
               external: false,
             },
           ].map(({ icon: Icon, ...item }) => (
-            <Card key={item.title} variant="arch" className="reveal items-center">
+            <Card key={item.title} variant="seal" className="reveal items-center">
               <Medallion className="mx-auto">
                 <Icon aria-hidden="true" className="size-6" />
               </Medallion>
@@ -155,14 +155,14 @@ export default function ShopPage() {
               {item.external ? (
                 <a
                   href={item.href}
-                  className="mt-auto inline-flex min-h-11 items-center text-sm font-semibold text-olive underline-offset-4 hover:underline"
+                  className="mt-auto inline-flex min-h-11 items-center text-sm font-semibold text-oxblood underline-offset-4 hover:underline"
                 >
                   {item.cta}
                 </a>
               ) : (
                 <Link
                   href={item.href}
-                  className="mt-auto inline-flex min-h-11 items-center text-sm font-semibold text-olive underline-offset-4 hover:underline"
+                  className="mt-auto inline-flex min-h-11 items-center text-sm font-semibold text-oxblood underline-offset-4 hover:underline"
                 >
                   {item.cta}
                 </Link>
@@ -172,7 +172,7 @@ export default function ShopPage() {
         </div>
 
         <p className="mt-12 flex items-center justify-center gap-3 text-sm text-charcoal-muted">
-          <BookOpenText aria-hidden="true" className="size-4 text-amber" />
+          <BookOpenText aria-hidden="true" className="size-4 text-apricot" />
           Written by {BOOK.author}.
         </p>
       </Section>

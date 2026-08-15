@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#D9A441",
+  themeColor: "#E0A06A",
   width: "device-width",
   initialScale: 1,
 };
@@ -30,7 +30,7 @@ export default function HoneyLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en-NG" data-site="honey">
-      <body className={`${fontVariables} flex min-h-dvh flex-col bg-sand antialiased`}>
+      <body className={`${fontVariables} flex min-h-dvh flex-col bg-chalk antialiased`}>
         <HoneyHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter site="honey" />

@@ -109,7 +109,7 @@ export function BrandLockup({
         <span
           className={cn(
             "block font-brand text-xl font-extrabold uppercase tracking-[0.06em]",
-            tone === "reversed" ? "text-white" : "text-olive",
+            tone === "reversed" ? "text-white" : "text-oxblood",
           )}
         >
           APMF
@@ -118,7 +118,7 @@ export function BrandLockup({
           <span
             className={cn(
               "mt-1.5 block font-brand text-[0.62rem] font-medium leading-tight tracking-[0.04em]",
-              tone === "reversed" ? "text-sand/75" : "text-charcoal-muted",
+              tone === "reversed" ? "text-chalk/75" : "text-charcoal-muted",
             )}
           >
             Assoutudeen Prophetic Medicine Foundation

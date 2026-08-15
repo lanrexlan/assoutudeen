@@ -51,16 +51,25 @@ middleware.ts
 ## Design tokens
 
 ```
---olive #2F5D3A  foundation primary
---amber #D9A441  honey / donate accent
---teal  #123B35  dawah primary, footers
---sand  #F7F3EA  backgrounds
---charcoal #2B2B2B  body text
+--oxblood  #6B2233  foundation primary
+--sage     #7E8B7A  dawah primary (text grade: --sage-dark #55614F)
+--apricot  #E0A06A  honey / donate accent
+--chalk    #F4F1EC  backgrounds
+--ink      #24101A  hero and footer ground
+--charcoal #2B2529  body text
 ```
 
-Fonts: Inter (body) · Fraunces or Lora (headings) · **Noto Naskh Arabic** (Qur'an/hadith),
-self-hosted and subset. WCAG 2.1 AA — amber fails contrast on white for small text; use it
-only for solid buttons with dark text.
+Deliberately not olive-and-gold — every other charity site is. Do not reintroduce them.
+
+Fonts: Manrope (body) · Petrona (headings) · Montserrat (logo wordmark only, per the brand
+guide) · **Noto Naskh Arabic** (Qur'an/hadith), all self-hosted and subset. WCAG 2.1 AA —
+apricot fails contrast on white for small text; use it only for solid buttons with dark
+text, hairlines and focus rings. Sage is likewise too light for body copy; sage-dark is the
+text grade.
+
+Signature shape: **the seal** — an eight-sided cut-corner frame taken from the khatim star
+(`.seal` in globals.css). It replaced the mihrab arch. clip-path cuts a border away at the
+diagonals, so a bordered seal is a 1px parent behind an inset child.
 
 Never: mosque-silhouette backgrounds, gold gradient text, tiled arabesque wallpaper,
 autoplay audio, carousels.

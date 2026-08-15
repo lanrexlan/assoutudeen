@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CalendarClock, Coins, Users } from "lucide-react";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
-import { ArchFrame, Medallion } from "@/components/ui/ornament";
+import { SealFrame, Medallion } from "@/components/ui/ornament";
 import { GivingScene } from "@/components/ui/illustration";
 import { PageHeader } from "@/components/ui/prose";
 import { Section } from "@/components/ui/section";
@@ -23,16 +23,16 @@ export default function JoinFundPage() {
         standfirst="A monthly contribution — whatever is steady for you. It is the reason we can answer a case in the week it arrives instead of opening an appeal and hoping."
       />
 
-      <Section tone="sand" size="lg">
+      <Section tone="chalk" size="lg">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="rounded-xl border border-sand-dark bg-white p-6 shadow-sm sm:p-8">
+          <div className="rounded-xl border border-chalk-dark bg-white p-6 shadow-sm sm:p-8">
             <PledgeForm />
           </div>
 
           <aside className="space-y-5">
-            <ArchFrame className="aspect-square w-full max-w-xs">
+            <SealFrame className="aspect-square w-full max-w-xs">
               <GivingScene />
-            </ArchFrame>
+            </SealFrame>
 
             {[
               {
@@ -66,14 +66,14 @@ export default function JoinFundPage() {
               Looking for a one-off gift instead?{" "}
               <Link
                 href="/donate"
-                className="font-medium text-olive underline decoration-amber decoration-2 underline-offset-4"
+                className="font-medium text-oxblood underline decoration-apricot decoration-2 underline-offset-4"
               >
                 Donate once
               </Link>
               . Need help rather than wanting to give?{" "}
               <Link
                 href="/empowerment/request"
-                className="font-medium text-olive underline decoration-amber decoration-2 underline-offset-4"
+                className="font-medium text-oxblood underline decoration-apricot decoration-2 underline-offset-4"
               >
                 Request assistance
               </Link>

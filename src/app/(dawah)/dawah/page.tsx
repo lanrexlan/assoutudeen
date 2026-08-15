@@ -30,8 +30,8 @@ export default async function DawahHomePage() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-ink text-sand">
-        <OrnamentField tone="gold" />
+      <section className="relative overflow-hidden bg-ink text-chalk">
+        <OrnamentField tone="accent" />
         <Starfield />
         <div
           aria-hidden="true"
@@ -43,13 +43,13 @@ export default async function DawahHomePage() {
             <h1 className="mt-5 font-display text-4xl leading-[1.1] text-white sm:text-5xl">
               Friday to Sunday, between Maghrib and Isha
             </h1>
-            <p className="mt-6 text-lg leading-relaxed text-sand/85">
+            <p className="mt-6 text-lg leading-relaxed text-chalk/85">
               Seven classes across three evenings, taught in Ede. Free, open, and
               recorded — so a missed week is never a lost one.
             </p>
             <span
               aria-hidden="true"
-              className="mx-auto mt-8 block h-0.5 w-16 rounded-full bg-amber"
+              className="mx-auto mt-8 block h-0.5 w-16 rounded-full bg-apricot"
             />
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <Button asChild variant="donate" size="lg">
@@ -64,7 +64,7 @@ export default async function DawahHomePage() {
       </section>
 
       {/* --- The week ------------------------------------------------------ */}
-      <Section tone="sand" size="lg" ornament>
+      <Section tone="chalk" size="lg" ornament>
         <SectionHeading
           kicker="The teaching week"
           title="Three evenings, seven classes"
@@ -76,7 +76,7 @@ export default async function DawahHomePage() {
             const classes = PROGRAMMES.filter((p) => p.day === day);
             return (
               <div key={day} className="reveal">
-                <div className="flex items-center gap-3 border-b border-sand-dark pb-3">
+                <div className="flex items-center gap-3 border-b border-chalk-dark pb-3">
                   <Medallion tone="soft" className="size-11">
                     <CalendarDays aria-hidden="true" className="size-5" />
                   </Medallion>
@@ -86,9 +86,9 @@ export default async function DawahHomePage() {
                   {classes.map((programme) => (
                     <li
                       key={programme.slug}
-                      className="rounded-lg border border-sand-dark bg-white p-5 shadow-sm"
+                      className="rounded-lg border border-chalk-dark bg-white p-5 shadow-sm"
                     >
-                      <p className="text-xs font-semibold uppercase tracking-widest text-teal">
+                      <p className="text-xs font-semibold uppercase tracking-widest text-sage">
                         {programme.cadence}
                       </p>
                       <p className="mt-2 font-display text-lg">{programme.title}</p>
@@ -114,24 +114,24 @@ export default async function DawahHomePage() {
           <h2 className="mt-6 font-display text-3xl text-white">
             {EMPOWERMENT_PROGRAMME.title}
           </h2>
-          <p className="mt-4 leading-relaxed text-sand/85">
+          <p className="mt-4 leading-relaxed text-chalk/85">
             {EMPOWERMENT_PROGRAMME.description}
           </p>
           <dl className="mt-8 flex flex-wrap justify-center gap-x-10 gap-y-4 text-sm">
             <div>
-              <dt className="text-sand/55">When</dt>
-              <dd className="mt-1 font-medium text-amber">
+              <dt className="text-chalk/55">When</dt>
+              <dd className="mt-1 font-medium text-apricot">
                 {EMPOWERMENT_PROGRAMME.cadence}
               </dd>
             </div>
             <div>
-              <dt className="text-sand/55">Time</dt>
-              <dd className="mt-1 font-medium text-amber">
+              <dt className="text-chalk/55">Time</dt>
+              <dd className="mt-1 font-medium text-apricot">
                 {EMPOWERMENT_PROGRAMME.time}
               </dd>
             </div>
           </dl>
-          <p className="mt-6 text-sm text-sand/60">
+          <p className="mt-6 text-sm text-chalk/60">
             This is the foundation&apos;s gathering rather than a class — the fund&apos;s
             work is reported and distributed there, alongside a lecture.
           </p>
@@ -163,7 +163,7 @@ export default async function DawahHomePage() {
               cta: "Add to calendar",
             },
           ].map(({ icon: Icon, ...item }) => (
-            <Card key={item.title} variant="arch" className="reveal items-center">
+            <Card key={item.title} variant="seal" className="reveal items-center">
               <Medallion className="mx-auto">
                 <Icon aria-hidden="true" className="size-6" />
               </Medallion>
@@ -171,7 +171,7 @@ export default async function DawahHomePage() {
               <CardDescription>{item.body}</CardDescription>
               <Link
                 href={href(item.href)}
-                className="mt-auto inline-flex min-h-11 items-center text-sm font-semibold text-teal underline-offset-4 hover:underline"
+                className="mt-auto inline-flex min-h-11 items-center text-sm font-semibold text-sage underline-offset-4 hover:underline"
               >
                 {item.cta}
               </Link>

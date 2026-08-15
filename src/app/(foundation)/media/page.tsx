@@ -47,7 +47,7 @@ export default function MediaPage() {
         return (
           <Section
             key={category.key}
-            tone={index % 2 === 0 ? "sand" : "white"}
+            tone={index % 2 === 0 ? "chalk" : "white"}
             size="lg"
             ornament={index % 2 === 0}
           >
@@ -64,14 +64,14 @@ export default function MediaPage() {
                     href={lecture.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="lift flex h-full flex-col gap-3 rounded-xl border border-sand-dark bg-white p-5 shadow-sm hover:border-amber"
+                    className="lift flex h-full flex-col gap-3 rounded-xl border border-chalk-dark bg-white p-5 shadow-sm hover:border-apricot"
                   >
                     <div className="flex items-center gap-3">
                       <Medallion tone="soft" className="size-11">
                         <PlayCircle aria-hidden="true" className="size-5" />
                       </Medallion>
                       {lecture.series ? (
-                        <span className="text-xs font-semibold uppercase tracking-widest text-amber-dark">
+                        <span className="text-xs font-semibold uppercase tracking-widest text-apricot-dark">
                           {lecture.series}
                         </span>
                       ) : null}
@@ -82,7 +82,7 @@ export default function MediaPage() {
                     {lecture.lecturer ? (
                       <p className="text-sm text-charcoal-muted">{lecture.lecturer}</p>
                     ) : null}
-                    <span className="mt-auto inline-flex items-center gap-1.5 pt-2 text-sm font-semibold text-olive">
+                    <span className="mt-auto inline-flex items-center gap-1.5 pt-2 text-sm font-semibold text-oxblood">
                       Watch
                       <ExternalLink aria-hidden="true" className="size-3.5" />
                     </span>
@@ -98,7 +98,7 @@ export default function MediaPage() {
                   href={FACEBOOK_PAGE}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-medium text-olive underline decoration-amber decoration-2 underline-offset-4"
+                  className="font-medium text-oxblood underline decoration-apricot decoration-2 underline-offset-4"
                 >
                   see them all
                 </a>
@@ -110,7 +110,7 @@ export default function MediaPage() {
       })}
 
       {/* --- Why they are links -------------------------------------------- */}
-      <Section tone="sand" size="md">
+      <Section tone="chalk" size="md">
         <p className="mx-auto max-w-2xl text-center text-sm leading-relaxed text-charcoal-muted">
           Recordings open on Facebook rather than playing here. Embedding the player
           would load third-party scripts and cookies on every visit, which costs
@@ -145,18 +145,18 @@ export default function MediaPage() {
                 key={term}
                 className="rounded-lg border border-white/12 bg-ink-raised p-4"
               >
-                <p className="text-xs uppercase tracking-widest text-amber">{term}</p>
-                <p className="mt-1 text-sm text-sand/85">{value}</p>
+                <p className="text-xs uppercase tracking-widest text-apricot">{term}</p>
+                <p className="mt-1 text-sm text-chalk/85">{value}</p>
               </li>
             ))}
           </ul>
 
-          <p className="mt-8 text-center text-sm text-sand/60">
+          <p className="mt-8 text-center text-sm text-chalk/60">
             Logo files for press use — stacked, horizontal, icon-only, reversed and
             one-ink — are in{" "}
             <a
               href="/brand/apmf_logo_variant_preview.jpg"
-              className="font-medium text-amber underline decoration-amber decoration-2 underline-offset-4"
+              className="font-medium text-apricot underline decoration-apricot decoration-2 underline-offset-4"
             >
               the logo pack
             </a>

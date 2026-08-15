@@ -110,15 +110,15 @@ export default function AboutPage() {
             <li key={object} className="flex gap-4">
               <span
                 aria-hidden="true"
-                className="mt-0.5 font-display text-sm text-amber"
+                className="mt-0.5 font-display text-sm text-apricot"
               >
                 {String(index + 1).padStart(2, "0")}
               </span>
-              <span className="text-sm leading-relaxed text-sand/85">{object}</span>
+              <span className="text-sm leading-relaxed text-chalk/85">{object}</span>
             </li>
           ))}
         </ol>
-        <p className="mx-auto mt-10 max-w-2xl text-sm leading-relaxed text-sand/60">
+        <p className="mx-auto mt-10 max-w-2xl text-sm leading-relaxed text-chalk/60">
           These are the objects as filed with the Corporate Affairs Commission on{" "}
           {REGISTRATION.incorporatedOnDisplay}. They describe what the foundation is
           registered to do, not a claim about what any food or remedy can cure.

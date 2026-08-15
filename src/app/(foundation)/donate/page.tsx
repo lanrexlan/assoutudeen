@@ -53,7 +53,7 @@ export default function DonatePage() {
       />
 
       {/* --- Amounts ------------------------------------------------------- */}
-      <Section tone="sand" size="lg">
+      <Section tone="chalk" size="lg">
         <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr]">
           <div>
             <SectionHeading
@@ -66,14 +66,14 @@ export default function DonatePage() {
             <ul className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
               {AMOUNTS.map((amount) => (
                 <li key={amount}>
-                  <span className="flex min-h-16 items-center justify-center rounded-lg border border-sand-dark bg-white font-display text-lg shadow-sm">
+                  <span className="flex min-h-16 items-center justify-center rounded-lg border border-chalk-dark bg-white font-display text-lg shadow-sm">
                     ₦{amount.toLocaleString("en-NG")}
                   </span>
                 </li>
               ))}
             </ul>
 
-            <div className="mt-6 rounded-lg border border-amber/40 bg-amber/10 p-5 text-sm leading-relaxed text-charcoal">
+            <div className="mt-6 rounded-lg border border-apricot/40 bg-apricot/10 p-5 text-sm leading-relaxed text-charcoal">
               <p className="font-semibold">Card checkout is not live yet.</p>
               <p className="mt-1 text-charcoal-muted">
                 Paystack is being wired up with a signed, verified webhook, because a
@@ -111,7 +111,7 @@ export default function DonatePage() {
               </CardDescription>
               <Link
                 href="/about/accountability"
-                className="inline-flex min-h-11 items-center text-sm font-semibold text-olive underline-offset-4 hover:underline"
+                className="inline-flex min-h-11 items-center text-sm font-semibold text-oxblood underline-offset-4 hover:underline"
               >
                 Read the accounts
               </Link>
@@ -130,7 +130,7 @@ export default function DonatePage() {
 
         <div className="mt-12 grid gap-6 sm:grid-cols-3">
           {PURPOSES.map(({ icon: Icon, ...purpose }) => (
-            <Card key={purpose.title} variant="arch" className="reveal items-center">
+            <Card key={purpose.title} variant="seal" className="reveal items-center">
               <Medallion className="mx-auto">
                 <Icon aria-hidden="true" className="size-6" />
               </Medallion>
@@ -148,7 +148,7 @@ export default function DonatePage() {
         </div>
       </Section>
 
-      <Section tone="sand" size="md">
+      <Section tone="chalk" size="md">
         <Prose className="mx-auto">
           <h2>A note on receipts</h2>
           <p>

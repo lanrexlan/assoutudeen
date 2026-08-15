@@ -22,7 +22,7 @@ export function IntakeNotice({ className }: { className?: string }) {
     return (
       <div
         className={cn(
-          "rounded-xl border border-sand-dark bg-white p-6 shadow-sm",
+          "rounded-xl border border-chalk-dark bg-white p-6 shadow-sm",
           className,
         )}
       >
@@ -41,7 +41,7 @@ export function IntakeNotice({ className }: { className?: string }) {
           href={whatsappHref}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-4 inline-flex min-h-11 items-center gap-2 font-semibold text-olive underline decoration-amber decoration-2 underline-offset-4"
+          className="mt-4 inline-flex min-h-11 items-center gap-2 font-semibold text-oxblood underline decoration-apricot decoration-2 underline-offset-4"
         >
           <MessageCircle aria-hidden="true" className="size-4" />
           Message us on WhatsApp
@@ -57,12 +57,12 @@ export function IntakeNotice({ className }: { className?: string }) {
     <div
       className={cn(
         "rounded-xl border p-6 shadow-sm",
-        open ? "border-olive/30 bg-olive-tint" : "border-sand-dark bg-white",
+        open ? "border-oxblood/30 bg-oxblood-tint" : "border-chalk-dark bg-white",
         className,
       )}
     >
       <div className="flex flex-wrap items-center gap-3">
-        <Medallion tone={open ? "gold" : "soft"} className="size-11">
+        <Medallion tone={open ? "accent" : "soft"} className="size-11">
           {open ? (
             <CalendarClock aria-hidden="true" className="size-5" />
           ) : (
@@ -77,7 +77,7 @@ export function IntakeNotice({ className }: { className?: string }) {
               : "This round has closed"}
         </p>
         {open && daysLeft !== null ? (
-          <span className="rounded-full bg-amber px-3 py-1 text-xs font-semibold uppercase tracking-widest text-charcoal">
+          <span className="rounded-full bg-apricot px-3 py-1 text-xs font-semibold uppercase tracking-widest text-charcoal">
             {daysLeft === 0
               ? "Last day"
               : `${daysLeft} day${daysLeft === 1 ? "" : "s"} left`}
@@ -138,7 +138,7 @@ export function IntakeNotice({ className }: { className?: string }) {
           href={whatsappHref}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-4 inline-flex min-h-11 items-center gap-2 font-semibold text-olive underline decoration-amber decoration-2 underline-offset-4"
+          className="mt-4 inline-flex min-h-11 items-center gap-2 font-semibold text-oxblood underline decoration-apricot decoration-2 underline-offset-4"
         >
           <MessageCircle aria-hidden="true" className="size-4" />
           Message us on WhatsApp

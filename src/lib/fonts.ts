@@ -1,8 +1,8 @@
 import {
-  Fraunces,
-  Inter,
+  Manrope,
   Montserrat,
   Noto_Naskh_Arabic,
+  Petrona,
 } from "next/font/google";
 
 /**
@@ -11,17 +11,21 @@ import {
  * the audience is on mid-range Android over patchy data.
  */
 
-export const inter = Inter({
+/** Body. Manrope rather than Inter: same legibility at 15px on a cheap
+ *  Android screen, without the look of every other site. */
+export const manrope = Manrope({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-inter",
+  variable: "--font-manrope",
 });
 
-export const fraunces = Fraunces({
+/** Headings. Petrona is a warm, slightly narrow text serif that holds its
+ *  colour against oxblood — where a didone would shatter at small sizes. */
+export const petrona = Petrona({
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "600", "700"],
-  variable: "--font-fraunces",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-petrona",
 });
 
 /**
@@ -45,8 +49,8 @@ export const notoNaskhArabic = Noto_Naskh_Arabic({
 });
 
 export const fontVariables = [
-  inter.variable,
-  fraunces.variable,
+  manrope.variable,
+  petrona.variable,
   montserrat.variable,
   notoNaskhArabic.variable,
 ].join(" ");

@@ -23,7 +23,7 @@ export function Disclaimer({
     <aside
       role="note"
       className={cn(
-        "rounded-md border border-sand-dark bg-sand p-4 text-sm leading-relaxed text-charcoal-muted",
+        "rounded-md border border-chalk-dark bg-chalk p-4 text-sm leading-relaxed text-charcoal-muted",
         className,
       )}
     >

@@ -14,15 +14,15 @@ function TestimonyCard({ testimony }: { testimony: Testimony }) {
   return (
     <figure
       className={cn(
-        "lift flex break-inside-avoid flex-col gap-4 rounded-xl border border-sand-dark bg-white p-6 shadow-sm",
+        "lift flex break-inside-avoid flex-col gap-4 rounded-xl border border-chalk-dark bg-white p-6 shadow-sm",
         "mb-6",
       )}
     >
-      <Quote aria-hidden="true" className="size-6 shrink-0 text-amber" />
+      <Quote aria-hidden="true" className="size-6 shrink-0 text-apricot" />
       <blockquote className="text-[0.975rem] leading-relaxed text-charcoal">
         {testimony.quote}
       </blockquote>
-      <figcaption className="mt-auto border-t border-sand-dark pt-4 text-sm">
+      <figcaption className="mt-auto border-t border-chalk-dark pt-4 text-sm">
         <span className="font-medium text-charcoal">{testimony.attribution}</span>
         <span className="text-charcoal-muted">
           {" "}
@@ -64,7 +64,7 @@ export function TestimonyDisclaimer({ className }: { className?: string }) {
   return (
     <p
       className={cn(
-        "mx-auto max-w-3xl rounded-lg border border-sand-dark bg-sand p-4 text-sm leading-relaxed text-charcoal-muted",
+        "mx-auto max-w-3xl rounded-lg border border-chalk-dark bg-chalk p-4 text-sm leading-relaxed text-charcoal-muted",
         className,
       )}
     >

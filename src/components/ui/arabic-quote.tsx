@@ -11,7 +11,7 @@ type ArabicQuoteProps = {
   /** Full citation, e.g. "Qur'an, At-Tawbah 9:105" or "Sahih al-Bukhari 5688". */
   source: string;
   className?: string;
-  /** `light` on sand and white grounds, `dark` on ink. */
+  /** `light` on chalk and white grounds, `dark` on ink. */
   tone?: "light" | "dark";
 };
 
@@ -30,14 +30,14 @@ export function ArabicQuote({
         "relative overflow-hidden rounded-xl p-6 sm:p-8",
         dark
           ? "border border-white/12 bg-ink-raised"
-          : "border border-sand-dark bg-white shadow-sm",
+          : "border border-chalk-dark bg-white shadow-sm",
         className,
       )}
     >
       {/* Gold rule down the leading edge — the frame of a manuscript page. */}
       <span
         aria-hidden="true"
-        className="absolute inset-y-0 start-0 w-1 bg-gradient-to-b from-amber/20 via-amber to-amber/20"
+        className="absolute inset-y-0 start-0 w-1 bg-gradient-to-b from-apricot/20 via-apricot to-apricot/20"
       />
 
       <p
@@ -45,7 +45,7 @@ export function ArabicQuote({
         lang="ar"
         className={cn(
           "font-arabic text-2xl leading-[2.1] sm:text-3xl sm:leading-[2.2]",
-          dark ? "text-sand" : "text-charcoal",
+          dark ? "text-chalk" : "text-charcoal",
         )}
       >
         {arabic}
@@ -55,14 +55,14 @@ export function ArabicQuote({
         aria-hidden="true"
         className={cn(
           "my-5 block h-px w-full",
-          dark ? "bg-white/12" : "bg-sand-dark",
+          dark ? "bg-white/12" : "bg-chalk-dark",
         )}
       />
 
       <blockquote
         className={cn(
           "text-base leading-relaxed",
-          dark ? "text-sand/85" : "text-charcoal",
+          dark ? "text-chalk/85" : "text-charcoal",
         )}
       >
         {translation}
@@ -70,7 +70,7 @@ export function ArabicQuote({
       <figcaption
         className={cn(
           "mt-3 text-sm",
-          dark ? "text-amber/90" : "text-charcoal-muted",
+          dark ? "text-apricot/90" : "text-charcoal-muted",
         )}
       >
         <cite className="not-italic">{source}</cite>

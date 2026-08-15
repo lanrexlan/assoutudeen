@@ -5,7 +5,7 @@ import { ArabicQuote } from "@/components/ui/arabic-quote";
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Disclaimer } from "@/components/ui/disclaimer";
-import { ArchFrame, Medallion } from "@/components/ui/ornament";
+import { SealFrame, Medallion } from "@/components/ui/ornament";
 import { RemedyScene } from "@/components/ui/illustration";
 import { PageHeader, Prose } from "@/components/ui/prose";
 import { Section, SectionHeading } from "@/components/ui/section";
@@ -32,7 +32,7 @@ export default function PropheticMedicinePage() {
       />
 
       {/* --- The two verses that frame it --------------------------------- */}
-      <Section tone="sand" size="lg">
+      <Section tone="chalk" size="lg">
         <div className="grid gap-6 lg:grid-cols-2">
           <ArabicQuote className="reveal" {...VERSES.shuara80} />
           <ArabicQuote className="reveal" {...VERSES.isra82} />
@@ -56,7 +56,7 @@ export default function PropheticMedicinePage() {
               <ul>
                 <li>
                   <strong>Prophetic medicine</strong> — the foods and remedies named in
-                  the Qur&apos;an and the Sunnah: honey, black seed, olive oil, dates,
+                  the Qur&apos;an and the Sunnah: honey, black seed, oxblood oil, dates,
                   zamzam, talbīna and the rest. What we teach and publish.
                 </li>
                 <li>
@@ -86,9 +86,9 @@ export default function PropheticMedicinePage() {
             </Prose>
           </div>
 
-          <ArchFrame className="reveal mx-auto aspect-3/4 w-full max-w-sm">
+          <SealFrame className="reveal mx-auto aspect-3/4 w-full max-w-sm">
             <RemedyScene />
-          </ArchFrame>
+          </SealFrame>
         </div>
       </Section>
 
@@ -107,22 +107,22 @@ export default function PropheticMedicinePage() {
               key={item}
               className="flex gap-4 rounded-lg border border-white/12 bg-ink-raised p-5"
             >
-              <span className="font-display text-sm text-amber">
+              <span className="font-display text-sm text-apricot">
                 {String(index + 1).padStart(2, "0")}
               </span>
-              <span className="text-sm leading-relaxed text-sand/80">{item}</span>
+              <span className="text-sm leading-relaxed text-chalk/80">{item}</span>
             </li>
           ))}
         </ol>
 
-        <p className="mx-auto mt-10 max-w-2xl text-center text-sm text-sand/60">
+        <p className="mx-auto mt-10 max-w-2xl text-center text-sm text-chalk/60">
           Ten to fifteen chapters are published free as the Remedies Library. The rest
           stay in the book, which is what keeps the library free.
         </p>
       </Section>
 
       {/* --- What is coming ------------------------------------------------ */}
-      <Section tone="sand" size="lg">
+      <Section tone="chalk" size="lg">
         <SectionHeading
           kicker="In preparation"
           title="The Remedies Library"
@@ -147,7 +147,7 @@ export default function PropheticMedicinePage() {
               body: "Ibn al-Qayyim's At-Tibb an-Nabawiyy, as quoted in the book, alongside composition and uses.",
             },
           ].map(({ icon: Icon, ...item }) => (
-            <Card key={item.title} variant="arch" className="reveal items-center">
+            <Card key={item.title} variant="seal" className="reveal items-center">
               <Medallion className="mx-auto">
                 <Icon aria-hidden="true" className="size-6" />
               </Medallion>
@@ -180,11 +180,11 @@ export default function PropheticMedicinePage() {
         <TestimonyWall className="mt-10" />
       </Section>
 
-      <Section tone="sand" size="md">
+      <Section tone="chalk" size="md">
         <div className="mx-auto max-w-3xl">
           <Disclaimer>
             <span className="flex items-start gap-3">
-              <Stethoscope aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-amber-dark" />
+              <Stethoscope aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-apricot-dark" />
               <span>
                 These pages are educational. They quote the Qur&apos;an, the Sunnah and
                 classical scholarship, and they make no claim that any food or remedy

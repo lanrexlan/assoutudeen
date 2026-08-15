@@ -53,8 +53,8 @@ export function PledgeForm() {
               className={cn(
                 "min-h-11 rounded-full border px-4 text-sm font-semibold transition-colors",
                 amount === value
-                  ? "border-olive bg-olive text-white"
-                  : "border-sand-dark bg-white text-charcoal hover:border-olive",
+                  ? "border-oxblood bg-oxblood text-white"
+                  : "border-chalk-dark bg-white text-charcoal hover:border-oxblood",
               )}
             >
               ₦{value.toLocaleString("en-NG")}
@@ -67,8 +67,8 @@ export function PledgeForm() {
             className={cn(
               "min-h-11 rounded-full border px-4 text-sm font-semibold transition-colors",
               amount === "custom"
-                ? "border-olive bg-olive text-white"
-                : "border-sand-dark bg-white text-charcoal hover:border-olive",
+                ? "border-oxblood bg-oxblood text-white"
+                : "border-chalk-dark bg-white text-charcoal hover:border-oxblood",
             )}
           >
             Another amount
@@ -93,7 +93,7 @@ export function PledgeForm() {
           <input type="hidden" name="amount" value={amount} />
         )}
         {amount !== "custom" && state.errors?.amount ? (
-          <p className="mt-2 text-sm font-medium text-olive-dark">{state.errors.amount}</p>
+          <p className="mt-2 text-sm font-medium text-oxblood-dark">{state.errors.amount}</p>
         ) : null}
       </fieldset>
 
@@ -150,7 +150,7 @@ export function PledgeForm() {
       </Consent>
 
       {state.message && !state.ok ? (
-        <p role="alert" className="text-sm font-medium text-olive-dark">
+        <p role="alert" className="text-sm font-medium text-oxblood-dark">
           {state.message}
         </p>
       ) : null}

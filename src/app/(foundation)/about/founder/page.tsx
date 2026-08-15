@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
-import { ArchFrame, Medallion } from "@/components/ui/ornament";
+import { SealFrame, Medallion } from "@/components/ui/ornament";
 import { TurbanBust } from "@/components/ui/illustration";
 import { PageHeader, Prose } from "@/components/ui/prose";
 import { Section, SectionHeading } from "@/components/ui/section";
@@ -39,7 +39,7 @@ export default function FounderPage() {
         standfirst={`Known as ${FOUNDER.kunya}. ${FOUNDER.summary}`}
       />
 
-      <Section tone="sand" size="lg">
+      <Section tone="chalk" size="lg">
         <div className="grid gap-10 lg:grid-cols-[1.6fr_1fr]">
           <div>
             <Prose>
@@ -68,9 +68,9 @@ export default function FounderPage() {
 
           <aside className="space-y-6">
             <figure>
-              <ArchFrame className="aspect-3/4 w-full">
+              <SealFrame className="aspect-3/4 w-full">
                 <TurbanBust />
-              </ArchFrame>
+              </SealFrame>
               <figcaption className="mt-3 text-sm leading-relaxed text-charcoal-muted">
                 Drawn without features, deliberately — a photograph of the founder
                 will replace it, and no stock face will stand in for him meanwhile.
@@ -108,7 +108,7 @@ export default function FounderPage() {
           {FOUNDER.teaches.map((item) => (
             <li
               key={item}
-              className="flex items-center gap-3 rounded-lg border border-sand-dark bg-sand px-4 py-3"
+              className="flex items-center gap-3 rounded-lg border border-chalk-dark bg-chalk px-4 py-3"
             >
               <Medallion tone="soft" className="size-9">
                 <Mic aria-hidden="true" className="size-4" />

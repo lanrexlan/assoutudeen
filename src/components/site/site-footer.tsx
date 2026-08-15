@@ -31,13 +31,13 @@ export async function SiteFooter({ site }: { site: SiteKey }) {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative mt-auto overflow-hidden bg-ink text-sand/80">
-      <OrnamentField tone="gold" className="opacity-40" />
+    <footer className="relative mt-auto overflow-hidden bg-ink text-chalk/80">
+      <OrnamentField tone="accent" className="opacity-40" />
       <Starfield />
-      {/* Gold hairline along the top edge. */}
+      {/* Accent hairline along the top edge. */}
       <div
         aria-hidden="true"
-        className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-amber/60 to-transparent"
+        className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-apricot/60 to-transparent"
       />
 
       <Container className="relative py-14">
@@ -50,7 +50,7 @@ export async function SiteFooter({ site }: { site: SiteKey }) {
                 <span className="block font-brand text-lg font-extrabold uppercase tracking-[0.06em] text-white">
                   {config.shortName}
                 </span>
-                <span className="mt-1.5 block font-brand text-[0.6rem] font-medium leading-tight tracking-[0.04em] text-sand/70">
+                <span className="mt-1.5 block font-brand text-[0.6rem] font-medium leading-tight tracking-[0.04em] text-chalk/70">
                   {config.name}
                 </span>
               </span>
@@ -64,13 +64,13 @@ export async function SiteFooter({ site }: { site: SiteKey }) {
                 sites it is labelled as the parent's, never as their own. */}
             <dl className="mt-5 space-y-1 text-sm">
               <div className="flex gap-2">
-                <dt className="text-sand/55">
+                <dt className="text-chalk/55">
                   {site === "foundation" ? "CAC" : "Parent charity CAC"}
                 </dt>
-                <dd className="font-medium text-sand">{REGISTRATION.number}</dd>
+                <dd className="font-medium text-chalk">{REGISTRATION.number}</dd>
               </div>
               <div className="flex gap-2">
-                <dt className="text-sand/55">Registered</dt>
+                <dt className="text-chalk/55">Registered</dt>
                 <dd>{REGISTRATION.incorporatedOnDisplay}</dd>
               </div>
             </dl>
@@ -79,13 +79,13 @@ export async function SiteFooter({ site }: { site: SiteKey }) {
           {/* 2 — quick links */}
           <nav aria-label="Footer">
             <h2 className="font-display text-base text-white">Explore</h2>
-            <span aria-hidden="true" className="mt-2 block h-px w-10 bg-amber" />
+            <span aria-hidden="true" className="mt-2 block h-px w-10 bg-apricot" />
             <ul className="mt-3">
               {config.nav.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={href(item.href)}
-                    className="flex min-h-11 items-center text-sm underline-offset-4 hover:text-amber hover:underline"
+                    className="flex min-h-11 items-center text-sm underline-offset-4 hover:text-apricot hover:underline"
                   >
                     {item.label}
                   </Link>
@@ -97,33 +97,33 @@ export async function SiteFooter({ site }: { site: SiteKey }) {
           {/* 3 — contact */}
           <div>
             <h2 className="font-display text-base text-white">Find us</h2>
-            <span aria-hidden="true" className="mt-2 block h-px w-10 bg-amber" />
+            <span aria-hidden="true" className="mt-2 block h-px w-10 bg-apricot" />
             <address className="mt-3 space-y-3 text-sm not-italic">
               <p className="flex gap-3">
-                <MapPin aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-amber" />
+                <MapPin aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-apricot" />
                 <span>{CONTACT.address}</span>
               </p>
               <p className="flex gap-3">
-                <Phone aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-amber" />
+                <Phone aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-apricot" />
                 <a
                   href={`tel:+${CONTACT.phoneE164}`}
-                  className="inline-flex min-h-11 items-center underline-offset-4 hover:text-amber hover:underline"
+                  className="inline-flex min-h-11 items-center underline-offset-4 hover:text-apricot hover:underline"
                 >
                   {CONTACT.phoneDisplay}
                 </a>
               </p>
               <p className="flex gap-3">
-                <Mail aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-amber" />
+                <Mail aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-apricot" />
                 <a
                   href={`mailto:${CONTACT.email}`}
-                  className="inline-flex min-h-11 items-center break-all underline-offset-4 hover:text-amber hover:underline"
+                  className="inline-flex min-h-11 items-center break-all underline-offset-4 hover:text-apricot hover:underline"
                 >
                   {CONTACT.email}
                 </a>
               </p>
             </address>
-            <p className="mt-3 flex gap-3 text-sm text-sand/70">
-              <Clock aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-amber" />
+            <p className="mt-3 flex gap-3 text-sm text-chalk/70">
+              <Clock aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-apricot" />
               <span>{CONTACT.officeHours}</span>
             </p>
           </div>
@@ -131,7 +131,7 @@ export async function SiteFooter({ site }: { site: SiteKey }) {
           {/* 4 — newsletter */}
           <div>
             <h2 className="font-display text-base text-white">Stay connected</h2>
-            <span aria-hidden="true" className="mt-2 block h-px w-10 bg-amber" />
+            <span aria-hidden="true" className="mt-2 block h-px w-10 bg-apricot" />
             <p className="mt-3 text-sm">
               Occasional email — the empowerment fund, new classes, new writing.
             </p>
@@ -147,14 +147,14 @@ export async function SiteFooter({ site }: { site: SiteKey }) {
                   {site === "foundation" ? (
                     <Link
                       href={href(item.href)}
-                      className="flex min-h-11 items-center text-sm text-sand/70 underline-offset-4 hover:text-amber hover:underline"
+                      className="flex min-h-11 items-center text-sm text-chalk/70 underline-offset-4 hover:text-apricot hover:underline"
                     >
                       {item.label}
                     </Link>
                   ) : (
                     <a
                       href={`${foundationUrl}${item.href}`}
-                      className="flex min-h-11 items-center text-sm text-sand/70 underline-offset-4 hover:text-amber hover:underline"
+                      className="flex min-h-11 items-center text-sm text-chalk/70 underline-offset-4 hover:text-apricot hover:underline"
                     >
                       {item.label}
                     </a>
@@ -162,9 +162,9 @@ export async function SiteFooter({ site }: { site: SiteKey }) {
                 </li>
               ))}
             </ul>
-            {site === "foundation" ? null : <FoundationLink className="text-sand/70" />}
+            {site === "foundation" ? null : <FoundationLink className="text-chalk/70" />}
           </div>
-          <p className="mt-3 text-sm text-sand/50">
+          <p className="mt-3 text-sm text-chalk/50">
             © {year} {config.name}.{" "}
             {site === "foundation"
               ? `Registered in Nigeria as ${REGISTRATION.registeredName}, ${REGISTRATION.number}.`

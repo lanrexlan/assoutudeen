@@ -104,7 +104,7 @@ export default function ContactPage() {
                 href={FACEBOOK_PAGE}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-11 items-center font-semibold text-olive underline decoration-amber decoration-2 underline-offset-4"
+                className="inline-flex min-h-11 items-center font-semibold text-oxblood underline decoration-apricot decoration-2 underline-offset-4"
               >
                 APMF on Facebook
               </a>

@@ -13,7 +13,7 @@ import {
 const initialState: FormState = { ok: false, message: "" };
 
 const inputClass =
-  "min-h-11 w-full rounded-lg border border-sand-dark bg-white px-3.5 text-charcoal transition-colors placeholder:text-charcoal-muted focus:border-olive";
+  "min-h-11 w-full rounded-lg border border-chalk-dark bg-white px-3.5 text-charcoal transition-colors placeholder:text-charcoal-muted focus:border-oxblood";
 
 function Field({
   label,
@@ -32,7 +32,7 @@ function Field({
       {children}
       {hint ? <span className="mt-1 block text-sm text-charcoal-muted">{hint}</span> : null}
       {error ? (
-        <span className="mt-1 block text-sm font-medium text-olive-dark">{error}</span>
+        <span className="mt-1 block text-sm font-medium text-oxblood-dark">{error}</span>
       ) : null}
     </label>
   );
@@ -60,7 +60,7 @@ export function ContactForm() {
     return (
       <div
         role="status"
-        className="rounded-lg border border-sand-dark bg-white p-6 text-charcoal"
+        className="rounded-lg border border-chalk-dark bg-white p-6 text-charcoal"
       >
         <p className="font-display text-xl">Message received</p>
         <p className="mt-2 text-sm leading-relaxed">{state.message}</p>
@@ -137,7 +137,7 @@ export function ContactForm() {
           type="checkbox"
           name="consent"
           value="on"
-          className="mt-0.5 size-6 shrink-0 rounded border-sand-dark accent-olive"
+          className="mt-0.5 size-6 shrink-0 rounded border-chalk-dark accent-oxblood"
         />
         <span>
           I agree that Assoutudeen Prophetic Medicine Foundation may store this message
@@ -149,11 +149,11 @@ export function ContactForm() {
         </span>
       </label>
       {state.errors?.consent ? (
-        <p className="text-sm font-medium text-olive-dark">{state.errors.consent}</p>
+        <p className="text-sm font-medium text-oxblood-dark">{state.errors.consent}</p>
       ) : null}
 
       {state.message && !state.ok ? (
-        <p role="alert" className="text-sm font-medium text-olive-dark">
+        <p role="alert" className="text-sm font-medium text-oxblood-dark">
           {state.message}
         </p>
       ) : null}

@@ -36,12 +36,12 @@ export default function RequestAssistancePage() {
         }
       />
 
-      <Section tone="sand" size="lg">
+      <Section tone="chalk" size="lg">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="space-y-6">
             <IntakeNotice />
             {open ? (
-              <div className="rounded-xl border border-sand-dark bg-white p-6 shadow-sm sm:p-8">
+              <div className="rounded-xl border border-chalk-dark bg-white p-6 shadow-sm sm:p-8">
                 <AssistanceForm />
               </div>
             ) : null}
@@ -76,7 +76,7 @@ export default function RequestAssistancePage() {
               </Card>
             ))}
 
-            <Card className="gap-3 border-olive/25 p-5">
+            <Card className="gap-3 border-oxblood/25 p-5">
               <div className="flex items-center gap-3">
                 <Medallion className="size-11">
                   <MessageCircle aria-hidden="true" className="size-5" />
@@ -91,7 +91,7 @@ export default function RequestAssistancePage() {
                 href={whatsappHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-11 items-center font-semibold text-olive underline decoration-amber decoration-2 underline-offset-4"
+                className="inline-flex min-h-11 items-center font-semibold text-oxblood underline decoration-apricot decoration-2 underline-offset-4"
               >
                 Message on WhatsApp
               </a>
@@ -101,7 +101,7 @@ export default function RequestAssistancePage() {
               How a case is checked and paid is set out on{" "}
               <Link
                 href="/our-work"
-                className="font-medium text-olive underline decoration-amber decoration-2 underline-offset-4"
+                className="font-medium text-oxblood underline decoration-apricot decoration-2 underline-offset-4"
               >
                 our work
               </Link>

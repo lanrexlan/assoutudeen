@@ -39,7 +39,7 @@ export function NewsletterForm({
       <p
         role="status"
         className={cn(
-          "rounded-lg border border-amber/40 bg-white/10 p-4 text-sm text-sand",
+          "rounded-lg border border-apricot/40 bg-white/10 p-4 text-sm text-chalk",
           className,
         )}
       >
@@ -72,7 +72,7 @@ export function NewsletterForm({
             autoComplete="email"
             placeholder="you@example.com"
             aria-invalid={Boolean(state.errors?.email)}
-            className="min-h-11 w-full rounded-full border border-white/25 bg-white/10 px-4 text-white placeholder:text-sand/50 focus:border-amber"
+            className="min-h-11 w-full rounded-full border border-white/25 bg-white/10 px-4 text-white placeholder:text-chalk/50 focus:border-apricot"
           />
         </label>
         <SubmitButton />
@@ -82,13 +82,13 @@ export function NewsletterForm({
         <p className="text-sm text-white">{state.errors.email}</p>
       ) : null}
 
-      <label className="flex items-start gap-3 text-sm text-sand/80">
+      <label className="flex items-start gap-3 text-sm text-chalk/80">
         <input
           type="checkbox"
           name="consent"
           value="on"
           // Deliberately NOT defaultChecked.
-          className="mt-0.5 size-6 shrink-0 rounded border-white/40 accent-amber"
+          className="mt-0.5 size-6 shrink-0 rounded border-white/40 accent-apricot"
         />
         <span>
           I agree to receive occasional email from Assoutudeen Prophetic Medicine
