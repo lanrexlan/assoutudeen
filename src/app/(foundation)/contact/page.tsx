@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { PageHeader } from "@/components/ui/prose";
 import { Section } from "@/components/ui/section";
-import { Todo } from "@/components/ui/todo";
+import { FACEBOOK_PAGE } from "@/lib/lectures";
 import { ContactForm } from "@/components/site/contact-form";
 import { MapEmbed } from "@/components/site/map-embed";
 import { CONTACT } from "@/lib/sites";
@@ -89,17 +89,25 @@ export default function ContactPage() {
             <Card>
               <CardTitle>Office hours</CardTitle>
               <CardDescription>
-                <Todo>office hours, and whether visits need an appointment</Todo>
+                {CONTACT.officeHours}. Friday afternoons are quieter around Jumu&apos;ah.
+                Call before travelling — the imam is often teaching.
               </CardDescription>
             </Card>
 
             <Card>
-              <CardTitle>Social</CardTitle>
+              <CardTitle>Follow the foundation</CardTitle>
               <CardDescription>
-                <Todo>
-                  links for Facebook, WhatsApp community, YouTube, Instagram and TikTok
-                </Todo>
+                Classes are streamed and archived on Facebook, and most day-to-day
+                contact happens on WhatsApp.
               </CardDescription>
+              <a
+                href={FACEBOOK_PAGE}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-11 items-center font-semibold text-olive underline decoration-amber decoration-2 underline-offset-4"
+              >
+                APMF on Facebook
+              </a>
             </Card>
           </div>
         </div>

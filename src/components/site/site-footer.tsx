@@ -44,10 +44,15 @@ export async function SiteFooter({ site }: { site: SiteKey }) {
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           {/* 1 — who we are */}
           <div>
-            <div className="flex items-center gap-3 text-white">
-              <BrandMark className="size-10 text-amber" title={config.name} />
-              <span className="font-display text-lg leading-tight">
-                {config.shortName}
+            <div className="flex items-center gap-3">
+              <BrandMark tone="reversed" className="size-12 shrink-0" />
+              <span className="leading-none">
+                <span className="block font-brand text-lg font-extrabold uppercase tracking-[0.06em] text-white">
+                  {config.shortName}
+                </span>
+                <span className="mt-1.5 block font-brand text-[0.6rem] font-medium leading-tight tracking-[0.04em] text-sand/70">
+                  {config.name}
+                </span>
               </span>
             </div>
             <p className="mt-4 text-sm leading-relaxed">

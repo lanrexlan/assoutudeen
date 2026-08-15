@@ -7,7 +7,6 @@ import { ArchFrame, Medallion } from "@/components/ui/ornament";
 import { BookScene } from "@/components/ui/illustration";
 import { PageHeader, Prose } from "@/components/ui/prose";
 import { Section, SectionHeading } from "@/components/ui/section";
-import { Todo } from "@/components/ui/todo";
 import { BOOK } from "@/lib/book";
 import { CONTACT, siteConfig } from "@/lib/sites";
 
@@ -36,9 +35,7 @@ export default function ShopPage() {
             <ArchFrame className="aspect-3/4 w-full">
               <BookScene title={BOOK.title} />
             </ArchFrame>
-            <figcaption className="mt-3 text-center text-sm text-charcoal-muted">
-              <Todo>cover photograph of the book</Todo>
-            </figcaption>
+
           </figure>
 
           <div>
@@ -67,8 +64,10 @@ export default function ShopPage() {
 
             <div className="mt-8 rounded-lg border border-sand-dark bg-white p-5">
               <p className="text-sm text-charcoal-muted">Price and formats</p>
-              <p className="mt-2 text-charcoal">
-                <Todo>price in ₦, and which formats — paperback, PDF, EPUB</Todo>
+              <p className="mt-2 leading-relaxed text-charcoal">
+                Printed in Ede in limited runs, so the price moves with the print
+                cost. Message us for the current price and what is in stock — and say
+                if you want several copies for a masjid or a school.
               </p>
               <div className="mt-5 flex flex-wrap gap-3">
                 <Button asChild variant="donate" size="lg">

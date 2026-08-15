@@ -107,6 +107,7 @@
 
   --font-sans: var(--font-inter);
   --font-display: var(--font-fraunces);
+  --font-brand: var(--font-montserrat);
   --font-arabic: var(--font-noto-naskh-arabic);
 
   --shadow-soft: var(--shadow);

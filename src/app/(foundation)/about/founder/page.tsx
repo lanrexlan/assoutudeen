@@ -11,10 +11,9 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { ArchFrame, Medallion } from "@/components/ui/ornament";
-import { LanternScene } from "@/components/ui/illustration";
+import { TurbanBust } from "@/components/ui/illustration";
 import { PageHeader, Prose } from "@/components/ui/prose";
 import { Section, SectionHeading } from "@/components/ui/section";
-import { Todo } from "@/components/ui/todo";
 import { BOOK } from "@/lib/book";
 import { FOUNDER } from "@/lib/founder";
 import { REGISTRATION } from "@/lib/organisation";
@@ -70,12 +69,11 @@ export default function FounderPage() {
           <aside className="space-y-6">
             <figure>
               <ArchFrame className="aspect-3/4 w-full">
-                <LanternScene />
+                <TurbanBust />
               </ArchFrame>
               <figcaption className="mt-3 text-sm leading-relaxed text-charcoal-muted">
-                A portrait belongs here.{" "}
-                <Todo>portrait photograph of the founder</Todo> — no stock
-                photograph will stand in for him.
+                Drawn without features, deliberately — a photograph of the founder
+                will replace it, and no stock face will stand in for him meanwhile.
               </figcaption>
             </figure>
 

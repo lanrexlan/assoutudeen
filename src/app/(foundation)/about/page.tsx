@@ -4,7 +4,6 @@ import { ArabicQuote } from "@/components/ui/arabic-quote";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { PageHeader, Prose } from "@/components/ui/prose";
 import { Section, SectionHeading } from "@/components/ui/section";
-import { Todo } from "@/components/ui/todo";
 import { CONTACT } from "@/lib/sites";
 import { PREAMBLE, REGISTERED_OBJECTS, REGISTRATION } from "@/lib/organisation";
 import { VERSES } from "@/lib/verses";
@@ -76,7 +75,7 @@ export default function AboutPage() {
           <h2>Our values, and where they come from</h2>
         </Prose>
 
-        <ArabicQuote className="mt-4 max-w-2xl" {...VERSES.tawbah105} />
+        <ArabicQuote className="mt-4 max-w-2xl" {...VERSES.baqarah177} />
 
         <Prose className="mt-8">
           <h2>Founded</h2>
@@ -93,9 +92,6 @@ export default function AboutPage() {
             Our office is at {CONTACT.address}. You can reach us on{" "}
             <a href={`tel:+${CONTACT.phoneE164}`}>{CONTACT.phoneDisplay}</a> or at{" "}
             <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>.
-          </p>
-          <p>
-            <Todo>photograph of the team or the office</Todo>
           </p>
         </Prose>
       </Section>

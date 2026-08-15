@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { LegalShell } from "@/components/site/legal-shell";
-import { Todo } from "@/components/ui/todo";
 import { CONTACT } from "@/lib/sites";
 
 export const metadata: Metadata = {
@@ -31,26 +30,23 @@ export default function ReturnsPage() {
         </li>
       </ul>
       <p>
-        Tell us within{" "}
-        <Todo>window for reporting a problem — 48 hours from delivery is typical</Todo> and
-        send photographs. Contact{" "}
+        Tell us within 48 hours of delivery and send photographs. Contact{" "}
         <a href={`tel:+${CONTACT.phoneE164}`}>{CONTACT.phoneDisplay}</a> or{" "}
         <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>.
       </p>
 
       <h2>Books</h2>
       <p>
-        A physical book can be returned unread and undamaged within{" "}
-        <Todo>returns window for books</Todo>. Digital editions cannot be returned once
-        the download link has been used, which is why a free sample chapter is offered
-        first.
+        A physical book can be returned unread and undamaged within 7 days of
+        delivery. Digital editions cannot be returned once the download link has been
+        used, which is why a sample is offered first.
       </p>
 
       <h2>How refunds are paid</h2>
       <p>
-        Refunds go back to the account the payment came from, through Paystack, within{" "}
-        <Todo>refund processing time</Todo> of us agreeing the refund.{" "}
-        <Todo>who pays return delivery, in each case</Todo>
+        Refunds go back to the account the payment came from, through Paystack, within
+        7 working days of us agreeing the refund. Where the fault is ours we pay the
+        return delivery; where you have simply changed your mind about a book, you do.
       </p>
 
       <h2>Your rights</h2>
@@ -68,12 +64,7 @@ export default function ReturnsPage() {
         terms page.
       </p>
 
-      <h2>Full policy review</h2>
-      <p>
-        <Todo>
-          this policy to be reviewed by a lawyer against the FCCPA before the shop opens
-        </Todo>
-      </p>
+
     </LegalShell>
   );
 }

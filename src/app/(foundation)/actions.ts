@@ -2,6 +2,7 @@
 
 import { z } from "zod";
 import { getPayloadClient } from "@/lib/payload";
+import { isIntakeOpen } from "@/lib/intake";
 import {
   CONTACT_SUBJECTS,
   inboxFor,
@@ -246,6 +247,17 @@ export async function requestAssistance(
   _prev: FormState,
   formData: FormData,
 ): Promise<FormState> {
+  // Requests are taken in rounds. The form is not rendered when the round is
+  // shut, but the action checks too — a direct POST must not slip through and
+  // land in a queue nobody is reading.
+  if (!isIntakeOpen()) {
+    return {
+      ok: false,
+      message:
+        "Requests are closed at the moment. The next round is published on this page — and if the need is urgent, please message us on WhatsApp instead.",
+    };
+  }
+
   // A checkbox group can appear many times, so it is read before flattening.
   const circumstances = formData.getAll("circumstances").map(String);
   const parsed = assistanceSchema.safeParse({

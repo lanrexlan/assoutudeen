@@ -19,6 +19,7 @@ import { Section, SectionHeading } from "@/components/ui/section";
 import { formatKobo } from "@/payload/fields/money";
 import { THREE_YEAR_TOTAL_KOBO, YEAR_TOTALS } from "@/lib/impact";
 import { VERSES } from "@/lib/verses";
+import { IntakeNotice } from "@/components/site/intake-notice";
 
 export const metadata: Metadata = {
   title: "Our work",
@@ -92,7 +93,7 @@ export default function OurWorkPage() {
 
       {/* --- Verse -------------------------------------------------------- */}
       <Section tone="sand" size="md">
-        <ArabicQuote className="reveal mx-auto max-w-3xl" {...VERSES.baqarah274} />
+        <ArabicQuote className="reveal mx-auto max-w-3xl" {...VERSES.insan8} />
       </Section>
 
       {/* --- What the fund covers ----------------------------------------- */}
@@ -197,6 +198,8 @@ export default function OurWorkPage() {
 
       {/* --- Two doors ------------------------------------------------------ */}
       <Section tone="white" size="lg">
+        <IntakeNotice className="mx-auto mb-10 max-w-3xl" />
+
         <div className="grid gap-6 lg:grid-cols-2">
           <Card className="reveal border-olive/25">
             <Medallion>

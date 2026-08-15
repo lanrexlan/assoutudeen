@@ -1,4 +1,9 @@
-import { Fraunces, Inter, Noto_Naskh_Arabic } from "next/font/google";
+import {
+  Fraunces,
+  Inter,
+  Montserrat,
+  Noto_Naskh_Arabic,
+} from "next/font/google";
 
 /**
  * next/font downloads and self-hosts these at build time — no request ever
@@ -19,6 +24,18 @@ export const fraunces = Fraunces({
   variable: "--font-fraunces",
 });
 
+/**
+ * The brand font. APMF_brand_guide.md specifies Montserrat ExtraBold for the
+ * wordmark, so the logo lockup is set in it — and only it, to keep the payload
+ * small.
+ */
+export const montserrat = Montserrat({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["500", "800"],
+  variable: "--font-montserrat",
+});
+
 /** Qur'an and hadith only. Diacritics must survive verbatim. */
 export const notoNaskhArabic = Noto_Naskh_Arabic({
   subsets: ["arabic"],
@@ -30,5 +47,6 @@ export const notoNaskhArabic = Noto_Naskh_Arabic({
 export const fontVariables = [
   inter.variable,
   fraunces.variable,
+  montserrat.variable,
   notoNaskhArabic.variable,
 ].join(" ");

@@ -11,7 +11,6 @@ import {
   Starfield,
 } from "@/components/ui/ornament";
 import { Section, SectionHeading } from "@/components/ui/section";
-import { Todo } from "@/components/ui/todo";
 import { getSiteContext } from "@/lib/site-context";
 
 /**
@@ -101,7 +100,8 @@ export default async function HoneyHomePage() {
         </div>
 
         <p className="mx-auto mt-10 max-w-2xl text-center text-sm text-charcoal-muted">
-          <Todo>price list per litre and per pack size, and delivery zones and rates</Todo>
+          Prices depend on volume and where you are. Message us with the litres you
+          need and your town, and you will have a quote the same day.
         </p>
       </Section>
 

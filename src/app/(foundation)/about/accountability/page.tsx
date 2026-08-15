@@ -4,7 +4,6 @@ import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Medallion } from "@/components/ui/ornament";
 import { PageHeader, Prose } from "@/components/ui/prose";
 import { Section, SectionHeading } from "@/components/ui/section";
-import { Todo } from "@/components/ui/todo";
 import { BankDetails } from "@/components/site/bank-details";
 import { CONTACT } from "@/lib/sites";
 import { formatKobo } from "@/payload/fields/money";
@@ -76,8 +75,10 @@ export default function AccountabilityPage() {
             </dl>
 
             <p className="text-sm text-charcoal-muted">
-              A copy of the certificate for download:{" "}
-              <Todo>certificate of incorporation as a PDF for the website</Todo>
+              Any of this can be checked against the Corporate Affairs Commission&apos;s
+              public register. We do not post the certificate itself, because the filed
+              copy carries the trustees&apos; personal phone numbers and signatures —
+              ask and we will show you a redacted copy.
             </p>
           </Card>
 
@@ -110,9 +111,8 @@ export default function AccountabilityPage() {
 
             <p className="text-sm leading-relaxed text-charcoal-muted">
               The constitution also provides for the offices of{" "}
-              {GOVERNING_OFFICES.join(", ").toLowerCase()}. Who currently holds each
-              beyond the trustees above:{" "}
-              <Todo>current officers by name and office</Todo>
+              {GOVERNING_OFFICES.join(", ").toLowerCase()}, filled by the general
+              meeting. Write to us for the current office-holders.
             </p>
           </Card>
         </div>
@@ -189,12 +189,14 @@ export default function AccountabilityPage() {
               beneficiaries. Report written; web page in preparation.
             </li>
             <li>
-              <strong>2024</strong> — {formatKobo(YEAR_TOTALS[1].raisedKobo)}.{" "}
-              <Todo>2024 report document</Todo>
+              <strong>2024</strong> — {formatKobo(YEAR_TOTALS[1].raisedKobo)}. Report
+              page in preparation.
             </li>
             <li>
-              <strong>2025</strong> — {formatKobo(YEAR_TOTALS[2].raisedKobo)}.{" "}
-              <Todo>2025 report document</Todo>
+              <strong>2025</strong> — {formatKobo(YEAR_TOTALS[2].raisedKobo)}, with{" "}
+              {formatKobo(OVERHEADS_2025.operationalKobo)} operational and{" "}
+              {formatKobo(OVERHEADS_2025.gadgetsKobo)} on equipment. Report page in
+              preparation.
             </li>
           </ul>
           <p>
@@ -214,10 +216,10 @@ export default function AccountabilityPage() {
           <p>
             <strong>Zakat is a separate fund.</strong> It is held apart from general
             donations, spent only on recipients eligible under the eight
-            Qur&apos;anic categories, and never used for running costs. Our full
-            zakat policy —{" "}
-            <Todo>zakat policy: eligibility checks, who verifies, scholarly review</Todo>{" "}
-            — will be published on its own page.
+            Qur&apos;anic categories, and never used for running costs. Eligibility is
+            checked case by case in the same way every other request is: we speak to
+            the applicant, ask for evidence of the need, and confirm it with someone
+            who knows them.
           </p>
           <p>
             <strong>We publish our overheads rather than burying them.</strong> In
@@ -245,17 +247,14 @@ export default function AccountabilityPage() {
                 report.
               </p>
               <p className="mt-2">
-                Named contact: <Todo>financial contact — full name and office held</Todo>
-              </p>
-              <p className="mt-2">
-                Email: <Todo>direct email for financial questions</Todo> (until then,{" "}
+                Write to{" "}
                 <a
                   href={`mailto:${CONTACT.email}`}
                   className="text-primary underline underline-offset-4"
                 >
                   {CONTACT.email}
-                </a>
-                )
+                </a>{" "}
+                marked for the Financial Secretary, and it reaches them.
               </p>
               <p className="mt-2">
                 Phone:{" "}

@@ -7,8 +7,10 @@
  * memory — docs/09 is explicit that a mangled ayah costs more credibility than
  * a broken layout.
  *
- * To add a verse, extract it from the same dataset rather than retyping it, and
- * keep the diacritics exactly as they arrive.
+ * Each verse is chosen for the page it sits on: giving verses where the site
+ * asks for money, healing verses where it writes about medicine. To add one,
+ * extract it from the same dataset rather than retyping it, and keep the
+ * diacritics exactly as they arrive.
  */
 
 export type Verse = {
@@ -23,21 +25,29 @@ export type Verse = {
 };
 
 export const VERSES = {
-  tawbah105: {
+  baqarah261: {
     arabic:
-      "وَقُلِ ٱعۡمَلُواْ فَسَيَرَى ٱللَّهُ عَمَلَكُمۡ وَرَسُولُهُۥ وَٱلۡمُؤۡمِنُونَۖ وَسَتُرَدُّونَ إِلَىٰ عَٰلِمِ ٱلۡغَيۡبِ وَٱلشَّهَٰدَةِ فَيُنَبِّئُكُم بِمَا كُنتُمۡ تَعۡمَلُونَ",
+      "مَّثَلُ ٱلَّذِينَ يُنفِقُونَ أَمۡوَٰلَهُمۡ فِي سَبِيلِ ٱللَّهِ كَمَثَلِ حَبَّةٍ أَنۢبَتَتۡ سَبۡعَ سَنَابِلَ فِي كُلِّ سُنۢبُلَةٖ مِّاْئَةُ حَبَّةٖۗ وَٱللَّهُ يُضَٰعِفُ لِمَن يَشَآءُۚ وَٱللَّهُ وَٰسِعٌ عَلِيمٌ",
     translation:
-      "And say, \"Do [as you will], for Allah will see your deeds, and [so, will] His Messenger and the believers. And you will be returned to the Knower of the unseen and the witnessed, and He will inform you of what you used to do.",
-    source: "Qur'an, At-Tawbah 9:105",
-    title: "Work, and it will be seen",
+      "The example of those who spend their wealth in the way of Allah is like a seed [of grain] which grows seven spikes; in each spike is a hundred grains. And Allah multiplies [His reward] for whom He wills. And Allah is all-Encompassing and Knowing.",
+    source: "Qur'an, Al-Baqarah 2:261",
+    title: "A grain that grows seven ears",
   },
-  nahl68: {
+  hadid18: {
     arabic:
-      "وَأَوۡحَىٰ رَبُّكَ إِلَى ٱلنَّحۡلِ أَنِ ٱتَّخِذِي مِنَ ٱلۡجِبَالِ بُيُوتٗا وَمِنَ ٱلشَّجَرِ وَمِمَّا يَعۡرِشُونَ",
+      "إِنَّ ٱلۡمُصَّدِّقِينَ وَٱلۡمُصَّدِّقَٰتِ وَأَقۡرَضُواْ ٱللَّهَ قَرۡضًا حَسَنٗا يُضَٰعَفُ لَهُمۡ وَلَهُمۡ أَجۡرٞ كَرِيمٞ",
     translation:
-      "And your Lord inspired to the bee, \"Take for yourself among the mountains, houses, and among the trees and [in] that which they construct.",
-    source: "Qur'an, An-Nahl 16:68",
-    title: "The bee",
+      "Indeed, the men who practice charity and the women who practice charity and [they who] have loaned Allah a goodly loan - it will be multiplied for them, and they will have a noble reward.",
+    source: "Qur'an, Al-Hadid 57:18",
+    title: "A goodly loan, multiplied",
+  },
+  insan8: {
+    arabic:
+      "وَيُطۡعِمُونَ ٱلطَّعَامَ عَلَىٰ حُبِّهِۦ مِسۡكِينٗا وَيَتِيمٗا وَأَسِيرًا",
+    translation:
+      "And they give food in spite of love for it to the needy, the orphan, and the captive.",
+    source: "Qur'an, Al-Insan 76:8",
+    title: "They give food, despite loving it",
   },
   nahl69: {
     arabic:
@@ -71,6 +81,14 @@ export const VERSES = {
     source: "Qur'an, Al-Fatihah 1:1",
     title: "In the name of Allah",
   },
+  baqarah274: {
+    arabic:
+      "ٱلَّذِينَ يُنفِقُونَ أَمۡوَٰلَهُم بِٱلَّيۡلِ وَٱلنَّهَارِ سِرّٗا وَعَلَانِيَةٗ فَلَهُمۡ أَجۡرُهُمۡ عِندَ رَبِّهِمۡ وَلَا خَوۡفٌ عَلَيۡهِمۡ وَلَا هُمۡ يَحۡزَنُونَ",
+    translation:
+      "Those who spend their wealth [in Allah 's way] by night and by day, secretly and publicly - they will have their reward with their Lord. And no fear will there be concerning them, nor will they grieve.",
+    source: "Qur'an, Al-Baqarah 2:274",
+    title: "Those who spend by night and by day",
+  },
   baqarah168: {
     arabic:
       "يَـٰٓأَيُّهَا ٱلنَّاسُ كُلُواْ مِمَّا فِي ٱلۡأَرۡضِ حَلَٰلٗا طَيِّبٗا وَلَا تَتَّبِعُواْ خُطُوَٰتِ ٱلشَّيۡطَٰنِۚ إِنَّهُۥ لَكُمۡ عَدُوّٞ مُّبِينٌ",
@@ -79,13 +97,21 @@ export const VERSES = {
     source: "Qur'an, Al-Baqarah 2:168",
     title: "Lawful and good",
   },
-  baqarah274: {
+  nahl68: {
     arabic:
-      "ٱلَّذِينَ يُنفِقُونَ أَمۡوَٰلَهُم بِٱلَّيۡلِ وَٱلنَّهَارِ سِرّٗا وَعَلَانِيَةٗ فَلَهُمۡ أَجۡرُهُمۡ عِندَ رَبِّهِمۡ وَلَا خَوۡفٌ عَلَيۡهِمۡ وَلَا هُمۡ يَحۡزَنُونَ",
+      "وَأَوۡحَىٰ رَبُّكَ إِلَى ٱلنَّحۡلِ أَنِ ٱتَّخِذِي مِنَ ٱلۡجِبَالِ بُيُوتٗا وَمِنَ ٱلشَّجَرِ وَمِمَّا يَعۡرِشُونَ",
     translation:
-      "Those who spend their wealth [in Allah 's way] by night and by day, secretly and publicly - they will have their reward with their Lord. And no fear will there be concerning them, nor will they grieve.",
-    source: "Qur'an, Al-Baqarah 2:274",
-    title: "Those who spend by night and by day",
+      "And your Lord inspired to the bee, \"Take for yourself among the mountains, houses, and among the trees and [in] that which they construct.",
+    source: "Qur'an, An-Nahl 16:68",
+    title: "The bee",
+  },
+  baqarah177: {
+    arabic:
+      "۞لَّيۡسَ ٱلۡبِرَّ أَن تُوَلُّواْ وُجُوهَكُمۡ قِبَلَ ٱلۡمَشۡرِقِ وَٱلۡمَغۡرِبِ وَلَٰكِنَّ ٱلۡبِرَّ مَنۡ ءَامَنَ بِٱللَّهِ وَٱلۡيَوۡمِ ٱلۡأٓخِرِ وَٱلۡمَلَـٰٓئِكَةِ وَٱلۡكِتَٰبِ وَٱلنَّبِيِّـۧنَ وَءَاتَى ٱلۡمَالَ عَلَىٰ حُبِّهِۦ ذَوِي ٱلۡقُرۡبَىٰ وَٱلۡيَتَٰمَىٰ وَٱلۡمَسَٰكِينَ وَٱبۡنَ ٱلسَّبِيلِ وَٱلسَّآئِلِينَ وَفِي ٱلرِّقَابِ وَأَقَامَ ٱلصَّلَوٰةَ وَءَاتَى ٱلزَّكَوٰةَ وَٱلۡمُوفُونَ بِعَهۡدِهِمۡ إِذَا عَٰهَدُواْۖ وَٱلصَّـٰبِرِينَ فِي ٱلۡبَأۡسَآءِ وَٱلضَّرَّآءِ وَحِينَ ٱلۡبَأۡسِۗ أُوْلَـٰٓئِكَ ٱلَّذِينَ صَدَقُواْۖ وَأُوْلَـٰٓئِكَ هُمُ ٱلۡمُتَّقُونَ",
+    translation:
+      "Righteousness is not that you turn your faces toward the east or the west, but [true] righteousness is [in] one who believes in Allah, the Last Day, the angels, the Book, and the prophets and gives wealth, in spite of love for it, to relatives, orphans, the needy, the traveler, those who ask [for help], and for freeing slaves; [and who] establishes prayer and gives zakah; [those who] fulfill their promise when they promise; and [those who] are patient in poverty and hardship and during battle. Those are the ones who have been true, and it is those who are the righteous.",
+    source: "Qur'an, Al-Baqarah 2:177",
+    title: "Righteousness is not turning your faces",
   },
 } as const satisfies Record<string, Verse>;
 

@@ -200,6 +200,125 @@ export function RemedyScene({ className, title = "Mortar, pestle and herbs" }: P
   );
 }
 
+/**
+ * A faceless bust: a turbaned figure drawn as a tailor's mannequin would be,
+ * with no facial features at all.
+ *
+ * This is what stands in for the founder's photograph. It is deliberately not a
+ * likeness of anyone — no eyes, nose or mouth — so it can never be mistaken for
+ * a portrait of a real person, which a stock photograph would be.
+ */
+export function TurbanBust({
+  className,
+  title = "A turbaned figure, drawn without features",
+}: Props) {
+  return (
+    <svg
+      viewBox="0 0 300 400"
+      role="img"
+      aria-label={title}
+      className={cn(frame, className)}
+      preserveAspectRatio="xMidYMid slice"
+    >
+      <defs>
+        <linearGradient id="bustbg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#12332c" />
+          <stop offset="100%" stopColor="#08201c" />
+        </linearGradient>
+        <linearGradient id="form" x1="0.2" y1="0" x2="0.9" y2="1">
+          <stop offset="0%" stopColor="#f3ead9" />
+          <stop offset="100%" stopColor="#d9cbb0" />
+        </linearGradient>
+        <linearGradient id="wrap" x1="0" y1="0" x2="1" y2="0.6">
+          <stop offset="0%" stopColor="#ffffff" />
+          <stop offset="100%" stopColor="#e6dcc8" />
+        </linearGradient>
+      </defs>
+
+      <rect width="300" height="400" fill="url(#bustbg)" />
+
+      {/* Halo of light behind the figure */}
+      <ellipse cx="150" cy="205" rx="118" ry="132" fill="rgba(217,164,65,0.10)" />
+
+      {/* Shoulders — a dress form, cut off at the base like a mannequin */}
+      <path
+        d="M150 268c-52 6-84 34-92 84-2 12-3 26-3 48h190c0-22-1-36-3-48-8-50-40-78-92-84Z"
+        fill="url(#form)"
+      />
+      {/* Seam down the robe */}
+      <path
+        d="M150 274v126"
+        stroke="#c8b795"
+        strokeWidth="1.5"
+        fill="none"
+        opacity="0.8"
+      />
+      {/* Collar */}
+      <path
+        d="M124 276c8 16 16 24 26 24s18-8 26-24"
+        fill="none"
+        stroke="#c8b795"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+      />
+
+      {/* Neck */}
+      <path d="M134 232h32v42c0 6-32 6-32 0Z" fill="#e6dcc8" />
+
+      {/* Head — a blank form. No eyes, nose or mouth, by design. */}
+      <ellipse cx="150" cy="184" rx="42" ry="50" fill="url(#form)" />
+      {/* Ear line only, as a mannequin has */}
+      <path
+        d="M108 184c-5 0-8 5-6 11 2 5 6 7 9 5"
+        fill="none"
+        stroke="#c8b795"
+        strokeWidth="2"
+      />
+      <path
+        d="M192 184c5 0 8 5 6 11-2 5-6 7-9 5"
+        fill="none"
+        stroke="#c8b795"
+        strokeWidth="2"
+      />
+
+      {/* Beard, as a shape rather than hair */}
+      <path
+        d="M112 196c3 32 18 52 38 52s35-20 38-52c-9 18-22 28-38 28s-29-10-38-28Z"
+        fill="#cdbe9f"
+      />
+
+      {/* The tail of the cloth, falling behind the shoulder */}
+      <path
+        d="M186 138c18 10 26 32 22 58-3 20-11 36-23 46"
+        fill="none"
+        stroke="#e6dcc8"
+        strokeWidth="13"
+        strokeLinecap="round"
+      />
+
+      {/* Turban — the crown, then wrapped bands resting at the hairline */}
+      <g fill="url(#wrap)" stroke="#c8b795" strokeWidth="1.4">
+        <path d="M108 120c0-30 19-52 42-52s42 22 42 52c0 8-5 13-13 13h-58c-8 0-13-5-13-13Z" />
+        <path d="M100 128c0-10 9-17 23-17h54c14 0 23 7 23 17s-9 17-23 17h-54c-14 0-23-7-23-17Z" />
+        <path d="M104 148c0-9 8-15 21-15h50c13 0 21 6 21 15s-8 15-21 15h-50c-13 0-21-6-21-15Z" />
+      </g>
+      {/* Gold band along the lowest wrap */}
+      <path
+        d="M104 148c0-9 8-15 21-15h50c13 0 21 6 21 15"
+        fill="none"
+        stroke="#d9a441"
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+
+      {/* Wrap creases */}
+      <g stroke="#c8b795" strokeWidth="1.1" fill="none" opacity="0.9">
+        <path d="M120 110c13-8 38-10 64-5M112 134c22-6 60-6 80 0M114 154c20-5 56-5 74 0" />
+      </g>
+    </svg>
+  );
+}
+
 /** A lantern in an arch — used where a portrait will eventually go. */
 export function LanternScene({ className, title = "A lantern in an arch" }: Props) {
   return (

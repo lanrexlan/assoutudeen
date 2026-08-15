@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Mail, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
-import { BrandMark } from "@/components/site/brand-mark";
+import { BrandLockup, BrandMark } from "@/components/site/brand-mark";
 import { MobileNav } from "@/components/site/mobile-nav";
 import { FoundationLink } from "@/components/site/foundation-link";
 import { CONTACT, siteConfig, type SiteKey } from "@/lib/sites";
@@ -73,23 +73,25 @@ export async function SiteHeader({
       >
         <Container>
           <div className="relative flex min-h-18 items-center gap-4 py-2">
-            <Link
-              href={href("/")}
-              className="flex min-h-11 items-center gap-3 text-white"
-            >
-              <BrandMark className="size-10 text-amber" title={config.name} />
-              <span className="leading-tight">
-                <span className="block font-display text-lg font-semibold sm:text-xl">
-                  {site === "foundation" ? "Assoutudeen" : config.shortName}
-                </span>
-                <span className="block text-[0.7rem] uppercase tracking-[0.18em] text-amber/90">
-                  {site === "foundation"
-                    ? "Prophetic Medicine Foundation"
-                    : site === "dawah"
-                      ? "Dawah Institute"
-                      : "Honey Enterprise"}
-                </span>
-              </span>
+            <Link href={href("/")} className="flex min-h-11 items-center gap-3">
+              {site === "foundation" ? (
+                // The full lockup, reversed for the ink bar.
+                <BrandLockup tone="reversed" className="gap-3" />
+              ) : (
+                <>
+                  <BrandMark tone="reversed" className="size-11 shrink-0" />
+                  <span className="leading-none">
+                    <span className="block font-brand text-xl font-extrabold uppercase tracking-[0.06em] text-white">
+                      {config.shortName}
+                    </span>
+                    <span className="mt-1.5 block font-brand text-[0.62rem] font-medium leading-tight tracking-[0.04em] text-sand/75">
+                      {site === "dawah"
+                        ? "Assoutudeen Dawah Institute"
+                        : "Assoutudeen Honey Enterprise"}
+                    </span>
+                  </span>
+                </>
+              )}
             </Link>
 
             <nav aria-label="Site" className="ms-auto hidden lg:block">

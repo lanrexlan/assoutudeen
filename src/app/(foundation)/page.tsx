@@ -232,7 +232,7 @@ export default async function FoundationHomePage() {
       {/* --- Scripture --------------------------------------------------- */}
       <Section tone="sand" size="lg" ornament>
         <div className="mx-auto max-w-3xl">
-          <ArabicQuote className="reveal" {...VERSES.tawbah105} />
+          <ArabicQuote className="reveal" {...VERSES.baqarah261} />
         </div>
       </Section>
 

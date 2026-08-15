@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Medallion } from "@/components/ui/ornament";
 import { PageHeader } from "@/components/ui/prose";
 import { Section, SectionHeading } from "@/components/ui/section";
-import { Todo } from "@/components/ui/todo";
 import {
   FACEBOOK_PAGE,
   LECTURES,
@@ -153,8 +152,15 @@ export default function MediaPage() {
           </ul>
 
           <p className="mt-8 text-center text-sm text-sand/60">
-            Logo files and photographs for press use:{" "}
-            <Todo className="border-white/30 bg-white/10 text-sand">press kit</Todo>
+            Logo files for press use — stacked, horizontal, icon-only, reversed and
+            one-ink — are in{" "}
+            <a
+              href="/brand/apmf_logo_variant_preview.jpg"
+              className="font-medium text-amber underline decoration-amber decoration-2 underline-offset-4"
+            >
+              the logo pack
+            </a>
+            , with the usage rules in the brand guide.
           </p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-3">

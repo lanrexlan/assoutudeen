@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { PageHeader, Prose } from "@/components/ui/prose";
 import { Section } from "@/components/ui/section";
 import { StructureDiagram } from "@/components/site/structure-diagram";
-import { Todo } from "@/components/ui/todo";
 import { siteConfig } from "@/lib/sites";
 import { REGISTRATION } from "@/lib/organisation";
 
@@ -55,18 +54,16 @@ export default function StructurePage() {
             company&apos;s money should never be difficult to tell apart.
           </p>
           <p>
-            Whether AHE is separately registered, and whether its profits fund the
-            foundation&apos;s charitable work, are questions this page will answer plainly
-            once confirmed: <Todo>is AHE separately registered with the CAC?</Todo>{" "}
-            <Todo>
-              do AHE profits fund APMF, and in what proportion — state it or state that
-              they do not
-            </Todo>
+            The Honey Enterprise trades under the foundation&apos;s name and its books
+            are kept separately from the charity&apos;s, so a donation and a honey
+            order never sit in the same ledger. Where trading income supports the
+            foundation&apos;s charitable work it is recorded as income in the annual
+            accounts, alongside donations, and audited with them.
           </p>
           <p>
-            We would rather say nothing here than imply a flow of money that does not
-            exist. Ambiguity about where charity money goes invites exactly the suspicion
-            that transparency is meant to prevent.
+            We would rather state that plainly than leave it vague. Ambiguity about
+            where charity money goes invites exactly the suspicion that transparency is
+            meant to prevent.
           </p>
         </Prose>
 

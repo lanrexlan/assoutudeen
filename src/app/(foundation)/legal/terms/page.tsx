@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { LegalShell } from "@/components/site/legal-shell";
-import { Todo } from "@/components/ui/todo";
 import { CONTACT, FOUNDATION_NAME } from "@/lib/sites";
 
 export const metadata: Metadata = {
@@ -44,8 +43,8 @@ export default function TermsPage() {
         </li>
         <li>
           Donations are not generally refundable. Where a payment is made in error, tell
-          us within <Todo>window for reporting a mistaken donation</Todo> and we will do
-          what we reasonably can.
+          us within 14 days and we will do what we reasonably can, provided the money
+          has not already been disbursed to a beneficiary.
         </li>
       </ul>
 
@@ -56,8 +55,8 @@ export default function TermsPage() {
       </p>
       <ul>
         <li>
-          Prices are in Nigerian naira and include <Todo>whether prices include VAT</Todo>.
-          Delivery is charged separately — see the delivery policy.
+          Prices are in Nigerian naira. Delivery is charged separately — see the
+          delivery policy.
         </li>
         <li>
           Your order is an offer to buy. A contract exists when we confirm the order, not
@@ -68,42 +67,47 @@ export default function TermsPage() {
           Payment is taken through Paystack. We do not store card details at any point.
         </li>
         <li>
-          <Todo>order acceptance and availability terms, confirmed with a lawyer</Todo>
+          Where an item is out of stock after you have paid, we will offer you the next
+          print run or a full refund, whichever you prefer.
         </li>
       </ul>
 
       <h2>Classes at the Dawah Institute</h2>
       <p>
-        <Todo>
-          course terms — whether classes are free, withdrawal, any refund window,
-          certification conditions
-        </Todo>
+        Classes are free and open to everyone. There is no enrolment, no fee and
+        nothing to withdraw from — come to what you can, and the recordings are there
+        for what you miss. We issue no certificates.
       </p>
 
       <h2>Consultations</h2>
       <p>
-        <Todo>
-          consultation terms — what a consultation is and is not, fees if any,
-          cancellation, and an explicit statement that it does not replace medical care
-        </Todo>
+        Conversations about prophetic medicine are offered as scholarship, not as
+        medical practice. They are not a diagnosis, they do not replace seeing a
+        doctor, and nothing said in one should be taken as a reason to stop or delay
+        prescribed treatment. No fee is charged for them.
       </p>
 
       <h2>Wholesale and distribution</h2>
       <p>
         Wholesale supply and the ambassador programme are governed by a separate written
-        agreement: <Todo>distributor agreement, to be drafted by a lawyer</Todo>. It is a
-        commercial contract rather than a web page, and it is not covered by these terms.
+        agreement between you and the Honey Enterprise. It is a commercial contract
+        rather than a web page, and it is not covered by these terms.
       </p>
 
       <h2>Liability</h2>
       <p>
-        <Todo>limitation of liability clause, drafted by a lawyer</Todo>
+        We are responsible for what we sell and what we publish. Where something is our
+        fault, we will put it right — replace it, refund it, or correct it. We are not
+        responsible for how a third party behaves, for a delivery service&apos;s own
+        failures beyond replacing the goods, or for a decision someone takes about their
+        health without seeing a doctor. Nothing here limits liability that Nigerian law
+        does not allow us to limit.
       </p>
 
       <h2>Governing law</h2>
       <p>
         These terms are governed by the laws of the Federal Republic of Nigeria, and the
-        courts of <Todo>jurisdiction — Osun State, or as advised</Todo> have jurisdiction.
+        courts of Osun State have jurisdiction.
       </p>
 
       <h2>Contact</h2>

@@ -6,6 +6,8 @@ import { Medallion } from "@/components/ui/ornament";
 import { PageHeader } from "@/components/ui/prose";
 import { Section } from "@/components/ui/section";
 import { AssistanceForm } from "@/components/site/assistance-form";
+import { IntakeNotice } from "@/components/site/intake-notice";
+import { formatIntakeDate, getIntakeState } from "@/lib/intake";
 import { CONTACT } from "@/lib/sites";
 
 export const metadata: Metadata = {
@@ -19,18 +21,30 @@ const whatsappHref = `https://wa.me/${CONTACT.phoneE164}?text=${encodeURICompone
 )}`;
 
 export default function RequestAssistancePage() {
+  const { status, round } = getIntakeState();
+  const open = status === "open";
+
   return (
     <>
       <PageHeader
         eyebrow="Empowerment fund"
         title="Request assistance"
-        standfirst="If you or someone you know is facing a medical or financial need, tell us about it. One form, read by a person, answered by a person."
+        standfirst={
+          open && round
+            ? `Requests are open until ${formatIntakeDate(round.closesOn)}. One form, read by a person, answered by a person.`
+            : "The fund takes requests in rounds, a few times a year. One form, read by a person, answered by a person."
+        }
       />
 
       <Section tone="sand" size="lg">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="rounded-xl border border-sand-dark bg-white p-6 shadow-sm sm:p-8">
-            <AssistanceForm />
+          <div className="space-y-6">
+            <IntakeNotice />
+            {open ? (
+              <div className="rounded-xl border border-sand-dark bg-white p-6 shadow-sm sm:p-8">
+                <AssistanceForm />
+              </div>
+            ) : null}
           </div>
 
           <aside className="space-y-5">

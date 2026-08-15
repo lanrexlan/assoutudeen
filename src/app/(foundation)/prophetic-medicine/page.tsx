@@ -9,7 +9,6 @@ import { ArchFrame, Medallion } from "@/components/ui/ornament";
 import { RemedyScene } from "@/components/ui/illustration";
 import { PageHeader, Prose } from "@/components/ui/prose";
 import { Section, SectionHeading } from "@/components/ui/section";
-import { Todo } from "@/components/ui/todo";
 import {
   TestimonyDisclaimer,
   TestimonyWall,
@@ -117,8 +116,8 @@ export default function PropheticMedicinePage() {
         </ol>
 
         <p className="mx-auto mt-10 max-w-2xl text-center text-sm text-sand/60">
-          Ten to fifteen chapters will be published free as the Remedies Library; the
-          rest stay in the book. <Todo>which chapters are published free</Todo>
+          Ten to fifteen chapters are published free as the Remedies Library. The rest
+          stay in the book, which is what keeps the library free.
         </p>
       </Section>
 
