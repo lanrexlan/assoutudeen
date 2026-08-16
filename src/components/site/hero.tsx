@@ -27,7 +27,7 @@ export function Hero({ donateHref, workHref }: { donateHref: string; workHref: s
       {/* Light spilling from the top of the seal. */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute left-1/2 top-0 h-[28rem] w-[46rem] -translate-x-1/2 rounded-b-full bg-[radial-gradient(ellipse_at_top,rgba(217,164,65,0.18),transparent_65%)]"
+        className="pointer-events-none absolute left-1/2 top-0 h-[28rem] w-[46rem] -translate-x-1/2 rounded-b-full bg-[radial-gradient(ellipse_at_top,rgba(224,160,106,0.18),transparent_65%)]"
       />
 
       <Container className="relative">

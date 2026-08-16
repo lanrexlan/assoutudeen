@@ -16,6 +16,26 @@ type Props = { className?: string; title?: string };
 
 const frame = "h-full w-full";
 
+/**
+ * The seal, as an SVG path: the same eight-sided cut-corner shape the CSS
+ * `.seal` class draws. The artwork uses it wherever a circle or an arch used
+ * to sit, so the illustrations carry the site's geometry rather than fighting
+ * it with a second one.
+ */
+function seal(x: number, y: number, w: number, h: number, cut: number) {
+  const points: [number, number][] = [
+    [x + cut, y],
+    [x + w - cut, y],
+    [x + w, y + cut],
+    [x + w, y + h - cut],
+    [x + w - cut, y + h],
+    [x + cut, y + h],
+    [x, y + h - cut],
+    [x, y + cut],
+  ];
+  return `M${points.map(([px, py]) => `${px} ${py}`).join("L")}Z`;
+}
+
 /** Apiary at dusk — hives, hills, a crescent. For the honey and hero slots. */
 export function ApiaryScene({ className, title = "Hives on a hillside" }: Props) {
   return (
@@ -38,7 +58,7 @@ export function ApiaryScene({ className, title = "Hives on a hillside" }: Props)
       </defs>
 
       <rect width="400" height="500" fill="url(#sky)" />
-      <ellipse cx="200" cy="150" rx="190" ry="150" fill="url(#glow)" />
+      <path d={seal(10, 10, 380, 290, 74)} fill="url(#glow)" />
 
       {/* Stars */}
       <g fill="#f6e2cd" opacity="0.7">
@@ -70,7 +90,7 @@ export function ApiaryScene({ className, title = "Hives on a hillside" }: Props)
           <g key={i} transform={`translate(${x} ${y}) scale(${s})`}>
             <path d="M-30 0h60M-27-14h54M-24-28h48M-21-42h42" />
             <path d="M-32 6h64" strokeWidth="3" />
-            <path d="M-21-42c0-12 9-20 21-20s21 8 21 20" />
+            <path d="M-21-42 -9-56h18l12 14" />
           </g>
         ))}
       </g>
@@ -90,7 +110,7 @@ export function ApiaryScene({ className, title = "Hives on a hillside" }: Props)
   );
 }
 
-/** An open book under an seal — for the book and library slots. */
+/** An open book inside the seal — for the book and library slots. */
 export function BookScene({ className, title = "An open book" }: Props) {
   return (
     <svg
@@ -108,9 +128,9 @@ export function BookScene({ className, title = "An open book" }: Props) {
       </defs>
       <rect width="400" height="400" fill="url(#bookbg)" />
 
-      {/* Arch outline behind */}
+      {/* The seal, drawn as a hairline behind the book */}
       <path
-        d="M120 330V180a80 80 0 0 1 160 0v150"
+        d={seal(88, 68, 224, 264, 52)}
         fill="none"
         stroke="#e0a06a"
         strokeOpacity="0.35"
@@ -144,7 +164,7 @@ export function GivingScene({ className, title = "A hand offering a seedling" }:
       preserveAspectRatio="xMidYMid slice"
     >
       <rect width="400" height="400" fill="#351826" />
-      <circle cx="200" cy="176" r="118" fill="#55614f" />
+      <path d={seal(82, 58, 236, 236, 56)} fill="#55614f" />
 
       <g fill="none" stroke="#e0a06a" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
         {/* Cupped hands */}
@@ -176,7 +196,7 @@ export function RemedyScene({ className, title = "Mortar, pestle and herbs" }: P
       preserveAspectRatio="xMidYMid slice"
     >
       <rect width="400" height="400" fill="#351826" />
-      <circle cx="200" cy="200" r="130" fill="#55614f" />
+      <path d={seal(70, 70, 260, 260, 62)} fill="#55614f" />
 
       <g fill="none" stroke="#e0a06a" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
         {/* Mortar */}
@@ -238,7 +258,7 @@ export function TurbanBust({
       <rect width="300" height="400" fill="url(#bustbg)" />
 
       {/* Halo of light behind the figure */}
-      <ellipse cx="150" cy="205" rx="118" ry="132" fill="rgba(217,164,65,0.10)" />
+      <path d={seal(32, 73, 236, 264, 58)} fill="rgba(224,160,106,0.10)" />
 
       {/* Shoulders — a dress form, cut off at the base like a mannequin */}
       <path
@@ -319,8 +339,8 @@ export function TurbanBust({
   );
 }
 
-/** A lantern in an seal — used where a portrait will eventually go. */
-export function LanternScene({ className, title = "A lantern in an seal" }: Props) {
+/** A lantern inside the seal — used where a portrait will eventually go. */
+export function LanternScene({ className, title = "A lantern inside the seal" }: Props) {
   return (
     <svg
       viewBox="0 0 300 400"
@@ -339,7 +359,7 @@ export function LanternScene({ className, title = "A lantern in an seal" }: Prop
       <rect width="300" height="400" fill="url(#lamp)" />
 
       <g fill="none" stroke="#e0a06a" strokeWidth="2.2" strokeLinejoin="round" strokeLinecap="round">
-        <path d="M70 360V190a80 80 0 0 1 160 0v170" strokeOpacity="0.4" />
+        <path d={seal(48, 48, 204, 312, 48)} strokeOpacity="0.4" />
         <path d="M150 60v34" />
         <path d="M124 118h52l14 26-14 96h-52l-14-96Z" />
         <path d="M110 144h80" />

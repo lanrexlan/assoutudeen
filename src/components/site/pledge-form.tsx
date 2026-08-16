@@ -4,6 +4,7 @@ import { useActionState, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { joinTheFund, type FormState } from "@/app/(foundation)/actions";
 import { Button } from "@/components/ui/button";
+import { foundationUrl } from "@/components/site/foundation-link";
 import {
   Consent,
   Field,
@@ -143,7 +144,7 @@ export function PledgeForm() {
       <Consent name="consent" error={state.errors?.consent}>
         I agree that the foundation may store these details and contact me about my
         pledge. See the{" "}
-        <a href="/legal/privacy" className="underline underline-offset-4">
+        <a href={`${foundationUrl}/legal/privacy`} className="underline underline-offset-4">
           privacy policy
         </a>
         .

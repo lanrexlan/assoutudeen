@@ -58,7 +58,7 @@ export function PageHeader({
       {/* A single seal of light behind the title, echoing the mihrab. */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute left-1/2 top-0 h-72 w-[36rem] -translate-x-1/2 rounded-b-[50%] bg-[radial-gradient(ellipse_at_top,rgba(217,164,65,0.16),transparent_70%)]"
+        className="pointer-events-none absolute left-1/2 top-0 h-72 w-[36rem] -translate-x-1/2 rounded-b-[50%] bg-[radial-gradient(ellipse_at_top,rgba(224,160,106,0.16),transparent_70%)]"
       />
       <Container className="relative">
         <div className="max-w-3xl">

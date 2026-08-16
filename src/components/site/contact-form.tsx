@@ -4,6 +4,7 @@ import { useActionState, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { submitContactForm, type FormState } from "@/app/(foundation)/actions";
 import { Button } from "@/components/ui/button";
+import { foundationUrl } from "@/components/site/foundation-link";
 import {
   CONTACT_ROUTES,
   CONTACT_SUBJECTS,
@@ -142,7 +143,7 @@ export function ContactForm() {
         <span>
           I agree that Assoutudeen Prophetic Medicine Foundation may store this message
           and contact me about it. See the{" "}
-          <a href="/legal/privacy" className="underline underline-offset-4">
+          <a href={`${foundationUrl}/legal/privacy`} className="underline underline-offset-4">
             privacy policy
           </a>
           .

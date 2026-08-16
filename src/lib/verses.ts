@@ -25,6 +25,22 @@ export type Verse = {
 };
 
 export const VERSES = {
+  zumar9: {
+    arabic:
+      "أَمَّنۡ هُوَ قَٰنِتٌ ءَانَآءَ ٱلَّيۡلِ سَاجِدٗا وَقَآئِمٗا يَحۡذَرُ ٱلۡأٓخِرَةَ وَيَرۡجُواْ رَحۡمَةَ رَبِّهِۦۗ قُلۡ هَلۡ يَسۡتَوِي ٱلَّذِينَ يَعۡلَمُونَ وَٱلَّذِينَ لَا يَعۡلَمُونَۗ إِنَّمَا يَتَذَكَّرُ أُوْلُواْ ٱلۡأَلۡبَٰبِ",
+    translation:
+      "Is one who is devoutly obedient during periods of the night, prostrating and standing in prayer, fearing the Hereafter and hoping for the mercy of his Lord, like one who does not? Say, \"Are those who know equal to those who do not know?\" Only they will remember who are people of understanding.",
+    source: "Qur'an, Az-Zumar 39:9",
+    title: "Are those who know equal to those who do not?",
+  },
+  taha114: {
+    arabic:
+      "فَتَعَٰلَى ٱللَّهُ ٱلۡمَلِكُ ٱلۡحَقُّۗ وَلَا تَعۡجَلۡ بِٱلۡقُرۡءَانِ مِن قَبۡلِ أَن يُقۡضَىٰٓ إِلَيۡكَ وَحۡيُهُۥۖ وَقُل رَّبِّ زِدۡنِي عِلۡمٗا",
+    translation:
+      "So high above all is Allah, the Sovereign, the Truth. And do not hasten with recitation of the Qur'an before its revelation is completed to you, and say, \"My Lord, increase me in knowledge.\"",
+    source: "Qur'an, Ta-Ha 20:114",
+    title: "My Lord, increase me in knowledge",
+  },
   baqarah261: {
     arabic:
       "مَّثَلُ ٱلَّذِينَ يُنفِقُونَ أَمۡوَٰلَهُمۡ فِي سَبِيلِ ٱللَّهِ كَمَثَلِ حَبَّةٍ أَنۢبَتَتۡ سَبۡعَ سَنَابِلَ فِي كُلِّ سُنۢبُلَةٖ مِّاْئَةُ حَبَّةٖۗ وَٱللَّهُ يُضَٰعِفُ لِمَن يَشَآءُۚ وَٱللَّهُ وَٰسِعٌ عَلِيمٌ",
