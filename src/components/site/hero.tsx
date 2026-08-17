@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { SealFrame, Kicker, OrnamentField, Starfield } from "@/components/ui/ornament";
 import { ApiaryScene } from "@/components/ui/illustration";
-import { SlotImage } from "@/components/ui/hero-image";
 import { REGISTRATION } from "@/lib/organisation";
 
 /**
@@ -14,9 +13,10 @@ import { REGISTRATION } from "@/lib/organisation";
  * uses the *geometry* rather than the costume: no mosque silhouette, no tiled
  * arabesque, no accent gradient text, all of which docs/05 rules out.
  *
- * The seal frames a photograph as soon as one exists at public/hero/home.*,
- * and original vector artwork until then — see src/lib/imagery.ts. A drawing is
- * honest where a stock photograph of strangers would not be.
+ * The seal frames the drawn apiary rather than a photograph. The homepage
+ * photograph is the page's backdrop instead — see PageBackdrop — because a
+ * picture inside the seal competes with the headline beside it, while the same
+ * picture behind the whole page supports it.
  */
 export function Hero({ donateHref, workHref }: { donateHref: string; workHref: string }) {
   return (
@@ -77,10 +77,7 @@ export function Hero({ donateHref, workHref }: { donateHref: string; workHref: s
           {/* Focal seal */}
           <div className="relative mx-auto w-full max-w-sm lg:max-w-md">
             <SealFrame className="aspect-3/4 w-full shadow-elevated">
-              <SlotImage
-                image="home"
-                fallback={<ApiaryScene title="Hives on a hillside at dusk" />}
-              />
+              <ApiaryScene title="Hives on a hillside at dusk" />
             </SealFrame>
 
             {/* Accent hairline echo behind the seal. */}

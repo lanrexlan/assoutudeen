@@ -29,7 +29,14 @@ const DISMISSED_KEY = "apmf.giving-reminder.dismissed";
 const LAST_SHOWN_KEY = "apmf.giving-reminder.last-shown";
 
 /** Once it has appeared, it stays quiet for this long. */
-const COOLDOWN_MS = 6 * 60 * 1000;
+const COOLDOWN_MS = 3 * 60 * 1000;
+
+/**
+ * A page short enough that it is already 55% visible fires no scroll event at
+ * all, so the reminder would never appear on one. Those pages get the prompt
+ * after this much time on them instead — long enough to have read something.
+ */
+const DWELL_MS = 25 * 1000;
 
 /** Pages where a prompt would be redundant, or in poor taste. */
 const SUPPRESSED = [
@@ -62,20 +69,32 @@ export function DonationReminder() {
     const lastShown = Number(window.sessionStorage.getItem(LAST_SHOWN_KEY) ?? 0);
     if (Date.now() - lastShown < COOLDOWN_MS) return;
 
-    const onScroll = () => {
+    const show = () => {
+      setVisible(true);
+      window.sessionStorage.setItem(LAST_SHOWN_KEY, String(Date.now()));
+    };
+
+    const readEnough = () => {
       const scrolled = window.scrollY + window.innerHeight;
-      const height = document.documentElement.scrollHeight;
-      /* Short pages never reach the ratio, which is the intended behaviour:
-         there was not enough there to have earned the ask. */
-      if (scrolled / height >= TRIGGER_RATIO) {
-        setVisible(true);
-        window.sessionStorage.setItem(LAST_SHOWN_KEY, String(Date.now()));
-        window.removeEventListener("scroll", onScroll);
-      }
+      return scrolled / document.documentElement.scrollHeight >= TRIGGER_RATIO;
+    };
+
+    /* A page with nothing to scroll is already "read to the end" on arrival.
+       Asking the instant it loads would be a pop-up; asking after a dwell is a
+       reminder. */
+    const dwell = readEnough() ? window.setTimeout(show, DWELL_MS) : undefined;
+
+    const onScroll = () => {
+      if (!readEnough()) return;
+      show();
+      window.removeEventListener("scroll", onScroll);
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (dwell) window.clearTimeout(dwell);
+    };
   }, [suppressed, pathname]);
 
   if (!visible || suppressed) return null;

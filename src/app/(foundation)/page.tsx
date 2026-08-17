@@ -14,6 +14,7 @@ import { Container } from "@/components/ui/container";
 import { Medallion } from "@/components/ui/ornament";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { Hero } from "@/components/site/hero";
+import { PageBackdrop } from "@/components/ui/page-backdrop";
 import { StructureDiagram } from "@/components/site/structure-diagram";
 import { TestimonyWall } from "@/components/site/testimony-wall";
 import { getSiteContext } from "@/lib/site-context";
@@ -61,6 +62,9 @@ export default async function FoundationHomePage() {
 
   return (
     <>
+      {/* The cupped hands sit behind the whole page rather than in the hero's
+          seal, so they read as a presence rather than an illustration. */}
+      <PageBackdrop image="home" />
       <Hero donateHref={href("/donate")} workHref={href("/prophetic-medicine")} />
 
       {/* --- Proof bar: real, published numbers only -------------------- */}
@@ -96,7 +100,7 @@ export default async function FoundationHomePage() {
       </section>
 
       {/* --- What we do -------------------------------------------------- */}
-      <Section tone="chalk" size="lg" ornament>
+      <Section tone="chalk" size="lg" ornament className="bg-chalk/70">
         <SectionHeading
           kicker="What we do"
           title="Four kinds of work, one intention"
@@ -179,7 +183,7 @@ export default async function FoundationHomePage() {
       </Section>
 
       {/* --- The empowerment fund ---------------------------------------- */}
-      <Section tone="white" size="lg">
+      <Section tone="white" size="lg" className="bg-white/80">
         <SectionHeading
           kicker="The empowerment fund"
           title="A standing circle, month after month"
@@ -230,14 +234,14 @@ export default async function FoundationHomePage() {
       </Section>
 
       {/* --- Scripture --------------------------------------------------- */}
-      <Section tone="chalk" size="lg" ornament>
+      <Section tone="chalk" size="lg" ornament className="bg-chalk/70">
         <div className="mx-auto max-w-3xl">
           <ArabicQuote className="reveal" {...VERSES.baqarah261} />
         </div>
       </Section>
 
       {/* --- Testimonies -------------------------------------------------- */}
-      <Section tone="white" size="lg">
+      <Section tone="white" size="lg" className="bg-white/80">
         <SectionHeading
           kicker="From the archive"
           title="What people have written to us"
@@ -255,7 +259,7 @@ export default async function FoundationHomePage() {
       </Section>
 
       {/* --- Our family -------------------------------------------------- */}
-      <Section tone="white" size="lg">
+      <Section tone="white" size="lg" className="bg-white/80">
         <SectionHeading
           kicker="Our family"
           title="One foundation, two arms"
