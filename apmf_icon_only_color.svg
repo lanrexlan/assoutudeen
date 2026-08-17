@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 360" role="img" aria-labelledby="title desc">
+  <title id="title">APMF icon mark</title>
+  <desc id="desc">APMF icon-only mark combining a protective home roof and medicinal plant.</desc>
+  <g transform="translate(0 0) scale(.64 .64)"><g transform="translate(0 0)"><path d="M108 244 L400 28 L692 244" fill="none" stroke="#0B5D3B" stroke-width="32" stroke-linecap="square" stroke-linejoin="miter"/>
+<path d="M568 142 V216 H614 V170 H578" fill="none" stroke="#0B5D3B" stroke-width="28" stroke-linejoin="miter"/><path d="M206 232 C145 289 143 382 194 438 C229 477 278 498 337 509" fill="none" stroke="#0B5D3B" stroke-width="30" stroke-linecap="round"/>
+<path d="M594 232 C655 289 657 382 606 438 C571 477 522 498 463 509" fill="none" stroke="#0B5D3B" stroke-width="30" stroke-linecap="round"/><path d="M400 508 V161" fill="none" stroke="#18A45B" stroke-width="18" stroke-linecap="round"/>
+<path d="M400 383 C355 345 320 322 277 316" fill="none" stroke="#18A45B" stroke-width="14" stroke-linecap="round"/>
+<path d="M400 383 C445 345 480 322 523 316" fill="none" stroke="#18A45B" stroke-width="14" stroke-linecap="round"/>
+<path d="M400 485 C348 441 307 422 251 416" fill="none" stroke="#18A45B" stroke-width="14" stroke-linecap="round"/>
+<path d="M400 485 C452 441 493 422 549 416" fill="none" stroke="#18A45B" stroke-width="14" stroke-linecap="round"/><path d="M400 95 C353 144 353 211 400 260 C447 211 447 144 400 95 Z" fill="#18A45B"/>
+<path d="M382 306 C329 266 278 281 254 325 C298 356 346 353 382 306 Z" fill="#18A45B"/>
+<path d="M418 306 C471 266 522 281 546 325 C502 356 454 353 418 306 Z" fill="#18A45B"/>
+<path d="M371 447 C307 397 256 407 222 451 C277 483 331 480 371 447 Z" fill="#18A45B"/>
+<path d="M429 447 C493 397 544 407 578 451 C523 483 469 480 429 447 Z" fill="#18A45B"/><path d="M400 245 V137" fill="none" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round"/>
+<path d="M365 327 C335 307 312 300 286 300" fill="none" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round"/>
+<path d="M435 327 C465 307 488 300 514 300" fill="none" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round"/>
+<path d="M353 460 C317 437 288 429 254 429" fill="none" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round"/>
+<path d="M447 460 C483 437 512 429 546 429" fill="none" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round"/></g></g>
+</svg>
