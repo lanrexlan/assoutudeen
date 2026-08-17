@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { CalendarDays, Clock, MapPin, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
-import { PageHeader, Prose } from "@/components/ui/prose";
+import { PageHeader, Prose, ProseHeading } from "@/components/ui/prose";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { getSiteContext } from "@/lib/site-context";
 import { PROGRAMMES } from "@/lib/programmes";
@@ -65,7 +65,7 @@ export default async function ProgrammePage({
       <Section tone="chalk" size="lg">
         <div className="grid gap-10 lg:grid-cols-[1fr_20rem] lg:items-start">
           <Prose>
-            <h2>When it runs</h2>
+            <ProseHeading>When it runs</ProseHeading>
             <p>
               {programme.cadence}, {programme.time.toLowerCase()}. That window moves
               through the year with the prayer times rather than sitting at a fixed
@@ -81,10 +81,10 @@ export default async function ProgrammePage({
               </p>
             ) : null}
 
-            <h2>Who teaches it</h2>
+            <ProseHeading>Who teaches it</ProseHeading>
             <p>{programme.teacher}</p>
 
-            <h2>What to bring</h2>
+            <ProseHeading>What to bring</ProseHeading>
             <ul>
               <li>Yourself. There is no enrolment, no fee and no register.</li>
               <li>
@@ -97,7 +97,7 @@ export default async function ProgrammePage({
               </li>
             </ul>
 
-            <h2>If you cannot come</h2>
+            <ProseHeading>If you cannot come</ProseHeading>
             <p>
               Sessions are recorded and published, so a missed week is not a lost one.
               The recordings sit in <Link href={href("/library")}>the library</Link>.

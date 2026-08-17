@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { LegalShell } from "@/components/site/legal-shell";
+import { ProseHeading } from "@/components/ui/prose";
 import { CONTACT } from "@/lib/sites";
 
 export const metadata: Metadata = {
@@ -14,7 +15,7 @@ export default function ReturnsPage() {
       title="Returns and refunds"
       standfirst="Food cannot be returned once opened — but if we send you something damaged or wrong, that is our problem to fix, not yours."
     >
-      <h2>Honey</h2>
+      <ProseHeading>Honey</ProseHeading>
       <p>
         Honey is a food product. Once a container has been opened we cannot accept it
         back, because we cannot resell it and cannot verify how it has been kept. That is
@@ -35,21 +36,21 @@ export default function ReturnsPage() {
         <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>.
       </p>
 
-      <h2>Books</h2>
+      <ProseHeading>Books</ProseHeading>
       <p>
         A physical book can be returned unread and undamaged within 7 days of
         delivery. Digital editions cannot be returned once the download link has been
         used, which is why a sample is offered first.
       </p>
 
-      <h2>How refunds are paid</h2>
+      <ProseHeading>How refunds are paid</ProseHeading>
       <p>
         Refunds go back to the account the payment came from, through Paystack, within
         7 working days of us agreeing the refund. Where the fault is ours we pay the
         return delivery; where you have simply changed your mind about a book, you do.
       </p>
 
-      <h2>Your rights</h2>
+      <ProseHeading>Your rights</ProseHeading>
       <p>
         Nothing here removes rights you have under the Federal Competition and Consumer
         Protection Act. A blanket &ldquo;no returns under any circumstances&rdquo; policy
@@ -57,7 +58,7 @@ export default function ReturnsPage() {
         ours, you are entitled to a remedy.
       </p>
 
-      <h2>Donations</h2>
+      <ProseHeading>Donations</ProseHeading>
       <p>
         Donations are not purchases and are not generally refundable. If you gave in
         error, tell us as soon as you can and we will do what we reasonably can — see the

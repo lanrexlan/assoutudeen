@@ -1,5 +1,11 @@
 import { cn } from "@/lib/utils";
-import { Kicker, OrnamentField, Starfield } from "@/components/ui/ornament";
+import {
+  Kicker,
+  OrnamentField,
+  Starfield,
+  StarGlyph,
+  iconForKicker,
+} from "@/components/ui/ornament";
 import { Container } from "@/components/ui/container";
 import { HeroImage, findHeroFile } from "@/components/ui/hero-image";
 import type { HeroKey } from "@/lib/imagery";
@@ -99,5 +105,40 @@ export function PageHeader({
         </div>
       </Container>
     </section>
+  );
+}
+
+/**
+ * A heading inside long-form copy, with an icon chosen from its own words.
+ *
+ * Prose headings were the last bare text on the site: the kickers above each
+ * band had icons, the cards had icons, and then a page of running copy broke
+ * into six identical-looking subheadings. The icon is picked the same way the
+ * kickers pick theirs — from the heading's own words — so nothing has to be
+ * chosen by hand for every page, and an unmatched heading simply renders
+ * without one rather than falling back to something arbitrary.
+ */
+export function ProseHeading({
+  children,
+  icon: Icon,
+  className,
+}: {
+  children: string;
+  icon?: React.ComponentType<{ className?: string; "aria-hidden"?: boolean }>;
+  className?: string;
+}) {
+  const Resolved = Icon ?? iconForKicker(children);
+
+  return (
+    <h2 className={cn("flex items-center gap-3", className)}>
+      <span
+        aria-hidden="true"
+        className="seal inline-flex size-8 shrink-0 items-center justify-center bg-apricot/18 text-apricot-dark [--c:0.5rem]"
+      >
+        {/* The star is the fallback, so a heading added later is never bare. */}
+        {Resolved ? <Resolved className="size-4" /> : <StarGlyph className="size-4" />}
+      </span>
+      {children}
+    </h2>
   );
 }

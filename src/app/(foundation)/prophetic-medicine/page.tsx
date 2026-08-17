@@ -7,7 +7,7 @@ import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Disclaimer } from "@/components/ui/disclaimer";
 import { SealFrame, Medallion } from "@/components/ui/ornament";
 import { RemedyScene } from "@/components/ui/illustration";
-import { PageHeader, Prose } from "@/components/ui/prose";
+import { PageHeader, Prose, ProseHeading } from "@/components/ui/prose";
 import { Section, SectionHeading } from "@/components/ui/section";
 import {
   TestimonyDisclaimer,
@@ -71,7 +71,7 @@ export default function PropheticMedicinePage() {
                 </li>
               </ul>
 
-              <h2>Where conventional medicine fits</h2>
+              <ProseHeading>Where conventional medicine fits</ProseHeading>
               <p>
                 Alongside all of it, and never underneath it. If you are ill, see a
                 qualified doctor. If you have been prescribed treatment, take it.

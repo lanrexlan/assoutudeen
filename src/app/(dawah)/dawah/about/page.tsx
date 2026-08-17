@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { ArabicQuote } from "@/components/ui/arabic-quote";
 import { Medallion } from "@/components/ui/ornament";
-import { PageHeader, Prose } from "@/components/ui/prose";
+import { PageHeader, Prose, ProseHeading } from "@/components/ui/prose";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { getSiteContext } from "@/lib/site-context";
 import { PROGRAMMES, TEACHING_WINDOW } from "@/lib/programmes";
@@ -34,7 +34,7 @@ export default async function DawahAboutPage() {
       <Section tone="chalk" size="lg">
         <div className="grid gap-10 lg:grid-cols-[1fr_18rem] lg:items-start">
           <Prose>
-            <h2>What the Institute is</h2>
+            <ProseHeading>What the Institute is</ProseHeading>
             <p>
               The Institute is not a school with a gate and a fee. It is a set of
               recurring classes taught in Ede, {TEACHING_WINDOW.toLowerCase()}, by
@@ -48,7 +48,7 @@ export default async function DawahAboutPage() {
               rather than in a newsletter. Teaching is the root, not the outreach.
             </p>
 
-            <h2>How it teaches</h2>
+            <ProseHeading>How it teaches</ProseHeading>
             <ul>
               <li>
                 <strong>Evidence first.</strong> A claim is traced to its verse or its
@@ -71,7 +71,7 @@ export default async function DawahAboutPage() {
               </li>
             </ul>
 
-            <h2>Where it sits</h2>
+            <ProseHeading>Where it sits</ProseHeading>
             <p>
               The Institute is one of two arms under the foundation. The other is the
               Honey Enterprise, which trades. The foundation itself is registered with

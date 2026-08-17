@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { LegalShell } from "@/components/site/legal-shell";
+import { ProseHeading } from "@/components/ui/prose";
 import { CONTACT, FOUNDATION_NAME } from "@/lib/sites";
 import { REGISTRATION } from "@/lib/organisation";
 
@@ -15,7 +16,7 @@ export default function PrivacyPage() {
       title="Privacy policy"
       standfirst="What we collect, why, how long we keep it, and what you can ask us to do about it."
     >
-      <h2>Who we are</h2>
+      <ProseHeading>Who we are</ProseHeading>
       <p>
         {FOUNDATION_NAME}, {CONTACT.address}. Registered with the Corporate Affairs
         Commission as Incorporated Trustees under {REGISTRATION.number}, incorporated
@@ -32,7 +33,7 @@ export default function PrivacyPage() {
         data we hold; we will say so here if and when we do.
       </p>
 
-      <h2>What we collect</h2>
+      <ProseHeading>What we collect</ProseHeading>
       <ul>
         <li>
           <strong>When you contact us</strong> — your name, email, phone number if you
@@ -57,7 +58,7 @@ export default function PrivacyPage() {
         </li>
       </ul>
 
-      <h2>Why we may use it, and on what basis</h2>
+      <ProseHeading>Why we may use it, and on what basis</ProseHeading>
       <ul>
         <li>
           <strong>Consent</strong> — email updates, and any publication of your name,
@@ -80,7 +81,7 @@ export default function PrivacyPage() {
         checkbox, and declining does not stop you from using the site.
       </p>
 
-      <h2>Publishing your story</h2>
+      <ProseHeading>Publishing your story</ProseHeading>
       <p>
         Applying for assistance is not permission to be written about. We report our
         impact by category — &ldquo;four children in secondary school&rdquo;, &ldquo;a
@@ -89,7 +90,7 @@ export default function PrivacyPage() {
         specifically. We keep a record of that consent, and you can withdraw it.
       </p>
 
-      <h2>Who we share it with</h2>
+      <ProseHeading>Who we share it with</ProseHeading>
       <p>
         Only the services that make the site work: our hosting provider (Vercel), our
         database provider (Neon), our media host (Cloudinary), our payment processor
@@ -98,7 +99,7 @@ export default function PrivacyPage() {
         with anyone else unless the law requires it.
       </p>
 
-      <h2>How long we keep it</h2>
+      <ProseHeading>How long we keep it</ProseHeading>
       <ul>
         <li>Messages you send us — two years, then deleted.</li>
         <li>Email subscribers — until you unsubscribe, and one year after that.</li>
@@ -114,7 +115,7 @@ export default function PrivacyPage() {
         <li>Consent records — for as long as we rely on the consent, and three years after.</li>
       </ul>
 
-      <h2>How we protect it</h2>
+      <ProseHeading>How we protect it</ProseHeading>
       <p>
         The site is served over HTTPS. The database is encrypted at rest, access to the
         admin panel is restricted by role, and staff accounts only see what their role
@@ -126,7 +127,7 @@ export default function PrivacyPage() {
         of becoming aware, and tell anyone materially affected directly.
       </p>
 
-      <h2>Your rights</h2>
+      <ProseHeading>Your rights</ProseHeading>
       <p>
         Under the Nigeria Data Protection Act 2023 you can ask us for a copy of your data,
         ask us to correct it, ask us to delete it, object to how we are using it, or
@@ -136,7 +137,7 @@ export default function PrivacyPage() {
         Protection Commission.
       </p>
 
-      <h2>Cookies</h2>
+      <ProseHeading>Cookies</ProseHeading>
       <p>
         This site sets no analytics or advertising cookies, and embeds no third-party
         players — which is why the lecture recordings link out to Facebook rather than

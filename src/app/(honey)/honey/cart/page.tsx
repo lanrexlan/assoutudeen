@@ -3,7 +3,7 @@ import Link from "next/link";
 import { MessageCircle, ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Medallion } from "@/components/ui/ornament";
-import { PageHeader, Prose } from "@/components/ui/prose";
+import { PageHeader, Prose, ProseHeading } from "@/components/ui/prose";
 import { Section } from "@/components/ui/section";
 import { getSiteContext } from "@/lib/site-context";
 import { CONTACT } from "@/lib/sites";
@@ -67,7 +67,7 @@ export default async function CartPage() {
           </div>
 
           <Prose className="mx-auto mt-12">
-            <h2>Why not just build the basket now?</h2>
+            <ProseHeading>Why not just build the basket now?</ProseHeading>
             <p>
               Because a basket is the easy half. The hard half is making sure an order
               is only ever marked paid when the bank has actually confirmed the payment

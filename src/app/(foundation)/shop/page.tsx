@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { SealFrame, Medallion } from "@/components/ui/ornament";
 import { BookScene } from "@/components/ui/illustration";
-import { PageHeader, Prose } from "@/components/ui/prose";
+import { PageHeader, Prose, ProseHeading } from "@/components/ui/prose";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { BOOK } from "@/lib/book";
 import { CONTACT, siteConfig } from "@/lib/sites";
@@ -41,7 +41,7 @@ export default function ShopPage() {
 
           <div>
             <Prose>
-              <h2>What the book does</h2>
+              <ProseHeading>What the book does</ProseHeading>
               <p>
                 It takes around forty-five natural remedies named in the Qur&apos;an and
                 the Sunnah and gives each one a chapter: the verse, the hadith with its
@@ -55,7 +55,7 @@ export default function ShopPage() {
                 reproduced rather than paraphrased.
               </p>
 
-              <h2>Inside</h2>
+              <ProseHeading>Inside</ProseHeading>
               <ul>
                 {BOOK.chapterStructure.slice(0, 4).map((item) => (
                   <li key={item}>{item}</li>

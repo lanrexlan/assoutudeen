@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArabicQuote } from "@/components/ui/arabic-quote";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
-import { PageHeader, Prose } from "@/components/ui/prose";
+import { PageHeader, Prose, ProseHeading } from "@/components/ui/prose";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { CONTACT } from "@/lib/sites";
 import { PREAMBLE, REGISTERED_OBJECTS, REGISTRATION } from "@/lib/organisation";
@@ -26,7 +26,7 @@ export default function AboutPage() {
 
       <Section>
         <Prose>
-          <h2>What we do</h2>
+          <ProseHeading>What we do</ProseHeading>
           <p>
             Assoutudeen Prophetic Medicine Foundation works in three connected ways.
             We teach and publish on prophetic medicine — the remedies of the Qur&apos;an
@@ -42,7 +42,7 @@ export default function AboutPage() {
             outside it, and so do donations.
           </p>
 
-          <h2>The problem we exist to answer</h2>
+          <ProseHeading>The problem we exist to answer</ProseHeading>
           <p>
             Two things happen constantly around us. A family faces a hospital bill they
             cannot pay, and there is no system that will catch them. And a great deal of
@@ -51,7 +51,7 @@ export default function AboutPage() {
             the naira, and remedies published with their chain of evidence attached.
           </p>
 
-          <h2>How we work</h2>
+          <ProseHeading>How we work</ProseHeading>
           <ul>
             <li>
               <strong>We publish what we raise.</strong> Every year, by category and to
@@ -75,13 +75,13 @@ export default function AboutPage() {
             </li>
           </ul>
 
-          <h2>Our values, and where they come from</h2>
+          <ProseHeading>Our values, and where they come from</ProseHeading>
         </Prose>
 
         <ArabicQuote className="mt-4 max-w-2xl" {...VERSES.baqarah177} />
 
         <Prose className="mt-8">
-          <h2>Founded</h2>
+          <ProseHeading>Founded</ProseHeading>
           <p>
             The foundation was incorporated on{" "}
             <strong>{REGISTRATION.incorporatedOnDisplay}</strong> by the Corporate

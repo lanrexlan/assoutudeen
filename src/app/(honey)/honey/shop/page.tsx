@@ -6,7 +6,7 @@ import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Disclaimer } from "@/components/ui/disclaimer";
 import { SealFrame, Medallion } from "@/components/ui/ornament";
 import { ApiaryScene } from "@/components/ui/illustration";
-import { PageHeader, Prose } from "@/components/ui/prose";
+import { PageHeader, Prose, ProseHeading } from "@/components/ui/prose";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { getSiteContext } from "@/lib/site-context";
 import { CONTACT } from "@/lib/sites";
@@ -94,7 +94,7 @@ export default async function HoneyShopPage() {
       <Section tone="white" size="lg">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
           <Prose>
-            <h2>Why there is no price list</h2>
+            <ProseHeading>Why there is no price list</ProseHeading>
             <p>
               Honey is harvested in seasons and sold by weight, and delivery across
               Nigeria costs very different amounts depending on where you are. A fixed
@@ -107,7 +107,7 @@ export default async function HoneyShopPage() {
               say so — the rate is different and it is worth the conversation.
             </p>
 
-            <h2>How to order today</h2>
+            <ProseHeading>How to order today</ProseHeading>
             <ul>
               <li>Message us on WhatsApp with the litres and your town.</li>
               <li>We confirm the price, including delivery, before anything is paid.</li>

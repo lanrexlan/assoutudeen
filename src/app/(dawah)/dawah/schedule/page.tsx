@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CalendarDays, MapPin, Moon, Repeat } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { PageHeader, Prose } from "@/components/ui/prose";
+import { PageHeader, Prose, ProseHeading } from "@/components/ui/prose";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { Medallion } from "@/components/ui/ornament";
 import { getSiteContext } from "@/lib/site-context";
@@ -93,7 +93,7 @@ export default async function SchedulePage() {
       <Section tone="white" size="lg">
         <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-start">
           <Prose>
-            <h2>Why there is no clock time</h2>
+            <ProseHeading>Why there is no clock time</ProseHeading>
             <p>
               Everything runs between maghrib and isha. In Ede that gap moves through
               the year, so a fixed time on a page would be wrong for most of it. Come
@@ -101,7 +101,7 @@ export default async function SchedulePage() {
               finished.
             </p>
 
-            <h2>The Saturday pair</h2>
+            <ProseHeading>The Saturday pair</ProseHeading>
             <p>
               Hadith and prophetic medicine alternate, so each falls every second
               Saturday. If you want to know which one is on this week, ask on WhatsApp
@@ -109,7 +109,7 @@ export default async function SchedulePage() {
               automatically is still being built.
             </p>
 
-            <h2>Ramadan and Eid</h2>
+            <ProseHeading>Ramadan and Eid</ProseHeading>
             <p>
               The timetable changes in Ramadan and pauses over the two Eids. Changes are
               announced in class and on the foundation&apos;s Facebook page before they

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { BadgeCheck, ScrollText, Users } from "lucide-react";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Medallion } from "@/components/ui/ornament";
-import { PageHeader, Prose } from "@/components/ui/prose";
+import { PageHeader, Prose, ProseHeading } from "@/components/ui/prose";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { BankDetails } from "@/components/site/bank-details";
 import { CONTACT } from "@/lib/sites";
@@ -177,7 +177,7 @@ export default function AccountabilityPage() {
       {/* --- Reports, spending, bank ------------------------------------- */}
       <Section tone="chalk" size="lg">
         <Prose>
-          <h2>Annual reports</h2>
+          <ProseHeading>Annual reports</ProseHeading>
           <p>
             The 2023 report is written and published in the foundation&apos;s own
             format: the beneficiary table with amounts, the assistances made from
@@ -207,7 +207,7 @@ export default function AccountabilityPage() {
             public register.
           </p>
 
-          <h2>How donations are spent</h2>
+          <ProseHeading>How donations are spent</ProseHeading>
           <p>
             Money given for a specific purpose is spent on that purpose. Where we can,
             we pay a hospital or a supplier directly rather than handing over cash.

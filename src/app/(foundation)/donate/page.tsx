@@ -5,7 +5,7 @@ import { ArabicQuote } from "@/components/ui/arabic-quote";
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Medallion } from "@/components/ui/ornament";
-import { PageHeader, Prose } from "@/components/ui/prose";
+import { PageHeader, Prose, ProseHeading } from "@/components/ui/prose";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { BankDetails } from "@/components/site/bank-details";
 import { CONTACT } from "@/lib/sites";
@@ -151,7 +151,7 @@ export default function DonatePage() {
 
       <Section tone="chalk" size="md">
         <Prose className="mx-auto">
-          <h2>A note on receipts</h2>
+          <ProseHeading>A note on receipts</ProseHeading>
           <p>
             Every gift is recorded against a reference. Email receipts go out
             automatically once the payment work is finished; until then, ask and we will

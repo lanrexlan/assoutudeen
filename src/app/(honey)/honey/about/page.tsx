@@ -4,7 +4,7 @@ import { Building2, HandHeart, Leaf, Scale } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Disclaimer } from "@/components/ui/disclaimer";
 import { Medallion } from "@/components/ui/ornament";
-import { PageHeader, Prose } from "@/components/ui/prose";
+import { PageHeader, Prose, ProseHeading } from "@/components/ui/prose";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { getSiteContext } from "@/lib/site-context";
 import { FOUNDER } from "@/lib/founder";
@@ -32,14 +32,14 @@ export default async function HoneyAboutPage() {
       <Section tone="chalk" size="lg">
         <div className="grid gap-10 lg:grid-cols-[1fr_18rem] lg:items-start">
           <Prose>
-            <h2>Where it came from</h2>
+            <ProseHeading>Where it came from</ProseHeading>
             <p>
               {FOUNDER.name} keeps bees. The enterprise grew out of that — first honey
               for the household and the people who asked for it, then enough of it that
               it made sense to run properly, under the foundation rather than beside it.
             </p>
 
-            <h2>Why a charity trades at all</h2>
+            <ProseHeading>Why a charity trades at all</ProseHeading>
             <p>
               A charity funded only by giving is at the mercy of a bad year. Trading
               income is steadier, and it means a family in difficulty is not waiting on
@@ -53,7 +53,7 @@ export default async function HoneyAboutPage() {
               Anyone reading the accounts can see which is which.
             </p>
 
-            <h2>What we sell, and what we do not say</h2>
+            <ProseHeading>What we sell, and what we do not say</ProseHeading>
             <p>
               Honey, by the litre, as a food. No herbal preparations, no remedies in
               bottles, and no claim on any product page that honey treats, prevents or
@@ -66,7 +66,7 @@ export default async function HoneyAboutPage() {
               classes, with the evidence attached and nothing to buy at the end of it.
             </p>
 
-            <h2>Who to hold responsible</h2>
+            <ProseHeading>Who to hold responsible</ProseHeading>
             <p>
               The enterprise operates under {FOUNDATION_NAME}, registered with the
               Corporate Affairs Commission as {REGISTRATION.number}. Complaints, refunds

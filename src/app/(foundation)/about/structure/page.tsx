@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
-import { PageHeader, Prose } from "@/components/ui/prose";
+import { PageHeader, Prose, ProseHeading } from "@/components/ui/prose";
 import { Section } from "@/components/ui/section";
 import { StructureDiagram } from "@/components/site/structure-diagram";
 import { siteConfig } from "@/lib/sites";
@@ -26,7 +26,7 @@ export default function StructurePage() {
         <StructureDiagram />
 
         <Prose className="mt-10">
-          <h2>Assoutudeen Prophetic Medicine Foundation</h2>
+          <ProseHeading>Assoutudeen Prophetic Medicine Foundation</ProseHeading>
           <p>
             The parent body and the registered charity. It receives donations, runs the
             monthly empowerment fund, publishes the annual accounts, and holds
@@ -36,7 +36,7 @@ export default function StructurePage() {
             <strong>{REGISTRATION.number}</strong>.
           </p>
 
-          <h2>Assoutudeen Dawah Institute</h2>
+          <ProseHeading>Assoutudeen Dawah Institute</ProseHeading>
           <p>
             The education arm. It teaches seven classes across Friday, Saturday and
             Sunday evenings — Tafsir on Fridays; Hadith and Prophetic Medicine on
@@ -47,7 +47,7 @@ export default function StructurePage() {
             no funds of its own; it operates under the foundation.
           </p>
 
-          <h2>Assoutudeen Honey Enterprise</h2>
+          <ProseHeading>Assoutudeen Honey Enterprise</ProseHeading>
           <p>
             The commercial arm, selling pure honey by the litre to retail and wholesale
             customers. It is a business rather than a charity, and its books are kept

@@ -14,7 +14,7 @@ import { ArabicQuote } from "@/components/ui/arabic-quote";
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Medallion } from "@/components/ui/ornament";
-import { PageHeader, Prose } from "@/components/ui/prose";
+import { PageHeader, Prose, ProseHeading } from "@/components/ui/prose";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { formatKobo } from "@/payload/fields/money";
 import { THREE_YEAR_TOTAL_KOBO, YEAR_TOTALS } from "@/lib/impact";
@@ -173,7 +173,7 @@ export default function OurWorkPage() {
         </ul>
 
         <Prose className="mx-auto mt-12">
-          <h2>Why we report by category</h2>
+          <ProseHeading>Why we report by category</ProseHeading>
           <p>
             People come to us at the worst moment of their year. Publishing a name and
             a diagnosis alongside a figure buys the foundation credibility at their

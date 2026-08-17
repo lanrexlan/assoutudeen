@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { LegalShell } from "@/components/site/legal-shell";
+import { ProseHeading } from "@/components/ui/prose";
 import { CONTACT, FOUNDATION_NAME } from "@/lib/sites";
 
 export const metadata: Metadata = {
@@ -14,13 +15,13 @@ export default function TermsPage() {
       title="Terms"
       standfirst="The terms on which you use this site, give to the foundation, and buy from us."
     >
-      <h2>Using this site</h2>
+      <ProseHeading>Using this site</ProseHeading>
       <p>
         This site is run by {FOUNDATION_NAME}, {CONTACT.address}. By using it you accept
         these terms. If you do not accept them, please do not use the site.
       </p>
 
-      <h2>What this site is not</h2>
+      <ProseHeading>What this site is not</ProseHeading>
       <p>
         Nothing on this site is medical advice, and nothing here is a diagnosis. Our
         writing on prophetic medicine is educational: it quotes the Qur&apos;an, the
@@ -30,7 +31,7 @@ export default function TermsPage() {
         read here.
       </p>
 
-      <h2>Donations</h2>
+      <ProseHeading>Donations</ProseHeading>
       <ul>
         <li>
           A donation given for a stated purpose is used for that purpose. Where a case
@@ -48,7 +49,7 @@ export default function TermsPage() {
         </li>
       </ul>
 
-      <h2>Terms of sale</h2>
+      <ProseHeading>Terms of sale</ProseHeading>
       <p>
         These apply to the book and to honey bought through the Assoutudeen Honey
         Enterprise.
@@ -72,14 +73,14 @@ export default function TermsPage() {
         </li>
       </ul>
 
-      <h2>Classes at the Dawah Institute</h2>
+      <ProseHeading>Classes at the Dawah Institute</ProseHeading>
       <p>
         Classes are free and open to everyone. There is no enrolment, no fee and
         nothing to withdraw from — come to what you can, and the recordings are there
         for what you miss. We issue no certificates.
       </p>
 
-      <h2>Consultations</h2>
+      <ProseHeading>Consultations</ProseHeading>
       <p>
         Conversations about prophetic medicine are offered as scholarship, not as
         medical practice. They are not a diagnosis, they do not replace seeing a
@@ -87,14 +88,14 @@ export default function TermsPage() {
         prescribed treatment. No fee is charged for them.
       </p>
 
-      <h2>Wholesale and distribution</h2>
+      <ProseHeading>Wholesale and distribution</ProseHeading>
       <p>
         Wholesale supply and the ambassador programme are governed by a separate written
         agreement between you and the Honey Enterprise. It is a commercial contract
         rather than a web page, and it is not covered by these terms.
       </p>
 
-      <h2>Liability</h2>
+      <ProseHeading>Liability</ProseHeading>
       <p>
         We are responsible for what we sell and what we publish. Where something is our
         fault, we will put it right — replace it, refund it, or correct it. We are not
@@ -104,13 +105,13 @@ export default function TermsPage() {
         does not allow us to limit.
       </p>
 
-      <h2>Governing law</h2>
+      <ProseHeading>Governing law</ProseHeading>
       <p>
         These terms are governed by the laws of the Federal Republic of Nigeria, and the
         courts of Osun State have jurisdiction.
       </p>
 
-      <h2>Contact</h2>
+      <ProseHeading>Contact</ProseHeading>
       <p>
         Questions about these terms: <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>.
       </p>

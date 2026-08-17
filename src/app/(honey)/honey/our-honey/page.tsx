@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Disclaimer } from "@/components/ui/disclaimer";
 import { Medallion, SealFrame } from "@/components/ui/ornament";
 import { ApiaryScene } from "@/components/ui/illustration";
-import { PageHeader, Prose } from "@/components/ui/prose";
+import { PageHeader, Prose, ProseHeading } from "@/components/ui/prose";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { getSiteContext } from "@/lib/site-context";
 import { FOUNDER } from "@/lib/founder";
@@ -63,7 +63,7 @@ export default async function OurHoneyPage() {
       <Section tone="chalk" size="lg" ornament>
         <div className="grid gap-10 lg:grid-cols-[1fr_0.8fr] lg:items-center">
           <Prose>
-            <h2>Kept, not just traded</h2>
+            <ProseHeading>Kept, not just traded</ProseHeading>
             <p>
               The Honey Enterprise began with the founder&apos;s own hives.{" "}
               {FOUNDER.name} keeps bees, and the enterprise grew out of that rather than
@@ -73,7 +73,7 @@ export default async function OurHoneyPage() {
               assumed.
             </p>
 
-            <h2>How it is handled</h2>
+            <ProseHeading>How it is handled</ProseHeading>
             <ul>
               <li>
                 <strong>Nothing added.</strong> No syrup, no glucose, no water. Honey is
@@ -94,7 +94,7 @@ export default async function OurHoneyPage() {
               </li>
             </ul>
 
-            <h2>What we will not claim</h2>
+            <ProseHeading>What we will not claim</ProseHeading>
             <p>
               Honey is a food. This page says nothing about what it treats or prevents,
               because a product page making a health claim is both against NAFDAC rules
