@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
-import { PageHeader, Prose } from "@/components/ui/prose";
+import { PageHeader, Prose, ProseHeading } from "@/components/ui/prose";
 import { Section } from "@/components/ui/section";
 import { getSiteContext } from "@/lib/site-context";
 import { THREE_YEAR_TOTAL_KOBO, YEAR_TOTALS } from "@/lib/impact";
@@ -36,31 +36,31 @@ export default async function EmpowermentPage() {
 
   return (
     <>
-      <Section tone="primary">
-        <PageHeader
-          eyebrow="Our flagship"
-          title="The Monthly Empowerment Fund"
-          standfirst="A standing monthly contribution circle. Each member gives any amount they find convenient — and every disbursement is reported openly."
-        />
+      <PageHeader
+        image="empowerment"
+        eyebrow="Our flagship"
+        title="The Monthly Empowerment Fund"
+        standfirst="A standing monthly contribution circle. Each member gives any amount they find convenient — and every disbursement is reported openly."
+      >
         <div className="mt-6 flex flex-wrap gap-3">
-          <Button asChild variant="secondary" size="lg" className="border-transparent">
+          <Button asChild variant="donate" size="lg">
             <Link href={href("/empowerment/join")}>Join the fund</Link>
           </Button>
-          <Button asChild variant="ghost" size="lg" className="text-white hover:bg-white/10 hover:text-white">
+          <Button asChild variant="ghostLight" size="lg">
             <Link href={href("/empowerment/request")}>Request assistance</Link>
           </Button>
         </div>
-      </Section>
+      </PageHeader>
 
       <Section>
         <Prose>
-          <h2>Why a circle, not appeals</h2>
+          <ProseHeading>Why a circle, not appeals</ProseHeading>
           <p>
             The old way was reactive: a crisis appears, an appeal goes out, the
             appeal closes. The new way is a standing circle, in the founder&apos;s
             own words:
           </p>
-          <blockquote className="rounded-md border-s-4 border-amber bg-sand p-4 text-charcoal">
+          <blockquote className="rounded-md border-s-4 border-apricot bg-chalk p-4 text-charcoal">
             &ldquo;I propose that we establish a monthly contribution fund
             dedicated to supporting them in their upkeep and maintenance… each
             member can donate any amount they deem convenient each month,
@@ -102,7 +102,7 @@ export default async function EmpowermentPage() {
           {YEAR_TOTALS.map((year) => (
             <Card key={year.year}>
               <CardTitle>{year.year}</CardTitle>
-              <p className="font-display text-2xl text-olive">
+              <p className="font-display text-2xl text-oxblood">
                 {formatKobo(year.raisedKobo)}
               </p>
               <CardDescription>
@@ -129,8 +129,8 @@ export default async function EmpowermentPage() {
         </p>
         <ul className="mt-6 grid list-none gap-3 sm:grid-cols-2">
           {tiers.map((tier) => (
-            <li key={tier.amount} className="flex items-start gap-3 rounded-md bg-sand p-4">
-              <span className="font-display text-xl text-olive">{tier.amount}</span>
+            <li key={tier.amount} className="flex items-start gap-3 rounded-md bg-chalk p-4">
+              <span className="font-display text-xl text-oxblood">{tier.amount}</span>
               <span className="text-sm leading-relaxed text-charcoal">{tier.does}</span>
             </li>
           ))}

@@ -1,103 +1,97 @@
 import type { Metadata } from "next";
-import { Card, CardDescription, CardTitle } from "@/components/ui/card";
+import Link from "next/link";
+import { Clock, MapPin } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { PageHeader } from "@/components/ui/prose";
-import { Section } from "@/components/ui/section";
-import { Todo } from "@/components/ui/todo";
+import { Section, SectionHeading } from "@/components/ui/section";
+import { Medallion } from "@/components/ui/ornament";
+import { ContactChannels } from "@/components/site/contact-channels";
 import { ContactForm } from "@/components/site/contact-form";
 import { MapEmbed } from "@/components/site/map-embed";
-import { foundationUrl } from "@/components/site/foundation-link";
-import { CONTACT } from "@/lib/sites";
+import { getSiteContext } from "@/lib/site-context";
+import { CONTACT, siteConfig } from "@/lib/sites";
 
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contact the Assoutudeen Dawah Institute — questions about classes, teachers and the schedule.",
+    "Ask about a class at the Assoutudeen Dawah Institute in Ede — which class is on this week, where to come, or how to catch up on a recording.",
 };
 
-const whatsappHref = `https://wa.me/${CONTACT.phoneE164}?text=${encodeURIComponent(
-  "As-salaamu alaykum. I have a question about the Dawah Institute classes.",
-)}`;
+export default async function DawahContactPage() {
+  const { href } = await getSiteContext("dawah");
 
-export default function ContactPage() {
   return (
     <>
-      <Section tone="primary">
-        <PageHeader
-          eyebrow="Contact"
-          title="Talk to the Institute"
-          standfirst="WhatsApp reaches us fastest. The form below routes your message to the right inbox."
+      <PageHeader
+        image="contact"
+        eyebrow="Contact"
+        title="Ask about a class"
+        standfirst="Which class is on this Saturday, where to come, whether you have missed too much to start now — WhatsApp answers all three fastest."
+      />
+
+      <Section tone="chalk">
+        <ContactChannels
+          whatsappMessage={siteConfig.dawah.whatsappMessage}
+          emailSubject="Question about a class at the Dawah Institute"
         />
-      </Section>
 
-      <Section>
-        <div className="grid gap-4 sm:grid-cols-3">
-          <Card>
-            <CardTitle>Call</CardTitle>
-            <CardDescription>Tap to dial from your phone.</CardDescription>
-            <a
-              href={`tel:+${CONTACT.phoneE164}`}
-              className="flex min-h-11 items-center text-lg font-semibold text-primary underline underline-offset-4"
-            >
-              {CONTACT.phoneDisplay}
-            </a>
-          </Card>
-
-          <Card>
-            <CardTitle>WhatsApp</CardTitle>
-            <CardDescription>
-              The fastest way to ask about classes and schedules.
-            </CardDescription>
-            <a
-              href={whatsappHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex min-h-11 items-center text-lg font-semibold text-primary underline underline-offset-4"
-            >
-              Start a chat
-            </a>
-          </Card>
-
-          <Card>
-            <CardTitle>Email</CardTitle>
-            <CardDescription>For anything that needs a written record.</CardDescription>
-            <a
-              href={`mailto:${CONTACT.email}`}
-              className="flex min-h-11 items-center break-all text-lg font-semibold text-primary underline underline-offset-4"
-            >
-              {CONTACT.email}
-            </a>
-          </Card>
-        </div>
-
-        <div className="mt-10 grid gap-8 lg:grid-cols-2">
-          <div>
-            <h2 className="font-display text-2xl">Send a message</h2>
-            <p className="mt-2 max-w-prose text-sm text-charcoal-muted">
-              Pick “Classes at the Dawah Institute” in the dropdown and your
-              message is routed to the classes inbox.
-            </p>
-            <div className="mt-6">
-              <ContactForm privacyHref={`${foundationUrl}/legal/privacy`} />
+        <div className="mt-10 grid gap-4 sm:grid-cols-2">
+          <div className="flex gap-4 rounded-lg border border-chalk-dark bg-white p-5">
+            <Medallion tone="soft" className="size-11 shrink-0">
+              <MapPin aria-hidden="true" className="size-5" />
+            </Medallion>
+            <div>
+              <p className="font-display text-lg text-charcoal">Where classes are</p>
+              <p className="mt-1 text-sm leading-relaxed text-charcoal-muted">
+                {CONTACT.address}
+              </p>
             </div>
           </div>
 
-          <div className="space-y-6">
+          <div className="flex gap-4 rounded-lg border border-chalk-dark bg-white p-5">
+            <Medallion tone="soft" className="size-11 shrink-0">
+              <Clock aria-hidden="true" className="size-5" />
+            </Medallion>
             <div>
-              <h2 className="font-display text-2xl">Find us</h2>
-              <div className="mt-4">
-                <MapEmbed />
-              </div>
+              <p className="font-display text-lg text-charcoal">When someone answers</p>
+              <p className="mt-1 text-sm leading-relaxed text-charcoal-muted">
+                {CONTACT.officeHours}. Messages sent during a class are answered
+                afterwards.
+              </p>
             </div>
+          </div>
+        </div>
+      </Section>
 
-            <Card>
-              <CardTitle>Class times and venue</CardTitle>
-              <CardDescription>
-                <Todo>
-                  class times, venue or platform, and language for the seven
-                  programmes
-                </Todo>
-              </CardDescription>
-            </Card>
+      <Section tone="white" size="lg">
+        <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-start">
+          <div>
+            <SectionHeading
+              align="start"
+              kicker="Write to us"
+              title="Send a message"
+              standfirst="Pick the subject that fits and it reaches the right person. Choose 'Course enrolment' for anything about the classes."
+            />
+            <div className="mt-8">
+              <ContactForm />
+            </div>
+          </div>
+
+          <div>
+            <MapEmbed />
+            <p className="mt-6 text-sm leading-relaxed text-charcoal-muted">
+              The map shows Ede rather than a pin on the door: nobody has supplied
+              street-level coordinates, and a guessed marker would send you to the wrong
+              street. Call when you are close and someone will bring you in.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Button asChild variant="secondary">
+                <Link href={href("/schedule")}>See the teaching week</Link>
+              </Button>
+              <Button asChild variant="secondary">
+                <Link href={href("/library")}>Catch up on a class</Link>
+              </Button>
+            </div>
           </div>
         </div>
       </Section>

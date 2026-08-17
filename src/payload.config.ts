@@ -20,6 +20,8 @@ import { FAQs } from "@/payload/collections/FAQs";
 import { NewsletterSubscribers } from "@/payload/collections/NewsletterSubscribers";
 import { ContactMessages } from "@/payload/collections/ContactMessages";
 import { Donations } from "@/payload/collections/Donations";
+import { Pledges } from "@/payload/collections/Pledges";
+import { AssistanceRequests } from "@/payload/collections/AssistanceRequests";
 // Dawah Institute
 import { Programmes } from "@/payload/collections/Programmes";
 import { Teachers } from "@/payload/collections/Teachers";
@@ -54,6 +56,8 @@ export default buildConfig({
     TeamMembers,
     FAQs,
     Donations,
+    Pledges,
+    AssistanceRequests,
     Programmes,
     Teachers,
     Products,

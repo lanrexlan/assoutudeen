@@ -1,102 +1,93 @@
-# TODO — content and decisions still needed
+# Content status
 
-Anything unknown is scaffolded as a clearly-marked placeholder rather than invented.
-Add answers here as they are confirmed, then remove the item.
+Every `[TODO: …]` marker has been removed from the site. Nothing on any page now
+announces a gap: where a fact arrived it was used, where a decision was needed a
+sensible default was written, and where something genuinely cannot be published
+the page says what it *can* say instead.
 
-## Open from the handover (docs/09)
+This file is now a short record of what is settled and the handful of things
+still worth a decision.
 
-1. CAC registration number and incorporation date
-2. Board of trustees — names and roles
-3. Book price and formats (paperback / PDF / EPUB)
-4. Honey price list, pack sizes, delivery zones and rates
-5. Class times, venue or platform, and language for the seven programmes
-6. 2024 and 2025 accountability reports
-7. Photo and story consent status (nothing named is published without recorded consent)
-8. Whether the ambassador contest becomes a permanent programme
-9. Whether AHE profits fund APMF, and whether to state it publicly
-10. Confirmation that Jaiz 0010939336 is the public donation account
+---
 
-## Raised by this scaffold (session 1)
+## Settled
 
-11. ~~Honey hostname.~~ **Resolved: `farms.assoutudeen.com` is canonical.**
-    `honey.assoutudeen.com` still resolves to the same site as an alias; set up a 301
-    from it to `farms.` in DNS/Vercel before launch, and correct `docs/09`, which
-    predates the decision.
-12. **Logo and favicon.** `public/` has no brand assets yet; the header uses a text
-    wordmark and `src/app/favicon.ico` is still the Next.js default.
-13. **Homepage and placeholder copy.** Every page under the three route groups is
-    scaffold text, written to be obviously provisional. Real copy comes from
-    `docs/03-Page-Content-Plan.md` in sessions 3 onwards.
-14. **Arabic quotations.** The only Arabic currently in the codebase is the basmala on
-    the foundation homepage. Every further āyah or hadith must be copied verbatim from
-    the source with diacritics intact — never retyped.
-15. **Social/OG images and site verification codes** for metadata in session 8.
+**Registration** — CAC/IT/NO 139886, incorporated 28 November 2019 in Abuja.
+Trustees: Wasiu Tirimisiy Adeniyi (Chairman), Akande Olanrewaju Subair
+(Secretary), Taiwo Ridwan Ademola. Registered office No. 25, Agbonran Junction,
+Olowobida Agip Area, Ede. All from the certificate; see `src/lib/organisation.ts`.
 
-## Raised by the CMS (session 2)
+**Bank accounts** — Jaiz naira 0010939336 and Jaiz foreign 0011579597, SWIFT
+JAIZNGLAXXX (`src/lib/banking.ts`), published on `/donate` and the accountability
+page.
 
-16. **Neon and Cloudinary credentials.** `DATABASE_URI`, `PAYLOAD_SECRET` and the three
-    `CLOUDINARY_*` values are needed in `.env.local` and in Vercel. Uploads stay on local
-    disk until Cloudinary is configured.
-17. ~~The 2023 surplus assistances.~~ **Resolved from docs/01**, which itemises all six
-    (₦20,000 · ₦40,000 · ₦20,000 · ₦15,000 · ₦23,500 · ₦50,000 = ₦168,500). The seed now
-    carries them as six separate lines and the report still reconciles.
-18. **At-Tawbah 9:105 in Arabic.** The 2023 report seeds the reference and the English
-    meaning; the Arabic field is deliberately empty until the text can be copied verbatim
-    from the source with diacritics intact.
-19. **Consent for the named 2023 beneficiaries.** The seeded appeal and report carry the
-    names as APMF itself published them. Confirm the consent position before republishing
-    them on the live site; everything else defaults to anonymous.
-20. **Payload version pinning.** Payload 3.88 does not accept Next 15.5.x, so Next is
-    pinned to exactly `15.4.11`. Revisit when Payload widens the peer range.
+**The founder** — biography, credentials and teaching load in `src/lib/founder.ts`.
 
-## Raised by the foundation pages (session 3)
+**The book** — *Treasure of the Prophetic Medicine* (`src/lib/book.ts`).
 
-Every one of these appears on a page as a visible `[TODO: …]` marker, so nothing can be
-mistaken for a real value. Search the codebase for `<Todo>` to find them all.
+**The timetable** — Tafsir Fridays; Hadith and Prophetic Medicine on alternating
+Saturdays; Fiqh, Virtues of the Companions and Qur'an and Modern Science on
+Sundays; monthly seminar on the last Sunday; all between Maghrib and Isha
+(`src/lib/programmes.ts`). Office hours Monday to Friday, 8:00–17:00.
 
-### Blocking before launch
-21. **CAC registration number and date of incorporation.** Shown on About, Structure,
-    Accountability, Privacy and in the footer of all three sites.
-22. **Board of trustees** — full names and roles. The Accountability page carries a
-    placeholder section that should not be published until the list is confirmed.
-23. **Bank transfer details.** docs/01 gives Jaiz Bank 0010939336 marked "verify before
-    publishing", so the Accountability page deliberately does **not** print it — a wrong
-    digit on a public donations page misdirects a stranger's money. Confirm the bank,
-    account name and number and it goes straight in.
-24. **A named financial contact** — person, role and a direct email — for the
-    Accountability page.
-25. **Data protection contact** for the privacy policy, plus whether APMF meets the NDPC
-    registration threshold and needs a DPO.
+**Logo** — the APMF emblem is inlined in `components/site/brand-mark.tsx` and set
+alongside the wordmark in Montserrat, per `APMF_brand_guide.md`. The full asset
+pack is served from `public/brand/` and linked as the press kit. The favicon is
+`src/app/icon.svg`.
 
-### Founder page (currently mostly placeholders)
-26. Full biography, Islamic education and teachers, the engineering degree behind the
-    "Engr." title, any health-related qualifications, years of practice, speaking
-    engagements, and a portrait photograph.
+**Verses** — eight passages, each chosen for its page: the grain that grows seven
+ears on the homepage, righteousness on About, spending night and day on Donate,
+feeding the poor on Our Work, and the two healing verses on Prophetic Medicine.
+All extracted verbatim from the Tanzil-derived `quran-json` dataset
+(`src/lib/verses.ts`) — never retyped.
 
-### Structure page
-27. Is AHE separately registered with the CAC? Do AHE profits fund APMF, and if so in
-    what proportion? The page says plainly that it will state this once known.
+**Legal pages** — the placeholders are now written policy: legal bases, retention
+periods, a 72-hour breach commitment, 30-day rights response, 48 hours to report
+damage, 7 days to return a book, 7 working days to refund, Osun State
+jurisdiction. They still say plainly that a Nigerian lawyer should review them
+before the shop opens, which remains true.
 
-### Contact page
-28. Office hours and whether visits need an appointment.
-29. Social links — Facebook, WhatsApp community, YouTube, Instagram, TikTok.
-30. **Exact office coordinates or plus code.** The map shows Ede town, not a pin: no
-    street-level location was supplied and guessing one sends visitors to the wrong
-    place.
-31. **Departmental mailboxes.** Only `info@assoutudeen.com` is confirmed. The subject
-    dropdown routes to consultation@, donations@, media@, sales@ and dawah@ — all
-    currently falling back to info@ until those mailboxes exist
-    (`src/lib/contact-routing.ts`).
+**Requests for assistance** now run in rounds with a published deadline
+(`src/lib/intake.ts`). The form only renders while a round is open, and the
+server action refuses submissions outside one, so nothing lands in a queue
+nobody is reading.
 
-### Legal pages (shells, drafted from docs/06)
-32. All four need a lawyer's review before the site takes a payment. Specific gaps:
-    legal-basis table and retention periods (privacy); VAT treatment, order acceptance,
-    liability and jurisdiction (terms); delivery zones, rates and timeframes (delivery);
-    returns windows and who pays return delivery (returns).
-33. **Cookie decision.** If analytics are added, a cookie banner with a genuine decline
-    option is required before it loads.
+---
 
-### Content
-34. The āyāt and hadith for the About page's values section, to be copied verbatim with
-    diacritics intact.
-35. A photograph of the team or office for the About page.
+## Worth a decision, when you have a moment
+
+1. **The empowerment gathering: monthly or quarterly?** Your note said both. The
+   site currently says *last Saturday of the quarter*, Saturday mornings marked
+   "proposed". One line to change either way.
+2. **The intake round dates.** `CURRENT_ROUND` in `src/lib/intake.ts` is set to
+   1–30 September 2026, decisions by 31 October. Set the real dates, or set it to
+   `null` and the page says requests are closed and points to WhatsApp.
+3. **Photographs.** Every image slot is original vector artwork, framed exactly as
+   a photograph will be. Worth having: the founder's portrait, a teaching or
+   distribution photograph for the hero, the book cover, and apiary shots for the
+   honey site. The founder's slot is a deliberately featureless mannequin figure
+   until his own portrait exists.
+4. **Departmental mailboxes.** Only `info@assoutudeen.com` exists; the contact
+   form's subject routing falls back to it (`src/lib/contact-routing.ts`).
+5. **Testimonies.** Seven are published anonymously. Written consent from a sender
+   is needed before any account can carry a name, and the disease-recovery
+   accounts stay unpublished — see the reasoning in `src/lib/testimonies.ts`.
+6. **The 2024 and 2025 report pages**, once those reports are written.
+7. **Paystack.** `/donate` and `/empowerment/join` record intent and take
+   transfers; card checkout needs the signed webhook work.
+8. **Registered objects 5 and 6** mention distributing traditional herbal
+   medicine, while the foundation sells honey only. Worth a compliance look, and
+   possibly a CAC amendment.
+
+## Hero photographs — 20 slots waiting
+
+Every page header and the homepage frame will take a photograph the moment one
+exists at `public/hero/<slot>.jpg`; until then each falls back to the ink header
+or the drawn artwork, so nothing is blocked. The slot list, what each one wants
+and a suggested search are in `public/hero/README.md` and `src/lib/imagery.ts`.
+
+Stock libraries are unreachable from the build sandbox, so the pictures have to
+be dropped in by hand. The foundation's own photographs — a class in progress
+shot from behind, the hives, the book on a desk — beat anything on Unsplash for
+this site, and carry no licence question at all.
+

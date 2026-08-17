@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArabicQuote } from "@/components/ui/arabic-quote";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
-import { PageHeader, Prose } from "@/components/ui/prose";
-import { Section } from "@/components/ui/section";
-import { Todo } from "@/components/ui/todo";
+import { PageHeader, Prose, ProseHeading } from "@/components/ui/prose";
+import { Section, SectionHeading } from "@/components/ui/section";
 import { CONTACT } from "@/lib/sites";
+import { PREAMBLE, REGISTERED_OBJECTS, REGISTRATION } from "@/lib/organisation";
+import { VERSES } from "@/lib/verses";
 
 export const metadata: Metadata = {
   title: "Who we are",
@@ -16,31 +17,32 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <Section tone="primary">
-        <PageHeader
+      <PageHeader
+        image="about"
           eyebrow="About"
           title="Who we are"
-          standfirst="An Islamic charity in Ede, Osun State, working where healing by the Sunnah meets practical help for people in difficulty."
+          standfirst="An Islamic charity registered in Ede, Osun State, working wherever a Muslim needs it — where healing by the Sunnah meets practical help for people in difficulty."
         />
-      </Section>
 
       <Section>
         <Prose>
-          <h2>What we do</h2>
+          <ProseHeading>What we do</ProseHeading>
           <p>
             Assoutudeen Prophetic Medicine Foundation works in three connected ways.
             We teach and publish on prophetic medicine — the remedies of the Qur&apos;an
             and the Sunnah, traced to their evidence. We run a monthly empowerment fund
             that helps Muslims in medical or financial difficulty. And through the
-            Assoutudeen Dawah Institute we teach seven recurring classes, free and open.
+            Assoutudeen Dawah Institute we teach seven classes from Friday to Sunday, free and open.
           </p>
           <p>
-            The foundation is based on Assoutudeen Street, Ede, and most of the people
-            we help are in Osun State and the surrounding south-west. Donations reach us
-            from further afield, including from Nigerians abroad.
+            The foundation keeps its office on Assoutudeen Street, Ede, because
+            that is where its people are — not because that is where its work
+            stops. Assistance is for Muslims in need, and where someone lives has
+            never been the test. Requests reach us from across Nigeria and from
+            outside it, and so do donations.
           </p>
 
-          <h2>The problem we exist to answer</h2>
+          <ProseHeading>The problem we exist to answer</ProseHeading>
           <p>
             Two things happen constantly around us. A family faces a hospital bill they
             cannot pay, and there is no system that will catch them. And a great deal of
@@ -49,12 +51,12 @@ export default function AboutPage() {
             the naira, and remedies published with their chain of evidence attached.
           </p>
 
-          <h2>How we work</h2>
+          <ProseHeading>How we work</ProseHeading>
           <ul>
             <li>
-              <strong>We publish what we raise.</strong> Every naira, including the
-              shortfalls. Anyone who wants the foundation&apos;s bank statements for the
-              past year can ask, and we will provide them.
+              <strong>We publish what we raise.</strong> Every year, by category and to
+              the naira. The accounts are audited and filed with the Corporate Affairs
+              Commission, and the totals we publish are the totals we filed.
             </li>
             <li>
               <strong>We name nobody without consent.</strong> People come to us at their
@@ -73,28 +75,20 @@ export default function AboutPage() {
             </li>
           </ul>
 
-          <h2>Our values, and where they come from</h2>
+          <ProseHeading>Our values, and where they come from</ProseHeading>
         </Prose>
 
-        <ArabicQuote
-          className="mt-4 max-w-2xl"
-          arabic="بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ"
-          translation="In the name of Allah, the Most Gracious, the Most Merciful."
-          source="Qur'an, Al-Fātiḥah 1:1"
-        />
-        <p className="mt-3 max-w-2xl text-sm text-charcoal-muted">
-          The verses and hadith this page should carry —{" "}
-          <Todo>chosen āyāt and hadith for the values section, with citations</Todo> —
-          will be copied verbatim from the source, diacritics intact.
-        </p>
+        <ArabicQuote className="mt-4 max-w-2xl" {...VERSES.baqarah177} />
 
         <Prose className="mt-8">
-          <h2>Founded</h2>
+          <ProseHeading>Founded</ProseHeading>
           <p>
-            The foundation was established in <Todo>year founded</Todo> and is registered
-            with the Corporate Affairs Commission as Incorporated Trustees under{" "}
-            <Todo>CAC registration number</Todo>. The full registration details, the
-            trustees, and our annual accounts are on the{" "}
+            The foundation was incorporated on{" "}
+            <strong>{REGISTRATION.incorporatedOnDisplay}</strong> by the Corporate
+            Affairs Commission as {REGISTRATION.registeredName}, registration{" "}
+            <strong>{REGISTRATION.number}</strong>. Its registered office is{" "}
+            {REGISTRATION.registeredOffice}. The trustees, the constitution and the
+            annual accounts are on the{" "}
             <Link href="/about/accountability">accountability page</Link>.
           </p>
           <p>
@@ -102,10 +96,36 @@ export default function AboutPage() {
             <a href={`tel:+${CONTACT.phoneE164}`}>{CONTACT.phoneDisplay}</a> or at{" "}
             <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>.
           </p>
-          <p>
-            <Todo>photograph of the team or the office</Todo>
-          </p>
         </Prose>
+      </Section>
+
+      {/* The twelve registered objects, verbatim from Article 3 of the filed
+          constitution. Presented as the registered constitution — not as a
+          description of current activity, and not as a health claim. */}
+      <Section tone="ink" size="lg" ornament>
+        <SectionHeading
+          tone="dark"
+          title="What we registered to do"
+          standfirst={PREAMBLE}
+        />
+        <ol className="reveal mx-auto mt-12 grid max-w-4xl gap-x-8 gap-y-4 sm:grid-cols-2">
+          {REGISTERED_OBJECTS.map((object, index) => (
+            <li key={object} className="flex gap-4">
+              <span
+                aria-hidden="true"
+                className="mt-0.5 font-display text-sm text-apricot"
+              >
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <span className="text-sm leading-relaxed text-chalk/85">{object}</span>
+            </li>
+          ))}
+        </ol>
+        <p className="mx-auto mt-10 max-w-2xl text-sm leading-relaxed text-chalk/60">
+          These are the objects as filed with the Corporate Affairs Commission on{" "}
+          {REGISTRATION.incorporatedOnDisplay}. They describe what the foundation is
+          registered to do, not a claim about what any food or remedy can cure.
+        </p>
       </Section>
 
       <Section tone="white">

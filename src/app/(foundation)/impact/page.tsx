@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
-import { PageHeader, Prose } from "@/components/ui/prose";
+import { PageHeader, Prose, ProseHeading } from "@/components/ui/prose";
 import { Section } from "@/components/ui/section";
 import { Todo } from "@/components/ui/todo";
 import { getSiteContext } from "@/lib/site-context";
@@ -25,20 +25,19 @@ export default async function ImpactIndexPage() {
 
   return (
     <>
-      <Section tone="primary">
-        <PageHeader
-          eyebrow="Transparency"
-          title="Impact reports"
-          standfirst="What was raised each year, and what it did — reported by category, reconciled to the naira."
-        />
-      </Section>
+      <PageHeader
+        image="ourWork"
+        eyebrow="Transparency"
+        title="Impact reports"
+        standfirst="What was raised each year, and what it did — reported by category, reconciled to the naira."
+      />
 
       <Section>
-        <div className="rounded-lg border border-sand-dark bg-white p-6 shadow-sm shadow-sand-dark/25">
+        <div className="rounded-lg border border-chalk-dark bg-white p-6 shadow-sm shadow-chalk-dark/25">
           <p className="text-sm uppercase tracking-widest text-charcoal-muted">
             Three years, verified
           </p>
-          <p className="mt-2 font-display text-3xl text-olive sm:text-4xl">
+          <p className="mt-2 font-display text-3xl text-oxblood sm:text-4xl">
             {formatKobo(THREE_YEAR_TOTAL_KOBO)}
           </p>
           <p className="mt-2 text-sm text-charcoal-muted">
@@ -52,7 +51,7 @@ export default async function ImpactIndexPage() {
                 <Card className="h-full justify-between">
                   <div>
                     <CardTitle>{year.year}</CardTitle>
-                    <p className="mt-1 font-display text-2xl text-olive">
+                    <p className="mt-1 font-display text-2xl text-oxblood">
                       {formatKobo(year.raisedKobo)}
                     </p>
                     <CardDescription className="mt-2">
@@ -73,7 +72,7 @@ export default async function ImpactIndexPage() {
         </div>
 
         <Prose className="mt-12">
-          <h2>Why we publish this</h2>
+          <ProseHeading>Why we publish this</ProseHeading>
           <p>
             Most Nigerian NGOs do not reconcile their published totals. Ours
             add up to the naira, overheads included —{" "}

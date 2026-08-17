@@ -1,6 +1,5 @@
 import { PageHeader, Prose } from "@/components/ui/prose";
 import { Section } from "@/components/ui/section";
-import { Todo } from "@/components/ui/todo";
 
 /**
  * Shared frame for the four legal pages.
@@ -21,12 +20,10 @@ export function LegalShell({
 }) {
   return (
     <>
-      <Section tone="primary">
-        <PageHeader eyebrow="Legal" title={title} standfirst={standfirst} />
-      </Section>
+      <PageHeader eyebrow="Legal" title={title} standfirst={standfirst} />
 
       <Section>
-        <div className="max-w-2xl rounded-md border border-sand-dark bg-white p-4 text-sm leading-relaxed text-charcoal">
+        <div className="max-w-2xl rounded-md border border-chalk-dark bg-white p-4 text-sm leading-relaxed text-charcoal">
           <p className="font-semibold">This page is a draft.</p>
           <p className="mt-1 text-charcoal-muted">
             It sets out the structure and the obligations that apply. The marked gaps must
@@ -34,7 +31,7 @@ export function LegalShell({
             payment or publishes anything binding.
           </p>
           <p className="mt-2 text-charcoal-muted">
-            Last reviewed: <Todo>date this policy was last reviewed</Todo>
+            Drafted August 2026. Awaiting review by a Nigerian lawyer.
           </p>
         </div>
 

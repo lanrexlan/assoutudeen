@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560">
+  <rect width="800" height="560" fill="#08201C"/>
+  <g fill="none" stroke="#FFFFFF" stroke-linejoin="miter">
+    <path d="M108 244 L400 28 L692 244" stroke-width="42" stroke-linecap="square"/>
+    <path d="M568 142 V216 H614 V170 H578" stroke-width="34"/>
+  </g>
+  <g fill="none" stroke="#FFFFFF" stroke-width="38" stroke-linecap="round">
+    <path d="M206 232 C145 289 143 382 194 438 C229 477 278 498 337 509"/>
+    <path d="M594 232 C655 289 657 382 606 438 C571 477 522 498 463 509"/>
+  </g>
+  <g fill="none" stroke="#18A45B" stroke-linecap="round">
+    <path d="M400 508 V161" stroke-width="24"/>
+    <path d="M400 383 C355 345 320 322 277 316" stroke-width="18"/>
+    <path d="M400 383 C445 345 480 322 523 316" stroke-width="18"/>
+  </g>
+  <g fill="#18A45B">
+    <path d="M400 95 C353 144 353 211 400 260 C447 211 447 144 400 95 Z"/>
+    <path d="M382 306 C329 266 278 281 254 325 C298 356 346 353 382 306 Z"/>
+    <path d="M418 306 C471 266 522 281 546 325 C502 356 454 353 418 306 Z"/>
+    <path d="M371 447 C307 397 256 407 222 451 C277 483 331 480 371 447 Z"/>
+    <path d="M429 447 C493 397 544 407 578 451 C523 483 469 480 429 447 Z"/>
+  </g>
+</svg>

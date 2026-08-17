@@ -7,9 +7,10 @@ import { slugField } from "@/payload/fields/slug";
  * the schedule going stale. Occurrences are computed in `lib/recurrence`
  * (session 9) from `recurrenceRule`.
  *
- * Edge case to preserve: the Tawheed class is the 2nd Sunday EXCEPT when the
- * 2nd Sunday is also the last Sunday of the month, when it does not run.
- * RRULE alone cannot express that, so `recurrenceException` names it.
+ * Edge case to preserve: the Saturday pair (Hadith and Prophetic Medicine)
+ * alternate, so each falls every other Saturday and they never clash; and the
+ * monthly seminar takes the last Sunday, which RRULE expresses as BYDAY=-1SU.
+ * `src/lib/programmes.ts` holds the current timetable.
  */
 export const Programmes: CollectionConfig = {
   slug: "programmes",
@@ -39,6 +40,10 @@ export const Programmes: CollectionConfig = {
       type: "select",
       options: [
         { label: "None", value: "none" },
+        {
+          label: "Alternates with the other Saturday class",
+          value: "alternates-saturday",
+        },
         {
           label: "Skip when the 2nd Sunday is also the last Sunday",
           value: "skip-second-sunday-when-last",

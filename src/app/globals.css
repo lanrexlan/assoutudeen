@@ -1,95 +1,290 @@
 @import "tailwindcss";
 
-/* ---------------------------------------------------------------------------
-   Design tokens — docs/05-Design-and-Brand.md
-   Amber fails WCAG AA on white for small text: use it only as a solid button
-   background with dark (charcoal) text, never as a text colour on light ground.
---------------------------------------------------------------------------- */
+/* Brand — oxblood, sage and apricot. Deliberately not the olive-and-gold
+   every charity site reaches for. Oxblood carries authority, sage cools it,
+   apricot is the only warm note and it is rationed.
+
+   Apricot fails WCAG AA on white for small text: it is a solid button ground
+   with charcoal text, a hairline, a focus ring — never small text on a light
+   surface. Sage is likewise too light for body copy; sage-dark is the text
+   grade. No gradient text anywhere. */
 :root {
-  --olive: #2f5d3a;
-  --amber: #d9a441;
-  --teal: #123b35;
-  --sand: #f7f3ea;
-  --charcoal: #2b2b2b;
+  /* Brand */
+  --oxblood: #6b2233;
+  --sage: #7e8b7a;
+  --apricot: #e0a06a;
+  --chalk: #f4f1ec;
+  --charcoal: #2b2529;
 
-  /* Derived shades, used for hovers, borders and muted surfaces. */
-  --olive-dark: #24482d;
-  --teal-dark: #0c2b26;
-  --amber-dark: #b9862d;
-  --sand-dark: #ebe3d3;
-  --charcoal-muted: #5c5a55;
+  /* Derived shades */
+  --oxblood-dark: #571b29;
+  --oxblood-deep: #3a1420;
+  --oxblood-tint: #f2e6e8;
+  --sage-dark: #55614f;
+  --sage-deep: #3c463a;
+  --sage-tint: #e9ede7;
+  /* The deepest surface: hero and footer ground. Oxblood taken far enough
+     down that apricot and white sit on it comfortably. */
+  --ink: #24101a;
+  --ink-raised: #351826;
+  --apricot-dark: #a26a3a;
+  --apricot-soft: #f6e2cd;
+  --chalk-dark: #e5ded4;
+  --chalk-deep: #d5cbbd;
+  --charcoal-muted: #5b5359;
+  --charcoal-faint: #8b8288;
 
-  --background: var(--sand);
+  --background: var(--chalk);
   --foreground: var(--charcoal);
 
-  /* Per-site accents. Overridden by [data-site] below; the foundation is the
-     default because it is the main site. */
-  --site-primary: var(--olive);
-  --site-primary-hover: var(--olive-dark);
+  /* Per-site accent. The foundation is the default because it is the main site. */
+  --site-primary: var(--oxblood);
+  --site-primary-hover: var(--oxblood-dark);
+  --site-primary-deep: var(--oxblood-deep);
   --site-on-primary: #ffffff;
+
+  /* Shape and elevation */
+  --radius-sm: 0.375rem;
+  --radius: 0.625rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  /* The seal — the signature shape of this site. An eight-sided cut-corner
+     frame taken from the khatim star, replacing the mihrab arch. */
+  --seal-cut: 1.25rem;
+
+  /* The khatim star, used as a list marker via mask-image so it takes the
+     surrounding colour. Kept here so markup never repeats the path. */
+  --star-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M12 1.5 15.2 5.6h5.2v5.2L23.5 12l-3.1 1.2v5.2h-5.2L12 22.5 8.8 18.4H3.6v-5.2L0.5 12l3.1-1.2V5.6h5.2Z'/%3E%3C/svg%3E");
+
+  --shadow-sm: 0 1px 2px rgb(36 16 26 / 0.06), 0 1px 3px rgb(36 16 26 / 0.05);
+  --shadow: 0 4px 12px rgb(36 16 26 / 0.08), 0 2px 4px rgb(36 16 26 / 0.05);
+  --shadow-lg: 0 18px 40px -12px rgb(36 16 26 / 0.24), 0 6px 14px rgb(36 16 26 / 0.09);
+  --shadow-accent: 0 10px 30px -12px rgb(162 106 58 / 0.45);
 }
 
 [data-site="dawah"] {
-  --site-primary: var(--teal);
-  --site-primary-hover: var(--teal-dark);
+  --site-primary: var(--sage-dark);
+  --site-primary-hover: var(--sage-deep);
+  --site-primary-deep: var(--ink);
   --site-on-primary: #ffffff;
 }
 
 [data-site="honey"] {
-  --site-primary: var(--amber);
-  --site-primary-hover: var(--amber-dark);
-  /* Dark text on amber — the only accessible pairing. */
+  --site-primary: var(--apricot);
+  --site-primary-hover: var(--apricot-dark);
+  --site-primary-deep: var(--apricot-dark);
+  /* Dark text on apricot — the only accessible pairing. */
   --site-on-primary: var(--charcoal);
 }
 
 @theme inline {
-  --color-olive: var(--olive);
-  --color-olive-dark: var(--olive-dark);
-  --color-amber: var(--amber);
-  --color-amber-dark: var(--amber-dark);
-  --color-teal: var(--teal);
-  --color-teal-dark: var(--teal-dark);
-  --color-sand: var(--sand);
-  --color-sand-dark: var(--sand-dark);
+  --color-oxblood: var(--oxblood);
+  --color-oxblood-dark: var(--oxblood-dark);
+  --color-oxblood-deep: var(--oxblood-deep);
+  --color-oxblood-tint: var(--oxblood-tint);
+  --color-apricot: var(--apricot);
+  --color-apricot-dark: var(--apricot-dark);
+  --color-apricot-soft: var(--apricot-soft);
+  --color-sage: var(--sage);
+  --color-sage-dark: var(--sage-dark);
+  --color-sage-deep: var(--sage-deep);
+  --color-sage-tint: var(--sage-tint);
+  --color-ink: var(--ink);
+  --color-ink-raised: var(--ink-raised);
+  --color-chalk: var(--chalk);
+  --color-chalk-dark: var(--chalk-dark);
+  --color-chalk-deep: var(--chalk-deep);
   --color-charcoal: var(--charcoal);
   --color-charcoal-muted: var(--charcoal-muted);
+  --color-charcoal-faint: var(--charcoal-faint);
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--site-primary);
   --color-primary-hover: var(--site-primary-hover);
+  --color-primary-deep: var(--site-primary-deep);
   --color-on-primary: var(--site-on-primary);
 
-  --font-sans: var(--font-inter);
-  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-manrope);
+  --font-display: var(--font-petrona);
+  --font-brand: var(--font-montserrat);
   --font-arabic: var(--font-noto-naskh-arabic);
+
+  --shadow-soft: var(--shadow);
+  --shadow-elevated: var(--shadow-lg);
+  --shadow-accent: var(--shadow-accent);
 }
 
 @layer base {
   body {
     background-color: var(--background);
     color: var(--foreground);
-    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    font-family: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
 
   h1,
   h2,
   h3,
   h4 {
-    font-family: var(--font-fraunces), Georgia, serif;
+    font-family: var(--font-petrona), Georgia, serif;
+    font-weight: 600;
     text-wrap: balance;
+    letter-spacing: -0.01em;
   }
 
-  /* Visible focus for keyboard users on every interactive element. */
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--apricot);
+    color: var(--charcoal);
+  }
+
   :where(a, button, input, select, textarea, [tabindex]):focus-visible {
-    outline: 2px solid var(--site-primary);
+    outline: 2px solid var(--apricot);
     outline-offset: 2px;
     border-radius: 2px;
   }
+
+  /* Scrollbar, dark-surface aware. Cosmetic only. */
+  * {
+    scrollbar-color: var(--chalk-deep) transparent;
+  }
 }
 
-/* No carousels, restrained motion — and none at all when it is not wanted. */
+@layer components {
+  /* --- Ornament -----------------------------------------------------------
+     A contained geometric field, not wallpaper. It is masked to fade out at
+     the edges so it reads as light falling through a screen rather than a
+     tiled pattern, and it never covers a whole page.
+  ------------------------------------------------------------------------ */
+  .ornament-field {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.5;
+    background-image: var(--ornament-image);
+    background-size: 168px 168px;
+    -webkit-mask-image: radial-gradient(
+      ellipse 85% 70% at 50% 0%,
+      #000 0%,
+      transparent 72%
+    );
+    mask-image: radial-gradient(
+      ellipse 85% 70% at 50% 0%,
+      #000 0%,
+      transparent 72%
+    );
+  }
+
+  /* Faint starfield for the deepest surfaces. Static — nothing twinkles. */
+  .starfield {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(1.5px 1.5px at 12% 22%, rgb(240 205 175 / 0.55), transparent),
+      radial-gradient(1.5px 1.5px at 78% 14%, rgb(240 205 175 / 0.4), transparent),
+      radial-gradient(1px 1px at 34% 68%, rgb(255 255 255 / 0.35), transparent),
+      radial-gradient(1px 1px at 62% 46%, rgb(240 205 175 / 0.4), transparent),
+      radial-gradient(1.5px 1.5px at 88% 74%, rgb(255 255 255 / 0.25), transparent),
+      radial-gradient(1px 1px at 22% 88%, rgb(240 205 175 / 0.3), transparent);
+  }
+
+  /* --- The seal ----------------------------------------------------------
+     The signature shape, replacing the mihrab arch. Eight sides, cut from the
+     corners of a rectangle — the outline of the khatim star reduced to a
+     frame. clip-path cannot carry a border, so a bordered seal is two nested
+     elements: the outer one is the hairline, the inner one the content.
+  ------------------------------------------------------------------------ */
+  .seal {
+    --c: var(--seal-cut);
+    clip-path: polygon(
+      var(--c) 0,
+      calc(100% - var(--c)) 0,
+      100% var(--c),
+      100% calc(100% - var(--c)),
+      calc(100% - var(--c)) 100%,
+      var(--c) 100%,
+      0 calc(100% - var(--c)),
+      0 var(--c)
+    );
+  }
+  /* Small surfaces need a shallower cut or the shape eats the content. */
+  .seal-sm {
+    --c: 0.625rem;
+  }
+
+  /* Section divider: a hairline with the star at its centre. */
+  .rule-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+  .rule-mark::before,
+  .rule-mark::after {
+    content: "";
+    height: 1px;
+    width: clamp(2rem, 12vw, 6rem);
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--apricot),
+      transparent
+    );
+  }
+
+  /* Card that lifts a little on hover. Restrained — 2px, not a bounce. */
+  .lift {
+    transition:
+      transform 200ms ease,
+      box-shadow 200ms ease,
+      border-color 200ms ease;
+  }
+  @media (hover: hover) {
+    .lift:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+  }
+}
+
+@layer utilities {
+  /* --- Scroll reveal ------------------------------------------------------
+     Pure CSS, no JavaScript and no observer.
+
+     It animates TRANSFORM ONLY, never opacity. A scroll-driven animation with
+     `fill: both` holds its from-state until the element enters the range, so
+     animating opacity leaves anything below the fold at opacity 0 — invisible
+     until scrolled, and permanently invisible if the range is never entered.
+     Motion must never be the reason text cannot be read. A 16px rise is enough
+     to feel alive and costs nothing if it never runs.
+  ------------------------------------------------------------------------ */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal {
+        animation: reveal-up linear both;
+        animation-timeline: view();
+        animation-range: entry 0% cover 22%;
+      }
+    }
+  }
+
+  @keyframes reveal-up {
+    from {
+      transform: translateY(16px);
+    }
+    to {
+      transform: none;
+    }
+  }
+}
+
+/* Restrained motion — and none at all when it is not wanted. */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -98,5 +293,24 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* The giving reminder slides up into place — and simply appears, without any
+   movement, for anyone who has asked for reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .giving-reminder {
+    animation: giving-rise 320ms ease-out both;
+  }
+}
+
+@keyframes giving-rise {
+  from {
+    transform: translateY(1.5rem);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
   }
 }

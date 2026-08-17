@@ -1,95 +1,116 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { CalendarDays, Clock, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { PageHeader, Prose } from "@/components/ui/prose";
-import { Section } from "@/components/ui/section";
-import { Todo } from "@/components/ui/todo";
+import { Card, CardDescription, CardTitle } from "@/components/ui/card";
+import { PageHeader } from "@/components/ui/prose";
+import { Section, SectionHeading } from "@/components/ui/section";
+import { Medallion } from "@/components/ui/ornament";
 import { getSiteContext } from "@/lib/site-context";
+import {
+  EMPOWERMENT_PROGRAMME,
+  PROGRAMMES,
+  TEACHING_WINDOW,
+} from "@/lib/programmes";
 
 export const metadata: Metadata = {
   title: "Programmes",
   description:
-    "The seven recurring programmes of the Assoutudeen Dawah Institute: Tafsir, Hadith, Tawheed, Prophetic Medicine, Fiqh, empowerment and Fataawah.",
+    "The seven classes taught at the Assoutudeen Dawah Institute in Ede — tafsir, hadith, prophetic medicine, fiqh, the companions, Qur'an and modern science, and the monthly seminar.",
 };
 
-/**
- * The seven programmes, from CLAUDE.md. Times, venues and language are
- * unconfirmed (TODO-CONTENT.md #5) and are shown as such.
- */
 export default async function ProgrammesPage() {
   const { href } = await getSiteContext("dawah");
 
-  const programmes = [
-    {
-      title: "Tafsir",
-      body: "Verse-by-verse study of the Qur'an.",
-    },
-    {
-      title: "Hadith",
-      body: "The sayings and actions of the Prophet (peace be upon him), with their chains and meanings.",
-    },
-    {
-      title: "Tawheed",
-      body: "The oneness of Allah — the foundation of the deen.",
-    },
-    {
-      title: "Prophetic Medicine",
-      body: "Health guidance from the Qur'an and Sunnah.",
-    },
-    {
-      title: "Monthly Fiqh seminar",
-      body: "Taught by Shaykh Yaaqub Muhibullah Abd'hammed Olore.",
-    },
-    {
-      title: "Empowerment lecture",
-      body: "Practical guidance for daily life and livelihood.",
-    },
-    {
-      title: "Fataawah night",
-      body: "A session for questions and answers on matters of the deen.",
-    },
-  ];
-
   return (
     <>
-      <Section tone="primary">
-        <PageHeader
-          eyebrow="The institute"
-          title="Programmes"
-          standfirst="Seven recurring classes, taught in Ede by the founder and guest scholars."
-        />
+      <PageHeader
+        image="programmes"
+        eyebrow="Programmes"
+        title="Seven classes"
+        standfirst={`Every one of them is free, open to anyone, and recorded. ${TEACHING_WINDOW} on Friday, Saturday and Sunday evenings.`}
+      />
+
+      <Section tone="chalk" size="lg" ornament>
+        <div className="grid gap-6 md:grid-cols-2">
+          {PROGRAMMES.map((programme) => (
+            <Card key={programme.slug} className="reveal">
+              <CardTitle className="text-xl">{programme.title}</CardTitle>
+              <CardDescription>{programme.description}</CardDescription>
+
+              <dl className="mt-2 space-y-2 text-sm text-charcoal-muted">
+                <div className="flex items-start gap-2.5">
+                  <CalendarDays aria-hidden="true" className="mt-0.5 size-4 text-apricot-dark" />
+                  <span>
+                    <dt className="sr-only">Cadence</dt>
+                    <dd>{programme.cadence}</dd>
+                  </span>
+                </div>
+                <div className="flex items-start gap-2.5">
+                  <Clock aria-hidden="true" className="mt-0.5 size-4 text-apricot-dark" />
+                  <span>
+                    <dt className="sr-only">Time</dt>
+                    <dd>{programme.time}</dd>
+                  </span>
+                </div>
+                <div className="flex items-start gap-2.5">
+                  <User aria-hidden="true" className="mt-0.5 size-4 text-apricot-dark" />
+                  <span>
+                    <dt className="sr-only">Teacher</dt>
+                    <dd>{programme.teacher}</dd>
+                  </span>
+                </div>
+              </dl>
+
+              <Link
+                href={href(`/programmes/${programme.slug}`)}
+                className="mt-auto inline-flex min-h-11 items-center text-sm font-semibold text-primary underline-offset-4 hover:underline"
+              >
+                About this class
+              </Link>
+            </Card>
+          ))}
+        </div>
       </Section>
 
-      <Section>
-        <ul className="grid list-none gap-4 md:grid-cols-2">
-          {programmes.map((programme) => (
-            <li
-              key={programme.title}
-              className="rounded-lg border border-sand-dark/70 bg-white p-5 shadow-sm shadow-sand-dark/25"
-            >
-              <h2 className="font-display text-xl">{programme.title}</h2>
-              <p className="mt-2 text-sm leading-relaxed text-charcoal-muted">
-                {programme.body}
-              </p>
-            </li>
-          ))}
-        </ul>
-
-        <Prose className="mt-12">
-          <h2>When and where</h2>
-          <p>
-            Day, time, venue and language for each class:{" "}
-            <Todo>class times, venue or platform, and language</Todo>
+      {/* --- The gathering that is not a class ----------------------------- */}
+      <Section tone="ink" size="lg" ornament>
+        <SectionHeading
+          tone="dark"
+          kicker="Not a class"
+          title={EMPOWERMENT_PROGRAMME.title}
+          standfirst={EMPOWERMENT_PROGRAMME.description}
+        />
+        <div className="reveal mx-auto mt-10 flex max-w-2xl flex-col items-center gap-4 text-center">
+          <Medallion tone="outline">
+            <CalendarDays aria-hidden="true" className="size-6" />
+          </Medallion>
+          <p className="text-chalk/85">
+            {EMPOWERMENT_PROGRAMME.cadence} · {EMPOWERMENT_PROGRAMME.time}
           </p>
-        </Prose>
+          <p className="text-sm text-chalk/70">
+            It belongs to the foundation rather than the Institute — the fund reports
+            what it has done and distributes support, with a lecture alongside it.
+          </p>
+        </div>
+      </Section>
 
-        <div className="mt-8 flex flex-wrap gap-3">
-          <Button asChild variant="primary" size="lg">
-            <Link href={href("/schedule")}>See the schedule</Link>
-          </Button>
-          <Button asChild variant="secondary" size="lg">
-            <Link href={href("/")}>Back to the institute</Link>
-          </Button>
+      <Section tone="white" size="md">
+        <div className="mx-auto flex max-w-2xl flex-col items-center gap-5 text-center">
+          <h2 className="font-display text-2xl">Coming for the first time?</h2>
+          <p className="text-charcoal-muted">
+            There is nothing to enrol in and no fee. Come to the class you want, sit
+            where you like, and ask afterwards. If you would rather know what to expect
+            first, message us.
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            <Button asChild>
+              <Link href={href("/schedule")}>See the week</Link>
+            </Button>
+            <Button asChild variant="secondary">
+              <Link href={href("/contact")}>Ask a question</Link>
+            </Button>
+          </div>
         </div>
       </Section>
     </>

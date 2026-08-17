@@ -2,6 +2,7 @@
 
 import { z } from "zod";
 import { getPayloadClient } from "@/lib/payload";
+import { isIntakeOpen } from "@/lib/intake";
 import {
   CONTACT_SUBJECTS,
   inboxFor,
@@ -155,4 +156,153 @@ export async function subscribeToNewsletter(
   }
 
   return { ok: true, message: "Thank you — you are subscribed. You can unsubscribe any time." };
+}
+
+/* ---------------------------------------------------------------------------
+   The Monthly Empowerment Fund: joining it, and asking it for help.
+--------------------------------------------------------------------------- */
+
+const nairaToKobo = (naira: number) => Math.round(naira * 100);
+
+const pledgeSchema = z.object({
+  name: trimmed.min(2, "Please give your name.").max(120),
+  email: trimmed.email("That email address does not look right."),
+  phone: trimmed.max(40).optional().or(z.literal("")),
+  amount: z.coerce
+    .number({ message: "Please choose or enter an amount." })
+    .int("Please give a whole number of naira.")
+    .min(100, "The smallest pledge we can process is ₦100."),
+  method: z.enum(["card", "transfer"]),
+  purpose: z.enum(["empowerment", "zakat", "sadaqah"]),
+  message: trimmed.max(2000).optional().or(z.literal("")),
+  consent: z.literal("on", { message: "Please tick the box so we may contact you." }),
+  website: z.string().optional(),
+});
+
+export async function joinTheFund(
+  _prev: FormState,
+  formData: FormData,
+): Promise<FormState> {
+  const parsed = pledgeSchema.safeParse(Object.fromEntries(formData));
+
+  if (!parsed.success) {
+    return {
+      ok: false,
+      message: "Please check the highlighted fields.",
+      errors: fieldErrors(parsed.error),
+    };
+  }
+
+  const data = parsed.data;
+  if (data.website) return { ok: true, message: "Thank you — your pledge is recorded." };
+
+  const payload = await getPayloadClient();
+  await payload.create({
+    collection: "pledges",
+    overrideAccess: true,
+    data: {
+      name: data.name,
+      email: data.email,
+      phone: data.phone || undefined,
+      amountKobo: nairaToKobo(data.amount),
+      method: data.method,
+      purpose: data.purpose,
+      message: data.message || undefined,
+      consent: true,
+      status: "new",
+    },
+  });
+
+  return {
+    ok: true,
+    message:
+      "Thank you. Your pledge is recorded and someone will be in touch to set it up — usually within two working days.",
+  };
+}
+
+const assistanceSchema = z.object({
+  name: trimmed.min(2, "Please give your name.").max(120),
+  phone: trimmed.min(7, "We need a phone number to reach you on.").max(40),
+  whatsapp: trimmed.min(7, "Please give a WhatsApp number — it is how we will reach you.").max(40),
+  email: trimmed.email("That email address does not look right.").optional().or(z.literal("")),
+  state: trimmed.min(2, "Please give your state of origin.").max(80),
+  lga: trimmed.min(2, "Please give your local government area.").max(80),
+  category: z.enum(["medical", "financial", "shelter", "other"]),
+  /** Checkbox group; a single value arrives as a string. */
+  circumstances: z.union([z.string(), z.array(z.string())]).optional(),
+  need: trimmed.min(20, "Please tell us a little more about the situation.").max(4000),
+  hospital: trimmed.max(160).optional().or(z.literal("")),
+  amount: z.coerce.number().int().min(0).optional(),
+  refereeName: trimmed.min(2, "Please give the name of someone who can vouch for you.").max(120),
+  refereePhone: trimmed.min(7, "We need a phone number for your referee.").max(40),
+  consentToProcess: z.literal("on", {
+    message: "We cannot look into a request without your permission to hold these details.",
+  }),
+  /** Separate and optional — being helped is never conditional on this. */
+  consentToBeNamed: z.literal("on").optional(),
+  website: z.string().optional(),
+});
+
+export async function requestAssistance(
+  _prev: FormState,
+  formData: FormData,
+): Promise<FormState> {
+  // Requests are taken in rounds. The form is not rendered when the round is
+  // shut, but the action checks too — a direct POST must not slip through and
+  // land in a queue nobody is reading.
+  if (!isIntakeOpen()) {
+    return {
+      ok: false,
+      message:
+        "Requests are closed at the moment. The next round is published on this page — and if the need is urgent, please message us on WhatsApp instead.",
+    };
+  }
+
+  // A checkbox group can appear many times, so it is read before flattening.
+  const circumstances = formData.getAll("circumstances").map(String);
+  const parsed = assistanceSchema.safeParse({
+    ...Object.fromEntries(formData),
+    circumstances,
+  });
+
+  if (!parsed.success) {
+    return {
+      ok: false,
+      message: "Please check the highlighted fields.",
+      errors: fieldErrors(parsed.error),
+    };
+  }
+
+  const data = parsed.data;
+  if (data.website) return { ok: true, message: "Thank you — your request has been received." };
+
+  const payload = await getPayloadClient();
+  await payload.create({
+    collection: "assistance-requests",
+    overrideAccess: true,
+    data: {
+      name: data.name,
+      phone: data.phone,
+      whatsapp: data.whatsapp,
+      email: data.email || undefined,
+      state: data.state,
+      lga: data.lga,
+      category: data.category,
+      circumstances: circumstances as never,
+      need: data.need,
+      hospital: data.hospital || undefined,
+      amountRequestedKobo: data.amount ? nairaToKobo(data.amount) : undefined,
+      refereeName: data.refereeName,
+      refereePhone: data.refereePhone,
+      consentToProcess: true,
+      consentToBeNamed: data.consentToBeNamed === "on",
+      status: "new",
+    },
+  });
+
+  return {
+    ok: true,
+    message:
+      "Your request has been received. Someone will contact you on the number you gave to talk it through. Nothing you have told us is published, and nothing will be without your separate written permission.",
+  };
 }

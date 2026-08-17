@@ -43,6 +43,8 @@ export const CONTACT = {
   email: "info@assoutudeen.com",
   address:
     "Assoutudeen Street, Zone 5, Fiwasaye Community, Ede, Osun State, Nigeria",
+  /** Africa/Lagos. */
+  officeHours: "Monday to Friday, 8:00 – 17:00",
 } as const;
 
 export const FOUNDATION_NAME = "Assoutudeen Prophetic Medicine Foundation";

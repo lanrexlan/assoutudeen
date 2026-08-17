@@ -1,5 +1,4 @@
 import { CONTACT } from "@/lib/sites";
-import { Todo } from "@/components/ui/todo";
 
 /**
  * OpenStreetMap embed for the Ede office.
@@ -23,7 +22,7 @@ export function MapEmbed() {
   )}`;
 
   return (
-    <figure className="overflow-hidden rounded-lg border border-sand-dark bg-white">
+    <figure className="overflow-hidden rounded-lg border border-chalk-dark bg-white">
       <iframe
         title="Map showing Ede, Osun State"
         src={`https://www.openstreetmap.org/export/embed.html?bbox=${BBOX}&layer=mapnik`}
@@ -31,11 +30,11 @@ export function MapEmbed() {
         referrerPolicy="no-referrer-when-downgrade"
         className="aspect-4/3 w-full border-0 sm:aspect-video"
       />
-      <figcaption className="border-t border-sand-dark p-4 text-sm leading-relaxed text-charcoal">
+      <figcaption className="border-t border-chalk-dark p-4 text-sm leading-relaxed text-charcoal">
         <p className="font-medium text-charcoal">{CONTACT.address}</p>
         <p className="mt-1 text-charcoal-muted">
-          The map shows Ede town. A precise pin needs{" "}
-          <Todo>exact coordinates or plus code for the office</Todo>.
+          The map shows Ede. Call ahead and someone will guide you in from
+          Agbonran junction — it is quicker than any pin.
         </p>
         <p className="mt-2">
           <a

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
-import { PageHeader, Prose } from "@/components/ui/prose";
+import { PageHeader, Prose, ProseHeading } from "@/components/ui/prose";
 import { Section } from "@/components/ui/section";
 import { getSiteContext } from "@/lib/site-context";
 import { formatKobo } from "@/payload/fields/money";
@@ -62,17 +62,16 @@ export default async function Impact2023Page() {
 
   return (
     <>
-      <Section tone="primary">
-        <PageHeader
-          eyebrow="Impact report"
-          title="2023"
-          standfirst={`${formatKobo(5_323_500)} raised across 11 beneficiaries — the public-appeals year, published as historical record.`}
-        />
-      </Section>
+      <PageHeader
+        image="ourWork"
+        eyebrow="Impact report"
+        title="2023"
+        standfirst={`${formatKobo(5_323_500)} raised across 11 beneficiaries — the public-appeals year, published as historical record.`}
+      />
 
       <Section>
         <Prose>
-          <h2>A note on the model</h2>
+          <ProseHeading>A note on the model</ProseHeading>
           <p>
             2023 ran on the earlier model: public appeals for named
             beneficiaries, followed by a full public accounting. The foundation
@@ -121,7 +120,7 @@ export default async function Impact2023Page() {
           {surplus.map((s) => (
             <li
               key={s.description}
-              className="flex items-center justify-between gap-4 rounded-md bg-sand px-4 py-3 text-sm"
+              className="flex items-center justify-between gap-4 rounded-md bg-chalk px-4 py-3 text-sm"
             >
               <span className="text-charcoal">{s.description}</span>
               <span className="font-semibold text-charcoal">
@@ -132,7 +131,7 @@ export default async function Impact2023Page() {
         </ul>
 
         <Prose className="mt-12">
-          <h2>It reconciles</h2>
+          <ProseHeading>It reconciles</ProseHeading>
           <p>
             The four beneficiaries total{" "}
             {formatKobo(5_155_000)}; with the{" "}

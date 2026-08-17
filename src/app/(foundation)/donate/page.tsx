@@ -1,94 +1,165 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { CreditCard, HeartHandshake, Repeat, Shield } from "lucide-react";
+import { ArabicQuote } from "@/components/ui/arabic-quote";
+import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
-import { PageHeader, Prose } from "@/components/ui/prose";
-import { Section } from "@/components/ui/section";
-import { Todo } from "@/components/ui/todo";
+import { Medallion } from "@/components/ui/ornament";
+import { PageHeader, Prose, ProseHeading } from "@/components/ui/prose";
+import { Section, SectionHeading } from "@/components/ui/section";
+import { BankDetails } from "@/components/site/bank-details";
 import { CONTACT } from "@/lib/sites";
-import { THREE_YEAR_TOTAL_KOBO } from "@/lib/impact";
-import { formatKobo } from "@/payload/fields/money";
+import { REGISTRATION } from "@/lib/organisation";
+import { VERSES } from "@/lib/verses";
 
 export const metadata: Metadata = {
   title: "Donate",
   description:
-    "Give to the Assoutudeen Prophetic Medicine Foundation — the empowerment fund, medical relief and education. Zakat is held in a separate fund.",
+    "Give to the Monthly Empowerment Fund, to zakat, or to the foundation's general work. Registered charity CAC/IT/NO 139886.",
 };
 
-/**
- * The donation path. Card payments (Paystack) are wired in a later session;
- * until the bank details are verified we deliberately print no account number
- * (TODO #23) — a wrong digit sends a stranger's money elsewhere.
- */
+/** Suggested amounts, in naira. Kobo conversion happens at checkout. */
+const AMOUNTS = [1_000, 5_000, 25_000, 100_000];
+
+const PURPOSES = [
+  {
+    icon: HeartHandshake,
+    title: "Empowerment Fund",
+    body: "The monthly circle that meets medical and financial need. If you are unsure where to give, give here.",
+  },
+  {
+    icon: Shield,
+    title: "Zakat",
+    body: "Held as a separate fund and given only to recipients eligible under the eight Qur'anic categories. Never spent on running costs.",
+  },
+  {
+    icon: Repeat,
+    title: "Sadaqah jāriyah",
+    body: "Continuing charity — the work that keeps giving after the gift is made.",
+  },
+];
+
+const whatsappHref = `https://wa.me/${CONTACT.phoneE164}?text=${encodeURIComponent(
+  "As-salaamu alaykum. I would like to make a donation — please send the account details.",
+)}`;
+
 export default function DonatePage() {
   return (
     <>
-      <Section tone="primary">
-        <PageHeader
-          eyebrow="Give"
-          title="Donate"
-          standfirst="Your gift funds the empowerment circle, medical relief and dawah education — and every kobo is accounted for in a published report."
-        />
+      <PageHeader
+        image="donate"
+        eyebrow="Donate"
+        title="Give to the fund"
+        standfirst="Steady monthly giving is what lets us answer a case in the week it arrives. One-off gifts matter just as much when something large lands."
+      />
+
+      {/* --- Amounts ------------------------------------------------------- */}
+      <Section tone="chalk" size="lg">
+        <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr]">
+          <div>
+            <SectionHeading
+              align="start"
+              kicker="Choose an amount"
+              title="What would you like to give?"
+              standfirst="Card payment runs through Paystack. We never see or store your card details."
+            />
+
+            <ul className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
+              {AMOUNTS.map((amount) => (
+                <li key={amount}>
+                  <span className="flex min-h-16 items-center justify-center rounded-lg border border-chalk-dark bg-white font-display text-lg shadow-sm">
+                    ₦{amount.toLocaleString("en-NG")}
+                  </span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-6 rounded-lg border border-apricot/40 bg-apricot/10 p-5 text-sm leading-relaxed text-charcoal">
+              <p className="font-semibold">Card checkout is not live yet.</p>
+              <p className="mt-1 text-charcoal-muted">
+                Paystack is being wired up with a signed, verified webhook, because a
+                donation should only be recorded once the bank has actually confirmed
+                it. Until that is finished, please give by transfer using the details
+                beside this — or message us and we will confirm receipt personally.
+              </p>
+              <div className="mt-4 flex flex-wrap gap-3">
+                <Button asChild variant="donate">
+                  <a href={whatsappHref} target="_blank" rel="noopener noreferrer">
+                    Give on WhatsApp
+                  </a>
+                </Button>
+                <Button asChild variant="secondary">
+                  <Link href="/empowerment/join">Set up a monthly pledge</Link>
+                </Button>
+              </div>
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <BankDetails className="sm:grid-cols-1" />
+
+            <Card className="reveal">
+              <div className="flex items-center gap-3">
+                <Medallion tone="soft" className="size-11">
+                  <CreditCard aria-hidden="true" className="size-5" />
+                </Medallion>
+                <CardTitle>Where your money goes</CardTitle>
+              </div>
+              <CardDescription>
+                To the purpose you chose. Where we can, we pay the hospital or the
+                supplier directly. The accounts are audited each year and filed with the
+                Corporate Affairs Commission under {REGISTRATION.number}.
+              </CardDescription>
+              <Link
+                href="/about/accountability"
+                className="inline-flex min-h-11 items-center text-sm font-semibold text-oxblood underline-offset-4 hover:underline"
+              >
+                Read the accounts
+              </Link>
+            </Card>
+          </div>
+        </div>
       </Section>
 
-      <Section>
-        <div className="grid gap-4 sm:grid-cols-3">
-          <Card>
-            <CardTitle>The empowerment fund</CardTitle>
-            <CardDescription>
-              Orphan care and education, widow empowerment, emergency medical
-              relief and crisis support — reported openly by category.
-            </CardDescription>
-          </Card>
-          <Card>
-            <CardTitle>Where the money goes</CardTitle>
-            <CardDescription>
-              Direct to hospitals and suppliers wherever possible. Surplus is
-              recorded and used for smaller assistances, listed in the annual
-              report.
-            </CardDescription>
-          </Card>
-          <Card>
-            <CardTitle>Zakat is separate</CardTitle>
-            <CardDescription>
-              Zakat is held apart from general donations, spent only on the
-              Qur&apos;anic categories, and never on running costs.
-            </CardDescription>
-          </Card>
+      {/* --- Purposes ------------------------------------------------------- */}
+      <Section tone="white" size="lg">
+        <SectionHeading
+          kicker="What you can give to"
+          title="Three funds, kept apart"
+          standfirst="Zakat in particular is never pooled with anything else — it has its own ledger and its own eligibility rules."
+        />
+
+        <div className="mt-12 grid gap-6 sm:grid-cols-3">
+          {PURPOSES.map(({ icon: Icon, ...purpose }) => (
+            <Card key={purpose.title} variant="seal" className="reveal items-center">
+              <Medallion className="mx-auto">
+                <Icon aria-hidden="true" className="size-6" />
+              </Medallion>
+              <CardTitle>{purpose.title}</CardTitle>
+              <CardDescription>{purpose.body}</CardDescription>
+            </Card>
+          ))}
         </div>
+      </Section>
 
-        <Prose className="mt-12">
-          <h2>The simplest way to give today</h2>
-          <p>
-            Message us on WhatsApp —{" "}
-            <a
-              href={`https://wa.me/${CONTACT.phoneE164}?text=${encodeURIComponent(
-                "As-salaamu alaykum. I would like to donate to the Assoutudeen Prophetic Medicine Foundation.",
-              )}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {CONTACT.phoneDisplay}
-            </a>{" "}
-            — or email{" "}
-            <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>, and we will
-            send you the verified bank details. We are deliberately not printing
-            an account number on this page until it has been confirmed; a wrong
-            digit on a public donations page misdirects someone else&apos;s money.
-          </p>
-          <p>
-            Online card giving through Paystack arrives in a later session.{" "}
-            <Todo>Paystack checkout — wired when the donation collection is built</Todo>
-          </p>
-          <p>
-            <strong>Monthly is worth more than one-off.</strong> A regular
-            member at ₦5,000 a month contributes ₦60,000 a year — so consider{" "}
-            joining the Monthly Empowerment Fund instead of a single gift.
-          </p>
+      {/* --- Verse ---------------------------------------------------------- */}
+      <Section tone="ink" size="lg" ornament>
+        <div className="mx-auto max-w-3xl">
+          <ArabicQuote tone="dark" className="reveal" {...VERSES.baqarah274} />
+        </div>
+      </Section>
 
-          <h2>What your giving has done</h2>
+      <Section tone="chalk" size="md">
+        <Prose className="mx-auto">
+          <ProseHeading>A note on receipts</ProseHeading>
           <p>
-            {formatKobo(THREE_YEAR_TOTAL_KOBO)} was raised and accounted for
-            between 2023 and 2025, with the reports published and the bank
-            statements available on request.
+            Every gift is recorded against a reference. Email receipts go out
+            automatically once the payment work is finished; until then, ask and we will
+            send you written confirmation.
+          </p>
+          <p>
+            Questions about money should reach a person, not an inbox — see the{" "}
+            <Link href="/about/accountability">accountability page</Link>.
           </p>
         </Prose>
       </Section>

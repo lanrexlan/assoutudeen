@@ -1,315 +1,271 @@
-import type { Metadata } from "next";
 import Link from "next/link";
+import {
+  BookOpenText,
+  GraduationCap,
+  HandHeart,
+  HeartPulse,
+  ScrollText,
+  ShieldCheck,
+} from "lucide-react";
 import { ArabicQuote } from "@/components/ui/arabic-quote";
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
-import { Disclaimer } from "@/components/ui/disclaimer";
-import { Section } from "@/components/ui/section";
-import { NewsletterForm } from "@/components/site/newsletter-form";
-import { CONTACT, FOUNDATION_NAME, siteConfig } from "@/lib/sites";
+import { Medallion } from "@/components/ui/ornament";
+import { Section, SectionHeading } from "@/components/ui/section";
+import { Hero } from "@/components/site/hero";
+import { StructureDiagram } from "@/components/site/structure-diagram";
+import { TestimonyWall } from "@/components/site/testimony-wall";
 import { getSiteContext } from "@/lib/site-context";
-import { THREE_YEAR_TOTAL_KOBO } from "@/lib/impact";
-
-export const metadata: Metadata = {
-  title: {
-    default: siteConfig.foundation.name,
-    template: `%s · ${siteConfig.foundation.shortName}`,
-  },
-  description:
-    "An Islamic charity in Ede, Osun State, Nigeria. Empowerment fund, dawah and prophetic medicine — with published accounts that reconcile to the naira.",
-};
+import { REGISTRATION } from "@/lib/organisation";
+import { THREE_YEAR_TOTAL_KOBO, YEAR_TOTALS } from "@/lib/impact";
+import { VERSES } from "@/lib/verses";
+import { BOOK } from "@/lib/book";
+import { formatKobo } from "@/payload/fields/money";
 
 /**
- * Homepage, following docs/03: hero, proof, what we do, the empowerment
- * programme, the book, the family of three sites, newsletter.
- *
- * Every figure is verified (CLAUDE.md, docs/11, src/lib/impact.ts). Nothing is
- * invented; anything not yet confirmed is a visible [TODO: …] marker.
+ * The foundation homepage. Order follows docs/03: hero, proof, what we do,
+ * the empowerment fund, the book, the family of organisations, and the
+ * newsletter. Sections that need supplied content (recent articles,
+ * testimonials) arrive with that content rather than as empty shells.
  */
 export default async function FoundationHomePage() {
   const { href } = await getSiteContext("foundation");
 
-  const stats = [
+  const work = [
     {
-      value: formatNaira(THREE_YEAR_TOTAL_KOBO),
-      label: "raised across 2023–2025, reported to the naira",
-    },
-    { value: "11", label: "beneficiaries supported in the 2023 report alone" },
-    { value: "175", label: "pages of prophetic remedies in the book" },
-    { value: "7", label: "weekly and monthly programmes at the Dawah Institute" },
-  ];
-
-  const pillars = [
-    {
-      title: "Monthly Empowerment Fund",
-      body: "A standing contribution circle — any amount, every month. Orphan care, widow empowerment, medical relief and crisis support, reported openly by category.",
-      href: href("/empowerment"),
-      cta: "Read about the fund",
+      icon: HeartPulse,
+      title: "Prophetic medicine",
+      body: "Around forty-five remedies from the Qur'an and the Sunnah, each traced to its evidence and its classical commentary.",
+      href: "/prophetic-medicine",
     },
     {
-      title: "Dawah Institute",
-      body: "Seven recurring classes in Ede — Tafsir, Hadith, Tawheed, Prophetic Medicine, the monthly Fiqh seminar, the empowerment lecture and Fataawah night.",
-      href: href("/dawah"),
-      cta: "Visit the institute",
+      icon: HandHeart,
+      title: "The empowerment fund",
+      body: "A standing monthly circle that meets medical and financial need. Impact reported by category, never by name.",
+      href: "/our-work",
     },
     {
-      title: "Prophetic Medicine",
-      body: "Endless Blessings From The Creator gathers roughly 45 remedies from the Qur'an and Sunnah into one 175-page reference.",
-      href: href("/prophetic-medicine"),
-      cta: "Explore the remedies",
+      icon: GraduationCap,
+      title: "Dawah education",
+      body: "Classes Friday to Sunday in Ede — Tafsir, Hadith, Prophetic Medicine, Fiqh and more. Free and open.",
+      href: "/our-work",
     },
     {
-      title: "Pure Honey",
-      body: "Our own honey enterprise — pure honey, sold by the litre, retail and wholesale across Nigeria.",
-      href: href("/honey"),
-      cta: "Visit the honey farm",
+      icon: BookOpenText,
+      title: "The book",
+      body: `${BOOK.title} — ${BOOK.pages} pages, referenced chapter by chapter.`,
+      href: "/shop",
     },
   ];
 
   return (
     <>
-      {/* 1 — Hero */}
-      <Section tone="primary">
-        <p className="text-sm uppercase tracking-widest text-white/80">
-          {siteConfig.foundation.shortName} · Ede, Osun State, Nigeria
-        </p>
-        <h1 className="mt-3 max-w-3xl font-display text-4xl leading-[1.1] sm:text-5xl">
-          Healing by the Sunnah. Empowering the Ummah.
-        </h1>
-        <p className="mt-4 max-w-xl text-base leading-relaxed text-white/90 sm:text-lg">
-          {FOUNDATION_NAME} runs a monthly empowerment fund, teaches the deen,
-          and publishes on prophetic medicine — with accounts that reconcile to
-          the naira.
-        </p>
-        <div className="mt-7 flex flex-wrap gap-3">
-          <Button asChild variant="donate" size="lg">
-            <Link href={href("/donate")}>Donate</Link>
-          </Button>
-          <Button asChild variant="secondary" size="lg" className="border-transparent">
-            <Link href={href("/empowerment/join")}>Join the fund</Link>
-          </Button>
-          <Button asChild variant="ghost" size="lg" className="text-white hover:bg-white/10 hover:text-white">
-            <Link href={href("/our-work")}>Our work</Link>
-          </Button>
-        </div>
-      </Section>
+      <Hero donateHref={href("/donate")} workHref={href("/prophetic-medicine")} />
 
-      {/* 2 — Proof, in numbers */}
-      <Section tone="white">
-        <dl className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {stats.map((stat) => (
-            <div key={stat.label}>
-              <dt className="sr-only">{stat.label}</dt>
-              <dd className="font-display text-3xl text-olive">{stat.value}</dd>
-              <dd className="mt-2 text-sm leading-relaxed text-charcoal-muted">
-                {stat.label}
-              </dd>
-            </div>
-          ))}
-        </dl>
-      </Section>
+      {/* --- Proof bar: real, published numbers only -------------------- */}
+      <section className="relative border-b border-chalk-dark bg-white">
+        <Container>
+          <dl className="grid grid-cols-2 divide-chalk-dark sm:grid-cols-4 sm:divide-x">
+            {[
+              {
+                value: formatKobo(THREE_YEAR_TOTAL_KOBO),
+                label: "Raised and accounted for, 2023–2025",
+              },
+              { value: "11", label: "Beneficiaries in 2023 alone" },
+              { value: "7", label: "Classes every week, Friday to Sunday" },
+              {
+                value: REGISTRATION.incorporatedOnDisplay.slice(-4),
+                label: "Registered with the CAC",
+              },
+            ].map((stat) => (
+              <div key={stat.label} className="reveal px-2 py-8 text-center">
+                <dt className="sr-only">{stat.label}</dt>
+                <dd>
+                  <span className="block font-display text-2xl text-oxblood sm:text-3xl">
+                    {stat.value}
+                  </span>
+                  <span className="mt-2 block text-xs leading-snug text-charcoal-muted sm:text-sm">
+                    {stat.label}
+                  </span>
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </Container>
+      </section>
 
-      <Section>
-        <ArabicQuote
-          arabic="بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ"
-          translation="In the name of Allah, the Most Gracious, the Most Merciful."
-          source="Qur'an, Al-Fātiḥah 1:1"
+      {/* --- What we do -------------------------------------------------- */}
+      <Section tone="chalk" size="lg" ornament>
+        <SectionHeading
+          kicker="What we do"
+          title="Four kinds of work, one intention"
+          standfirst="To seek healing in what Allah has provided, and to carry the weight for those who cannot carry it alone."
         />
+
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {work.map(({ icon: Icon, ...item }) => (
+            <Card key={item.title} variant="seal" className="reveal items-center">
+              <Medallion className="mx-auto">
+                <Icon aria-hidden="true" className="size-6" />
+              </Medallion>
+              <CardTitle className="mt-1">{item.title}</CardTitle>
+              <CardDescription>{item.body}</CardDescription>
+              <Link
+                href={href(item.href)}
+                className="mt-auto inline-flex min-h-11 items-center text-sm font-semibold text-oxblood underline-offset-4 hover:underline"
+              >
+                Read more
+              </Link>
+            </Card>
+          ))}
+        </div>
       </Section>
 
-      {/* 3 — What we do */}
-      <Section tone="white">
-        <h2 className="font-display text-2xl sm:text-3xl">What we do</h2>
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {pillars.map((pillar) => (
-            <Card key={pillar.title} className="justify-between">
-              <div>
-                <CardTitle>{pillar.title}</CardTitle>
-                <CardDescription className="mt-2">{pillar.body}</CardDescription>
-              </div>
-              <Button asChild variant="link" className="self-start px-0">
-                <Link href={pillar.href}>{pillar.cta} →</Link>
+      {/* --- Transparency ------------------------------------------------ */}
+      <Section tone="ink" size="lg" ornament>
+        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+          <div className="reveal">
+            <SectionHeading
+              align="start"
+              tone="dark"
+              kicker="Accountability"
+              title="Every naira, on the record"
+              standfirst="Three years of giving, published by year and by category. What comes in is what we report, and what we report is what we file."
+            />
+            <p className="mt-6 max-w-xl leading-relaxed text-chalk/80">
+              Our constitution binds every naira to the objects the foundation was
+              registered for. The accounts are audited by independent auditors each
+              year and filed with the Corporate Affairs Commission, and zakat is held
+              as its own fund with its own rules.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button asChild variant="donate" size="lg">
+                <Link href={href("/about/accountability")}>See the accounts</Link>
+              </Button>
+              <Button asChild variant="ghostLight" size="lg">
+                <Link href={href("/donate")}>Give with confidence</Link>
+              </Button>
+            </div>
+          </div>
+
+          <ul className="reveal grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+            {YEAR_TOTALS.map((year) => (
+              <li
+                key={year.year}
+                className="flex items-baseline justify-between gap-4 rounded-lg border border-white/12 bg-ink-raised p-5"
+              >
+                <span className="font-display text-xl text-white">{year.year}</span>
+                <span className="text-right">
+                  <span className="block font-display text-2xl text-apricot">
+                    {formatKobo(year.raisedKobo)}
+                  </span>
+                  <span className="text-xs text-chalk/60">
+                    {year.beneficiaries
+                      ? `${year.beneficiaries} beneficiaries`
+                      : "report in preparation"}
+                  </span>
+                </span>
+              </li>
+            ))}
+            <li className="flex items-baseline justify-between gap-4 rounded-lg border border-apricot/40 bg-apricot/10 p-5">
+              <span className="font-display text-xl text-white">Total</span>
+              <span className="font-display text-2xl text-apricot">
+                {formatKobo(THREE_YEAR_TOTAL_KOBO)}
+              </span>
+            </li>
+          </ul>
+        </div>
+      </Section>
+
+      {/* --- The empowerment fund ---------------------------------------- */}
+      <Section tone="white" size="lg">
+        <SectionHeading
+          kicker="The empowerment fund"
+          title="A standing circle, month after month"
+          standfirst="Most of what we do runs through a monthly contribution fund that meets need as it arises. A public appeal is opened only now and then, when a case calls for more than the fund can carry."
+        />
+
+        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+          {[
+            {
+              icon: HandHeart,
+              title: "Join the fund",
+              body: "A monthly pledge, by card or by transfer. Give what is steady rather than what is dramatic.",
+              cta: "Join the fund",
+              href: "/empowerment/join",
+              primary: true,
+            },
+            {
+              icon: ShieldCheck,
+              title: "Request assistance",
+              body: "One confidential form. Health information is treated as the sensitive data it is, and nobody is named without separate written consent.",
+              cta: "Request assistance",
+              href: "/empowerment/request",
+            },
+            {
+              icon: ScrollText,
+              title: "See where it went",
+              body: "Annual reports by category — how many children back in school, how many treatments met, what was left over.",
+              cta: "Read the reports",
+              href: "/about/accountability",
+            },
+          ].map(({ icon: Icon, ...item }) => (
+            <Card key={item.title} className="reveal">
+              <Medallion tone={item.primary ? "accent" : "outline"}>
+                <Icon aria-hidden="true" className="size-6" />
+              </Medallion>
+              <CardTitle>{item.title}</CardTitle>
+              <CardDescription>{item.body}</CardDescription>
+              <Button
+                asChild
+                variant={item.primary ? "primary" : "secondary"}
+                className="mt-auto self-start"
+              >
+                <Link href={href(item.href)}>{item.cta}</Link>
               </Button>
             </Card>
           ))}
         </div>
       </Section>
 
-      {/* 4 — The empowerment programme */}
-      <Section tone="primary">
-        <Container>
-          <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
-            <div>
-              <p className="text-sm uppercase tracking-widest text-white/80">
-                Our flagship
-              </p>
-              <h2 className="mt-2 font-display text-2xl sm:text-3xl">
-                The Monthly Empowerment Fund
-              </h2>
-              <p className="mt-4 text-base leading-relaxed text-white/90">
-                Not one-off appeals — a standing circle. Each member gives any
-                amount they find convenient, every month, and the fund supports
-                orphans, widows, medical emergencies and crisis relief.
-              </p>
-              <p className="mt-3 text-base leading-relaxed text-white/90">
-                Impact is reported openly, by category, never by name.{" "}
-                {formatNaira(THREE_YEAR_TOTAL_KOBO)} was raised and accounted
-                for between 2023 and 2025.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <Button asChild variant="secondary" size="lg" className="border-transparent">
-                  <Link href={href("/empowerment/join")}>Join the fund</Link>
-                </Button>
-                <Button asChild variant="ghost" size="lg" className="text-white hover:bg-white/10 hover:text-white">
-                  <Link href={href("/empowerment/request")}>Request assistance</Link>
-                </Button>
-              </div>
-            </div>
-
-            <Card className="bg-white/5 border-white/15 text-white shadow-none">
-              <CardTitle className="text-white">How it works</CardTitle>
-              <ul className="mt-2 list-none space-y-3 text-sm leading-relaxed text-white/90">
-                <li className="flex gap-3">
-                  <span aria-hidden="true" className="font-display text-amber text-lg leading-6">1</span>
-                  <span>Choose any monthly amount — no minimum, no pressure to overburden yourself.</span>
-                </li>
-                <li className="flex gap-3">
-                  <span aria-hidden="true" className="font-display text-amber text-lg leading-6">2</span>
-                  <span>Pay by card auto-debit or a simple manual transfer each month — both supported.</span>
-                </li>
-                <li className="flex gap-3">
-                  <span aria-hidden="true" className="font-display text-amber text-lg leading-6">3</span>
-                  <span>Contributors are kept informed of every disbursement; reports reconcile to the naira.</span>
-                </li>
-              </ul>
-              <Button asChild variant="link" className="mt-2 self-start px-0 text-white">
-                <Link href={href("/empowerment/how-it-works")}>How it works in detail →</Link>
-              </Button>
-            </Card>
-          </div>
-        </Container>
-      </Section>
-
-      {/* 5 — The book */}
-      <Section>
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] lg:items-center">
-          <div className="rounded-lg border border-sand-dark bg-white p-6 shadow-sm shadow-sand-dark/25 sm:p-8">
-            <p className="text-sm uppercase tracking-widest text-charcoal-muted">
-              The book
-            </p>
-            <h2 className="mt-2 font-display text-2xl leading-snug sm:text-3xl">
-              Endless Blessings From The Creator
-            </h2>
-            <p className="mt-3 text-sm text-charcoal-muted">
-              By Imam Engr. Abd&apos;Waasi Tirmidhi A. (Abu Mubaashir) · 175 pages ·
-              ~45 prophetic remedies
-            </p>
-            <p className="mt-3 text-base leading-relaxed text-charcoal">
-              A practical reference to the remedies of the Qur&apos;an and Sunnah —
-              honey, black seed, dates, olive and more — with the original
-              guidance for each one.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Button asChild variant="primary" size="lg">
-                <Link href={href("/prophetic-medicine")}>Explore the remedies</Link>
-              </Button>
-            </div>
-          </div>
-
-          <div>
-            <h2 className="font-display text-2xl sm:text-3xl">
-              Prophetic medicine, from the sources
-            </h2>
-            <p className="mt-4 text-base leading-relaxed text-charcoal">
-              Ten to fifteen remedies will be free to read online; the rest are
-              behind a simple unlock. Every page quotes the Qur&apos;an and Sunnah
-              verbatim — the Arabic kept exactly as it appears in the sources.
-            </p>
-            <Disclaimer className="mt-6" />
-          </div>
+      {/* --- Scripture --------------------------------------------------- */}
+      <Section tone="chalk" size="lg" ornament>
+        <div className="mx-auto max-w-3xl">
+          <ArabicQuote className="reveal" {...VERSES.baqarah261} />
         </div>
       </Section>
 
-      {/* 6 — Our family */}
-      <Section tone="white">
-        <h2 className="font-display text-2xl sm:text-3xl">One foundation, three doors</h2>
-        <p className="mt-3 max-w-2xl text-base leading-relaxed text-charcoal-muted">
-          The foundation is the parent. The Dawah Institute is its education arm
-          and the Honey Enterprise its commercial arm — both visibly part of the
-          same organisation.
-        </p>
-        <div className="mt-6 grid gap-4 md:grid-cols-3">
-          <Card className="justify-between">
-            <div>
-              <CardTitle>APMF</CardTitle>
-              <CardDescription className="mt-2">
-                The parent charity: the empowerment fund, publications and
-                community support.
-              </CardDescription>
-            </div>
-            <Button asChild variant="link" className="self-start px-0">
-              <Link href={href("/")}>Foundation home →</Link>
-            </Button>
-          </Card>
-          <Card className="justify-between">
-            <div>
-              <CardTitle>Assoutudeen Dawah Institute</CardTitle>
-              <CardDescription className="mt-2">
-                Seven recurring classes taught by Imam Abd&apos;Waasi Tirmidhi and
-                guest scholars.
-              </CardDescription>
-            </div>
-            <Button asChild variant="link" className="self-start px-0">
-              <Link href={href("/dawah")}>Visit ADI →</Link>
-            </Button>
-          </Card>
-          <Card className="justify-between">
-            <div>
-              <CardTitle>Assoutudeen Honey Enterprise</CardTitle>
-              <CardDescription className="mt-2">
-                Pure honey from our own farm, sold retail and wholesale.
-              </CardDescription>
-            </div>
-            <Button asChild variant="link" className="self-start px-0">
-              <Link href={href("/honey")}>Visit AHE →</Link>
-            </Button>
-          </Card>
+      {/* --- Testimonies -------------------------------------------------- */}
+      <Section tone="white" size="lg">
+        <SectionHeading
+          kicker="From the archive"
+          title="What people have written to us"
+          standfirst="Messages the foundation has been sent over the years, published anonymously. Personal experiences rather than evidence — the full note sits with them."
+        />
+        <TestimonyWall className="mt-12" limit={3} />
+        <div className="mt-4 text-center">
+          <Link
+            href={href("/prophetic-medicine")}
+            className="inline-flex min-h-11 items-center font-medium text-oxblood underline decoration-apricot decoration-2 underline-offset-4"
+          >
+            Read more, and the note that goes with them
+          </Link>
         </div>
       </Section>
 
-      {/* 7 — Newsletter */}
-      <Section tone="primary">
-        <Container>
-          <div className="max-w-2xl">
-            <h2 className="font-display text-2xl">Stay in touch</h2>
-            <p className="mt-2 text-white/90">
-              Occasional email about the empowerment fund, new classes, and new
-              writing on prophetic medicine. Or message us on WhatsApp —{" "}
-              <a
-                href={`https://wa.me/${CONTACT.phoneE164}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline underline-offset-4 hover:no-underline"
-              >
-                {CONTACT.phoneDisplay}
-              </a>
-            </p>
-            <div className="mt-6">
-              <NewsletterForm source="homepage" />
-            </div>
-          </div>
-        </Container>
+      {/* --- Our family -------------------------------------------------- */}
+      <Section tone="white" size="lg">
+        <SectionHeading
+          kicker="Our family"
+          title="One foundation, two arms"
+          standfirst="The charity is the parent. The Dawah Institute teaches; the Honey Enterprise trades. Their books are kept apart, and the foundation answers for both."
+        />
+        <div className="reveal mt-12">
+          <StructureDiagram />
+        </div>
       </Section>
+
     </>
   );
-}
-
-/** Naira without trailing zeros: ₦14,644,520 not ₦14,644,520.00. */
-function formatNaira(kobo: number): string {
-  return new Intl.NumberFormat("en-NG", {
-    style: "currency",
-    currency: "NGN",
-    maximumFractionDigits: 0,
-  }).format(kobo / 100);
 }

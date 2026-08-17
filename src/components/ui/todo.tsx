@@ -22,7 +22,7 @@ export function Todo({
     <mark
       data-todo
       className={cn(
-        "rounded-sm border border-dashed border-amber-dark bg-amber/15 px-1.5 py-0.5 text-[0.9em] font-medium text-charcoal",
+        "rounded-sm border border-dashed border-apricot-dark bg-apricot/15 px-1.5 py-0.5 text-[0.9em] font-medium text-charcoal",
         className,
       )}
     >

@@ -4,6 +4,7 @@ import { useActionState, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { submitContactForm, type FormState } from "@/app/(foundation)/actions";
 import { Button } from "@/components/ui/button";
+import { foundationUrl } from "@/components/site/foundation-link";
 import {
   CONTACT_ROUTES,
   CONTACT_SUBJECTS,
@@ -13,7 +14,7 @@ import {
 const initialState: FormState = { ok: false, message: "" };
 
 const inputClass =
-  "min-h-11 w-full rounded-md border border-sand-dark bg-white px-3 text-charcoal placeholder:text-charcoal-muted";
+  "min-h-11 w-full rounded-lg border border-chalk-dark bg-white px-3.5 text-charcoal transition-colors placeholder:text-charcoal-muted focus:border-oxblood";
 
 function Field({
   label,
@@ -32,7 +33,7 @@ function Field({
       {children}
       {hint ? <span className="mt-1 block text-sm text-charcoal-muted">{hint}</span> : null}
       {error ? (
-        <span className="mt-1 block text-sm font-medium text-olive-dark">{error}</span>
+        <span className="mt-1 block text-sm font-medium text-oxblood-dark">{error}</span>
       ) : null}
     </label>
   );
@@ -52,12 +53,7 @@ function SubmitButton() {
  * the message is addressed to — see lib/contact-routing.ts. Submissions are
  * stored in the CMS immediately, so nothing depends on email working.
  */
-export function ContactForm({
-  privacyHref = "/legal/privacy",
-}: {
-  /** Where the consent line links. Subdomains point at the foundation's copy. */
-  privacyHref?: string;
-}) {
+export function ContactForm() {
   const [state, formAction] = useActionState(submitContactForm, initialState);
   const [topic, setTopic] = useState<ContactSubject>("general");
 
@@ -65,7 +61,7 @@ export function ContactForm({
     return (
       <div
         role="status"
-        className="rounded-lg border border-sand-dark bg-white p-6 text-charcoal"
+        className="rounded-lg border border-chalk-dark bg-white p-6 text-charcoal"
       >
         <p className="font-display text-xl">Message received</p>
         <p className="mt-2 text-sm leading-relaxed">{state.message}</p>
@@ -142,23 +138,23 @@ export function ContactForm({
           type="checkbox"
           name="consent"
           value="on"
-          className="mt-0.5 size-5 shrink-0 rounded border-sand-dark"
+          className="mt-0.5 size-6 shrink-0 rounded border-chalk-dark accent-oxblood"
         />
         <span>
           I agree that Assoutudeen Prophetic Medicine Foundation may store this message
           and contact me about it. See the{" "}
-          <a href={privacyHref} className="underline underline-offset-4">
+          <a href={`${foundationUrl}/legal/privacy`} className="underline underline-offset-4">
             privacy policy
           </a>
           .
         </span>
       </label>
       {state.errors?.consent ? (
-        <p className="text-sm font-medium text-olive-dark">{state.errors.consent}</p>
+        <p className="text-sm font-medium text-oxblood-dark">{state.errors.consent}</p>
       ) : null}
 
       {state.message && !state.ok ? (
-        <p role="alert" className="text-sm font-medium text-olive-dark">
+        <p role="alert" className="text-sm font-medium text-oxblood-dark">
           {state.message}
         </p>
       ) : null}
