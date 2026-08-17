@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { PageHeader, Prose } from "@/components/ui/prose";
+import { PageHeader, Prose, ProseHeading } from "@/components/ui/prose";
 import { Section } from "@/components/ui/section";
 import { getSiteContext } from "@/lib/site-context";
 
@@ -21,17 +21,16 @@ export default async function HowItWorksPage() {
 
   return (
     <>
-      <Section tone="primary">
-        <PageHeader
-          eyebrow="The Monthly Empowerment Fund"
-          title="How it works"
-          standfirst="Where a request goes, how money is held and paid out, and how you can check it."
-        />
-      </Section>
+      <PageHeader
+        image="empowerment"
+        eyebrow="The Monthly Empowerment Fund"
+        title="How it works"
+        standfirst="Where a request goes, how money is held and paid out, and how you can check it."
+      />
 
       <Section>
         <Prose>
-          <h2>For contributors</h2>
+          <ProseHeading>For contributors</ProseHeading>
           <p>
             You choose any monthly amount — no minimum — and pay however suits
             you: card auto-debit, or a simple manual transfer each month. Both
@@ -43,7 +42,7 @@ export default async function HowItWorksPage() {
             every cycle, and the annual reports reconcile to the naira.
           </p>
 
-          <h2>For those requesting assistance</h2>
+          <ProseHeading>For those requesting assistance</ProseHeading>
           <p>Every request goes through the same funnel:</p>
           <ol>
             <li>
@@ -66,7 +65,7 @@ export default async function HowItWorksPage() {
             </li>
           </ol>
 
-          <h2>Money is held separately</h2>
+          <ProseHeading>Money is held separately</ProseHeading>
           <p>
             <strong>Zakat is a separate fund</strong> with its own ledger, spent
             only on the eight Qur&apos;anic categories and never pooled with
@@ -75,7 +74,7 @@ export default async function HowItWorksPage() {
             report.
           </p>
 
-          <h2>Your information</h2>
+          <ProseHeading>Your information</ProseHeading>
           <p>
             Requests contain health and personal data, which is a special
             category under Nigeria&apos;s NDPA 2023. It is stored with restricted
