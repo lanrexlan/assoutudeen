@@ -21,6 +21,7 @@ export default function ContactPage() {
   return (
     <>
       <PageHeader
+        image="contact"
           eyebrow="Contact"
           title="Talk to us"
           standfirst="WhatsApp reaches us fastest. The form below routes your message to the right person."

@@ -295,3 +295,22 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* The giving reminder slides up into place — and simply appears, without any
+   movement, for anyone who has asked for reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .giving-reminder {
+    animation: giving-rise 320ms ease-out both;
+  }
+}
+
+@keyframes giving-rise {
+  from {
+    transform: translateY(1.5rem);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}

@@ -89,7 +89,11 @@ export function SectionHeading({
         className,
       )}
     >
-      {kicker ? <Kicker align={align}>{kicker}</Kicker> : null}
+      {kicker ? (
+        <Kicker align={align} tone={tone}>
+          {kicker}
+        </Kicker>
+      ) : null}
       <h2
         className={cn(
           "mt-4 font-display text-3xl leading-tight sm:text-4xl",

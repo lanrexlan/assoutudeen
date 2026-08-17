@@ -47,6 +47,7 @@ export default function DonatePage() {
   return (
     <>
       <PageHeader
+        image="donate"
         eyebrow="Donate"
         title="Give to the fund"
         standfirst="Steady monthly giving is what lets us answer a case in the week it arrives. One-off gifts matter just as much when something large lands."

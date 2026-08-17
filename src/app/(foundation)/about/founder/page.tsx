@@ -34,6 +34,7 @@ export default function FounderPage() {
   return (
     <>
       <PageHeader
+        image="founder"
         eyebrow="About"
         title={FOUNDER.name}
         standfirst={`Known as ${FOUNDER.kunya}. ${FOUNDER.summary}`}

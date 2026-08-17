@@ -27,6 +27,7 @@ export default function MediaPage() {
   return (
     <>
       <PageHeader
+        image="media"
         eyebrow="Media"
         title="Lectures and recordings"
         standfirst={`${LECTURES.length} recorded sessions, published as they are taught — Tafsir on Friday evenings, prophetic medicine and hadith on Saturdays, fiqh on Sundays, and the monthly seminar.`}

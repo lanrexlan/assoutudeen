@@ -77,6 +77,7 @@ export default function OurWorkPage() {
   return (
     <>
       <PageHeader
+        image="ourWork"
         eyebrow="Our work"
         title="The Monthly Empowerment Fund"
         standfirst="A standing circle of contributors that meets medical and financial need month after month — and a public appeal now and then, when a case calls for more than the fund can carry."
@@ -101,7 +102,7 @@ export default function OurWorkPage() {
         <SectionHeading
           kicker="What the fund covers"
           title="Need, in the four shapes it usually arrives in"
-          standfirst="Every case is different, but nearly all of them fall into one of these."
+          standfirst="Every case is different, but nearly all of them fall into one of these. The fund is for Muslims in need wherever they are — the office is in Ede, the work is not."
         />
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

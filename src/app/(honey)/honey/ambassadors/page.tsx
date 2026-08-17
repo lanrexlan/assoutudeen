@@ -76,6 +76,7 @@ export default async function AmbassadorsPage() {
   return (
     <>
       <PageHeader
+        image="ambassadors"
         eyebrow="Ambassadors"
         title="Share a code, earn on it"
         standfirst="A referral programme with the rules written down before anyone competes — including the ones that decide against you."

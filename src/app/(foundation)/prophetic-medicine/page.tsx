@@ -26,6 +26,7 @@ export default function PropheticMedicinePage() {
   return (
     <>
       <PageHeader
+        image="propheticMedicine"
         eyebrow="Prophetic medicine"
         title="Healing, traced to its evidence"
         standfirst="The remedies the Qur'an and the Sunnah name — set out with the verse, the hadith and its grading, and the commentary of Ibn al-Qayyim. Nothing here asks you to leave your doctor."

@@ -70,6 +70,7 @@ export default async function SchedulePage() {
   return (
     <>
       <PageHeader
+        image="schedule"
         eyebrow="Schedule"
         title="The teaching week"
         standfirst="Three evenings, seven classes, one gathering every quarter. Free, open to everyone, and recorded."

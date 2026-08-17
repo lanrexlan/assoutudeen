@@ -21,6 +21,7 @@ export default async function TeachersPage() {
   return (
     <>
       <PageHeader
+        image="teachers"
         eyebrow="Teachers"
         title="Who teaches here"
         standfirst="Two teachers, both named on the timetable, so you know who you are learning from before you come."

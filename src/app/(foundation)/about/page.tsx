@@ -18,9 +18,10 @@ export default function AboutPage() {
   return (
     <>
       <PageHeader
+        image="about"
           eyebrow="About"
           title="Who we are"
-          standfirst="An Islamic charity in Ede, Osun State, working where healing by the Sunnah meets practical help for people in difficulty."
+          standfirst="An Islamic charity registered in Ede, Osun State, working wherever a Muslim needs it — where healing by the Sunnah meets practical help for people in difficulty."
         />
 
       <Section>
@@ -34,9 +35,11 @@ export default function AboutPage() {
             Assoutudeen Dawah Institute we teach seven classes from Friday to Sunday, free and open.
           </p>
           <p>
-            The foundation is based on Assoutudeen Street, Ede, and most of the people
-            we help are in Osun State and the surrounding south-west. Donations reach us
-            from further afield, including from Nigerians abroad.
+            The foundation keeps its office on Assoutudeen Street, Ede, because
+            that is where its people are — not because that is where its work
+            stops. Assistance is for Muslims in need, and where someone lives has
+            never been the test. Requests reach us from across Nigeria and from
+            outside it, and so do donations.
           </p>
 
           <h2>The problem we exist to answer</h2>

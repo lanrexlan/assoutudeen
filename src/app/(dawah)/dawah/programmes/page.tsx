@@ -25,6 +25,7 @@ export default async function ProgrammesPage() {
   return (
     <>
       <PageHeader
+        image="programmes"
         eyebrow="Programmes"
         title="Seven classes"
         standfirst={`Every one of them is free, open to anyone, and recorded. ${TEACHING_WINDOW} on Friday, Saturday and Sunday evenings.`}

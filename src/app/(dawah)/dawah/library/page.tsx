@@ -41,6 +41,7 @@ export default async function LibraryPage({
   return (
     <>
       <PageHeader
+        image="library"
         eyebrow="Library"
         title="Every class, recorded"
         standfirst={`${LECTURES.length} published sessions. Nobody has to fall behind for missing an evening — and nobody has to take a claim on trust when they can hear it argued.`}

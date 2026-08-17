@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { DawahHeader } from "@/components/site/dawah-header";
 import { SiteFooter } from "@/components/site/site-footer";
 import { WhatsAppFloat } from "@/components/ui/whatsapp-float";
+import { DonationReminder } from "@/components/site/donation-reminder";
 import { fontVariables } from "@/lib/fonts";
 import { siteConfig } from "@/lib/sites";
 import "../globals.css";
@@ -34,6 +35,7 @@ export default function DawahLayout({
         <DawahHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter site="dawah" />
+        <DonationReminder />
         <WhatsAppFloat message={siteConfig.dawah.whatsappMessage} />
       </body>
     </html>

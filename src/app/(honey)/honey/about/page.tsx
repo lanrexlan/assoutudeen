@@ -23,6 +23,7 @@ export default async function HoneyAboutPage() {
   return (
     <>
       <PageHeader
+        image="honeyHome"
         eyebrow="About"
         title="A business a charity owns"
         standfirst={`${siteConfig.honey.name} trades so that ${FOUNDATION_NAME} depends a little less on donations. It began with the founder's own hives.`}

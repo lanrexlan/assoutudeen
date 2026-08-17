@@ -56,6 +56,7 @@ export default async function ProgrammePage({
   return (
     <>
       <PageHeader
+        image="programmes"
         eyebrow={programme.day}
         title={programme.title}
         standfirst={programme.description}

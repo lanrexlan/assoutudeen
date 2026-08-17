@@ -1,0 +1,93 @@
+import fs from "node:fs";
+import path from "node:path";
+import Image from "next/image";
+import { HERO_IMAGES, type HeroKey, type HeroSlot } from "@/lib/imagery";
+
+/**
+ * The hero photograph for a page, if one has been supplied.
+ *
+ * `public/hero/<slot>.<ext>` is looked up on the server at render time. When the
+ * file is there it is rendered behind the page header, dimmed enough that white
+ * text keeps its contrast; when it is not, this returns null and the header
+ * falls back to the ink ground and its geometry. That means photographs can be
+ * added one at a time without touching a single page.
+ */
+
+const EXTENSIONS = ["jpg", "jpeg", "webp", "avif", "png"];
+
+export function findHeroFile(key: HeroKey): string | null {
+  const { slot } = HERO_IMAGES[key];
+  for (const ext of EXTENSIONS) {
+    const file = path.join(process.cwd(), "public", "hero", `${slot}.${ext}`);
+    if (fs.existsSync(file)) return `/hero/${slot}.${ext}`;
+  }
+  return null;
+}
+
+export function HeroImage({ image }: { image: HeroKey }) {
+  const src = findHeroFile(image);
+  if (!src) return null;
+
+  const meta: HeroSlot = HERO_IMAGES[image];
+
+  return (
+    <>
+      <Image
+        src={src}
+        alt={meta.alt}
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover"
+      />
+      {/* Two layers: a flat wash so the whole frame darkens, and a gradient
+          weighted to the start edge where the text sits. Together they hold
+          white text above 4.5:1 on any photograph likely to be used here. */}
+      <div aria-hidden="true" className="absolute inset-0 bg-ink/55" />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-gradient-to-r from-ink via-ink/75 to-ink/25"
+      />
+      {meta.credit ? (
+        <p className="absolute bottom-2 end-3 z-10 text-[0.625rem] text-chalk/50">
+          Photograph:{" "}
+          {meta.credit.url ? (
+            <a href={meta.credit.url} className="underline underline-offset-2">
+              {meta.credit.name}
+            </a>
+          ) : (
+            meta.credit.name
+          )}
+        </p>
+      ) : null}
+    </>
+  );
+}
+
+/**
+ * A photograph in a frame, with drawn artwork behind it until one arrives.
+ *
+ * Used inside SealFrame on the homepages, where the picture is the subject
+ * rather than a background — so it is not dimmed and carries no scrim.
+ */
+export function SlotImage({
+  image,
+  fallback,
+}: {
+  image: HeroKey;
+  fallback: React.ReactNode;
+}) {
+  const src = findHeroFile(image);
+  if (!src) return <>{fallback}</>;
+
+  return (
+    <Image
+      src={src}
+      alt={HERO_IMAGES[image].alt}
+      fill
+      priority
+      sizes="(min-width: 1024px) 40vw, 90vw"
+      className="object-cover"
+    />
+  );
+}

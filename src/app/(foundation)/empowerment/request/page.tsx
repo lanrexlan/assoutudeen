@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { EyeOff, Lock, MessageCircle, Phone } from "lucide-react";
+import { EyeOff, Globe2, Lock, MessageCircle, Phone } from "lucide-react";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Medallion } from "@/components/ui/ornament";
 import { PageHeader } from "@/components/ui/prose";
@@ -27,6 +27,7 @@ export default function RequestAssistancePage() {
   return (
     <>
       <PageHeader
+        image="empowerment"
         eyebrow="Empowerment fund"
         title="Request assistance"
         standfirst={
@@ -53,6 +54,11 @@ export default function RequestAssistancePage() {
                 icon: EyeOff,
                 title: "You will not be put on display",
                 body: "We report our work by category — 'a revert sister', 'four children back in school'. Your name, photograph and story stay private unless you separately agree, in writing, that they need not.",
+              },
+              {
+                icon: Globe2,
+                title: "Where you live is not a test",
+                body: "The office is in Ede, and the fund is not limited to Ede. Requests are welcome from any state, and from Muslims outside Nigeria — what we weigh is the need and whether we can verify it, not the postcode.",
               },
               {
                 icon: Lock,

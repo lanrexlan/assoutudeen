@@ -78,3 +78,16 @@ nobody is reading.
 8. **Registered objects 5 and 6** mention distributing traditional herbal
    medicine, while the foundation sells honey only. Worth a compliance look, and
    possibly a CAC amendment.
+
+## Hero photographs — 20 slots waiting
+
+Every page header and the homepage frame will take a photograph the moment one
+exists at `public/hero/<slot>.jpg`; until then each falls back to the ink header
+or the drawn artwork, so nothing is blocked. The slot list, what each one wants
+and a suggested search are in `public/hero/README.md` and `src/lib/imagery.ts`.
+
+Stock libraries are unreachable from the build sandbox, so the pictures have to
+be dropped in by hand. The foundation's own photographs — a class in progress
+shot from behind, the hives, the book on a desk — beat anything on Unsplash for
+this site, and carry no licence question at all.
+

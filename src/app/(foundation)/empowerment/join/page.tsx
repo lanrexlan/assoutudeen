@@ -18,6 +18,7 @@ export default function JoinFundPage() {
   return (
     <>
       <PageHeader
+        image="empowerment"
         eyebrow="Empowerment fund"
         title="Join the fund"
         standfirst="A monthly contribution — whatever is steady for you. It is the reason we can answer a case in the week it arrives instead of opening an appeal and hoping."
@@ -38,7 +39,7 @@ export default function JoinFundPage() {
               {
                 icon: CalendarClock,
                 title: "Monthly, not dramatic",
-                body: "₦2,500 every month is worth more to a family in Ede than ₦25,000 once, because we can plan around it.",
+                body: "₦2,500 every month is worth more to a family waiting on help than ₦25,000 once, because we can plan around it.",
               },
               {
                 icon: Users,

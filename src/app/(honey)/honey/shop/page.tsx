@@ -46,6 +46,7 @@ export default async function HoneyShopPage() {
   return (
     <>
       <PageHeader
+        image="honeyHome"
         eyebrow="Shop"
         title="Buy by the litre"
         standfirst="Retail and wholesale, delivered across Nigeria. Tell us the litres and your town, and you will have a price the same day."

@@ -23,6 +23,7 @@ export default async function HoneyContactPage() {
   return (
     <>
       <PageHeader
+        image="contact"
         eyebrow="Contact"
         title="Orders and questions"
         standfirst="Message us with the litres you need and your town for a same-day price. Anything that went wrong with an order reaches the same people."

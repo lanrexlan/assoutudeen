@@ -34,7 +34,7 @@ export default async function HoneyHomePage() {
         />
         <Container className="relative py-16 text-center sm:py-24">
           <div className="mx-auto max-w-3xl">
-            <Kicker align="center">Assoutudeen Honey Enterprise</Kicker>
+            <Kicker align="center" tone="dark">Assoutudeen Honey Enterprise</Kicker>
             <h1 className="mt-5 font-display text-4xl leading-[1.1] text-white sm:text-5xl">
               Pure honey, sold by the litre
             </h1>

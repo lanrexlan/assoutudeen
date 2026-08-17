@@ -33,6 +33,7 @@ export default function AccountabilityPage() {
   return (
     <>
       <PageHeader
+        image="accountability"
         eyebrow="About"
         title="Accountability"
         standfirst="What we raised, what we spent it on, who is answerable for it, and how to check every word of that."

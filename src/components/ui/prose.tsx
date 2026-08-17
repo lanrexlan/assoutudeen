@@ -1,6 +1,8 @@
 import { cn } from "@/lib/utils";
 import { Kicker, OrnamentField, Starfield } from "@/components/ui/ornament";
 import { Container } from "@/components/ui/container";
+import { HeroImage, findHeroFile } from "@/components/ui/hero-image";
+import type { HeroKey } from "@/lib/imagery";
 
 /**
  * Long-form reading. Tailwind's typography plugin is deliberately not used —
@@ -43,26 +45,47 @@ export function PageHeader({
   eyebrow,
   title,
   standfirst,
+  image,
   children,
 }: {
   eyebrow?: string;
   title: string;
   standfirst?: string;
+  /**
+   * Hero photograph slot. The picture renders only if a file for it exists in
+   * public/hero — otherwise the header keeps its ink ground and geometry, so a
+   * page never waits on a photograph to look finished.
+   */
+  image?: HeroKey;
   /** Optional actions or metadata beneath the standfirst. */
   children?: React.ReactNode;
 }) {
+  const photo = image ? findHeroFile(image) : null;
+
   return (
-    <section className="relative overflow-hidden bg-ink py-16 text-chalk sm:py-20">
-      <OrnamentField tone="accent" />
-      <Starfield />
-      {/* A single seal of light behind the title, echoing the mihrab. */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute left-1/2 top-0 h-72 w-[36rem] -translate-x-1/2 rounded-b-[50%] bg-[radial-gradient(ellipse_at_top,rgba(224,160,106,0.16),transparent_70%)]"
-      />
+    <section
+      className={cn(
+        "relative overflow-hidden bg-ink text-chalk",
+        photo ? "py-24 sm:py-32" : "py-16 sm:py-20",
+      )}
+    >
+      {image ? <HeroImage image={image} /> : null}
+      {/* Geometry belongs to the plain header; over a photograph it is noise. */}
+      {photo ? null : (
+        <>
+          <OrnamentField tone="accent" />
+          <Starfield />
+        </>
+      )}
+      {photo ? null : (
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute left-1/2 top-0 h-72 w-[36rem] -translate-x-1/2 rounded-b-[50%] bg-[radial-gradient(ellipse_at_top,rgba(224,160,106,0.16),transparent_70%)]"
+        />
+      )}
       <Container className="relative">
         <div className="max-w-3xl">
-          {eyebrow ? <Kicker>{eyebrow}</Kicker> : null}
+          {eyebrow ? <Kicker tone="dark">{eyebrow}</Kicker> : null}
           <h1 className="mt-4 font-display text-4xl leading-[1.1] text-white sm:text-5xl">
             {title}
           </h1>

@@ -23,6 +23,7 @@ export default function ShopPage() {
   return (
     <>
       <PageHeader
+        image="shop"
         eyebrow="Shop"
         title={BOOK.title}
         standfirst={`${BOOK.pitch} ${BOOK.pages} pages, first produced in ${BOOK.firstProduced}.`}

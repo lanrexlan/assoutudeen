@@ -25,6 +25,7 @@ export default async function DawahAboutPage() {
   return (
     <>
       <PageHeader
+        image="dawahHome"
         eyebrow="About"
         title="The teaching arm"
         standfirst={`${siteConfig.dawah.name} is where ${FOUNDATION_NAME} teaches. Seven classes a week, free, open to anyone, and recorded.`}

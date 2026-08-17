@@ -23,6 +23,7 @@ export default async function DawahContactPage() {
   return (
     <>
       <PageHeader
+        image="contact"
         eyebrow="Contact"
         title="Ask about a class"
         standfirst="Which class is on this Saturday, where to come, whether you have missed too much to start now — WhatsApp answers all three fastest."

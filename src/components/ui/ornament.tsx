@@ -1,3 +1,23 @@
+import {
+  BarChart3,
+  BookOpenText,
+  CalendarDays,
+  Compass,
+  HandHeart,
+  HeartHandshake,
+  Leaf,
+  MessageCircle,
+  Newspaper,
+  PlayCircle,
+  Scale,
+  ScrollText,
+  ShoppingBag,
+  Sprout,
+  Trophy,
+  Truck,
+  Users,
+  type LucideIcon,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 
 /**
@@ -134,6 +154,45 @@ export function Medallion({
 }
 
 /**
+ * Kicker labels choose their own icon.
+ *
+ * Every kicker used to fall back to the khatim star, which meant a page of six
+ * sections carried six identical glyphs — decoration rather than signposting.
+ * The label already says what the section is about, so the first keyword it
+ * matches picks the icon. Explicit `icon` still wins where a section wants
+ * something specific, and the star remains the fallback for anything unmatched.
+ *
+ * Order matters: the first match wins, so put the specific words first.
+ */
+const KICKER_ICONS: [RegExp, LucideIcon][] = [
+  [/zakat|donat|giv|sadaqah|amount|fund/i, HandHeart],
+  [/empower|assist|help|support|work|what we do|mission/i, HeartHandshake],
+  [/prophetic|remed|medicine|treatment|health/i, Leaf],
+  [/account|transparen|money|spend|ledger|verified|figure/i, Scale],
+  [/rule|policy|legal|consent|privacy|govern|constitution/i, ScrollText],
+  [/class|teach|programme|study|schedule|week|timetable|lesson/i, CalendarDays],
+  [/teacher|founder|trustee|family|people|organisation|structure|who|about/i, Users],
+  [/librar|record|lecture|archive|listen|watch|video|media/i, PlayCircle],
+  [/book|read|chapter|contents|remed|medicine|library/i, BookOpenText],
+  [/honey|hive|bee|apiary|farm/i, Sprout],
+  [/shop|buy|sell|order|price|basket|wholesale|product/i, ShoppingBag],
+  [/ambassador|leaderboard|referral|prize|award/i, Trophy],
+  [/contact|write|message|ask|talk|reach/i, MessageCircle],
+  [/deliver|shipping|courier|collect/i, Truck],
+  [/journalist|press|brand|logo/i, Newspaper],
+  [/start|begin|first|how it works|step|way/i, Compass],
+  [/impact|result|done|report|year/i, BarChart3],
+];
+
+/** Pick an icon for a kicker label from its own words. */
+function iconForKicker(label: string): LucideIcon | null {
+  for (const [pattern, icon] of KICKER_ICONS) {
+    if (pattern.test(label)) return icon;
+  }
+  return null;
+}
+
+/**
  * The kicker above a heading: an icon and a label.
  *
  * It used to be `— label —`, flanked by rules. Two dashes around a word read as
@@ -144,25 +203,41 @@ export function Kicker({
   children,
   className,
   align = "start",
+  tone = "light",
   icon: Icon,
 }: {
   children: React.ReactNode;
   className?: string;
   align?: "start" | "center";
-  /** Optional section-specific icon. Defaults to the khatim star. */
+  /**
+   * `light` on chalk and white grounds, `dark` on ink. Apricot-dark carries
+   * the contrast on a light ground; on ink it is too close to the background,
+   * so the brighter apricot is used there instead.
+   */
+  tone?: "light" | "dark";
+  /** Optional section-specific icon. Otherwise one is chosen from the label. */
   icon?: React.ComponentType<{ className?: string; "aria-hidden"?: boolean }>;
 }) {
+  const Resolved =
+    Icon ?? (typeof children === "string" ? iconForKicker(children) : null);
+
   return (
     <p
       className={cn(
-        "flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-apricot-dark",
+        "flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.18em]",
+        tone === "dark" ? "text-apricot" : "text-apricot-dark",
         align === "center" && "justify-center",
         className,
       )}
     >
-      <span className="seal inline-flex size-7 items-center justify-center bg-apricot/18 text-apricot-dark [--c:0.4375rem]">
-        {Icon ? (
-          <Icon aria-hidden className="size-3.5" />
+      <span
+        className={cn(
+          "seal inline-flex size-7 items-center justify-center [--c:0.4375rem]",
+          tone === "dark" ? "bg-apricot/20 text-apricot" : "bg-apricot/18 text-apricot-dark",
+        )}
+      >
+        {Resolved ? (
+          <Resolved aria-hidden className="size-3.5" />
         ) : (
           <StarGlyph className="size-3.5" />
         )}

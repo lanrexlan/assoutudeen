@@ -54,6 +54,7 @@ export default async function OurHoneyPage() {
   return (
     <>
       <PageHeader
+        image="ourHoney"
         eyebrow="Our honey"
         title="Where it comes from"
         standfirst="Nigeria has a fake honey problem, and no amount of insisting fixes it. What helps is telling you where ours comes from and being honest about how little the popular tests prove."

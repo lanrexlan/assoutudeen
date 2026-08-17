@@ -32,6 +32,7 @@ export default async function CartPage() {
   return (
     <>
       <PageHeader
+        image="honeyHome"
         eyebrow="Basket"
         title="Orders go through WhatsApp"
         standfirst="Card checkout is not live yet. Rather than show you a basket that cannot take your money, here is the route that works — and it is faster anyway."

@@ -16,6 +16,7 @@ export default function StructurePage() {
   return (
     <>
       <PageHeader
+        image="structure"
           eyebrow="About"
           title="Our structure"
           standfirst="One charity, two arms. The foundation is the parent; the Dawah Institute and the Honey Enterprise sit beneath it."
