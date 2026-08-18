@@ -16,20 +16,31 @@ import { foundationUrl } from "@/components/site/foundation-link";
  * the number without leaving what they were reading.
  *
  * The rules it keeps to, because a nag is worse than no prompt at all:
- *  - occasionally, not on every page: once shown it goes quiet for several
- *    minutes, so a long browse sees it two or three times rather than ten;
+ *  - at most once per page, and never twice on the same page in a session, so
+ *    a reader moving through the site meets it again on a new page but never
+ *    on one they have already seen it on;
+ *  - never twice within twenty seconds, so two quick hops do not stack
+ *    prompts on top of one another;
  *  - never on the pages that are already asking (donate, join, request) or on
  *    the legal pages, where an appeal beside a consent notice is distasteful;
- *  - dismissible, and dismissal is remembered for the session;
+ *  - dismissible, and dismissing it buys quiet for a quarter of an hour;
  *  - it appears after real reading, not on a timer at the top of the page;
  *  - no motion at all when the visitor has asked for none.
+ *
+ * An earlier version put a single timer across the whole site, which meant it
+ * appeared on the first page a visitor read and then stayed silent everywhere
+ * else — the opposite of the intent.
  */
 
-const DISMISSED_KEY = "apmf.giving-reminder.dismissed";
+const SNOOZE_KEY = "apmf.giving-reminder.snoozed-until";
 const LAST_SHOWN_KEY = "apmf.giving-reminder.last-shown";
+const SEEN_PATHS_KEY = "apmf.giving-reminder.seen-paths";
 
-/** Once it has appeared, it stays quiet for this long. */
-const COOLDOWN_MS = 3 * 60 * 1000;
+/** Closing it buys quiet for this long, rather than for the whole session. */
+const SNOOZE_MS = 15 * 60 * 1000;
+
+/** The shortest gap between two appearances, however fast the reader moves. */
+const MIN_GAP_MS = 20 * 1000;
 
 /**
  * A page short enough that it is already 55% visible fires no scroll event at
@@ -62,16 +73,26 @@ export function DonationReminder() {
   );
 
   useEffect(() => {
-    if (suppressed) return;
     if (typeof window === "undefined") return;
-    if (window.sessionStorage.getItem(DISMISSED_KEY)) return;
 
-    const lastShown = Number(window.sessionStorage.getItem(LAST_SHOWN_KEY) ?? 0);
-    if (Date.now() - lastShown < COOLDOWN_MS) return;
+    /* Each page starts clean: the card is per-page, not a thing that follows
+       the reader around once it has appeared. */
+    setVisible(false);
+    if (suppressed) return;
+
+    const store = window.sessionStorage;
+    const now = Date.now();
+
+    if (now < Number(store.getItem(SNOOZE_KEY) ?? 0)) return;
+    if (now - Number(store.getItem(LAST_SHOWN_KEY) ?? 0) < MIN_GAP_MS) return;
+
+    const seen: string[] = JSON.parse(store.getItem(SEEN_PATHS_KEY) ?? "[]");
+    if (seen.includes(pathname)) return;
 
     const show = () => {
       setVisible(true);
-      window.sessionStorage.setItem(LAST_SHOWN_KEY, String(Date.now()));
+      store.setItem(LAST_SHOWN_KEY, String(Date.now()));
+      store.setItem(SEEN_PATHS_KEY, JSON.stringify([...seen, pathname]));
     };
 
     const readEnough = () => {
@@ -122,9 +143,12 @@ export function DonationReminder() {
             type="button"
             onClick={() => {
               setVisible(false);
-              window.sessionStorage.setItem(DISMISSED_KEY, "1");
+              window.sessionStorage.setItem(
+                SNOOZE_KEY,
+                String(Date.now() + SNOOZE_MS),
+              );
             }}
-            aria-label="Close this reminder and do not show it again"
+            aria-label="Close this reminder"
             className="absolute end-1.5 top-1.5 flex size-11 items-center justify-center rounded-full text-chalk/60 transition-colors hover:bg-white/10 hover:text-white"
           >
             <X aria-hidden="true" className="size-4" />

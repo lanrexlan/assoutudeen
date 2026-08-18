@@ -3,9 +3,9 @@ import Link from "next/link";
 import { ArabicQuote } from "@/components/ui/arabic-quote";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { PageHeader, Prose, ProseHeading } from "@/components/ui/prose";
-import { Section, SectionHeading } from "@/components/ui/section";
+import { Section } from "@/components/ui/section";
 import { CONTACT } from "@/lib/sites";
-import { PREAMBLE, REGISTERED_OBJECTS, REGISTRATION } from "@/lib/organisation";
+import { REGISTRATION } from "@/lib/organisation";
 import { VERSES } from "@/lib/verses";
 
 export const metadata: Metadata = {
@@ -97,35 +97,6 @@ export default function AboutPage() {
             <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>.
           </p>
         </Prose>
-      </Section>
-
-      {/* The twelve registered objects, verbatim from Article 3 of the filed
-          constitution. Presented as the registered constitution — not as a
-          description of current activity, and not as a health claim. */}
-      <Section tone="ink" size="lg" ornament>
-        <SectionHeading
-          tone="dark"
-          title="What we registered to do"
-          standfirst={PREAMBLE}
-        />
-        <ol className="reveal mx-auto mt-12 grid max-w-4xl gap-x-8 gap-y-4 sm:grid-cols-2">
-          {REGISTERED_OBJECTS.map((object, index) => (
-            <li key={object} className="flex gap-4">
-              <span
-                aria-hidden="true"
-                className="mt-0.5 font-display text-sm text-apricot"
-              >
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <span className="text-sm leading-relaxed text-chalk/85">{object}</span>
-            </li>
-          ))}
-        </ol>
-        <p className="mx-auto mt-10 max-w-2xl text-sm leading-relaxed text-chalk/60">
-          These are the objects as filed with the Corporate Affairs Commission on{" "}
-          {REGISTRATION.incorporatedOnDisplay}. They describe what the foundation is
-          registered to do, not a claim about what any food or remedy can cure.
-        </p>
       </Section>
 
       <Section tone="white">
