@@ -8,12 +8,16 @@ import {
   inboxFor,
   type ContactSubject,
 } from "@/lib/contact-routing";
+import { FALLBACK_INBOX, sendMailQuietly } from "@/lib/email";
+import { CONTACT } from "@/lib/sites";
 
 /**
  * Server Actions for the foundation's two public forms.
  *
- * Both store to Payload first. Transactional email (Resend) lands in session 5;
- * until then nothing is lost — submissions sit in the admin panel.
+ * Every submission is stored in Payload first and notified by email second. If
+ * the email fails — no key, unverified domain, Resend down — the submission is
+ * still safe and the visitor still sees a thank-you. Storage is the record;
+ * email is only how we find out about it quickly.
  *
  * Consent is required and ships unticked on both forms (NDPA 2023).
  */
@@ -88,6 +92,26 @@ export async function submitContactForm(
       consent: true,
       status: "new",
     },
+  });
+
+  await sendMailQuietly({
+    to: inboxFor(data.topic) || FALLBACK_INBOX,
+    replyTo: data.email,
+    subject: `[${data.topic}] ${data.subjectLine}`,
+    text: [
+      `A message came through the website.`,
+      ``,
+      `From:    ${data.name} <${data.email}>`,
+      data.phone ? `Phone:   ${data.phone}` : null,
+      `Topic:   ${data.topic}`,
+      `Subject: ${data.subjectLine}`,
+      ``,
+      data.message,
+      ``,
+      `— Reply to this email and it goes straight back to them.`,
+    ]
+      .filter((line) => line !== null)
+      .join("\n"),
   });
 
   return {
@@ -298,6 +322,24 @@ export async function requestAssistance(
       consentToBeNamed: data.consentToBeNamed === "on",
       status: "new",
     },
+  });
+
+  /* Deliberately no details. An assistance request holds someone's medical and
+     financial circumstances, and email is not a safe place to keep those. The
+     notification says only that one has arrived; it is read in the admin panel,
+     behind a login, by the people permitted to see it. */
+  await sendMailQuietly({
+    to: FALLBACK_INBOX,
+    subject: "A new assistance request is waiting",
+    text: [
+      `Someone has submitted a request for assistance through the website.`,
+      ``,
+      `The details are not included in this email on purpose — they are health`,
+      `and financial data. Open the admin panel to read the request and reply.`,
+      ``,
+      `If it is urgent, the applicant can also be reached on WhatsApp:`,
+      `${CONTACT.phoneDisplay}`,
+    ].join("\n"),
   });
 
   return {
