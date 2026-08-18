@@ -73,9 +73,12 @@ export function HeroImage({ image }: { image: HeroKey }) {
 export function SlotImage({
   image,
   fallback,
+  className = "object-cover",
 }: {
   image: HeroKey;
   fallback: React.ReactNode;
+  /** `object-contain` where the whole picture matters, such as a book cover. */
+  className?: string;
 }) {
   const src = findHeroFile(image);
   if (!src) return <>{fallback}</>;
@@ -87,7 +90,7 @@ export function SlotImage({
       fill
       priority
       sizes="(min-width: 1024px) 40vw, 90vw"
-      className="object-cover"
+      className={className}
     />
   );
 }

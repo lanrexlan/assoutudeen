@@ -37,3 +37,14 @@ export const formatKobo = (kobo: number): string =>
     style: "currency",
     currency: "NGN",
   }).format(kobo / 100);
+
+/**
+ * The same amount without the kobo. Prices in Nigeria are quoted in whole
+ * naira, and "₦5,000.00" on a price tag reads like a spreadsheet.
+ */
+export const formatNaira = (kobo: number): string =>
+  new Intl.NumberFormat("en-NG", {
+    style: "currency",
+    currency: "NGN",
+    maximumFractionDigits: 0,
+  }).format(kobo / 100);

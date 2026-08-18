@@ -58,3 +58,12 @@ photograph, so these can be added one at a time in any order.
 | `honey-home.jpg` | honey pouring dipper jar macro warm |
 | `our-honey.jpg` | beehives apiary field africa daylight |
 | `ambassadors.jpg` | honey jars row shelf natural light |
+
+## `book-cover` is not a hero
+
+`book-cover.jpg` is the one slot here that is not a page background: it is the
+cover of *Treasure of the Prophetic Medicine*, shown inside the seal on the
+shop page, and it is rendered `object-contain` so the whole cover is visible
+rather than cropped. Use the artwork the book was printed with — never a stock
+photograph of a different book. Until the file exists the shop page falls back
+to the drawn book, as every other slot does.

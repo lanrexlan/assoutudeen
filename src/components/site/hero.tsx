@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { SealFrame, Kicker, OrnamentField, Starfield } from "@/components/ui/ornament";
 import { ApiaryScene } from "@/components/ui/illustration";
-import { SlotImage } from "@/components/ui/hero-image";
+import { HeroImage, findHeroFile } from "@/components/ui/hero-image";
 import { REGISTRATION } from "@/lib/organisation";
 
 /**
@@ -14,20 +14,30 @@ import { REGISTRATION } from "@/lib/organisation";
  * uses the *geometry* rather than the costume: no mosque silhouette, no tiled
  * arabesque, no accent gradient text, all of which docs/05 rules out.
  *
- * The seal frames a photograph as soon as one exists at public/hero/home.*,
- * and original vector artwork until then — see src/lib/imagery.ts. A drawing is
- * honest where a stock photograph of strangers would not be.
+ * The seal frames the drawn apiary rather than a photograph: the homepage
+ * photograph is the background of this whole band instead. A picture inside the
+ * seal competed with the headline beside it; behind the band it supports both.
  */
 export function Hero({ donateHref, workHref }: { donateHref: string; workHref: string }) {
+  const photo = findHeroFile("home");
+
   return (
     <section className="relative overflow-hidden bg-ink text-chalk">
-      <OrnamentField tone="accent" />
-      <Starfield />
-      {/* Light spilling from the top of the seal. */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute left-1/2 top-0 h-[28rem] w-[46rem] -translate-x-1/2 rounded-b-full bg-[radial-gradient(ellipse_at_top,rgba(224,160,106,0.18),transparent_65%)]"
-      />
+      {/* The photograph fills the hero band. Where there is one, the geometry
+          and the spill of light come off: two backgrounds at once is one too
+          many, and the scrim inside HeroImage is what keeps the text legible. */}
+      <HeroImage image="home" />
+      {photo ? null : (
+        <>
+          <OrnamentField tone="accent" />
+          <Starfield />
+          {/* Light spilling from the top of the seal. */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute left-1/2 top-0 h-[28rem] w-[46rem] -translate-x-1/2 rounded-b-full bg-[radial-gradient(ellipse_at_top,rgba(224,160,106,0.18),transparent_65%)]"
+          />
+        </>
+      )}
 
       <Container className="relative">
         <div className="grid items-center gap-12 py-16 sm:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:py-24">
@@ -77,10 +87,7 @@ export function Hero({ donateHref, workHref }: { donateHref: string; workHref: s
           {/* Focal seal */}
           <div className="relative mx-auto w-full max-w-sm lg:max-w-md">
             <SealFrame className="aspect-3/4 w-full shadow-elevated">
-              <SlotImage
-                image="home"
-                fallback={<ApiaryScene title="Hives on a hillside at dusk" />}
-              />
+              <ApiaryScene title="Hives on a hillside at dusk" />
             </SealFrame>
 
             {/* Accent hairline echo behind the seal. */}

@@ -79,6 +79,11 @@ export const HERO_IMAGES = {
     alt: "Black seed, honey and dates on a dark surface",
     search: "black seed nigella honey dates still life dark background",
   },
+  bookCover: {
+    slot: "book-cover",
+    alt: "The cover of Treasure of the Prophetic Medicine: a mortar and pestle with fresh herbs",
+    search: "the foundation's own cover artwork — never a stock photograph",
+  },
   shop: {
     slot: "shop",
     alt: "A stack of books on a plain surface",
