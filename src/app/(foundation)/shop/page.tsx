@@ -5,9 +5,11 @@ import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { SealFrame, Medallion } from "@/components/ui/ornament";
 import { BookScene } from "@/components/ui/illustration";
+import { SlotImage } from "@/components/ui/hero-image";
 import { PageHeader, Prose, ProseHeading } from "@/components/ui/prose";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { BOOK } from "@/lib/book";
+import { formatNaira } from "@/payload/fields/money";
 import { CONTACT, siteConfig } from "@/lib/sites";
 
 export const metadata: Metadata = {
@@ -33,8 +35,12 @@ export default function ShopPage() {
       <Section tone="chalk" size="lg">
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1fr] lg:items-center">
           <figure className="reveal mx-auto w-full max-w-sm">
-            <SealFrame className="aspect-3/4 w-full">
-              <BookScene title={BOOK.title} />
+            <SealFrame className="aspect-3/4 w-full" innerClassName="bg-chalk">
+              <SlotImage
+                image="bookCover"
+                className="object-contain"
+                fallback={<BookScene title={BOOK.title} />}
+              />
             </SealFrame>
 
           </figure>
@@ -64,11 +70,17 @@ export default function ShopPage() {
             </Prose>
 
             <div className="mt-8 rounded-lg border border-chalk-dark bg-white p-5">
-              <p className="text-sm text-charcoal-muted">Price and formats</p>
-              <p className="mt-2 leading-relaxed text-charcoal">
-                Printed in Ede in limited runs, so the price moves with the print
-                cost. Message us for the current price and what is in stock — and say
-                if you want several copies for a masjid or a school.
+              <p className="text-sm text-charcoal-muted">Price</p>
+              <p className="mt-1 font-display text-3xl text-charcoal">
+                {formatNaira(BOOK.priceKobo)}
+                <span className="ms-2 align-middle text-base text-charcoal-muted">
+                  a printed copy
+                </span>
+              </p>
+              <p className="mt-3 leading-relaxed text-charcoal">
+                Delivery is charged on top and depends on where you are — ask and you
+                will have the figure before you pay. Say if you want several copies for
+                a masjid or a school, and we will quote for the run.
               </p>
               <div className="mt-5 flex flex-wrap gap-3">
                 <Button asChild variant="donate" size="lg">

@@ -7,6 +7,8 @@ export const BOOK = {
   pages: 175,
   remedies: 45,
   firstProduced: "August 2023",
+  /** Money is kobo as an integer, everywhere. ₦5,000 for the printed copy. */
+  priceKobo: 500_000,
   pitch:
     "Around forty-five natural remedies from the Qur'an and the Sunnah, each traced to its evidence and explained.",
   /** How each chapter is built — the structure that makes the book worth reading. */
