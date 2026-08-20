@@ -34,8 +34,9 @@ export default function ShopPage() {
       {/* --- The book ------------------------------------------------------ */}
       <Section tone="chalk" size="lg">
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1fr] lg:items-center">
-          <figure className="reveal mx-auto w-full max-w-sm">
-            <SealFrame className="aspect-3/4 w-full" innerClassName="bg-chalk">
+          <figure className="reveal mx-auto w-full max-w-md">
+            {/* 5:4, to match the cover artwork rather than letterbox it. */}
+            <SealFrame className="aspect-5/4 w-full" innerClassName="bg-white">
               <SlotImage
                 image="bookCover"
                 className="object-contain"
