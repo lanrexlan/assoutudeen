@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { PageHeader, Prose, ProseHeading } from "@/components/ui/prose";
 import { Section } from "@/components/ui/section";
+import { EventCard } from "@/components/site/event-notice";
 import { getSiteContext } from "@/lib/site-context";
 import { THREE_YEAR_TOTAL_KOBO, YEAR_TOTALS } from "@/lib/impact";
 import { formatKobo } from "@/payload/fields/money";
@@ -51,6 +52,10 @@ export default async function EmpowermentPage() {
           </Button>
         </div>
       </PageHeader>
+
+      <Section tone="chalk" size="lg">
+        <EventCard />
+      </Section>
 
       <Section>
         <Prose>

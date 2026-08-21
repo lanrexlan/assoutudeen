@@ -23,6 +23,18 @@ export type Programme = {
 
 export const TEACHING_WINDOW = "Between Maghrib and Isha";
 
+/**
+ * The Saturday pair alternate, and a fortnightly rule cannot know which of the
+ * two weeks is which without one date to count from. Set this to a Saturday on
+ * which the HADITH class ran, and the schedule computes both classes correctly
+ * from it — prophetic medicine takes the Saturdays in between.
+ *
+ * Left null on purpose. A guessed anchor would publish a confident, wrong date
+ * and send someone to a masjid on the wrong week; with it unset the pages say
+ * the classes alternate and stop there, which is true.
+ */
+export const HADITH_ANCHOR: string | null = null;
+
 export const PROGRAMMES: Programme[] = [
   {
     slug: "weekly-tafsir",

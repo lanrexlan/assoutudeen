@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CalendarDays, MapPin, Moon, Repeat } from "lucide-react";
+import { CalendarCheck, CalendarDays, Download, MapPin, Moon, Repeat } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PageHeader, Prose, ProseHeading } from "@/components/ui/prose";
 import { Section, SectionHeading } from "@/components/ui/section";
@@ -13,6 +13,8 @@ import {
   type Programme,
 } from "@/lib/programmes";
 import { CONTACT } from "@/lib/sites";
+import { upcomingFor, formatDate, relativeToToday } from "@/lib/schedule";
+import { todayInLagos, type PlainDate } from "@/lib/recurrence";
 
 export const metadata: Metadata = {
   title: "Schedule",
@@ -31,6 +33,7 @@ function DayColumn({
   classes: Programme[];
   hrefFor: (slug: string) => string;
 }) {
+  const today = todayInLagos();
   return (
     <div className="reveal">
       <div className="flex items-center gap-3 border-b border-chalk-dark pb-3">
@@ -56,11 +59,41 @@ function DayColumn({
               <span className="mt-1 block text-sm text-charcoal-muted">
                 {programme.cadence}
               </span>
+              <NextDate programme={programme} today={today} />
             </Link>
           </li>
         ))}
       </ul>
     </div>
+  );
+}
+
+/**
+ * The computed date, or an honest silence.
+ *
+ * The alternating pair cannot be resolved until someone tells us one Saturday
+ * on which the hadith class ran — see HADITH_ANCHOR. Until then this says they
+ * alternate rather than naming a date it cannot stand behind.
+ */
+function NextDate({ programme, today }: { programme: Programme; today: PlainDate }) {
+  const { dates, unresolved } = upcomingFor(programme, 1, today);
+
+  if (unresolved) {
+    return (
+      <span className="mt-3 flex items-center gap-2 text-sm text-charcoal-faint">
+        <Repeat aria-hidden="true" className="size-3.5" />
+        Alternating Saturdays — ask which falls this week
+      </span>
+    );
+  }
+
+  if (!dates.length) return null;
+
+  return (
+    <span className="mt-3 flex items-center gap-2 text-sm font-medium text-primary">
+      <CalendarCheck aria-hidden="true" className="size-3.5" />
+      Next: {formatDate(dates[0])} · {relativeToToday(dates[0], today)}
+    </span>
   );
 }
 
@@ -104,9 +137,10 @@ export default async function SchedulePage() {
             <ProseHeading>The Saturday pair</ProseHeading>
             <p>
               Hadith and prophetic medicine alternate, so each falls every second
-              Saturday. If you want to know which one is on this week, ask on WhatsApp
-              — that is faster than any page, and the calendar feed that will answer it
-              automatically is still being built.
+              Saturday. The page computes every other date on this timetable itself;
+              for these two it needs one date to count from, so until the Institute
+              confirms a Saturday on which the hadith class ran, it says they
+              alternate rather than naming a week it cannot vouch for.
             </p>
 
             <ProseHeading>Ramadan and Eid</ProseHeading>
@@ -163,6 +197,12 @@ export default async function SchedulePage() {
         />
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Button asChild variant="donate" size="lg">
+            <a href="/dawah/schedule.ics">
+              <Download aria-hidden="true" />
+              Add to your calendar
+            </a>
+          </Button>
+          <Button asChild variant="ghostLight" size="lg">
             <Link href={href("/library")}>Open the library</Link>
           </Button>
           <Button asChild variant="ghostLight" size="lg">
