@@ -14,6 +14,7 @@ import { Container } from "@/components/ui/container";
 import { Medallion } from "@/components/ui/ornament";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { Hero } from "@/components/site/hero";
+import { EventBanner } from "@/components/site/event-notice";
 import { StructureDiagram } from "@/components/site/structure-diagram";
 import { TestimonyWall } from "@/components/site/testimony-wall";
 import { getSiteContext } from "@/lib/site-context";
@@ -62,6 +63,10 @@ export default async function FoundationHomePage() {
   return (
     <>
       <Hero donateHref={href("/donate")} workHref={href("/prophetic-medicine")} />
+
+      {/* Renders only while the gathering is still ahead; it takes itself down
+          the day after. */}
+      <EventBanner />
 
       {/* --- Proof bar: real, published numbers only -------------------- */}
       <section className="relative border-b border-chalk-dark bg-white">
