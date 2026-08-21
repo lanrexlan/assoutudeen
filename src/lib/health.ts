@@ -15,21 +15,39 @@ import {
  * is the admin panel 500ing" from a browser, without turning a public endpoint
  * into a way to read the environment.
  */
+const REQUIRED = {
+  /** Without this the admin panel and the CMS cannot start at all. */
+  payloadSecret: ["PAYLOAD_SECRET"],
+  database: ["DATABASE_URI"],
+  /** Without this the forms still store everything; nobody is emailed. */
+  email: ["RESEND_API_KEY"],
+  /**
+   * All three or none. Without them uploads fall back to local disk — which on
+   * Vercel is wiped on every deployment, so media added through the admin panel
+   * would quietly disappear.
+   */
+  cloudinary: [
+    "CLOUDINARY_CLOUD_NAME",
+    "CLOUDINARY_API_KEY",
+    "CLOUDINARY_API_SECRET",
+  ],
+} as const;
+
 function configured() {
   const set = (name: string) => Boolean(process.env[name]?.trim());
 
-  return {
-    /** Without this the admin panel and the CMS cannot start at all. */
-    payloadSecret: set("PAYLOAD_SECRET"),
-    database: set("DATABASE_URI"),
-    /** Without these the forms still store everything; nobody is emailed. */
-    email: set("RESEND_API_KEY"),
-    /** Optional: uploads fall back to local disk. */
-    cloudinary:
-      set("CLOUDINARY_CLOUD_NAME") &&
-      set("CLOUDINARY_API_KEY") &&
-      set("CLOUDINARY_API_SECRET"),
-  };
+  const state = Object.fromEntries(
+    Object.entries(REQUIRED).map(([key, names]) => [key, names.every(set)]),
+  ) as Record<keyof typeof REQUIRED, boolean>;
+
+  /* Names, never values. A variable name is not a secret, and naming the one
+     that is missing turns "cloudinary: false" from a puzzle into an
+     instruction. */
+  const missing = Object.values(REQUIRED)
+    .flat()
+    .filter((name) => !set(name));
+
+  return { ...state, ...(missing.length ? { missing } : {}) };
 }
 
 /**

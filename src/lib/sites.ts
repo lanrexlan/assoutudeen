@@ -61,6 +61,7 @@ export const siteConfig: Record<SiteKey, SiteConfig> = {
       { label: "About", href: "/about" },
       { label: "Our Work", href: "/our-work" },
       { label: "Prophetic Medicine", href: "/prophetic-medicine" },
+      { label: "Remedies", href: "/remedies" },
       { label: "Shop", href: "/shop" },
       { label: "Media", href: "/media" },
       { label: "Contact", href: "/contact" },

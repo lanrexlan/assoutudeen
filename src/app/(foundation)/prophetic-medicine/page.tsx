@@ -160,6 +160,9 @@ export default function PropheticMedicinePage() {
 
         <div className="mt-10 flex flex-wrap justify-center gap-3">
           <Button asChild size="lg">
+            <Link href="/remedies">Open the remedies library</Link>
+          </Button>
+          <Button asChild variant="secondary" size="lg">
             <Link href="/shop">Get the book</Link>
           </Button>
           <Button asChild variant="secondary" size="lg">
