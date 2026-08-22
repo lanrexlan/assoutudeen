@@ -6,7 +6,7 @@ import { PageHeader, Prose, ProseHeading } from "@/components/ui/prose";
 import { Section } from "@/components/ui/section";
 import { Todo } from "@/components/ui/todo";
 import { getSiteContext } from "@/lib/site-context";
-import { THREE_YEAR_TOTAL_KOBO, YEAR_TOTALS } from "@/lib/impact";
+import { VERIFIED_TOTAL_KOBO, YEAR_RANGE, YEAR_TOTALS, YEARS_COVERED } from "@/lib/impact";
 import { formatKobo } from "@/payload/fields/money";
 
 export const metadata: Metadata = {
@@ -35,17 +35,18 @@ export default async function ImpactIndexPage() {
       <Section>
         <div className="rounded-lg border border-chalk-dark bg-white p-6 shadow-sm shadow-chalk-dark/25">
           <p className="text-sm uppercase tracking-widest text-charcoal-muted">
-            Three years, verified
+            {YEARS_COVERED} years, verified
           </p>
           <p className="mt-2 font-display text-3xl text-oxblood sm:text-4xl">
-            {formatKobo(THREE_YEAR_TOTAL_KOBO)}
+            {formatKobo(VERIFIED_TOTAL_KOBO)}
           </p>
           <p className="mt-2 text-sm text-charcoal-muted">
-            Raised and accounted for between 2023 and 2025. Each year&apos;s
-            category totals sum exactly to its headline figure.
+            Raised and accounted for between {YEAR_RANGE}. The year figures add up
+            to this total exactly — the arithmetic is checked by a test, not by
+            hand.
           </p>
 
-          <ul className="mt-6 grid list-none gap-4 sm:grid-cols-3">
+          <ul className="mt-6 grid list-none gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {YEAR_TOTALS.map((year) => (
               <li key={year.year}>
                 <Card className="h-full justify-between">
@@ -55,16 +56,19 @@ export default async function ImpactIndexPage() {
                       {formatKobo(year.raisedKobo)}
                     </p>
                     <CardDescription className="mt-2">
-                      {year.beneficiaries
-                        ? `${year.beneficiaries} beneficiaries · earlier appeals model`
-                        : "reported by category, anonymously"}
+                      {year.hasReportPage
+                        ? "reported by category, anonymously"
+                        : "figure on record"}
                     </CardDescription>
                   </div>
-                  <Button asChild variant="link" className="self-start px-0">
-                    <Link href={href(`/impact/${year.year}`)}>
-                      {year.reportPublished ? "Read the report →" : "Report page →"}
-                    </Link>
-                  </Button>
+                  {/* Only link a year that has somewhere to go. */}
+                  {year.hasReportPage ? (
+                    <Button asChild variant="link" className="self-start px-0">
+                      <Link href={href(`/impact/${year.year}`)}>
+                        Read the report →
+                      </Link>
+                    </Button>
+                  ) : null}
                 </Card>
               </li>
             ))}

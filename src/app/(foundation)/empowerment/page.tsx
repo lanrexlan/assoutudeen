@@ -6,7 +6,12 @@ import { PageHeader, Prose, ProseHeading } from "@/components/ui/prose";
 import { Section } from "@/components/ui/section";
 import { EventCard } from "@/components/site/event-notice";
 import { getSiteContext } from "@/lib/site-context";
-import { THREE_YEAR_TOTAL_KOBO, YEAR_TOTALS } from "@/lib/impact";
+import {
+  VERIFIED_TOTAL_KOBO,
+  YEAR_RANGE,
+  YEAR_TOTALS,
+  YEARS_COVERED,
+} from "@/lib/impact";
 import { formatKobo } from "@/payload/fields/money";
 
 export const metadata: Metadata = {
@@ -98,9 +103,11 @@ export default async function EmpowermentPage() {
       </Section>
 
       <Section>
-        <h2 className="font-display text-2xl sm:text-3xl">Three years, verified</h2>
+        <h2 className="font-display text-2xl sm:text-3xl">
+          {YEARS_COVERED} years, verified
+        </h2>
         <p className="mt-3 max-w-2xl text-base leading-relaxed text-charcoal-muted">
-          {formatKobo(THREE_YEAR_TOTAL_KOBO)} raised between 2023 and 2025 — and
+          {formatKobo(VERIFIED_TOTAL_KOBO)} raised between {YEAR_RANGE} — and
           each year&apos;s category totals sum exactly to the published figure.
         </p>
         <div className="mt-6 grid gap-4 sm:grid-cols-3">
@@ -111,8 +118,8 @@ export default async function EmpowermentPage() {
                 {formatKobo(year.raisedKobo)}
               </p>
               <CardDescription>
-                {year.beneficiaries
-                  ? `${year.beneficiaries} beneficiaries under the earlier appeals model`
+                {year.hasReportPage
+                  ? "reported by category, anonymously"
                   : "reported by category, anonymously"}
               </CardDescription>
             </Card>

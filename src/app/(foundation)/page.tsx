@@ -19,7 +19,7 @@ import { StructureDiagram } from "@/components/site/structure-diagram";
 import { TestimonyWall } from "@/components/site/testimony-wall";
 import { getSiteContext } from "@/lib/site-context";
 import { REGISTRATION } from "@/lib/organisation";
-import { THREE_YEAR_TOTAL_KOBO, YEAR_TOTALS } from "@/lib/impact";
+import { VERIFIED_TOTAL_KOBO, YEAR_TOTALS, YEARS_COVERED } from "@/lib/impact";
 import { VERSES } from "@/lib/verses";
 import { BOOK } from "@/lib/book";
 import { formatKobo } from "@/payload/fields/money";
@@ -74,7 +74,7 @@ export default async function FoundationHomePage() {
           <dl className="grid grid-cols-2 divide-chalk-dark sm:grid-cols-4 sm:divide-x">
             {[
               {
-                value: formatKobo(THREE_YEAR_TOTAL_KOBO),
+                value: formatKobo(VERIFIED_TOTAL_KOBO),
                 label: "Raised and accounted for, 2023–2025",
               },
               { value: "11", label: "Beneficiaries in 2023 alone" },
@@ -136,7 +136,7 @@ export default async function FoundationHomePage() {
               tone="dark"
               kicker="Accountability"
               title="Every naira, on the record"
-              standfirst="Three years of giving, published by year and by category. What comes in is what we report, and what we report is what we file."
+              standfirst={`${YEARS_COVERED} years of giving, published by year and by category. What comes in is what we report, and what we report is what we file.`}
             />
             <p className="mt-6 max-w-xl leading-relaxed text-chalk/80">
               Our constitution binds every naira to the objects the foundation was
@@ -166,9 +166,7 @@ export default async function FoundationHomePage() {
                     {formatKobo(year.raisedKobo)}
                   </span>
                   <span className="text-xs text-chalk/60">
-                    {year.beneficiaries
-                      ? `${year.beneficiaries} beneficiaries`
-                      : "report in preparation"}
+                    {year.hasReportPage ? "reported by category" : "on record"}
                   </span>
                 </span>
               </li>
@@ -176,7 +174,7 @@ export default async function FoundationHomePage() {
             <li className="flex items-baseline justify-between gap-4 rounded-lg border border-apricot/40 bg-apricot/10 p-5">
               <span className="font-display text-xl text-white">Total</span>
               <span className="font-display text-2xl text-apricot">
-                {formatKobo(THREE_YEAR_TOTAL_KOBO)}
+                {formatKobo(VERIFIED_TOTAL_KOBO)}
               </span>
             </li>
           </ul>

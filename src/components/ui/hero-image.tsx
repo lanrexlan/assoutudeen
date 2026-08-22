@@ -38,15 +38,24 @@ export function HeroImage({ image }: { image: HeroKey }) {
         fill
         priority
         sizes="100vw"
-        className="object-cover"
+        /* A landscape photograph in a tall phone-sized box crops to a narrow
+           vertical strip. Favouring the upper-middle keeps the subject of these
+           pictures — hands, a book, a jar — inside that strip instead of
+           slicing between them. */
+        className="object-cover object-[50%_35%] sm:object-center"
       />
       {/* Two layers: a flat wash so the whole frame darkens, and a gradient
-          weighted to the start edge where the text sits. Together they hold
-          white text above 4.5:1 on any photograph likely to be used here. */}
-      <div aria-hidden="true" className="absolute inset-0 bg-ink/55" />
+          weighted towards the text. Together they hold white text above 4.5:1
+          on any photograph likely to be used here.
+
+          The gradient runs DOWNWARDS on a phone and ACROSS on a wider screen.
+          A sideways gradient on a 390px viewport puts its dark end over the
+          entire width, which hid the photograph completely — the picture was
+          there, paid for and loading, and nobody could see it. */}
+      <div aria-hidden="true" className="absolute inset-0 bg-ink/45 sm:bg-ink/55" />
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-r from-ink via-ink/75 to-ink/25"
+        className="absolute inset-0 bg-gradient-to-b from-ink via-ink/85 to-ink/40 sm:bg-gradient-to-r sm:from-ink sm:via-ink/75 sm:to-ink/25"
       />
       {meta.credit ? (
         <p className="absolute bottom-2 end-3 z-10 text-[0.625rem] text-chalk/50">
