@@ -112,8 +112,11 @@ rather than burying them.
    monthly transfer — support both). Two intake forms: Join the Fund, and Request
    Assistance. Impact reported **by category, anonymously** — see `docs/11`. Annual impact
    reports at `/impact/[year]`, with WhatsApp share keeping APMF's emoji format.
-   Three-year verified total: **₦14,644,520** (2023 ₦5,323,500 · 2024 ₦3,838,500 ·
-   2025 ₦5,482,520).
+   Verified total across seven years: **₦21,635,439.29** (2019 ₦560,918.28 ·
+   2020 ₦1,640,755.03 · 2021 ₦2,176,400.98 · 2022 ₦2,612,845 · 2023 ₦5,323,500 ·
+   2024 ₦3,838,500 · 2025 ₦5,482,520). The total is derived by summing
+   `YEAR_TOTALS` in `src/lib/impact.ts` — never type it by hand — and a test
+   asserts the reconciliation.
 2. **Dawah recurrence engine** — seven programmes stored as RRULE-style rules, occurrences
    computed, `.ics` feed. Edge case: Tawheed class is 2nd Sunday *except* when that is also
    the last Sunday.

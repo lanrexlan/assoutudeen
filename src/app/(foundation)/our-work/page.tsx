@@ -17,7 +17,12 @@ import { Medallion } from "@/components/ui/ornament";
 import { PageHeader, Prose, ProseHeading } from "@/components/ui/prose";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { formatKobo } from "@/payload/fields/money";
-import { THREE_YEAR_TOTAL_KOBO, YEAR_TOTALS } from "@/lib/impact";
+import {
+  VERIFIED_TOTAL_KOBO,
+  YEAR_RANGE,
+  YEAR_TOTALS,
+  YEARS_COVERED,
+} from "@/lib/impact";
 import { VERSES } from "@/lib/verses";
 import { IntakeNotice } from "@/components/site/intake-notice";
 
@@ -149,11 +154,11 @@ export default function OurWorkPage() {
       <Section tone="chalk" size="lg">
         <SectionHeading
           kicker="What it has done"
-          title={`${formatKobo(THREE_YEAR_TOTAL_KOBO)} over three years`}
-          standfirst="Reported by year and by category. Names appear only where someone has given written permission for them to."
+          title={`${formatKobo(VERIFIED_TOTAL_KOBO)} over ${YEARS_COVERED} years`}
+          standfirst={`Every year on record, between ${YEAR_RANGE}, reported by year and by category. Names appear only where someone has given written permission for them to.`}
         />
 
-        <ul className="reveal mx-auto mt-12 grid max-w-4xl gap-4 sm:grid-cols-3">
+        <ul className="reveal mx-auto mt-12 grid max-w-4xl gap-4 sm:grid-cols-3 lg:grid-cols-4">
           {YEAR_TOTALS.map((year) => (
             <li
               key={year.year}
@@ -164,9 +169,7 @@ export default function OurWorkPage() {
                 {formatKobo(year.raisedKobo)}
               </p>
               <p className="mt-2 text-sm text-charcoal-muted">
-                {year.beneficiaries
-                  ? `${year.beneficiaries} beneficiaries`
-                  : "report in preparation"}
+                {year.hasReportPage ? "reported by category" : "on record"}
               </p>
             </li>
           ))}

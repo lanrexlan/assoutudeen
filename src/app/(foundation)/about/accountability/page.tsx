@@ -7,7 +7,13 @@ import { Section, SectionHeading } from "@/components/ui/section";
 import { BankDetails } from "@/components/site/bank-details";
 import { CONTACT } from "@/lib/sites";
 import { formatKobo } from "@/payload/fields/money";
-import { OVERHEADS_2025, THREE_YEAR_TOTAL_KOBO, YEAR_TOTALS } from "@/lib/impact";
+import {
+  OVERHEADS_2025,
+  VERIFIED_TOTAL_KOBO,
+  YEAR_RANGE,
+  YEAR_TOTALS,
+  YEARS_COVERED,
+} from "@/lib/impact";
 import {
   CONSTITUTION_RULES,
   GOVERNING_OFFICES,
@@ -123,12 +129,12 @@ export default function AccountabilityPage() {
       <Section tone="ink" size="lg" ornament>
         <SectionHeading
           tone="dark"
-          kicker="Three years, verified"
-          title={formatKobo(THREE_YEAR_TOTAL_KOBO)}
-          standfirst="Raised and accounted for between 2023 and 2025. The year figures below add up to this total exactly — they are meant to, and they do."
+          kicker={`${YEARS_COVERED} years, verified`}
+          title={formatKobo(VERIFIED_TOTAL_KOBO)}
+          standfirst={`Raised and accounted for between ${YEAR_RANGE}. The year figures below add up to this total exactly — they are meant to, and a test checks it on every build.`}
         />
 
-        <ul className="reveal mx-auto mt-12 grid max-w-4xl gap-4 sm:grid-cols-3">
+        <ul className="reveal mx-auto mt-12 grid max-w-4xl gap-4 sm:grid-cols-3 lg:grid-cols-4">
           {YEAR_TOTALS.map((year) => (
             <li
               key={year.year}
@@ -139,9 +145,7 @@ export default function AccountabilityPage() {
                 {formatKobo(year.raisedKobo)}
               </p>
               <p className="mt-2 text-sm text-chalk/65">
-                {year.beneficiaries
-                  ? `${year.beneficiaries} beneficiaries`
-                  : "beneficiary count to confirm"}
+                {year.hasReportPage ? "reported by category" : "on record"}
               </p>
             </li>
           ))}
@@ -179,26 +183,25 @@ export default function AccountabilityPage() {
         <Prose>
           <ProseHeading>Annual reports</ProseHeading>
           <p>
-            The 2023 report is written and published in the foundation&apos;s own
-            format: the beneficiary table with amounts, the assistances made from
-            surplus funds, and the totals. Full report pages for each year are the
-            next thing we are building.
+            Every year the foundation has operated is on record here, and the
+            figures below add up to the published total exactly. The reports from
+            2023 onward are written up by category; the earlier years are
+            published as the verified totals they are.
           </p>
           <ul>
-            <li>
-              <strong>2023</strong> — {formatKobo(YEAR_TOTALS[0].raisedKobo)} across 11
-              beneficiaries. Report written; web page in preparation.
-            </li>
-            <li>
-              <strong>2024</strong> — {formatKobo(YEAR_TOTALS[1].raisedKobo)}. Report
-              page in preparation.
-            </li>
-            <li>
-              <strong>2025</strong> — {formatKobo(YEAR_TOTALS[2].raisedKobo)}, with{" "}
-              {formatKobo(OVERHEADS_2025.operationalKobo)} operational and{" "}
-              {formatKobo(OVERHEADS_2025.gadgetsKobo)} on equipment. Report page in
-              preparation.
-            </li>
+            {YEAR_TOTALS.map((year) => (
+              <li key={year.year}>
+                <strong>{year.year}</strong> — {formatKobo(year.raisedKobo)}
+                {year.year === 2025 ? (
+                  <>
+                    , of which {formatKobo(OVERHEADS_2025.operationalKobo)} was
+                    operational and {formatKobo(OVERHEADS_2025.gadgetsKobo)} went on
+                    equipment
+                  </>
+                ) : null}
+                .
+              </li>
+            ))}
           </ul>
           <p>
             Independent auditors are appointed by the general meeting each year, and
