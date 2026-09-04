@@ -56,7 +56,8 @@ export default function AccountabilityPage() {
               <div>
                 <CardTitle className="text-xl">Registered with the CAC</CardTitle>
                 <CardDescription>
-                  Incorporated Trustees under the Companies and Allied Matters Act.
+                  A body of incorporated trustees under the Companies and Allied
+                  Matters Act.
                 </CardDescription>
               </div>
             </div>

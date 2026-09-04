@@ -12,7 +12,9 @@ still worth a decision.
 
 ## Settled
 
-**Registration** — CAC/IT/NO 139886, incorporated 28 November 2019 in Abuja.
+**Registration** — registered name **Assoutudeen Prophetic Medicine Foundation**
+(not "Incorporated Trustees of ...", which is the registration type rather than
+part of the name), CAC/IT/NO 139886, incorporated 28 November 2019 in Abuja.
 Trustees: Wasiu Tirimisiy Adeniyi (Chairman), Akande Olanrewaju Subair
 (Secretary), Taiwo Ridwan Ademola. Registered office No. 25, Agbonran Junction,
 Olowobida Agip Area, Ede. All from the certificate; see `src/lib/organisation.ts`.
