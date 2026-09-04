@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { PageHeader, Prose, ProseHeading } from "@/components/ui/prose";
 import { Section } from "@/components/ui/section";
-import { Todo } from "@/components/ui/todo";
 import { getSiteContext } from "@/lib/site-context";
 import { VERIFIED_TOTAL_KOBO, YEAR_RANGE, YEAR_TOTALS, YEARS_COVERED } from "@/lib/impact";
 import { formatKobo } from "@/payload/fields/money";
@@ -17,8 +16,8 @@ export const metadata: Metadata = {
 
 /**
  * Index of annual reports (CLAUDE.md: /impact/[year]). 2023 has a full page;
- * 2024 and 2025 pages are on the build list — the totals are verified and
- * published, the full report pages are not.
+ * 2024 and 2025 carry verified, published totals while their written reports
+ * are prepared.
  */
 export default async function ImpactIndexPage() {
   const { href } = await getSiteContext("foundation");
@@ -79,9 +78,8 @@ export default async function ImpactIndexPage() {
           <ProseHeading>Why we publish this</ProseHeading>
           <p>
             Most Nigerian NGOs do not reconcile their published totals. Ours
-            add up to the naira, overheads included —{" "}
-            <Todo>the 2024 and 2025 full report pages are on the build list</Todo>
-            . Bank statements are available on request.
+            add up to the naira, overheads included. Bank statements are
+            available on request.
           </p>
         </Prose>
       </Section>
