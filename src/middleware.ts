@@ -24,8 +24,29 @@ import {
  * The internal prefixes never appear in the address bar; they exist only so
  * three sites can each own a `/` page in one app directory.
  */
+/**
+ * The old site's domain. Every link to it that exists in the world — printed,
+ * forwarded on WhatsApp, indexed by Google — should land on the new site rather
+ * than nowhere, and a 301 carries the accumulated search ranking across with
+ * it. Point the domain at this deployment and the rest happens here.
+ */
+const LEGACY_HOSTS = [
+  "thepropheticmedicine.com.ng",
+  "www.thepropheticmedicine.com.ng",
+];
+
 export function middleware(request: NextRequest) {
   const { nextUrl } = request;
+
+  const host = (request.headers.get("host") ?? "").toLowerCase().split(":")[0];
+  if (LEGACY_HOSTS.includes(host)) {
+    const target = new URL(
+      nextUrl.pathname + nextUrl.search,
+      "https://assoutudeen.com",
+    );
+    return NextResponse.redirect(target, 301);
+  }
+
   const override = nextUrl.searchParams.get(SITE_QUERY_PARAM);
   const site = resolveSite(request.headers.get("host"), override);
   const { basePath } = siteConfig[site];

@@ -4,17 +4,11 @@ import { SiteFooter } from "@/components/site/site-footer";
 import { WhatsAppFloat } from "@/components/ui/whatsapp-float";
 import { DonationReminder } from "@/components/site/donation-reminder";
 import { fontVariables } from "@/lib/fonts";
+import { siteMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/sites";
 import "../globals.css";
 
-export const metadata: Metadata = {
-  title: {
-    default: siteConfig.foundation.name,
-    template: `%s · ${siteConfig.foundation.shortName}`,
-  },
-  description:
-    "An Islamic charity in Ede, Osun State, Nigeria. Empowerment fund, prophetic medicine and dawah.",
-};
+export const metadata: Metadata = siteMetadata("foundation");
 
 export const viewport: Viewport = {
   themeColor: "#6B2233",

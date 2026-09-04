@@ -3,17 +3,11 @@ import { HoneyHeader } from "@/components/site/honey-header";
 import { SiteFooter } from "@/components/site/site-footer";
 import { WhatsAppFloat } from "@/components/ui/whatsapp-float";
 import { fontVariables } from "@/lib/fonts";
+import { siteMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/sites";
 import "../globals.css";
 
-export const metadata: Metadata = {
-  title: {
-    default: siteConfig.honey.name,
-    template: `%s · ${siteConfig.honey.shortName}`,
-  },
-  description:
-    "Pure honey by the litre, retail and wholesale. Part of the Assoutudeen Prophetic Medicine Foundation.",
-};
+export const metadata: Metadata = siteMetadata("honey");
 
 export const viewport: Viewport = {
   themeColor: "#E0A06A",
