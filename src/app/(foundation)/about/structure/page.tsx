@@ -31,7 +31,7 @@ export default function StructurePage() {
             The parent body and the registered charity. It receives donations, runs the
             monthly empowerment fund, publishes the annual accounts, and holds
             responsibility for everything done in the Assoutudeen name. Registered with
-            the Corporate Affairs Commission as Incorporated Trustees on{" "}
+            the Corporate Affairs Commission on{" "}
             {REGISTRATION.incorporatedOnDisplay} under{" "}
             <strong>{REGISTRATION.number}</strong>.
           </p>

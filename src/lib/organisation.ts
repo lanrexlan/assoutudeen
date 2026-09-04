@@ -12,8 +12,14 @@
  */
 
 export const REGISTRATION = {
-  /** As registered. The CAC spelling of the name. */
-  registeredName: "Incorporated Trustees of Assoutudeen Prophetic Medicine Foundation",
+  /**
+   * The registered name, exactly as it stands on the certificate.
+   *
+   * NOT "Incorporated Trustees of ..." — that is the registration TYPE (Part F
+   * of CAMA, filed on Form CAC/IT/1), not part of the name, and prefixing it
+   * gives a legal name the foundation does not have.
+   */
+  registeredName: "Assoutudeen Prophetic Medicine Foundation",
   /** CAC/IT/NO on the certificate. */
   number: "CAC/IT/NO 139886",
   /** Short form for the footer. */

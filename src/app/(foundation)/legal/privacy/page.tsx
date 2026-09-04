@@ -19,8 +19,8 @@ export default function PrivacyPage() {
       <ProseHeading>Who we are</ProseHeading>
       <p>
         {FOUNDATION_NAME}, {CONTACT.address}. Registered with the Corporate Affairs
-        Commission as Incorporated Trustees under {REGISTRATION.number}, incorporated
-        on {REGISTRATION.incorporatedOnDisplay}.
+        Commission under {REGISTRATION.number}, incorporated on{" "}
+        {REGISTRATION.incorporatedOnDisplay}.
         You can reach us at <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a> or on{" "}
         <a href={`tel:+${CONTACT.phoneE164}`}>{CONTACT.phoneDisplay}</a>.
       </p>
