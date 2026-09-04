@@ -64,7 +64,7 @@ export default async function ProgrammesPage() {
 
               <Link
                 href={href(`/programmes/${programme.slug}`)}
-                className="mt-auto inline-flex min-h-11 items-center text-sm font-semibold text-primary underline-offset-4 hover:underline"
+                className="mt-auto inline-flex min-h-11 items-center text-sm font-semibold text-primary-ink underline-offset-4 hover:underline"
               >
                 About this class
               </Link>

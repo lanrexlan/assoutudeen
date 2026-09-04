@@ -88,7 +88,7 @@ export default async function DawahHomePage() {
                       key={programme.slug}
                       className="rounded-lg border border-chalk-dark bg-white p-5 shadow-sm"
                     >
-                      <p className="text-xs font-semibold uppercase tracking-widest text-sage">
+                      <p className="text-xs font-semibold uppercase tracking-widest text-sage-dark">
                         {programme.cadence}
                       </p>
                       <p className="mt-2 font-display text-lg">{programme.title}</p>
@@ -171,7 +171,7 @@ export default async function DawahHomePage() {
               <CardDescription>{item.body}</CardDescription>
               <Link
                 href={href(item.href)}
-                className="mt-auto inline-flex min-h-11 items-center text-sm font-semibold text-sage underline-offset-4 hover:underline"
+                className="mt-auto inline-flex min-h-11 items-center text-sm font-semibold text-sage-dark underline-offset-4 hover:underline"
               >
                 {item.cta}
               </Link>

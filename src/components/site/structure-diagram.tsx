@@ -24,7 +24,9 @@ export function StructureDiagram() {
       href: dawahUrl,
       host: siteConfig.dawah.hostname,
       accent: "border-t-sage",
-      link: "text-sage",
+      // sage-dark is the text grade; plain --sage is too light on a white
+      // card, exactly as the honey arm below uses apricot-dark (CLAUDE.md).
+      link: "text-sage-dark",
       body: "The teaching arm. Seven classes across Friday, Saturday and Sunday evenings — Tafsir, Hadith, Prophetic Medicine, Fiqh, Virtues of the Companions, Qur'an and Modern Science, and the monthly seminar. It is not separately incorporated and holds no funds of its own.",
     },
     {

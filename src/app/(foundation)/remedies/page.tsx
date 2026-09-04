@@ -45,7 +45,7 @@ function RemedyTile({ remedy }: { remedy: RemedyCard }) {
         </span>
 
         {remedy.arabicName ? (
-          <span className="font-arabic text-xl leading-relaxed text-primary">
+          <span className="font-arabic text-xl leading-relaxed text-primary-ink">
             <span lang="ar" dir="rtl">
               {remedy.arabicName}
             </span>

@@ -90,7 +90,7 @@ function NextDate({ programme, today }: { programme: Programme; today: PlainDate
   if (!dates.length) return null;
 
   return (
-    <span className="mt-3 flex items-center gap-2 text-sm font-medium text-primary">
+    <span className="mt-3 flex items-center gap-2 text-sm font-medium text-primary-ink">
       <CalendarCheck aria-hidden="true" className="size-3.5" />
       Next: {formatDate(dates[0])} · {relativeToToday(dates[0], today)}
     </span>

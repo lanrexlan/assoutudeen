@@ -183,7 +183,7 @@ export default async function ProgrammePage({
               <CardDescription>{other.cadence}</CardDescription>
               <Link
                 href={href(`/programmes/${other.slug}`)}
-                className="mt-auto inline-flex min-h-11 items-center justify-center text-sm font-semibold text-primary underline-offset-4 hover:underline"
+                className="mt-auto inline-flex min-h-11 items-center justify-center text-sm font-semibold text-primary-ink underline-offset-4 hover:underline"
               >
                 Read about it
               </Link>

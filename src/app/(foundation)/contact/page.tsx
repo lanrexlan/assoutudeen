@@ -34,7 +34,7 @@ export default function ContactPage() {
             <CardDescription>Tap to dial from your phone.</CardDescription>
             <a
               href={`tel:+${CONTACT.phoneE164}`}
-              className="flex min-h-11 items-center text-lg font-semibold text-primary underline underline-offset-4"
+              className="flex min-h-11 items-center text-lg font-semibold text-primary-ink underline underline-offset-4"
             >
               {CONTACT.phoneDisplay}
             </a>
@@ -49,7 +49,7 @@ export default function ContactPage() {
               href={whatsappHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex min-h-11 items-center text-lg font-semibold text-primary underline underline-offset-4"
+              className="flex min-h-11 items-center text-lg font-semibold text-primary-ink underline underline-offset-4"
             >
               Start a chat
             </a>
@@ -60,7 +60,7 @@ export default function ContactPage() {
             <CardDescription>For anything that needs a written record.</CardDescription>
             <a
               href={`mailto:${CONTACT.email}`}
-              className="flex min-h-11 items-center break-all text-lg font-semibold text-primary underline underline-offset-4"
+              className="flex min-h-11 items-center break-all text-lg font-semibold text-primary-ink underline underline-offset-4"
             >
               {CONTACT.email}
             </a>

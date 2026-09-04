@@ -33,6 +33,12 @@ export type SiteConfig = {
   nav: { label: string; href: string }[];
   /** Pre-filled WhatsApp message, per site. */
   whatsappMessage: string;
+  /**
+   * Label for the floating WhatsApp button. The honey site sells something, so
+   * "Order honey on WhatsApp" earns its place where a generic "chat with us"
+   * would not; the other two default to the generic label.
+   */
+  whatsappLabel?: string;
 };
 
 export const CONTACT = {
@@ -108,8 +114,19 @@ export const siteConfig: Record<SiteKey, SiteConfig> = {
       { label: "About", href: "/about" },
       { label: "Contact", href: "/contact" },
     ],
+    /*
+     * Neutral greeting, unlike the other two sites.
+     *
+     * The foundation and the Institute are addressing people who came for
+     * dawah, and the salaam belongs there. The Honey Enterprise is a business
+     * selling food to whoever wants it — plenty of its customers are not
+     * Muslim, and opening their message for them with a greeting they may not
+     * use is a small thing that makes a shop feel like it is not for them.
+     */
     whatsappMessage:
-      "As-salaamu alaykum. I would like to order honey from Assoutudeen Honey Enterprise.",
+      "Hello. I would like to order honey.\nLitres: \nTown: \nDelivery or collection: ",
+    /** The floating button's own label, per site. */
+    whatsappLabel: "Order honey on WhatsApp",
   },
 };
 

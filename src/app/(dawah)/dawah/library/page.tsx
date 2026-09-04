@@ -54,7 +54,7 @@ export default async function LibraryPage({
             aria-current={active ? undefined : "page"}
             className={`inline-flex min-h-11 items-center rounded-full border px-4 text-sm font-medium transition-colors ${
               active
-                ? "border-chalk-deep bg-white text-charcoal hover:border-primary hover:text-primary"
+                ? "border-chalk-deep bg-white text-charcoal hover:border-primary hover:text-primary-ink"
                 : "border-primary bg-primary text-on-primary"
             }`}
           >
@@ -72,7 +72,7 @@ export default async function LibraryPage({
                 className={`inline-flex min-h-11 items-center gap-2 rounded-full border px-4 text-sm font-medium transition-colors ${
                   isActive
                     ? "border-primary bg-primary text-on-primary"
-                    : "border-chalk-deep bg-white text-charcoal hover:border-primary hover:text-primary"
+                    : "border-chalk-deep bg-white text-charcoal hover:border-primary hover:text-primary-ink"
                 }`}
               >
                 {entry.label}
@@ -108,7 +108,7 @@ export default async function LibraryPage({
                 {lecture.lecturer ? (
                   <span className="text-sm text-charcoal-muted">{lecture.lecturer}</span>
                 ) : null}
-                <span className="mt-auto inline-flex items-center gap-1.5 pt-2 text-sm font-semibold text-primary">
+                <span className="mt-auto inline-flex items-center gap-1.5 pt-2 text-sm font-semibold text-primary-ink">
                   Watch on Facebook
                   <ExternalLink aria-hidden="true" className="size-3.5" />
                 </span>
