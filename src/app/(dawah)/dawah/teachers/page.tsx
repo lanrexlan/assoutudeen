@@ -74,7 +74,7 @@ export default async function TeachersPage() {
                         <li key={programme.slug}>
                           <Link
                             href={href(`/programmes/${programme.slug}`)}
-                            className="inline-flex min-h-11 items-center rounded-full border border-chalk-deep bg-white px-4 text-sm text-charcoal hover:border-primary hover:text-primary"
+                            className="inline-flex min-h-11 items-center rounded-full border border-chalk-deep bg-white px-4 text-sm text-charcoal hover:border-primary hover:text-primary-ink"
                           >
                             {programme.title}
                           </Link>

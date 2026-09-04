@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 };
 
 const orderHref = `https://wa.me/${CONTACT.phoneE164}?text=${encodeURIComponent(
-  "As-salaamu alaykum. I would like to order honey.\nLitres: \nTown: \nDelivery or collection: ",
+  "Hello. I would like to order honey.\nLitres: \nTown: \nDelivery or collection: ",
 )}`;
 
 
@@ -169,7 +169,7 @@ export default async function HoneyShopPage() {
               <CardDescription>{item.body}</CardDescription>
               <Link
                 href={href(item.to)}
-                className="mt-auto inline-flex min-h-11 items-center justify-center text-sm font-semibold text-primary underline-offset-4 hover:underline"
+                className="mt-auto inline-flex min-h-11 items-center justify-center text-sm font-semibold text-primary-ink underline-offset-4 hover:underline"
               >
                 {item.cta}
               </Link>

@@ -25,14 +25,14 @@ const buttonVariants = cva(
         secondary:
           "border border-chalk-deep bg-white text-charcoal hover:border-charcoal-faint hover:bg-chalk",
         outline:
-          "border border-current bg-transparent text-primary hover:bg-primary hover:text-on-primary",
+          "border border-current bg-transparent text-primary-ink hover:bg-primary hover:text-on-primary",
         /** For dark surfaces: a hairline that fills on hover. */
         ghostLight:
           "border border-white/30 bg-white/5 text-white hover:border-apricot hover:bg-white/10",
         ghost: "text-charcoal hover:bg-chalk-dark/60",
         donate:
           "bg-apricot text-charcoal shadow-accent hover:bg-apricot-dark hover:text-white",
-        link: "text-primary underline underline-offset-4 hover:no-underline",
+        link: "text-primary-ink underline underline-offset-4 hover:no-underline",
       },
       size: {
         sm: "min-h-11 px-4 py-2",

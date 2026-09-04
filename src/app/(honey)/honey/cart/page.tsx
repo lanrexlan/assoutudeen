@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 const orderHref = `https://wa.me/${CONTACT.phoneE164}?text=${encodeURIComponent(
-  "As-salaamu alaykum. I would like to order honey.\nLitres: \nTown: \nDelivery or collection: ",
+  "Hello. I would like to order honey.\nLitres: \nTown: \nDelivery or collection: ",
 )}`;
 
 /**

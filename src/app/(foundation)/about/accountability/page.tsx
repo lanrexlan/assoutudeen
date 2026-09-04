@@ -254,7 +254,7 @@ export default function AccountabilityPage() {
                 Write to{" "}
                 <a
                   href={`mailto:${CONTACT.email}`}
-                  className="text-primary underline underline-offset-4"
+                  className="text-primary-ink underline underline-offset-4"
                 >
                   {CONTACT.email}
                 </a>{" "}
@@ -264,7 +264,7 @@ export default function AccountabilityPage() {
                 Phone:{" "}
                 <a
                   href={`tel:+${CONTACT.phoneE164}`}
-                  className="text-primary underline underline-offset-4"
+                  className="text-primary-ink underline underline-offset-4"
                 >
                   {CONTACT.phoneDisplay}
                 </a>

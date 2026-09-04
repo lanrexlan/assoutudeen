@@ -114,8 +114,17 @@ export const siteConfig: Record<SiteKey, SiteConfig> = {
       { label: "About", href: "/about" },
       { label: "Contact", href: "/contact" },
     ],
+    /*
+     * Neutral greeting, unlike the other two sites.
+     *
+     * The foundation and the Institute are addressing people who came for
+     * dawah, and the salaam belongs there. The Honey Enterprise is a business
+     * selling food to whoever wants it — plenty of its customers are not
+     * Muslim, and opening their message for them with a greeting they may not
+     * use is a small thing that makes a shop feel like it is not for them.
+     */
     whatsappMessage:
-      "As-salaamu alaykum. I would like to order honey.\nLitres: \nTown: \nDelivery or collection: ",
+      "Hello. I would like to order honey.\nLitres: \nTown: \nDelivery or collection: ",
     /** The floating button's own label, per site. */
     whatsappLabel: "Order honey on WhatsApp",
   },

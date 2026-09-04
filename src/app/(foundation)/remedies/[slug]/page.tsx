@@ -120,7 +120,7 @@ export default async function RemedyPage({
                     {hadith.translation}
                   </p>
                   <p className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
-                    <span className="font-semibold text-primary">
+                    <span className="font-semibold text-primary-ink">
                       {hadith.source}
                     </span>
                     {hadith.gradingNote ? (
@@ -220,7 +220,7 @@ export default async function RemedyPage({
               <li key={other.id}>
                 <Link
                   href={`/remedies/${other.slug}`}
-                  className="inline-flex min-h-11 items-center gap-2 rounded-full border border-chalk-deep bg-white px-4 text-sm text-charcoal hover:border-primary hover:text-primary"
+                  className="inline-flex min-h-11 items-center gap-2 rounded-full border border-chalk-deep bg-white px-4 text-sm text-charcoal hover:border-primary hover:text-primary-ink"
                 >
                   {other.isFree ? (
                     <BookOpenText aria-hidden="true" className="size-3.5 text-apricot-dark" />

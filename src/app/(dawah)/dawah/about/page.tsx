@@ -153,7 +153,7 @@ export default async function DawahAboutPage() {
               <CardDescription>{item.body}</CardDescription>
               <Link
                 href={href(item.to)}
-                className="mt-auto inline-flex min-h-11 items-center text-sm font-semibold text-primary underline-offset-4 hover:underline"
+                className="mt-auto inline-flex min-h-11 items-center text-sm font-semibold text-primary-ink underline-offset-4 hover:underline"
               >
                 {item.cta}
               </Link>

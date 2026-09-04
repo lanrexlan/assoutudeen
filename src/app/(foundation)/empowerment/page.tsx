@@ -127,7 +127,7 @@ export default async function EmpowermentPage() {
         </div>
         <p className="mt-6 text-sm text-charcoal-muted">
           Full annual reports live on the{" "}
-          <Link href={href("/impact")} className="text-primary underline underline-offset-4">
+          <Link href={href("/impact")} className="text-primary-ink underline underline-offset-4">
             impact page
           </Link>
           .

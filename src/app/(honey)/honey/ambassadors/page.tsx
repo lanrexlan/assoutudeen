@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 };
 
 const joinHref = `https://wa.me/${CONTACT.phoneE164}?text=${encodeURIComponent(
-  "As-salaamu alaykum. I would like to become an Assoutudeen honey ambassador.",
+  "Hello. I would like to become an Assoutudeen honey ambassador.",
 )}`;
 
 const STEPS = [
