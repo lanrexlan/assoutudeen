@@ -11,6 +11,7 @@ import {
   Starfield,
 } from "@/components/ui/ornament";
 import { Section, SectionHeading } from "@/components/ui/section";
+import { PriceHighlights } from "@/components/site/price-list";
 import { getSiteContext } from "@/lib/site-context";
 
 /**
@@ -99,13 +100,31 @@ export default async function HoneyHomePage() {
           ))}
         </div>
 
-        <p className="mx-auto mt-10 max-w-2xl text-center text-sm text-charcoal-muted">
-          Prices depend on volume and where you are. Message us with the litres you
-          need and your town, and you will have a quote the same day.
-        </p>
       </Section>
 
-      <Section tone="white" size="md">
+      {/* --- What it costs -------------------------------------------------- */}
+      <Section tone="white" size="lg">
+        <SectionHeading
+          kicker="What it costs"
+          title="Published prices, by the litre"
+          standfirst="No haggling and no quote to wait for. From ten litres up the rate settles at ₦8,000 a litre, however large the order."
+        />
+
+        <PriceHighlights className="mx-auto mt-10 max-w-3xl" />
+
+        <p className="mx-auto mt-6 max-w-2xl text-center text-sm text-charcoal-muted">
+          Prices exclude transport, which depends on how far you are from Ede and is
+          quoted with your order.
+        </p>
+
+        <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <Button asChild variant="donate" size="lg">
+            <Link href={href("/shop")}>See the full price list</Link>
+          </Button>
+        </div>
+      </Section>
+
+      <Section tone="chalk" size="md">
         <Disclaimer className="mx-auto max-w-3xl">
           Assoutudeen Honey Enterprise sells honey as a food product. Nothing on this
           site claims that honey treats, prevents or cures any disease.

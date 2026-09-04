@@ -28,7 +28,11 @@ export default function HoneyLayout({
         <HoneyHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter site="honey" />
-        <WhatsAppFloat message={siteConfig.honey.whatsappMessage} />
+        <WhatsAppFloat
+          message={siteConfig.honey.whatsappMessage}
+          label={siteConfig.honey.whatsappLabel}
+          text="Order honey"
+        />
       </body>
     </html>
   );

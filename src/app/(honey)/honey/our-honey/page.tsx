@@ -162,7 +162,7 @@ export default async function OurHoneyPage() {
         />
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Button asChild variant="donate" size="lg">
-            <Link href={href("/shop")}>Get a price</Link>
+            <Link href={href("/shop")}>See prices</Link>
           </Button>
           <Button asChild variant="ghostLight" size="lg">
             <Link href={href("/about")}>How the enterprise works</Link>

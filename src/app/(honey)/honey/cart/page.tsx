@@ -54,8 +54,9 @@ export default async function CartPage() {
                 <li>Whether you are collecting in Ede or want it delivered.</li>
               </ul>
               <p className="mt-5 text-sm text-charcoal-muted">
-                You will have a price, including delivery, the same day — in writing,
-                before anything is paid.
+                Honey prices are published on the shop page. We add the transport
+                fare for your town and send you the total in writing, before
+                anything is paid.
               </p>
               <Button asChild variant="donate" size="lg" className="mt-7">
                 <a href={orderHref} target="_blank" rel="noopener noreferrer">

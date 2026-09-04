@@ -14,7 +14,7 @@ import { CONTACT, siteConfig } from "@/lib/sites";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Order honey, ask for a wholesale price, or raise a problem with a delivery from the Assoutudeen Honey Enterprise in Ede, Osun State.",
+    "Order honey, ask about wholesale, or raise a problem with a delivery from the Assoutudeen Honey Enterprise in Ede, Osun State.",
 };
 
 export default async function HoneyContactPage() {
@@ -26,7 +26,7 @@ export default async function HoneyContactPage() {
         image="contact"
         eyebrow="Contact"
         title="Orders and questions"
-        standfirst="Message us with the litres you need and your town for a same-day price. Anything that went wrong with an order reaches the same people."
+        standfirst="Prices are published on the shop page — message us with the litres you need and your town, and we will add the transport fare. Anything that went wrong with an order reaches the same people."
       />
 
       <Section tone="chalk">
@@ -86,7 +86,7 @@ export default async function HoneyContactPage() {
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Button asChild variant="secondary">
-                <Link href={href("/shop")}>Get a price</Link>
+                <Link href={href("/shop")}>See prices</Link>
               </Button>
               <Button asChild variant="secondary">
                 <a href={`https://${siteConfig.foundation.hostname}/legal/delivery`}>

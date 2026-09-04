@@ -33,7 +33,7 @@ const STEPS = [
   {
     icon: Award,
     title: "Qualifying orders count",
-    body: "An order of five litres or more, from someone new to us, is credited to your code.",
+    body: "An order of five litres or more — ₦40,000 and up — from someone new to us is credited to your code.",
   },
   {
     icon: Trophy,

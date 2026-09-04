@@ -8,37 +8,20 @@ import { SealFrame, Medallion } from "@/components/ui/ornament";
 import { ApiaryScene } from "@/components/ui/illustration";
 import { PageHeader, Prose, ProseHeading } from "@/components/ui/prose";
 import { Section, SectionHeading } from "@/components/ui/section";
+import { PriceList } from "@/components/site/price-list";
 import { getSiteContext } from "@/lib/site-context";
 import { CONTACT } from "@/lib/sites";
 
 export const metadata: Metadata = {
   title: "Shop",
   description:
-    "Buy pure honey by the litre from the Assoutudeen Honey Enterprise — retail and wholesale, delivered across Nigeria. Orders are taken on WhatsApp.",
+    "Honey prices by the litre from the Assoutudeen Honey Enterprise, from ₦10,000 for one litre to drum quantities at ₦8,000 a litre. Retail and wholesale, delivered across Nigeria.",
 };
 
 const orderHref = `https://wa.me/${CONTACT.phoneE164}?text=${encodeURIComponent(
-  "As-salaamu alaykum. I would like to order honey. Litres needed: ___. Town: ___.",
+  "As-salaamu alaykum. I would like to order honey.\nLitres: \nTown: \nDelivery or collection: ",
 )}`;
 
-/** What can be ordered. Volumes are the units we sell in; prices are quoted. */
-const SIZES = [
-  {
-    volume: "1 litre",
-    who: "A household",
-    body: "The usual first order. Enough to keep in the kitchen and see whether you want more.",
-  },
-  {
-    volume: "5 litres",
-    who: "Bulk and resale",
-    body: "The wholesale minimum, and the smallest order that qualifies for an ambassador's code.",
-  },
-  {
-    volume: "10 litres and above",
-    who: "Shops, masjids, distributors",
-    body: "Priced by volume. Tell us how much you move and how often, and we will quote for the run.",
-  },
-];
 
 export default async function HoneyShopPage() {
   const { href } = await getSiteContext("honey");
@@ -49,40 +32,23 @@ export default async function HoneyShopPage() {
         image="honeyHome"
         eyebrow="Shop"
         title="Buy by the litre"
-        standfirst="Retail and wholesale, delivered across Nigeria. Tell us the litres and your town, and you will have a price the same day."
+        standfirst="Retail and wholesale, delivered across Nigeria. Prices are published below — tell us the litres and your town and we will add the transport fare, in writing, before you pay anything."
       />
 
       <Section tone="chalk" size="lg" ornament>
-        <div className="grid gap-10 lg:grid-cols-[1fr_0.8fr] lg:items-center">
+        <div className="grid gap-10 lg:grid-cols-[1fr_0.8fr] lg:items-start">
           <div>
             <SectionHeading
               align="start"
-              kicker="What we sell"
-              title="One honey, three ways to buy it"
-              standfirst="There is no product range to choose between — there is honey, and there is how much of it you need."
+              kicker="Price list"
+              title="One honey, priced by the litre"
+              standfirst="There is no product range to choose between — there is honey, and there is how much of it you need. From ten litres up, the rate is the same however large the order."
             />
 
-            <div className="mt-8 space-y-4">
-              {SIZES.map((size) => (
-                <div
-                  key={size.volume}
-                  className="reveal flex flex-col gap-1 rounded-lg border border-chalk-dark bg-white p-5 sm:flex-row sm:items-baseline sm:gap-6"
-                >
-                  <p className="font-display text-xl text-charcoal sm:w-44 sm:shrink-0">
-                    {size.volume}
-                  </p>
-                  <div>
-                    <p className="text-sm font-semibold uppercase tracking-[0.14em] text-apricot-dark">
-                      {size.who}
-                    </p>
-                    <p className="mt-1 text-charcoal-muted">{size.body}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <PriceList className="mt-8" />
           </div>
 
-          <figure className="reveal mx-auto w-full max-w-sm">
+          <figure className="reveal mx-auto w-full max-w-sm lg:sticky lg:top-24">
             <SealFrame className="aspect-3/4 w-full">
               <ApiaryScene />
             </SealFrame>
@@ -94,23 +60,25 @@ export default async function HoneyShopPage() {
       <Section tone="white" size="lg">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
           <Prose>
-            <ProseHeading>Why there is no price list</ProseHeading>
+            <ProseHeading>What transport costs</ProseHeading>
             <p>
-              Honey is harvested in seasons and sold by weight, and delivery across
-              Nigeria costs very different amounts depending on where you are. A fixed
-              number on a page would be wrong for half the people reading it, so we
-              quote instead: message us with the litres you want and your town, and you
-              will have the figure the same day, in writing.
+              The prices above are for the honey alone. Delivery is quoted separately
+              because it genuinely differs: a jar going across Ede and a drum going to
+              Kano are not the same journey, and building an average into the price
+              would overcharge everyone near us to subsidise everyone far away.
             </p>
             <p>
-              Wholesale is priced by volume from five litres up. If you are reselling,
-              say so — the rate is different and it is worth the conversation.
+              Tell us your town when you order and you will have the fare before you
+              pay anything. It is paid together with the order unless we agree
+              otherwise. Collection from Ede is free.
             </p>
 
             <ProseHeading>How to order today</ProseHeading>
             <ul>
-              <li>Message us on WhatsApp with the litres and your town.</li>
-              <li>We confirm the price, including delivery, before anything is paid.</li>
+              <li>Message us on WhatsApp with the litres you want and your town.</li>
+              <li>
+                We confirm the total — honey plus transport — before anything is paid.
+              </li>
               <li>
                 Pay by bank transfer to the Honey Enterprise account we send you, and we
                 dispatch once the transfer lands.
@@ -128,12 +96,12 @@ export default async function HoneyShopPage() {
               {
                 icon: MessageCircle,
                 title: "Order on WhatsApp",
-                body: "The fastest route, and how nearly every order reaches us.",
+                body: "The fastest route, and how nearly every order reaches us. Send the litres and your town.",
               },
               {
                 icon: Wallet,
                 title: "Pay by transfer",
-                body: "Bank details are sent with your quote. Nothing is dispatched before the transfer clears.",
+                body: "Bank details come with your total. Nothing is dispatched before the transfer clears.",
               },
               {
                 icon: Truck,
@@ -165,7 +133,7 @@ export default async function HoneyShopPage() {
             <div className="flex flex-wrap gap-3 pt-2">
               <Button asChild variant="donate" size="lg">
                 <a href={orderHref} target="_blank" rel="noopener noreferrer">
-                  Get a price
+                  Order on WhatsApp
                 </a>
               </Button>
               <Button asChild variant="secondary" size="lg">
