@@ -4,17 +4,11 @@ import { SiteFooter } from "@/components/site/site-footer";
 import { WhatsAppFloat } from "@/components/ui/whatsapp-float";
 import { DonationReminder } from "@/components/site/donation-reminder";
 import { fontVariables } from "@/lib/fonts";
+import { siteMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/sites";
 import "../globals.css";
 
-export const metadata: Metadata = {
-  title: {
-    default: siteConfig.dawah.name,
-    template: `%s · ${siteConfig.dawah.shortName}`,
-  },
-  description:
-    "The education arm of the Assoutudeen Prophetic Medicine Foundation, Ede, Osun State.",
-};
+export const metadata: Metadata = siteMetadata("dawah");
 
 export const viewport: Viewport = {
   themeColor: "#55614F",

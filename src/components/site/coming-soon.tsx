@@ -1,15 +1,13 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Section } from "@/components/ui/section";
-import { Todo } from "@/components/ui/todo";
 import { CONTACT } from "@/lib/sites";
 
 /**
- * Honest placeholder for a page the project plan still has to build.
+ * Honest placeholder for a page that is still being written.
  *
- * Nothing here pretends the content exists: the gap is shown as a visible
- * [TODO: …] marker (see TODO-CONTENT.md), and the visitor is given the two
- * things that actually work today — WhatsApp and the rest of the site.
+ * Nothing here pretends the content exists, and the visitor is given the two
+ * things that do work today — WhatsApp and the rest of the site.
  */
 export function ComingSoon({
   title,
@@ -21,7 +19,7 @@ export function ComingSoon({
 }: {
   title: string;
   description: React.ReactNode;
-  /** The missing fact or feature, rendered inside the [TODO: …] marker. */
+  /** What is still to come, in the visitor's own terms. */
   pending: React.ReactNode;
   /** Page-specific WhatsApp message, so the chat starts with context. */
   whatsappMessage: string;
@@ -48,10 +46,7 @@ export function ComingSoon({
 
       <Section>
         <div className="max-w-2xl">
-          <p className="text-base leading-relaxed text-charcoal">
-            This page is on our build list, and it is not ready yet.{" "}
-            <Todo>{pending}</Todo>
-          </p>
+          <p className="text-base leading-relaxed text-charcoal">{pending}</p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Button asChild variant="primary" size="lg">
               <a

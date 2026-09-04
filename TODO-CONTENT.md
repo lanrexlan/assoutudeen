@@ -44,8 +44,10 @@ All extracted verbatim from the Tanzil-derived `quran-json` dataset
 **Legal pages** — the placeholders are now written policy: legal bases, retention
 periods, a 72-hour breach commitment, 30-day rights response, 48 hours to report
 damage, 7 days to return a book, 7 working days to refund, Osun State
-jurisdiction. They still say plainly that a Nigerian lawyer should review them
-before the shop opens, which remains true.
+jurisdiction. The internal "draft — awaiting a lawyer" banner has been removed
+from the pages; having a Nigerian lawyer read them before the shop opens is
+still worth doing, but that is a note for the trustees, not a notice to
+visitors.
 
 **Requests for assistance** now run in rounds with a published deadline
 (`src/lib/intake.ts`). The form only renders while a round is open, and the
