@@ -10,6 +10,7 @@ import {
 } from "@/lib/contact-routing";
 import { FALLBACK_INBOX, sendMailQuietly } from "@/lib/email";
 import { CONTACT } from "@/lib/sites";
+import { formatNaira } from "@/payload/fields/money";
 
 /**
  * Server Actions for the foundation's two public forms.
@@ -179,6 +180,30 @@ export async function subscribeToNewsletter(
     });
   }
 
+  /* Short by design. A subscriber list lives in the admin panel; this is only
+     so that growth is visible without anyone remembering to go and look. */
+  await sendMailQuietly({
+    to: FALLBACK_INBOX,
+    replyTo: email,
+    subject: existing.docs[0]
+      ? `Newsletter: ${email} has re-subscribed`
+      : `Newsletter: ${email} subscribed`,
+    text: [
+      existing.docs[0]
+        ? `Someone who had unsubscribed has signed up again.`
+        : `A new subscriber signed up through the website.`,
+      ``,
+      `Email: ${email}`,
+      data.name ? `Name:  ${data.name}` : null,
+      data.source ? `Page:  ${data.source}` : null,
+      ``,
+      `Consent was recorded at ${now}.`,
+      `The full list is in the admin panel under Newsletter subscribers.`,
+    ]
+      .filter((line) => line !== null)
+      .join("\n"),
+  });
+
   return { ok: true, message: "Thank you — you are subscribed. You can unsubscribe any time." };
 }
 
@@ -235,6 +260,55 @@ export async function joinTheFund(
       consent: true,
       status: "new",
     },
+  });
+
+  /*
+   * The Empowerment Fund is the reason this site exists, and a pledge sitting
+   * unread in the admin panel is a supporter nobody called back. So this one
+   * carries the detail needed to act on it without opening anything.
+   *
+   * Two things are called out deliberately:
+   *
+   *  - ZAKAT. It is a separate fund with its own ledger and may never be
+   *    pooled with general donations (CLAUDE.md). Whoever reads this email is
+   *    the person who decides where the money is recorded, so the subject line
+   *    says it rather than hiding it in a field.
+   *  - A transfer pledge needs a human to send bank details. Card does not.
+   *    The subject says which, because one of them is an errand.
+   */
+  const isZakat = data.purpose === "zakat";
+  const needsBankDetails = data.method === "transfer";
+
+  await sendMailQuietly({
+    to: FALLBACK_INBOX,
+    replyTo: data.email,
+    subject: [
+      isZakat ? "[ZAKAT]" : `[${data.purpose}]`,
+      `${formatNaira(nairaToKobo(data.amount))} pledge from ${data.name}`,
+      needsBankDetails ? "— send bank details" : "— by card",
+    ].join(" "),
+    text: [
+      `Someone has pledged to the ${isZakat ? "Zakat fund" : "Monthly Empowerment Fund"}.`,
+      ``,
+      `Name:    ${data.name}`,
+      `Email:   ${data.email}`,
+      data.phone ? `Phone:   ${data.phone}` : null,
+      `Amount:  ${formatNaira(nairaToKobo(data.amount))} a month`,
+      `Purpose: ${data.purpose}`,
+      `Method:  ${data.method === "transfer" ? "manual bank transfer" : "card"}`,
+      ``,
+      data.message ? `They wrote:\n${data.message}\n` : null,
+      needsBankDetails
+        ? `NEXT STEP: they are paying by transfer, so someone needs to send them\nthe account details and confirm the first payment.`
+        : `NEXT STEP: they chose card. Card subscriptions are not live yet, so they\nstill need to be contacted and set up by hand.`,
+      isZakat
+        ? `\nThis is ZAKAT. It belongs in the Zakat ledger and must not be pooled\nwith general donations.`
+        : null,
+      ``,
+      `— Reply to this email and it goes straight back to them.`,
+    ]
+      .filter((line) => line !== null)
+      .join("\n"),
   });
 
   return {
