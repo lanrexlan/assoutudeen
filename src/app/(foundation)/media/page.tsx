@@ -1,6 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ExternalLink, PlayCircle, Video } from "lucide-react";
+import {
+  Bell,
+  BookOpenText,
+  ExternalLink,
+  HandHeart,
+  Leaf,
+  Scale,
+  Users,
+  Video,
+  type LucideIcon,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Medallion } from "@/components/ui/ornament";
 import { PageHeader } from "@/components/ui/prose";
@@ -10,6 +20,8 @@ import {
   LECTURES,
   LECTURE_CATEGORIES,
   lecturesIn,
+  withoutHashtags,
+  type LectureCategory,
 } from "@/lib/lectures";
 import { CONTACT, siteConfig } from "@/lib/sites";
 import { REGISTRATION } from "@/lib/organisation";
@@ -22,6 +34,24 @@ export const metadata: Metadata = {
 
 /** How many to list per category before linking out to the full archive. */
 const PER_CATEGORY = 6;
+
+/**
+ * An icon per series.
+ *
+ * Every card on this page carried the same play symbol, so seven sections of
+ * recordings read as one undifferentiated wall — and this is the longest page
+ * on the site. The icon is what tells a reader at a glance which series they
+ * have scrolled into.
+ */
+const CATEGORY_ICONS: Record<LectureCategory, LucideIcon> = {
+  tafsir: BookOpenText,
+  medicine: Leaf,
+  fiqh: Scale,
+  seminar: Users,
+  halqah: Users,
+  empowerment: HandHeart,
+  reminder: Bell,
+};
 
 export default function MediaPage() {
   return (
@@ -40,17 +70,47 @@ export default function MediaPage() {
         </Button>
       </PageHeader>
 
+      {/* This page is the longest on the site. A reader who came for the fiqh
+          seminar should not have to scroll past six other series to reach it. */}
+      <Section band="top" tone="chalk" size="sm">
+        <nav aria-label="Series on this page">
+          <ul className="flex flex-wrap justify-center gap-2">
+            {LECTURE_CATEGORIES.map((category) => {
+              const count = lecturesIn(category.key).length;
+              if (count === 0) return null;
+              const Icon = CATEGORY_ICONS[category.key];
+              return (
+                <li key={category.key}>
+                  <a
+                    href={`#${category.key}`}
+                    className="lift inline-flex min-h-11 items-center gap-2 rounded-full border border-chalk-dark bg-white px-4 text-sm text-charcoal hover:border-apricot"
+                  >
+                    <Icon aria-hidden="true" className="size-4 text-apricot-dark" />
+                    {category.label}
+                    <span className="text-charcoal-faint">{count}</span>
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      </Section>
+
       {LECTURE_CATEGORIES.map((category, index) => {
         const items = lecturesIn(category.key);
         if (items.length === 0) return null;
         const shown = items.slice(0, PER_CATEGORY);
+        const Icon = CATEGORY_ICONS[category.key];
 
         return (
           <Section
             key={category.key}
-            tone={index % 2 === 0 ? "chalk" : "white"}
+            id={category.key}
+            band="top"
+            tone={index % 2 === 0 ? "white" : "chalk"}
             size="lg"
-            ornament={index % 2 === 0}
+            ornament={index % 2 === 1}
+            className="scroll-mt-20"
           >
             <SectionHeading
               kicker={`${items.length} recording${items.length === 1 ? "" : "s"}`}
@@ -69,7 +129,7 @@ export default function MediaPage() {
                   >
                     <div className="flex items-center gap-3">
                       <Medallion tone="soft" className="size-11">
-                        <PlayCircle aria-hidden="true" className="size-5" />
+                        <Icon aria-hidden="true" className="size-5" />
                       </Medallion>
                       {lecture.series ? (
                         <span className="text-xs font-semibold uppercase tracking-widest text-apricot-dark">
@@ -78,13 +138,15 @@ export default function MediaPage() {
                       ) : null}
                     </div>
                     <p className="font-display text-base leading-snug text-charcoal">
-                      {lecture.title}
+                      {withoutHashtags(lecture.title)}
                     </p>
                     {lecture.lecturer ? (
-                      <p className="text-sm text-charcoal-muted">{lecture.lecturer}</p>
+                      <p className="text-sm text-charcoal-muted">
+                        {withoutHashtags(lecture.lecturer)}
+                      </p>
                     ) : null}
-                    <span className="mt-auto inline-flex items-center gap-1.5 pt-2 text-sm font-semibold text-oxblood">
-                      Watch
+                    <span className="mt-auto inline-flex items-center gap-1.5 pt-2 text-sm font-semibold text-primary-ink">
+                      Watch on Facebook
                       <ExternalLink aria-hidden="true" className="size-3.5" />
                     </span>
                   </a>

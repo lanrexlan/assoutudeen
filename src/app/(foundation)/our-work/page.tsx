@@ -16,6 +16,7 @@ import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Medallion } from "@/components/ui/ornament";
 import { PageHeader, Prose, ProseHeading } from "@/components/ui/prose";
 import { Section, SectionHeading } from "@/components/ui/section";
+import { CornerMarks } from "@/components/ui/flourish";
 import { formatKobo } from "@/payload/fields/money";
 import {
   VERIFIED_TOTAL_KOBO,
@@ -98,8 +99,12 @@ export default function OurWorkPage() {
       </PageHeader>
 
       {/* --- Verse -------------------------------------------------------- */}
-      <Section band="top" tone="chalk" size="md">
-        <ArabicQuote className="reveal mx-auto max-w-3xl" {...VERSES.insan8} />
+      <Section band="top" tone="chalk" size="lg" ornament>
+        <SectionHeading
+          kicker="Why any of this"
+          title="The instruction the work answers to"
+        />
+        <ArabicQuote className="reveal mx-auto mt-10 max-w-3xl" {...VERSES.insan8} />
       </Section>
 
       {/* --- What the fund covers ----------------------------------------- */}
@@ -158,19 +163,21 @@ export default function OurWorkPage() {
           standfirst={`Every year on record, between ${YEAR_RANGE}, reported by year and by category. Names appear only where someone has given written permission for them to.`}
         />
 
-        <ul className="reveal mx-auto mt-12 grid max-w-4xl gap-4 sm:grid-cols-3 lg:grid-cols-4">
+        {/* The seal, so the figures read as the foundation's own mark rather
+            than as a generic statistics grid. Quieter than the Empowerment
+            page's treatment on purpose: there these are the argument, here
+            they are the evidence behind one. */}
+        <ul className="mx-auto mt-12 grid max-w-4xl gap-5 sm:grid-cols-3 lg:grid-cols-4">
           {YEAR_TOTALS.map((year) => (
-            <li
-              key={year.year}
-              className="rounded-lg border border-chalk-dark bg-white p-6 text-center shadow-sm"
-            >
-              <p className="font-display text-lg">{year.year}</p>
-              <p className="mt-2 font-display text-2xl text-oxblood">
-                {formatKobo(year.raisedKobo)}
-              </p>
-              <p className="mt-2 text-sm text-charcoal-muted">
-                {year.hasReportPage ? "reported by category" : "on record"}
-              </p>
+            <li key={year.year} className="reveal seal bg-chalk-dark p-px shadow-sm">
+              <div className="seal bg-white px-5 py-6 text-center">
+                <p className="text-xs uppercase tracking-[0.2em] text-charcoal-muted">
+                  {year.year}
+                </p>
+                <p className="mt-2 font-display text-xl text-primary-ink">
+                  {formatKobo(year.raisedKobo)}
+                </p>
+              </div>
             </li>
           ))}
         </ul>
@@ -240,15 +247,27 @@ export default function OurWorkPage() {
         </p>
       </Section>
 
-      <Section band="top" tone="chalk" size="md">
-        <div className="mx-auto max-w-3xl text-center">
-          <HandCoins aria-hidden="true" className="mx-auto size-8 text-apricot" />
-          <p className="mt-4 font-display text-2xl">
+      {/* The page ends on an ask, so it is given a surface of its own rather
+          than a stray icon on the same chalk as everything above it. */}
+      <Section band="top" bloom tone="ink" size="lg" ornament>
+        <div className="reveal relative mx-auto max-w-2xl px-6 py-10 text-center sm:px-12">
+          <CornerMarks tone="accent" />
+          <Medallion className="mx-auto">
+            <HandCoins aria-hidden="true" className="size-6" />
+          </Medallion>
+          <p className="mt-6 font-display text-3xl leading-tight text-white sm:text-4xl">
             Give once, or give every month.
           </p>
-          <div className="mt-6 flex flex-wrap justify-center gap-3">
+          <p className="mt-4 text-base leading-relaxed text-chalk/80">
+            A standing monthly amount is what lets the fund answer a case in the week
+            it arrives, rather than waiting for an appeal to close.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Button asChild variant="donate" size="lg">
               <Link href="/donate">Donate</Link>
+            </Button>
+            <Button asChild variant="ghostLight" size="lg">
+              <Link href="/empowerment/join">Join the fund</Link>
             </Button>
           </div>
         </div>
