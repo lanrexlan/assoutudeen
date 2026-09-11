@@ -2,6 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import {
   SITE_HEADER,
   SITE_OVERRIDE_HEADER,
+  PATH_HEADER,
   SITE_QUERY_PARAM,
   isSiteKey,
   resolveSite,
@@ -53,6 +54,9 @@ export function middleware(request: NextRequest) {
 
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set(SITE_HEADER, site);
+  /* The address-bar path, so generateMetadata can emit a correct canonical.
+     Taken before the rewrite, because the rewritten prefix is internal. */
+  requestHeaders.set(PATH_HEADER, nextUrl.pathname);
   if (isSiteKey(override)) requestHeaders.set(SITE_OVERRIDE_HEADER, "1");
 
   // The foundation owns the root, so nothing needs rewriting.

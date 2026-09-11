@@ -4,11 +4,12 @@ import { SiteFooter } from "@/components/site/site-footer";
 import { WhatsAppFloat } from "@/components/ui/whatsapp-float";
 import { DonationReminder } from "@/components/site/donation-reminder";
 import { fontVariables } from "@/lib/fonts";
+import { FoundationSchema } from "@/components/site/structured-data";
 import { siteMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/sites";
 import "../globals.css";
 
-export const metadata: Metadata = siteMetadata("foundation");
+export const generateMetadata = (): Promise<Metadata> => siteMetadata("foundation");
 
 export const viewport: Viewport = {
   themeColor: "#6B2233",
@@ -29,6 +30,7 @@ export default function FoundationLayout({
   return (
     <html lang="en-NG" data-site="foundation">
       <body className={`${fontVariables} flex min-h-dvh flex-col bg-chalk antialiased`}>
+        <FoundationSchema />
         <FoundationHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter site="foundation" />

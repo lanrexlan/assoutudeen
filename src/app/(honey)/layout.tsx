@@ -3,11 +3,12 @@ import { HoneyHeader } from "@/components/site/honey-header";
 import { SiteFooter } from "@/components/site/site-footer";
 import { WhatsAppFloat } from "@/components/ui/whatsapp-float";
 import { fontVariables } from "@/lib/fonts";
+import { HoneySchema } from "@/components/site/structured-data";
 import { siteMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/sites";
 import "../globals.css";
 
-export const metadata: Metadata = siteMetadata("honey");
+export const generateMetadata = (): Promise<Metadata> => siteMetadata("honey");
 
 export const viewport: Viewport = {
   themeColor: "#E0A06A",
@@ -25,6 +26,7 @@ export default function HoneyLayout({
   return (
     <html lang="en-NG" data-site="honey">
       <body className={`${fontVariables} flex min-h-dvh flex-col bg-chalk antialiased`}>
+        <HoneySchema />
         <HoneyHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter site="honey" />
