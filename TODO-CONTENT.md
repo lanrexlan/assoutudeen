@@ -63,9 +63,10 @@ nobody is reading.
 1. **The empowerment gathering: monthly or quarterly?** Your note said both. The
    site currently says *last Saturday of the quarter*, Saturday mornings marked
    "proposed". One line to change either way.
-2. **The intake round dates.** `CURRENT_ROUND` in `src/lib/intake.ts` is set to
-   1–30 September 2026, decisions by 31 October. Set the real dates, or set it to
-   `null` and the page says requests are closed and points to WhatsApp.
+2. **The intake round dates** are now yours to set, in the admin panel under
+   Finance → "Requests: open or closed". No deployment needed; it takes effect on
+   Save. September 2026 (deadline 30 September, decisions by 31 October) is
+   currently open. See `docs/opening-and-closing-requests.md`.
 3. **Photographs.** Every image slot is original vector artwork, framed exactly as
    a photograph will be. Worth having: the founder's portrait, a teaching or
    distribution photograph for the hero, the book cover, and apiary shots for the

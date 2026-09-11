@@ -7,12 +7,17 @@
  * every applicant knows where they stand, and nobody waits indefinitely on a
  * form that was never going to be read that month.
  *
- * To open a round: set `current` with its dates and save. The form, the page
- * and the banner all follow from this one object.
+ * The round is set in the admin panel, under Finance → "Requests: open or
+ * closed". It used to be a constant here, which meant opening a round needed a
+ * developer and a deployment; a round that opens on the first of the month
+ * cannot wait for either.
+ *
+ * FALLBACK_ROUND below is only reached when the CMS cannot be read at all. It
+ * is a safety net for an outage, not the place to configure anything.
  */
 
 export type IntakeRound = {
-  /** Shown as the round's name, e.g. "Q1 2027". */
+  /** Shown as the round's name, e.g. "September 2026". */
   label: string;
   /** ISO date the form opens (Africa/Lagos). */
   opensOn: string;
@@ -25,14 +30,15 @@ export type IntakeRound = {
 };
 
 /**
- * The round currently published.
+ * Used only if the CMS is unreachable.
  *
- * Set to `null` when no round is scheduled — the page then says so plainly and
- * points people to WhatsApp for emergencies, rather than showing a form that
- * goes nowhere.
+ * It errs towards OPEN rather than closed: a database outage should not
+ * silently stop someone asking the foundation for help. The worst case is a
+ * request arriving slightly outside a window, which a person can sort out; the
+ * alternative is a family being told "closed" by a bug.
  */
-export const CURRENT_ROUND: IntakeRound | null = {
-  label: "The next round",
+const FALLBACK_ROUND: IntakeRound = {
+  label: "September 2026",
   opensOn: "2026-09-01",
   closesOn: "2026-09-30",
   decisionsBy: "2026-10-31",
@@ -63,11 +69,52 @@ export const formatIntakeDate = (iso: string): string =>
   }).format(new Date(`${iso}T12:00:00+01:00`));
 
 /**
- * Where the current round stands right now. Dates are compared in Africa/Lagos,
- * because "the 30th" means the 30th in Ede, not in UTC.
+ * Payload stores dates as full timestamps; the round only ever means a day in
+ * Ede. Take the Lagos calendar date, so a value saved at 23:30 UTC does not
+ * come back as the day before.
  */
-export function getIntakeState(now: Date = new Date()): IntakeState {
-  const round = CURRENT_ROUND;
+const toLagosDate = (value: unknown): string | null => {
+  if (!value) return null;
+  const date = new Date(value as string);
+  if (Number.isNaN(date.getTime())) return null;
+  return new Intl.DateTimeFormat("en-CA", { timeZone: LAGOS }).format(date);
+};
+
+/** The round as configured in the admin panel, or null when none is running. */
+export async function getCurrentRound(): Promise<IntakeRound | null> {
+  try {
+    /* Imported here rather than at the top of the file: the date logic below
+       is pure, and pulling the whole Payload config in to test it is both slow
+       and noisy. */
+    const { getPayloadClient } = await import("@/lib/payload");
+    const payload = await getPayloadClient();
+    const global = await payload.findGlobal({ slug: "intake-round" });
+
+    if (!global?.accepting) return null;
+
+    const opensOn = toLagosDate(global.opensOn);
+    const closesOn = toLagosDate(global.closesOn);
+    if (!opensOn || !closesOn) return null;
+
+    return {
+      label: global.label || "This round",
+      opensOn,
+      closesOn,
+      /* Without a stated decision date, applicants are left waiting with no
+         idea how long for. Fall back to the deadline rather than omitting it. */
+      decisionsBy: toLagosDate(global.decisionsBy) ?? closesOn,
+      places: global.places ?? undefined,
+    };
+  } catch {
+    return FALLBACK_ROUND;
+  }
+}
+
+/** Compute the state of a round at a given moment. Pure — used by the tests. */
+export function stateOf(
+  round: IntakeRound | null,
+  now: Date = new Date(),
+): IntakeState {
   if (!round) return { status: "none", round: null, daysLeft: null };
 
   const opens = startOfDayLagos(round.opensOn);
@@ -83,6 +130,15 @@ export function getIntakeState(now: Date = new Date()): IntakeState {
   return { status: "open", round, daysLeft };
 }
 
+/**
+ * Where the current round stands right now. Dates are compared in Africa/Lagos,
+ * because "the 30th" means the 30th in Ede, not in UTC.
+ */
+export async function getIntakeState(now: Date = new Date()): Promise<IntakeState> {
+  return stateOf(await getCurrentRound(), now);
+}
+
 /** True when the form should accept submissions. */
-export const isIntakeOpen = (now?: Date): boolean =>
-  getIntakeState(now).status === "open";
+export async function isIntakeOpen(now?: Date): Promise<boolean> {
+  return (await getIntakeState(now)).status === "open";
+}

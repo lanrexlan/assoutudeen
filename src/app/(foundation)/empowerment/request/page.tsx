@@ -20,8 +20,8 @@ const whatsappHref = `https://wa.me/${CONTACT.phoneE164}?text=${encodeURICompone
   "As-salaamu alaykum. I would like to ask the foundation for assistance.",
 )}`;
 
-export default function RequestAssistancePage() {
-  const { status, round } = getIntakeState();
+export default async function RequestAssistancePage() {
+  const { status, round } = await getIntakeState();
   const open = status === "open";
 
   return (
