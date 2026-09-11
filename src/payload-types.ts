@@ -125,9 +125,11 @@ export interface Config {
   fallbackLocale: null;
   globals: {
     'intake-round': IntakeRound;
+    notifications: Notification;
   };
   globalsSelect: {
     'intake-round': IntakeRoundSelect<false> | IntakeRoundSelect<true>;
+    notifications: NotificationsSelect<false> | NotificationsSelect<true>;
   };
   locale: null;
   widgets: {
@@ -1807,6 +1809,21 @@ export interface IntakeRound {
   createdAt?: string | null;
 }
 /**
+ * Contact messages, pledges and assistance requests always send an email. Newsletter signups are optional.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "notifications".
+ */
+export interface Notification {
+  id: number;
+  /**
+   * Turn this off if signups become noise after launch. Subscribers are still recorded either way — the full list is under Newsletter subscribers, and nothing is lost by not being emailed.
+   */
+  newsletterSignups?: boolean | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "intake-round_select".
  */
@@ -1817,6 +1834,16 @@ export interface IntakeRoundSelect<T extends boolean = true> {
   closesOn?: T;
   decisionsBy?: T;
   places?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "notifications_select".
+ */
+export interface NotificationsSelect<T extends boolean = true> {
+  newsletterSignups?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

@@ -75,3 +75,19 @@ something a person can sort out on the phone.
 data, which is a special category under the NDPA 2023 — see the privacy policy
 for what the foundation has committed to. Nobody is ever named publicly without
 separate, written consent recorded against their request.
+
+---
+
+# Turning off newsletter emails
+
+Under **Settings → Email notifications** there is one switch:
+
+> Email me when someone subscribes to the newsletter
+
+It is **on**. Turn it off once signups start arriving in numbers after launch
+and the notifications become noise. Subscribers are still recorded either way —
+the list is under **Newsletter subscribers**, and nothing is lost by not being
+emailed about each one.
+
+Contact messages, pledges and assistance requests always send an email and
+cannot be turned off. Each of those is a person waiting for a reply.
