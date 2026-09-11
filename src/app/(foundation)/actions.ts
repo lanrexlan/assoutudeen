@@ -11,6 +11,7 @@ import {
 import { FALLBACK_INBOX, sendMailQuietly } from "@/lib/email";
 import { CONTACT } from "@/lib/sites";
 import { formatNaira } from "@/payload/fields/money";
+import { newsletterNotificationsOn } from "@/lib/notifications";
 
 /**
  * Server Actions for the foundation's two public forms.
@@ -181,28 +182,34 @@ export async function subscribeToNewsletter(
   }
 
   /* Short by design. A subscriber list lives in the admin panel; this is only
-     so that growth is visible without anyone remembering to go and look. */
-  await sendMailQuietly({
-    to: FALLBACK_INBOX,
-    replyTo: email,
-    subject: existing.docs[0]
-      ? `Newsletter: ${email} has re-subscribed`
-      : `Newsletter: ${email} subscribed`,
-    text: [
-      existing.docs[0]
-        ? `Someone who had unsubscribed has signed up again.`
-        : `A new subscriber signed up through the website.`,
-      ``,
-      `Email: ${email}`,
-      data.name ? `Name:  ${data.name}` : null,
-      data.source ? `Page:  ${data.source}` : null,
-      ``,
-      `Consent was recorded at ${now}.`,
-      `The full list is in the admin panel under Newsletter subscribers.`,
-    ]
-      .filter((line) => line !== null)
-      .join("\n"),
-  });
+     so that growth is visible without anyone remembering to go and look.
+
+     Optional, unlike the other three: a signup is not a person waiting for a
+     reply, and after launch these arrive in numbers. Settings → "Email
+     notifications" turns it off without stopping anyone subscribing. */
+  if (await newsletterNotificationsOn()) {
+    await sendMailQuietly({
+      to: FALLBACK_INBOX,
+      replyTo: email,
+      subject: existing.docs[0]
+        ? `Newsletter: ${email} has re-subscribed`
+        : `Newsletter: ${email} subscribed`,
+      text: [
+        existing.docs[0]
+          ? `Someone who had unsubscribed has signed up again.`
+          : `A new subscriber signed up through the website.`,
+        ``,
+        `Email: ${email}`,
+        data.name ? `Name:  ${data.name}` : null,
+        data.source ? `Page:  ${data.source}` : null,
+        ``,
+        `Consent was recorded at ${now}.`,
+        `The full list is in the admin panel under Newsletter subscribers.`,
+      ]
+        .filter((line) => line !== null)
+        .join("\n"),
+    });
+  }
 
   return { ok: true, message: "Thank you — you are subscribed. You can unsubscribe any time." };
 }
