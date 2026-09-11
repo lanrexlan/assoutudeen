@@ -15,8 +15,8 @@ const whatsappHref = `https://wa.me/${CONTACT.phoneE164}?text=${encodeURICompone
  * shut the form is not rendered at all — a form that silently discards what
  * someone typed at their lowest moment would be worse than no form.
  */
-export function IntakeNotice({ className }: { className?: string }) {
-  const { status, round, daysLeft } = getIntakeState();
+export async function IntakeNotice({ className }: { className?: string }) {
+  const { status, round, daysLeft } = await getIntakeState();
 
   if (status === "none" || !round) {
     return (

@@ -123,8 +123,12 @@ export interface Config {
     defaultIDType: number;
   };
   fallbackLocale: null;
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    'intake-round': IntakeRound;
+  };
+  globalsSelect: {
+    'intake-round': IntakeRoundSelect<false> | IntakeRoundSelect<true>;
+  };
   locale: null;
   widgets: {
     collections: CollectionsWidget;
@@ -1766,6 +1770,56 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * Controls the Request Assistance form. Turn 'Accepting requests' off and the page says requests are closed and points people to WhatsApp instead.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "intake-round".
+ */
+export interface IntakeRound {
+  id: number;
+  /**
+   * Off means no round is running: the page says so plainly and gives the WhatsApp number for emergencies. The dates below are ignored while this is off.
+   */
+  accepting?: boolean | null;
+  /**
+   * Shown to applicants, e.g. 'September 2026' or 'Q4 2026'. Avoid 'the next round' while a round is actually open — it reads as though it has not started.
+   */
+  label?: string | null;
+  /**
+   * First day requests are accepted.
+   */
+  opensOn?: string | null;
+  /**
+   * Last day, inclusive. The form closes at midnight in Ede.
+   */
+  closesOn?: string | null;
+  /**
+   * Published to applicants, so nobody is left wondering. Keep it.
+   */
+  decisionsBy?: string | null;
+  /**
+   * Roughly how many requests this round can carry. Left blank, no number is published.
+   */
+  places?: number | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "intake-round_select".
+ */
+export interface IntakeRoundSelect<T extends boolean = true> {
+  accepting?: T;
+  label?: T;
+  opensOn?: T;
+  closesOn?: T;
+  decisionsBy?: T;
+  places?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

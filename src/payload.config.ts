@@ -30,6 +30,8 @@ import { Products } from "@/payload/collections/Products";
 import { Ambassadors } from "@/payload/collections/Ambassadors";
 import { Orders } from "@/payload/collections/Orders";
 
+import { IntakeRound } from "@/payload/globals/IntakeRound";
+
 import { cloudinaryAdapter, cloudinaryConfigured } from "@/payload/storage/cloudinary";
 
 /**
@@ -101,6 +103,10 @@ export default buildConfig({
     ContactMessages,
     Users,
   ],
+
+  /* One setting the foundation must be able to change without a deployment:
+     whether it is taking requests for assistance at all. */
+  globals: [IntakeRound],
 
   editor: lexicalEditor(),
 

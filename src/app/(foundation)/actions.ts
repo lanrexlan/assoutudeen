@@ -274,7 +274,7 @@ export async function requestAssistance(
   // Requests are taken in rounds. The form is not rendered when the round is
   // shut, but the action checks too — a direct POST must not slip through and
   // land in a queue nobody is reading.
-  if (!isIntakeOpen()) {
+  if (!(await isIntakeOpen())) {
     return {
       ok: false,
       message:
