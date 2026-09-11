@@ -32,7 +32,7 @@ export default function ShopPage() {
       />
 
       {/* --- The book ------------------------------------------------------ */}
-      <Section tone="chalk" size="lg">
+      <Section band="top" tone="chalk" size="lg">
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1fr] lg:items-center">
           <figure className="reveal mx-auto w-full max-w-md">
             {/* 5:4, to match the cover artwork rather than letterbox it. */}
@@ -103,7 +103,7 @@ export default function ShopPage() {
       </Section>
 
       {/* --- Contents preview ---------------------------------------------- */}
-      <Section tone="ink" size="lg" ornament>
+      <Section band="top" bloom tone="ink" size="lg" ornament>
         <SectionHeading
           tone="dark"
           kicker="Contents"
@@ -127,7 +127,7 @@ export default function ShopPage() {
       </Section>
 
       {/* --- Everything else you can buy or join ---------------------------- */}
-      <Section tone="white" size="lg">
+      <Section band="top" tone="white" size="lg">
         <SectionHeading
           kicker="Also from Assoutudeen"
           title="Honey, classes, and a question you can just ask"

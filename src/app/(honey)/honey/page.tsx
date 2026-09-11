@@ -56,7 +56,7 @@ export default async function HoneyHomePage() {
         </Container>
       </section>
 
-      <Section tone="chalk" size="lg" ornament>
+      <Section band="top" tone="chalk" size="lg" ornament>
         <SectionHeading
           kicker="Why buy from us"
           title="Honey you can actually trace"
@@ -103,7 +103,7 @@ export default async function HoneyHomePage() {
       </Section>
 
       {/* --- What it costs -------------------------------------------------- */}
-      <Section tone="white" size="lg">
+      <Section band="top" tone="white" size="lg">
         <SectionHeading
           kicker="What it costs"
           title="Published prices, by the litre"
@@ -124,7 +124,7 @@ export default async function HoneyHomePage() {
         </div>
       </Section>
 
-      <Section tone="chalk" size="md">
+      <Section band="top" tone="chalk" size="md">
         <Disclaimer className="mx-auto max-w-3xl">
           Assoutudeen Honey Enterprise sells honey as a food product. Nothing on this
           site claims that honey treats, prevents or cures any disease.

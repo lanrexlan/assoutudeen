@@ -3,7 +3,8 @@ import Link from "next/link";
 import { ArabicQuote } from "@/components/ui/arabic-quote";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { PageHeader, Prose, ProseHeading } from "@/components/ui/prose";
-import { Section } from "@/components/ui/section";
+import { Section, SectionHeading } from "@/components/ui/section";
+import { LanternRule, SealNumber } from "@/components/ui/flourish";
 import { CONTACT } from "@/lib/sites";
 import { REGISTRATION } from "@/lib/organisation";
 import { VERSES } from "@/lib/verses";
@@ -13,6 +14,26 @@ export const metadata: Metadata = {
   description:
     "Assoutudeen Prophetic Medicine Foundation — an Islamic charity in Ede, Osun State, working in prophetic medicine, empowerment and dawah.",
 };
+
+/** The four commitments, each one a cost the foundation accepts. */
+const RULES = [
+  {
+    title: "We publish what we raise",
+    body: "Every year, by category and to the naira. The accounts are audited and filed with the Corporate Affairs Commission, and the totals we publish are the totals we filed.",
+  },
+  {
+    title: "We name nobody without consent",
+    body: "People come to us at their lowest. Impact is reported by category — \u201cfour children in secondary school\u201d, \u201ca revert sister\u201d — unless someone has given separate written permission to be named.",
+  },
+  {
+    title: "We never tell anyone to stop treatment",
+    body: "Prophetic medicine sits alongside the care of a qualified doctor, never in place of it.",
+  },
+  {
+    title: "Zakat is kept separate",
+    body: "It has its own ledger and its own eligibility rules, and it is never spent on running costs.",
+  },
+];
 
 export default function AboutPage() {
   return (
@@ -24,7 +45,7 @@ export default function AboutPage() {
           standfirst="An Islamic charity registered in Ede, Osun State, working wherever a Muslim needs it — where healing by the Sunnah meets practical help for people in difficulty."
         />
 
-      <Section>
+      <Section tone="white" band="top">
         <Prose>
           <ProseHeading>What we do</ProseHeading>
           <p>
@@ -51,36 +72,49 @@ export default function AboutPage() {
             the naira, and remedies published with their chain of evidence attached.
           </p>
 
-          <ProseHeading>How we work</ProseHeading>
-          <ul>
-            <li>
-              <strong>We publish what we raise.</strong> Every year, by category and to
-              the naira. The accounts are audited and filed with the Corporate Affairs
-              Commission, and the totals we publish are the totals we filed.
-            </li>
-            <li>
-              <strong>We name nobody without consent.</strong> People come to us at their
-              lowest. Impact is reported by category — &ldquo;four children in secondary
-              school&rdquo;, &ldquo;a revert sister&rdquo; — unless someone has given
-              separate written permission to be named.
-            </li>
-            <li>
-              <strong>We do not tell anyone to stop their treatment.</strong> Prophetic
-              medicine sits alongside the care of a qualified doctor, never in place
-              of it.
-            </li>
-            <li>
-              <strong>Zakat is kept separate.</strong> It has its own ledger and its own
-              eligibility rules, and it is never spent on running costs.
-            </li>
-          </ul>
-
-          <ProseHeading>Our values, and where they come from</ProseHeading>
         </Prose>
+      </Section>
 
-        <ArabicQuote className="mt-4 max-w-2xl" {...VERSES.baqarah177} />
+      {/* --- The four rules, given the weight they deserve ------------------ */}
+      <Section tone="chalk" size="lg" band="top" ornament>
+        <SectionHeading
+          kicker="How we work"
+          title="Four rules we do not bend"
+          standfirst="Each of these is a decision that costs us something. That is rather the point of writing them down."
+        />
 
-        <Prose className="mt-8">
+        <ol className="mx-auto mt-12 grid max-w-4xl gap-5 sm:grid-cols-2">
+          {RULES.map((rule, index) => (
+            <li
+              key={rule.title}
+              className="reveal flex gap-4 rounded-lg border border-chalk-dark bg-white p-6 shadow-sm"
+            >
+              <SealNumber value={index + 1} />
+              <div>
+                <p className="font-display text-lg text-charcoal">{rule.title}</p>
+                <p className="mt-1.5 text-sm leading-relaxed text-charcoal-muted">
+                  {rule.body}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </Section>
+
+      {/* --- The verse the values come from, on the deep ground ------------- */}
+      <Section tone="ink" size="lg" band="top" bloom ornament>
+        <SectionHeading
+          tone="dark"
+          kicker="Our values"
+          title="Where they come from"
+          standfirst="Not a mission statement. The passage the foundation was built to answer."
+        />
+        <ArabicQuote className="mx-auto mt-10 max-w-2xl" tone="dark" {...VERSES.baqarah177} />
+      </Section>
+
+      <Section tone="white" band="top">
+        <LanternRule className="mb-10" />
+        <Prose>
           <ProseHeading>Founded</ProseHeading>
           <p>
             The foundation was incorporated on{" "}
@@ -99,10 +133,10 @@ export default function AboutPage() {
         </Prose>
       </Section>
 
-      <Section tone="white">
-        <h2 className="font-display text-2xl">More about the foundation</h2>
-        <div className="mt-6 grid gap-4 sm:grid-cols-3">
-          <Card>
+      <Section tone="chalk" size="lg" band="top">
+        <SectionHeading kicker="Go deeper" title="More about the foundation" />
+        <div className="mt-12 grid gap-6 sm:grid-cols-3">
+          <Card variant="seal">
             <CardTitle>
               <Link href="/about/founder" className="underline-offset-4 hover:underline">
                 The founder
@@ -113,7 +147,7 @@ export default function AboutPage() {
               has studied, and what he has written.
             </CardDescription>
           </Card>
-          <Card>
+          <Card variant="seal">
             <CardTitle>
               <Link href="/about/structure" className="underline-offset-4 hover:underline">
                 Our structure
@@ -124,7 +158,7 @@ export default function AboutPage() {
               one another.
             </CardDescription>
           </Card>
-          <Card>
+          <Card variant="seal">
             <CardTitle>
               <Link
                 href="/about/accountability"

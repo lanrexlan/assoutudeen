@@ -58,7 +58,7 @@ export default async function EmpowermentPage() {
         </div>
       </PageHeader>
 
-      <Section tone="chalk" size="lg">
+      <Section band="top" tone="chalk" size="lg">
         <EventCard />
       </Section>
 

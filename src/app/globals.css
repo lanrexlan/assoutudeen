@@ -235,6 +235,44 @@
     --c: 0.625rem;
   }
 
+  /* --- Zellij band --------------------------------------------------------
+     A tessellated strip on the seam between two sections. It fades out
+     vertically, so it reads as a boundary the page crosses rather than as a
+     pattern stuck to the top of a box. 40px tall and hairline-drawn: at a
+     glance it is texture, and close up it is geometry.
+  ------------------------------------------------------------------------ */
+  .zellij-band {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 40px;
+    pointer-events: none;
+    background-image: var(--zellij-image);
+    background-size: 80px 40px;
+    background-repeat: repeat-x;
+    /* One elliptical mask does both fades: away at the sides, and downward
+       off the seam. Two linear masks intersected would express it more
+       directly, but mask-composite is not dependable across the phones this
+       site is built for — and a band that fails to a hard-edged stripe is
+       worse than one drawn a little more simply. */
+    -webkit-mask-image: radial-gradient(
+      ellipse 62% 150% at 50% 0%,
+      #000 0%,
+      #000 35%,
+      transparent 78%
+    );
+    mask-image: radial-gradient(
+      ellipse 62% 150% at 50% 0%,
+      #000 0%,
+      #000 35%,
+      transparent 78%
+    );
+  }
+  /* A band on a bottom edge fades the other way. */
+  .zellij-band-flip {
+    transform: scaleY(-1);
+  }
+
   /* Section divider: a hairline with the star at its centre. */
   .rule-mark {
     display: flex;

@@ -1,4 +1,6 @@
+import { Mail, MessageCircle, Phone } from "lucide-react";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
+import { Medallion } from "@/components/ui/ornament";
 import { CONTACT } from "@/lib/sites";
 
 /**
@@ -22,8 +24,11 @@ export function ContactChannels({
     : `mailto:${CONTACT.email}`;
 
   return (
-    <div className="grid gap-4 sm:grid-cols-3">
-      <Card>
+    <div className="grid gap-5 sm:grid-cols-3">
+      <Card variant="seal">
+        <Medallion className="mx-auto">
+          <Phone aria-hidden="true" className="size-5" />
+        </Medallion>
         <CardTitle>Call</CardTitle>
         <CardDescription>Tap to dial from your phone.</CardDescription>
         <a
@@ -34,7 +39,10 @@ export function ContactChannels({
         </a>
       </Card>
 
-      <Card>
+      <Card variant="seal">
+        <Medallion className="mx-auto">
+          <MessageCircle aria-hidden="true" className="size-5" />
+        </Medallion>
         <CardTitle>WhatsApp</CardTitle>
         <CardDescription>
           The fastest way to reach us, and how most people do.
@@ -49,7 +57,10 @@ export function ContactChannels({
         </a>
       </Card>
 
-      <Card>
+      <Card variant="seal">
+        <Medallion className="mx-auto">
+          <Mail aria-hidden="true" className="size-5" />
+        </Medallion>
         <CardTitle>Email</CardTitle>
         <CardDescription>For anything that needs a written record.</CardDescription>
         <a

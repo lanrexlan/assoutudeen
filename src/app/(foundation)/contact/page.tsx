@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
+import { ContactChannels } from "@/components/site/contact-channels";
 import { PageHeader } from "@/components/ui/prose";
 import { Section } from "@/components/ui/section";
 import { FACEBOOK_PAGE } from "@/lib/lectures";
@@ -13,9 +14,8 @@ export const metadata: Metadata = {
     "Call, WhatsApp or email the Assoutudeen Prophetic Medicine Foundation in Ede, Osun State.",
 };
 
-const whatsappHref = `https://wa.me/${CONTACT.phoneE164}?text=${encodeURIComponent(
-  "As-salaamu alaykum. I would like to speak to someone at the foundation.",
-)}`;
+const WHATSAPP_MESSAGE =
+  "As-salaamu alaykum. I would like to speak to someone at the foundation.";
 
 export default function ContactPage() {
   return (
@@ -27,45 +27,11 @@ export default function ContactPage() {
           standfirst="WhatsApp reaches us fastest. The form below routes your message to the right person."
         />
 
-      <Section>
-        <div className="grid gap-4 sm:grid-cols-3">
-          <Card>
-            <CardTitle>Call</CardTitle>
-            <CardDescription>Tap to dial from your phone.</CardDescription>
-            <a
-              href={`tel:+${CONTACT.phoneE164}`}
-              className="flex min-h-11 items-center text-lg font-semibold text-primary-ink underline underline-offset-4"
-            >
-              {CONTACT.phoneDisplay}
-            </a>
-          </Card>
-
-          <Card>
-            <CardTitle>WhatsApp</CardTitle>
-            <CardDescription>
-              The fastest way to reach us, and how most people do.
-            </CardDescription>
-            <a
-              href={whatsappHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex min-h-11 items-center text-lg font-semibold text-primary-ink underline underline-offset-4"
-            >
-              Start a chat
-            </a>
-          </Card>
-
-          <Card>
-            <CardTitle>Email</CardTitle>
-            <CardDescription>For anything that needs a written record.</CardDescription>
-            <a
-              href={`mailto:${CONTACT.email}`}
-              className="flex min-h-11 items-center break-all text-lg font-semibold text-primary-ink underline underline-offset-4"
-            >
-              {CONTACT.email}
-            </a>
-          </Card>
-        </div>
+      <Section band="top" size="lg">
+        {/* The same three channels the other two sites show. It was copied out
+            here, so the foundation's own contact page quietly missed every
+            improvement made to the shared block. */}
+        <ContactChannels whatsappMessage={WHATSAPP_MESSAGE} />
 
         <div className="mt-10 grid gap-8 lg:grid-cols-2">
           <div>
