@@ -9,6 +9,7 @@ import { SealFrame, Medallion } from "@/components/ui/ornament";
 import { RemedyScene } from "@/components/ui/illustration";
 import { PageHeader, Prose, ProseHeading } from "@/components/ui/prose";
 import { Section, SectionHeading } from "@/components/ui/section";
+import { LanternRule, SealNumber } from "@/components/ui/flourish";
 import {
   TestimonyDisclaimer,
   TestimonyWall,
@@ -33,12 +34,17 @@ export default function PropheticMedicinePage() {
       />
 
       {/* --- The two verses that frame it --------------------------------- */}
-      <Section band="top" tone="chalk" size="lg">
-        <div className="grid gap-6 lg:grid-cols-2">
+      <Section band="top" tone="chalk" size="lg" ornament>
+        <SectionHeading
+          kicker="Where it begins"
+          title="Two verses this work rests on"
+          standfirst="Everything the foundation teaches about healing is downstream of these. They are quoted here first so nothing that follows has to be taken on trust."
+        />
+        <div className="mt-12 grid gap-6 lg:grid-cols-2">
           <ArabicQuote className="reveal" {...VERSES.shuara80} />
           <ArabicQuote className="reveal" {...VERSES.isra82} />
         </div>
-        <p className="mt-6 text-center text-xs text-charcoal-muted">
+        <p className="mt-8 text-center text-xs text-charcoal-muted">
           {VERSE_TEXT_SOURCE}
         </p>
       </Section>
@@ -106,15 +112,15 @@ export default function PropheticMedicinePage() {
           {BOOK.chapterStructure.map((item, index) => (
             <li
               key={item}
-              className="flex gap-4 rounded-lg border border-white/12 bg-ink-raised p-5"
+              className="flex items-center gap-4 rounded-lg border border-white/12 bg-ink-raised p-5"
             >
-              <span className="font-display text-sm text-apricot">
-                {String(index + 1).padStart(2, "0")}
-              </span>
+              <SealNumber tone="dark" value={index + 1} />
               <span className="text-sm leading-relaxed text-chalk/80">{item}</span>
             </li>
           ))}
         </ol>
+
+        <LanternRule tone="dark" className="mt-12" />
 
         <p className="mx-auto mt-10 max-w-2xl text-center text-sm text-chalk/60">
           Ten to fifteen chapters are published free as the Remedies Library. The rest
