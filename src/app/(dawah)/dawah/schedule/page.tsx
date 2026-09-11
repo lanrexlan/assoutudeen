@@ -109,7 +109,7 @@ export default async function SchedulePage() {
         standfirst="Three evenings, seven classes, one gathering every quarter. Free, open to everyone, and recorded."
       />
 
-      <Section tone="chalk" size="lg" ornament>
+      <Section band="top" tone="chalk" size="lg" ornament>
         <div className="grid gap-8 lg:grid-cols-3">
           {DAYS.map((day) => (
             <DayColumn
@@ -123,7 +123,7 @@ export default async function SchedulePage() {
       </Section>
 
       {/* --- How the timings work ------------------------------------------ */}
-      <Section tone="white" size="lg">
+      <Section band="top" tone="white" size="lg">
         <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-start">
           <Prose>
             <ProseHeading>Why there is no clock time</ProseHeading>
@@ -188,7 +188,7 @@ export default async function SchedulePage() {
         </div>
       </Section>
 
-      <Section tone="ink" size="md" ornament>
+      <Section band="top" bloom tone="ink" size="md" ornament>
         <SectionHeading
           tone="dark"
           kicker="Missed a week"

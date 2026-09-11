@@ -71,8 +71,11 @@ export function OrnamentField({
   className?: string;
   tone?: "accent" | "light" | "dark";
 }) {
+  /* Raw hex, NOT pre-encoded: the whole SVG goes through encodeURIComponent
+     below, so a "%23" here would be encoded again into "%2523", giving an
+     invalid stroke colour and a tile that draws nothing at all. */
   const stroke =
-    tone === "accent" ? "%23E0A06A" : tone === "light" ? "%23FFFFFF" : "%236B2233";
+    tone === "accent" ? "#E0A06A" : tone === "light" ? "#FFFFFF" : "#6B2233";
   const opacity = tone === "dark" ? 0.16 : 0.22;
 
   return (

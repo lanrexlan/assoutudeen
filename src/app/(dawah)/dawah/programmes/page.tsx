@@ -31,7 +31,7 @@ export default async function ProgrammesPage() {
         standfirst={`Every one of them is free, open to anyone, and recorded. ${TEACHING_WINDOW} on Friday, Saturday and Sunday evenings.`}
       />
 
-      <Section tone="chalk" size="lg" ornament>
+      <Section band="top" tone="chalk" size="lg" ornament>
         <div className="grid gap-6 md:grid-cols-2">
           {PROGRAMMES.map((programme) => (
             <Card key={programme.slug} className="reveal">
@@ -74,7 +74,7 @@ export default async function ProgrammesPage() {
       </Section>
 
       {/* --- The gathering that is not a class ----------------------------- */}
-      <Section tone="ink" size="lg" ornament>
+      <Section band="top" bloom tone="ink" size="lg" ornament>
         <SectionHeading
           tone="dark"
           kicker="Not a class"
@@ -95,7 +95,7 @@ export default async function ProgrammesPage() {
         </div>
       </Section>
 
-      <Section tone="white" size="md">
+      <Section band="top" tone="white" size="md">
         <div className="mx-auto flex max-w-2xl flex-col items-center gap-5 text-center">
           <h2 className="font-display text-2xl">Coming for the first time?</h2>
           <p className="text-charcoal-muted">

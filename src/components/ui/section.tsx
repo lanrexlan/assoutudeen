@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import { Container } from "@/components/ui/container";
 import { Kicker, OrnamentField, Starfield } from "@/components/ui/ornament";
+import { Bloom, ZellijBand } from "@/components/ui/flourish";
 
 type SectionProps = React.ComponentProps<"section"> & {
   /**
@@ -15,6 +16,14 @@ type SectionProps = React.ComponentProps<"section"> & {
   contained?: boolean;
   /** Add the contained geometric ornament behind the content. */
   ornament?: boolean;
+  /**
+   * A tessellated band on the section's own edge, marking the seam with the
+   * section before or after it. This is what stops a page reading as one
+   * undifferentiated column.
+   */
+  band?: "top" | "bottom" | "both";
+  /** Soft radial bloom behind the heading. Dark tones only. */
+  bloom?: boolean;
   size?: "sm" | "md" | "lg";
 };
 
@@ -37,6 +46,8 @@ export function Section({
   width = "default",
   contained = true,
   ornament = false,
+  band,
+  bloom = false,
   size = "md",
   children,
   ...props
@@ -53,6 +64,13 @@ export function Section({
           <OrnamentField tone={dark ? "accent" : "dark"} />
           {tone === "ink" ? <Starfield /> : null}
         </>
+      ) : null}
+      {bloom && dark ? <Bloom tone={tone === "primary" ? "primary" : "accent"} /> : null}
+      {band === "top" || band === "both" ? (
+        <ZellijBand tone={dark ? "accent" : "light"} edge="top" />
+      ) : null}
+      {band === "bottom" || band === "both" ? (
+        <ZellijBand tone={dark ? "accent" : "light"} edge="bottom" />
       ) : null}
       <div className="relative">
         {contained ? <Container width={width}>{children}</Container> : children}

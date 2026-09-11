@@ -33,7 +33,7 @@ export default function PropheticMedicinePage() {
       />
 
       {/* --- The two verses that frame it --------------------------------- */}
-      <Section tone="chalk" size="lg">
+      <Section band="top" tone="chalk" size="lg">
         <div className="grid gap-6 lg:grid-cols-2">
           <ArabicQuote className="reveal" {...VERSES.shuara80} />
           <ArabicQuote className="reveal" {...VERSES.isra82} />
@@ -44,7 +44,7 @@ export default function PropheticMedicinePage() {
       </Section>
 
       {/* --- What it is, and is not --------------------------------------- */}
-      <Section tone="white" size="lg">
+      <Section band="top" tone="white" size="lg">
         <div className="grid gap-12 lg:grid-cols-[1fr_0.8fr] lg:items-center">
           <div>
             <SectionHeading
@@ -94,7 +94,7 @@ export default function PropheticMedicinePage() {
       </Section>
 
       {/* --- How a remedy page is built ----------------------------------- */}
-      <Section tone="ink" size="lg" ornament>
+      <Section band="top" bloom tone="ink" size="lg" ornament>
         <SectionHeading
           tone="dark"
           kicker="The library"
@@ -123,7 +123,7 @@ export default function PropheticMedicinePage() {
       </Section>
 
       {/* --- What is coming ------------------------------------------------ */}
-      <Section tone="chalk" size="lg">
+      <Section band="top" tone="chalk" size="lg">
         <SectionHeading
           kicker="In preparation"
           title="The Remedies Library"
@@ -172,7 +172,7 @@ export default function PropheticMedicinePage() {
       </Section>
 
       {/* --- What people have written --------------------------------- */}
-      <Section tone="white" size="lg">
+      <Section band="top" tone="white" size="lg">
         <SectionHeading
           kicker="From the archive"
           title="What people have written to us"
@@ -184,7 +184,7 @@ export default function PropheticMedicinePage() {
         <TestimonyWall className="mt-10" />
       </Section>
 
-      <Section tone="chalk" size="md">
+      <Section band="top" tone="chalk" size="md">
         <div className="mx-auto max-w-3xl">
           <Disclaimer>
             <span className="flex items-start gap-3">

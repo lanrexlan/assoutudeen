@@ -60,7 +60,7 @@ export default async function OurHoneyPage() {
         standfirst="Nigeria has a fake honey problem, and no amount of insisting fixes it. What helps is telling you where ours comes from and being honest about how little the popular tests prove."
       />
 
-      <Section tone="chalk" size="lg" ornament>
+      <Section band="top" tone="chalk" size="lg" ornament>
         <div className="grid gap-10 lg:grid-cols-[1fr_0.8fr] lg:items-center">
           <Prose>
             <ProseHeading>Kept, not just traded</ProseHeading>
@@ -116,7 +116,7 @@ export default async function OurHoneyPage() {
       </Section>
 
       {/* --- The tests ------------------------------------------------------ */}
-      <Section tone="white" size="lg">
+      <Section band="top" tone="white" size="lg">
         <SectionHeading
           kicker="Judge for yourself"
           title="The home tests, honestly"
@@ -153,7 +153,7 @@ export default async function OurHoneyPage() {
         </p>
       </Section>
 
-      <Section tone="ink" size="md" ornament>
+      <Section band="top" bloom tone="ink" size="md" ornament>
         <SectionHeading
           tone="dark"
           kicker="Where the money goes"
@@ -170,7 +170,7 @@ export default async function OurHoneyPage() {
         </div>
       </Section>
 
-      <Section tone="chalk" size="md">
+      <Section band="top" tone="chalk" size="md">
         <Disclaimer className="mx-auto max-w-3xl">
           Assoutudeen Honey Enterprise sells honey as a food product. Nothing on this
           page claims that honey treats, prevents or cures any disease.

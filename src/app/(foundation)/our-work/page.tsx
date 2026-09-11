@@ -98,12 +98,12 @@ export default function OurWorkPage() {
       </PageHeader>
 
       {/* --- Verse -------------------------------------------------------- */}
-      <Section tone="chalk" size="md">
+      <Section band="top" tone="chalk" size="md">
         <ArabicQuote className="reveal mx-auto max-w-3xl" {...VERSES.insan8} />
       </Section>
 
       {/* --- What the fund covers ----------------------------------------- */}
-      <Section tone="white" size="lg">
+      <Section band="top" tone="white" size="lg">
         <SectionHeading
           kicker="What the fund covers"
           title="Need, in the four shapes it usually arrives in"
@@ -124,7 +124,7 @@ export default function OurWorkPage() {
       </Section>
 
       {/* --- How it works -------------------------------------------------- */}
-      <Section tone="ink" size="lg" ornament>
+      <Section band="top" bloom tone="ink" size="lg" ornament>
         <SectionHeading
           tone="dark"
           kicker="How it works"
@@ -151,7 +151,7 @@ export default function OurWorkPage() {
       </Section>
 
       {/* --- What it has done ---------------------------------------------- */}
-      <Section tone="chalk" size="lg">
+      <Section band="top" tone="chalk" size="lg">
         <SectionHeading
           kicker="What it has done"
           title={`${formatKobo(VERIFIED_TOTAL_KOBO)} over ${YEARS_COVERED} years`}
@@ -201,7 +201,7 @@ export default function OurWorkPage() {
       </Section>
 
       {/* --- Two doors ------------------------------------------------------ */}
-      <Section tone="white" size="lg">
+      <Section band="top" tone="white" size="lg">
         <IntakeNotice className="mx-auto mb-10 max-w-3xl" />
 
         <div className="grid gap-6 lg:grid-cols-2">
@@ -240,7 +240,7 @@ export default function OurWorkPage() {
         </p>
       </Section>
 
-      <Section tone="chalk" size="md">
+      <Section band="top" tone="chalk" size="md">
         <div className="mx-auto max-w-3xl text-center">
           <HandCoins aria-hidden="true" className="mx-auto size-8 text-apricot" />
           <p className="mt-4 font-display text-2xl">

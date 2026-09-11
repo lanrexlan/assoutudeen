@@ -111,7 +111,7 @@ export default function MediaPage() {
       })}
 
       {/* --- Why they are links -------------------------------------------- */}
-      <Section tone="chalk" size="md">
+      <Section band="top" tone="chalk" size="md">
         <p className="mx-auto max-w-2xl text-center text-sm leading-relaxed text-charcoal-muted">
           Recordings open on Facebook rather than playing here. Embedding the player
           would load third-party scripts and cookies on every visit, which costs
@@ -121,7 +121,7 @@ export default function MediaPage() {
       </Section>
 
       {/* --- For journalists ------------------------------------------------ */}
-      <Section tone="ink" size="lg" ornament>
+      <Section band="top" bloom tone="ink" size="lg" ornament>
         <div className="mx-auto max-w-3xl">
           <SectionHeading
             tone="dark"

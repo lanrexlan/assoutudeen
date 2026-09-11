@@ -64,7 +64,7 @@ export default async function DawahHomePage() {
       </section>
 
       {/* --- The week ------------------------------------------------------ */}
-      <Section tone="chalk" size="lg" ornament>
+      <Section band="top" tone="chalk" size="lg" ornament>
         <SectionHeading
           kicker="The teaching week"
           title="Three evenings, seven classes"
@@ -106,7 +106,7 @@ export default async function DawahHomePage() {
       </Section>
 
       {/* --- Empowerment --------------------------------------------------- */}
-      <Section tone="ink" size="lg" ornament>
+      <Section band="top" bloom tone="ink" size="lg" ornament>
         <div className="mx-auto max-w-3xl text-center">
           <Medallion className="mx-auto">
             <HandHeart aria-hidden="true" className="size-6" />
@@ -138,7 +138,7 @@ export default async function DawahHomePage() {
         </div>
       </Section>
 
-      <Section tone="white" size="lg">
+      <Section band="top" tone="white" size="lg">
         <div className="grid gap-6 sm:grid-cols-3">
           {[
             {

@@ -35,7 +35,7 @@ export default async function HoneyShopPage() {
         standfirst="Retail and wholesale, delivered across Nigeria. Prices are published below — tell us the litres and your town and we will add the transport fare, in writing, before you pay anything."
       />
 
-      <Section tone="chalk" size="lg" ornament>
+      <Section band="top" tone="chalk" size="lg" ornament>
         <div className="grid gap-10 lg:grid-cols-[1fr_0.8fr] lg:items-start">
           <div>
             <SectionHeading
@@ -57,7 +57,7 @@ export default async function HoneyShopPage() {
       </Section>
 
       {/* --- Price and ordering -------------------------------------------- */}
-      <Section tone="white" size="lg">
+      <Section band="top" tone="white" size="lg">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
           <Prose>
             <ProseHeading>What transport costs</ProseHeading>
@@ -144,7 +144,7 @@ export default async function HoneyShopPage() {
         </div>
       </Section>
 
-      <Section tone="chalk" size="lg">
+      <Section band="top" tone="chalk" size="lg">
         <SectionHeading
           kicker="Before you buy"
           title="Two things worth reading first"
