@@ -17,6 +17,13 @@ export const SITE_HEADER = "x-assoutudeen-site";
 /** Set to "1" when the site came from `?_site=` rather than the hostname. */
 export const SITE_OVERRIDE_HEADER = "x-assoutudeen-site-override";
 
+/**
+ * The path as the visitor typed it, before the `/dawah` or `/honey` rewrite.
+ * Set by middleware so a layout can build a canonical URL without each page
+ * having to declare its own.
+ */
+export const PATH_HEADER = "x-assoutudeen-path";
+
 /** Query override for local testing without editing /etc/hosts: ?_site=dawah */
 export const SITE_QUERY_PARAM = "_site";
 

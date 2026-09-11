@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { siteConfig, type SiteKey } from "@/lib/sites";
+import { headers } from "next/headers";
+import { PATH_HEADER, siteConfig, type SiteKey } from "@/lib/sites";
 
 /**
  * Everything a link to this site needs in order to look like something.
@@ -42,10 +43,35 @@ const DESCRIPTION: Record<SiteKey, string> = {
  * Per-page `title` and `description` still override these; what this supplies
  * is the floor, so that no page can be shared as a blank card.
  */
-export function siteMetadata(site: SiteKey): Metadata {
+/**
+ * The canonical URL for the page being rendered.
+ *
+ * This has to be per-page. A single `canonical: "/"` on the layout is
+ * INHERITED by every page beneath it, which tells Google that /about,
+ * /remedies and every other page are duplicates of the homepage — and a
+ * duplicate is dropped from the index or folded into the page it points at.
+ * One line like that quietly un-indexes an entire site.
+ *
+ * Middleware publishes the address-bar path (before the /dawah and /honey
+ * rewrites), so the layout can build this centrally instead of forty pages
+ * each having to remember.
+ */
+async function canonicalPath(): Promise<string> {
+  try {
+    const path = (await headers()).get(PATH_HEADER);
+    /* Query strings are deliberately dropped: `?_site=dawah` is a development
+       override, and indexing it would create a duplicate of every page. */
+    return path && path.startsWith("/") ? path : "/";
+  } catch {
+    return "/";
+  }
+}
+
+export async function siteMetadata(site: SiteKey): Promise<Metadata> {
   const config = siteConfig[site];
   const origin = ORIGINS[site];
   const description = DESCRIPTION[site];
+  const path = await canonicalPath();
 
   return {
     metadataBase: new URL(origin),
@@ -55,13 +81,13 @@ export function siteMetadata(site: SiteKey): Metadata {
     },
     description,
     applicationName: config.name,
-    alternates: { canonical: "/" },
+    alternates: { canonical: path },
     openGraph: {
       type: "website",
       siteName: config.name,
       title: config.name,
       description,
-      url: origin,
+      url: `${origin}${path === "/" ? "" : path}`,
       locale: "en_NG",
       images: [
         {

@@ -11,6 +11,7 @@ import { Medallion } from "@/components/ui/ornament";
 import { PageHeader, Prose, ProseHeading } from "@/components/ui/prose";
 import { Section } from "@/components/ui/section";
 import { getRemedy, listRemedies, remedySlugs } from "@/lib/remedies";
+import { BreadcrumbSchema, RemedySchema } from "@/components/site/structured-data";
 import { BOOK } from "@/lib/book";
 import { formatNaira } from "@/payload/fields/money";
 
@@ -56,6 +57,8 @@ export default async function RemedyPage({
   const remedy = await getRemedy(slug);
   if (!remedy) notFound();
 
+  const schemaDescription = `${remedy.name} in the Qur'an and the Sunnah — the verse, the hadith with its full citation, and Ibn al-Qayyim's commentary.`;
+
   const others = (await listRemedies())
     .filter((r) => r.slug !== remedy.slug)
     .slice(0, 3);
@@ -71,6 +74,19 @@ export default async function RemedyPage({
 
   return (
     <>
+      <RemedySchema
+        name={remedy.name}
+        description={schemaDescription}
+        slug={remedy.slug}
+        updatedAt={remedy.updatedAt ?? undefined}
+      />
+      <BreadcrumbSchema
+        trail={[
+          { name: "Home", path: "/" },
+          { name: "Remedies", path: "/remedies" },
+          { name: remedy.name, path: `/remedies/${remedy.slug}` },
+        ]}
+      />
       <PageHeader
         eyebrow="Remedies library"
         title={remedy.name}

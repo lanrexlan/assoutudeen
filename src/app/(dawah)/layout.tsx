@@ -4,11 +4,12 @@ import { SiteFooter } from "@/components/site/site-footer";
 import { WhatsAppFloat } from "@/components/ui/whatsapp-float";
 import { DonationReminder } from "@/components/site/donation-reminder";
 import { fontVariables } from "@/lib/fonts";
+import { DawahSchema } from "@/components/site/structured-data";
 import { siteMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/sites";
 import "../globals.css";
 
-export const metadata: Metadata = siteMetadata("dawah");
+export const generateMetadata = (): Promise<Metadata> => siteMetadata("dawah");
 
 export const viewport: Viewport = {
   themeColor: "#55614F",
@@ -26,6 +27,7 @@ export default function DawahLayout({
   return (
     <html lang="en-NG" data-site="dawah">
       <body className={`${fontVariables} flex min-h-dvh flex-col bg-chalk antialiased`}>
+        <DawahSchema />
         <DawahHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter site="dawah" />
