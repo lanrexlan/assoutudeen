@@ -80,6 +80,51 @@ const toLagosDate = (value: unknown): string | null => {
   return new Intl.DateTimeFormat("en-CA", { timeZone: LAGOS }).format(date);
 };
 
+/** The shape we care about from the CMS global. */
+type IntakeGlobal = {
+  updatedAt?: string | null;
+  accepting?: boolean | null;
+  label?: string | null;
+  opensOn?: string | null;
+  closesOn?: string | null;
+  decisionsBy?: string | null;
+  places?: number | null;
+};
+
+/**
+ * Turn the saved global into a round. Pure, so the awkward cases are testable.
+ *
+ * "Never saved" is not the same as "switched off". When the global has no row
+ * yet, Payload does not return nothing — it returns the field DEFAULTS, which
+ * include `accepting: false`. That is indistinguishable from an administrator
+ * deliberately closing the round, and reading it as one would silently shut the
+ * form: the table can exist without a row after a schema push, a half-finished
+ * deploy, or someone clearing it by hand.
+ *
+ * A saved global always carries `updatedAt`. Without it nobody has made a
+ * decision here, so fall back to the default round rather than inventing a
+ * closure nobody asked for.
+ */
+export function roundFromGlobal(global: IntakeGlobal | null | undefined): IntakeRound | null {
+  if (!global?.updatedAt) return FALLBACK_ROUND;
+  if (!global.accepting) return null;
+
+  const opensOn = toLagosDate(global.opensOn);
+  const closesOn = toLagosDate(global.closesOn);
+  /* Accepting requests with no window is a half-finished save, not a round. */
+  if (!opensOn || !closesOn) return null;
+
+  return {
+    label: global.label || "This round",
+    opensOn,
+    closesOn,
+    /* Without a stated decision date, applicants are left waiting with no idea
+       how long for. Fall back to the deadline rather than omitting it. */
+    decisionsBy: toLagosDate(global.decisionsBy) ?? closesOn,
+    places: global.places ?? undefined,
+  };
+}
+
 /** The round as configured in the admin panel, or null when none is running. */
 export async function getCurrentRound(): Promise<IntakeRound | null> {
   try {
@@ -89,22 +134,7 @@ export async function getCurrentRound(): Promise<IntakeRound | null> {
     const { getPayloadClient } = await import("@/lib/payload");
     const payload = await getPayloadClient();
     const global = await payload.findGlobal({ slug: "intake-round" });
-
-    if (!global?.accepting) return null;
-
-    const opensOn = toLagosDate(global.opensOn);
-    const closesOn = toLagosDate(global.closesOn);
-    if (!opensOn || !closesOn) return null;
-
-    return {
-      label: global.label || "This round",
-      opensOn,
-      closesOn,
-      /* Without a stated decision date, applicants are left waiting with no
-         idea how long for. Fall back to the deadline rather than omitting it. */
-      decisionsBy: toLagosDate(global.decisionsBy) ?? closesOn,
-      places: global.places ?? undefined,
-    };
+    return roundFromGlobal(global as IntakeGlobal);
   } catch {
     return FALLBACK_ROUND;
   }

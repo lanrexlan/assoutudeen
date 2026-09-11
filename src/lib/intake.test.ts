@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { stateOf, type IntakeRound } from "@/lib/intake";
+import { roundFromGlobal, stateOf, type IntakeRound } from "@/lib/intake";
 
 /**
  * The round decides whether a family can ask the foundation for help, so the
@@ -58,5 +58,65 @@ describe("intake rounds", () => {
     const oneDay: IntakeRound = { ...ROUND, opensOn: "2026-09-05", closesOn: "2026-09-05" };
     expect(stateOf(oneDay, lagos("2026-09-05T12:00:00")).status).toBe("open");
     expect(stateOf(oneDay, lagos("2026-09-06T00:00:01")).status).toBe("closed");
+  });
+});
+
+/**
+ * The distinction that matters most here is between a round an administrator
+ * has deliberately closed and a global nobody has ever saved. Payload returns
+ * the field defaults for the second — including `accepting: false` — so the two
+ * look identical unless something checks. Getting this wrong shuts the form on
+ * a foundation that believes it is open.
+ */
+describe("reading the round from the CMS", () => {
+  const SAVED = {
+    updatedAt: "2026-09-01T10:00:00.000Z",
+    accepting: true,
+    label: "September 2026",
+    opensOn: "2026-09-01T11:00:00.000Z",
+    closesOn: "2026-09-30T11:00:00.000Z",
+    decisionsBy: "2026-10-31T11:00:00.000Z",
+  };
+
+  it("falls back to the default round when the global has never been saved", () => {
+    // What Payload actually returns for a table with no row.
+    const round = roundFromGlobal({ accepting: false, label: "September 2026" });
+    expect(round).not.toBeNull();
+    expect(stateOf(round, lagos("2026-09-11T09:00:00")).status).toBe("open");
+  });
+
+  it("falls back when the global is missing entirely", () => {
+    expect(roundFromGlobal(null)).not.toBeNull();
+    expect(roundFromGlobal(undefined)).not.toBeNull();
+  });
+
+  it("respects a round an administrator has actually closed", () => {
+    expect(roundFromGlobal({ ...SAVED, accepting: false })).toBeNull();
+  });
+
+  it("reads a saved, open round", () => {
+    const round = roundFromGlobal(SAVED);
+    expect(round).toEqual({
+      label: "September 2026",
+      opensOn: "2026-09-01",
+      closesOn: "2026-09-30",
+      decisionsBy: "2026-10-31",
+      places: undefined,
+    });
+  });
+
+  it("takes the Lagos calendar date, not the UTC one", () => {
+    // 23:30 UTC on 31 August is 00:30 on 1 September in Ede.
+    const round = roundFromGlobal({ ...SAVED, opensOn: "2026-08-31T23:30:00.000Z" });
+    expect(round?.opensOn).toBe("2026-09-01");
+  });
+
+  it("treats an accepting round with no dates as no round", () => {
+    expect(roundFromGlobal({ ...SAVED, opensOn: null, closesOn: null })).toBeNull();
+  });
+
+  it("falls back to the deadline when no decision date was set", () => {
+    const round = roundFromGlobal({ ...SAVED, decisionsBy: null });
+    expect(round?.decisionsBy).toBe("2026-09-30");
   });
 });
