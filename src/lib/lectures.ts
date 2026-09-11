@@ -20,6 +20,21 @@ export type LectureCategory =
   | "empowerment"
   | "reminder";
 
+/**
+ * Facebook hashtags, removed for display only.
+ *
+ * A couple of these titles were posted with a trailing wall of tags —
+ * "#propheticmedicines #SunnahHealing #fyp" and so on. They are part of the
+ * published title, so the record above keeps them verbatim; what a visitor
+ * reads should not. Stripping happens here rather than in the data, so the
+ * archive still matches what is actually on Facebook.
+ *
+ * Only a trailing run is removed. A hashtag in the middle of a sentence is
+ * doing some work, and guessing otherwise would mangle a real title.
+ */
+export const withoutHashtags = (value: string): string =>
+  value.replace(/(\s+#[^\s#]+)+\s*$/u, "").trim();
+
 export type Lecture = {
   id: string;
   category: LectureCategory;
