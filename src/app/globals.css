@@ -417,6 +417,46 @@
 }
 
 @layer utilities {
+  /* Placed in `utilities`, not `components`: the card carries Tailwind's
+     `flex`, and a components-layer rule loses to it however specific it is —
+     layer order decides before specificity does. */
+  /* --- Feature card, on a phone ------------------------------------------
+     The same block appears nine times across the three sites: a medallion, a
+     title, a sentence and a link, centred in a seal.
+
+     Centred and stacked, each one is about 270px on a 390px screen, and a row
+     of four becomes a 1,100px column — which is how the foundation homepage
+     reached thirteen screens. Beside each other on a wide screen the centring
+     is right; stacked on a narrow one it is wasteful, and the eye has to
+     travel back to the middle for every card.
+
+     So on a phone the card turns into a row: medallion on the left, text
+     beside it, aligned to the reading edge. It is the same card, laid out for
+     the space it is actually in.
+  ------------------------------------------------------------------------ */
+  @media (max-width: 40rem) {
+    /* The seal variant is two elements: a 1px parent carrying the hairline and
+       an inner face holding the content. The class lands on the parent, so the
+       layout has to be applied to the face inside it. */
+    .feature-card > div {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      column-gap: 1rem;
+      row-gap: 0.35rem;
+      align-items: start;
+      text-align: start;
+    }
+    /* The medallion spans the rows beside it. */
+    .feature-card > div > :first-child {
+      grid-row: 1 / span 3;
+      margin-inline: 0;
+    }
+    /* `mt-auto` on the link would push it to the bottom of a stretched row. */
+    .feature-card > div > :last-child {
+      margin-block-start: 0.15rem;
+    }
+  }
+
   /* --- Scroll reveal ------------------------------------------------------
      Pure CSS, no JavaScript and no observer.
 

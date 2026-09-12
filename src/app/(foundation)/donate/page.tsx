@@ -131,7 +131,7 @@ export default function DonatePage() {
 
         <div className="mt-8 grid sm:mt-12 gap-6 sm:grid-cols-3">
           {PURPOSES.map(({ icon: Icon, ...purpose }) => (
-            <Card key={purpose.title} variant="seal" className="reveal items-center">
+            <Card key={purpose.title} variant="seal" className="feature-card reveal items-center">
               <Medallion className="mx-auto">
                 <Icon aria-hidden="true" className="size-6" />
               </Medallion>
