@@ -6,6 +6,7 @@ import { Disclaimer } from "@/components/ui/disclaimer";
 import { Medallion } from "@/components/ui/ornament";
 import { PageHeader, Prose } from "@/components/ui/prose";
 import { Section, SectionHeading } from "@/components/ui/section";
+import { SealNumber } from "@/components/ui/flourish";
 import { getSiteContext } from "@/lib/site-context";
 import { CONTACT } from "@/lib/sites";
 
@@ -82,7 +83,7 @@ export default async function AmbassadorsPage() {
         standfirst="A referral programme with the rules written down before anyone competes — including the ones that decide against you."
       />
 
-      <Section tone="chalk" size="lg" ornament>
+      <Section band="top" tone="chalk" size="lg" ornament>
         <SectionHeading
           kicker="How it works"
           title="Four steps, no fee"
@@ -91,25 +92,26 @@ export default async function AmbassadorsPage() {
 
         <ol className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {STEPS.map(({ icon: Icon, title, body }, index) => (
-            <li
-              key={title}
-              className="reveal flex flex-col gap-3 rounded-lg border border-chalk-dark bg-white p-6"
-            >
-              <Medallion>
-                <Icon aria-hidden="true" className="size-6" />
-              </Medallion>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-apricot-dark">
-                Step {index + 1}
-              </p>
-              <p className="font-display text-lg text-charcoal">{title}</p>
-              <p className="text-sm leading-relaxed text-charcoal-muted">{body}</p>
+            <li key={title} className="reveal seal bg-chalk-dark p-px shadow-sm">
+              <div className="seal flex h-full flex-col gap-3 bg-white p-6">
+                <div className="flex items-center gap-3">
+                  <Medallion>
+                    <Icon aria-hidden="true" className="size-6" />
+                  </Medallion>
+                  {/* The numeral replaces a "Step 1" label: it says the same
+                      thing in a glance and in the site's own shape. */}
+                  <SealNumber value={index + 1} />
+                </div>
+                <p className="font-display text-lg text-charcoal">{title}</p>
+                <p className="text-sm leading-relaxed text-charcoal-muted">{body}</p>
+              </div>
             </li>
           ))}
         </ol>
       </Section>
 
       {/* --- The rules ------------------------------------------------------ */}
-      <Section tone="white" size="lg">
+      <Section band="top" tone="white" size="lg">
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1fr] lg:items-start">
           <div>
             <SectionHeading
@@ -128,13 +130,23 @@ export default async function AmbassadorsPage() {
             </Prose>
           </div>
 
-          <ul className="space-y-4">
-            {RULES.map((entry) => (
-              <li
-                key={entry.rule}
-                className="reveal rounded-lg border border-chalk-dark bg-chalk p-5"
-              >
-                <p className="font-display text-lg text-charcoal">{entry.rule}</p>
+          {/* One rail down the left rather than five separate slabs: these are
+              a single set of rules, and the shared line says so. */}
+          <ul className="space-y-6 border-s border-chalk-dark ps-6">
+            {RULES.map((entry, index) => (
+              <li key={entry.rule} className="reveal relative">
+                <span
+                  aria-hidden="true"
+                  className="absolute -start-[1.85rem] top-1 flex size-3 items-center justify-center"
+                >
+                  <span className="seal seal-sm size-2.5 bg-apricot" />
+                </span>
+                <p className="font-display text-lg text-charcoal">
+                  <span className="me-2 text-sm text-apricot-dark">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  {entry.rule}
+                </p>
                 <p className="mt-1.5 text-sm leading-relaxed text-charcoal-muted">
                   {entry.detail}
                 </p>
@@ -145,7 +157,7 @@ export default async function AmbassadorsPage() {
       </Section>
 
       {/* --- The leaderboard ------------------------------------------------ */}
-      <Section tone="ink" size="lg" ornament>
+      <Section band="top" bloom tone="ink" size="lg" ornament>
         <SectionHeading
           tone="dark"
           kicker="Leaderboard"
@@ -164,7 +176,7 @@ export default async function AmbassadorsPage() {
         </div>
       </Section>
 
-      <Section tone="chalk" size="md">
+      <Section band="top" tone="chalk" size="md">
         <Disclaimer className="mx-auto max-w-3xl" title="What an ambassador may say">
           Ambassadors sell a food product. Nothing in the programme permits telling a
           buyer that honey treats, prevents or cures a disease — and a code will be

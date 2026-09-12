@@ -24,7 +24,7 @@ export default function JoinFundPage() {
         standfirst="A monthly contribution — whatever is steady for you. It is the reason we can answer a case in the week it arrives instead of opening an appeal and hoping."
       />
 
-      <Section tone="chalk" size="lg">
+      <Section band="top" tone="chalk" size="lg">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="rounded-xl border border-chalk-dark bg-white p-6 shadow-sm sm:p-8">
             <PledgeForm />

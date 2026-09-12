@@ -101,7 +101,7 @@ export default async function FoundationHomePage() {
       </section>
 
       {/* --- What we do -------------------------------------------------- */}
-      <Section tone="chalk" size="lg" ornament>
+      <Section band="top" tone="chalk" size="lg" ornament>
         <SectionHeading
           kicker="What we do"
           title="Four kinds of work, one intention"
@@ -128,7 +128,7 @@ export default async function FoundationHomePage() {
       </Section>
 
       {/* --- Transparency ------------------------------------------------ */}
-      <Section tone="ink" size="lg" ornament>
+      <Section band="top" bloom tone="ink" size="lg" ornament>
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
           <div className="reveal">
             <SectionHeading
@@ -182,7 +182,7 @@ export default async function FoundationHomePage() {
       </Section>
 
       {/* --- The empowerment fund ---------------------------------------- */}
-      <Section tone="white" size="lg">
+      <Section band="top" tone="white" size="lg">
         <SectionHeading
           kicker="The empowerment fund"
           title="A standing circle, month after month"
@@ -233,14 +233,14 @@ export default async function FoundationHomePage() {
       </Section>
 
       {/* --- Scripture --------------------------------------------------- */}
-      <Section tone="chalk" size="lg" ornament>
+      <Section band="top" tone="chalk" size="lg" ornament>
         <div className="mx-auto max-w-3xl">
           <ArabicQuote className="reveal" {...VERSES.baqarah261} />
         </div>
       </Section>
 
       {/* --- Testimonies -------------------------------------------------- */}
-      <Section tone="white" size="lg">
+      <Section band="top" tone="white" size="lg">
         <SectionHeading
           kicker="From the archive"
           title="What people have written to us"
@@ -258,7 +258,7 @@ export default async function FoundationHomePage() {
       </Section>
 
       {/* --- Our family -------------------------------------------------- */}
-      <Section tone="white" size="lg">
+      <Section band="top" tone="white" size="lg">
         <SectionHeading
           kicker="Our family"
           title="One foundation, two arms"

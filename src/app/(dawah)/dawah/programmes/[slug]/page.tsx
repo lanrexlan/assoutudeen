@@ -62,7 +62,7 @@ export default async function ProgrammePage({
         standfirst={programme.description}
       />
 
-      <Section tone="chalk" size="lg">
+      <Section band="top" tone="chalk" size="lg">
         <div className="grid gap-10 lg:grid-cols-[1fr_20rem] lg:items-start">
           <Prose>
             <ProseHeading>When it runs</ProseHeading>
@@ -134,7 +134,7 @@ export default async function ProgrammePage({
       </Section>
 
       {recordings.length ? (
-        <Section tone="white" size="lg">
+        <Section band="top" tone="white" size="lg">
           <SectionHeading
             kicker="Recordings"
             title="Recent sessions from this class"
@@ -174,7 +174,7 @@ export default async function ProgrammePage({
         </Section>
       ) : null}
 
-      <Section tone="chalk" size="lg">
+      <Section band="top" tone="chalk" size="lg">
         <SectionHeading kicker="Also taught" title="Other classes this week" />
         <div className="mt-10 grid gap-6 sm:grid-cols-3">
           {others.map((other) => (

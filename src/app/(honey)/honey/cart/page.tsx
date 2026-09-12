@@ -38,7 +38,7 @@ export default async function CartPage() {
         standfirst="Card checkout is not live yet. Rather than show you a basket that cannot take your money, here is the route that works — and it is faster anyway."
       />
 
-      <Section tone="chalk" size="lg">
+      <Section band="top" tone="chalk" size="lg">
         <div className="mx-auto max-w-2xl">
           <div className="seal bg-chalk-dark p-px shadow-sm">
             <div className="seal bg-white p-8 text-center">

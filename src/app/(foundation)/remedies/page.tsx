@@ -87,7 +87,7 @@ export default async function RemediesPage({
         standfirst={`Around ${BOOK.remedies} natural remedies named in the Qur'an and the Sunnah, each with the verse, the hadith and its full citation, and Ibn al-Qayyim's commentary. Drawn from ${BOOK.title}.`}
       />
 
-      <Section tone="chalk" size="lg" ornament>
+      <Section band="top" tone="chalk" size="lg" ornament>
         {/* A GET form: it works without JavaScript, and every search has a URL
             that can be shared or linked. */}
         <form
@@ -183,7 +183,7 @@ export default async function RemediesPage({
       </Section>
 
       {/* --- How a chapter is built ---------------------------------------- */}
-      <Section tone="white" size="lg">
+      <Section band="top" tone="white" size="lg">
         <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-start">
           <Prose>
             <h2 className="flex items-center gap-3">
@@ -218,11 +218,11 @@ export default async function RemediesPage({
         </div>
       </Section>
 
-      <Section tone="chalk" size="md">
+      <Section band="top" tone="chalk" size="md">
         <Disclaimer className="mx-auto max-w-3xl" />
       </Section>
 
-      <Section tone="ink" size="md" ornament>
+      <Section band="top" bloom tone="ink" size="md" ornament>
         <SectionHeading
           tone="dark"
           kicker="The book"
