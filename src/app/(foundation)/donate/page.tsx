@@ -144,7 +144,12 @@ export default function DonatePage() {
 
       {/* --- Verse ---------------------------------------------------------- */}
       <Section band="top" bloom tone="ink" size="lg" ornament>
-        <div className="mx-auto max-w-3xl">
+        <SectionHeading
+          tone="dark"
+          kicker="Why give at all"
+          title="Night and day, secretly and publicly"
+        />
+        <div className="mx-auto mt-10 max-w-3xl">
           <ArabicQuote tone="dark" className="reveal" {...VERSES.baqarah274} />
         </div>
       </Section>

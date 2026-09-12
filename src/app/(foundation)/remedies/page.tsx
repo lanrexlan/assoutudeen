@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Disclaimer } from "@/components/ui/disclaimer";
 import { Medallion } from "@/components/ui/ornament";
 import { PageHeader, Prose } from "@/components/ui/prose";
+import { SealNumber } from "@/components/ui/flourish";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { ArabicQuote } from "@/components/ui/arabic-quote";
 import { listRemedies, type RemedyCard } from "@/lib/remedies";
@@ -199,11 +200,18 @@ export default async function RemediesPage({
               Every remedy is built the same way, because the point is not that a
               food is good for you — it is <em>where that claim comes from</em>.
             </p>
-            <ul>
-              {BOOK.chapterStructure.map((item) => (
-                <li key={item}>{item}</li>
+            {/* The same six steps the prophetic medicine page shows, given
+                the same numerals here so the two read as one explanation. */}
+            <ol className="not-prose mt-4 space-y-3">
+              {BOOK.chapterStructure.map((item, index) => (
+                <li key={item} className="flex items-center gap-3">
+                  <SealNumber value={index + 1} />
+                  <span className="text-sm leading-relaxed text-charcoal-muted">
+                    {item}
+                  </span>
+                </li>
               ))}
-            </ul>
+            </ol>
             <p>
               Between ten and fifteen chapters are free to read here. The rest are
               in the book, which is how the printing pays for itself.

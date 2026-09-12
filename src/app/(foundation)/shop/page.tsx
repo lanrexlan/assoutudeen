@@ -7,6 +7,7 @@ import { SealFrame, Medallion } from "@/components/ui/ornament";
 import { BookScene } from "@/components/ui/illustration";
 import { SlotImage } from "@/components/ui/hero-image";
 import { PageHeader, Prose, ProseHeading } from "@/components/ui/prose";
+import { CornerMarks, SealNumber } from "@/components/ui/flourish";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { BOOK } from "@/lib/book";
 import { formatNaira } from "@/payload/fields/money";
@@ -63,15 +64,26 @@ export default function ShopPage() {
               </p>
 
               <ProseHeading>Inside</ProseHeading>
-              <ul>
-                {BOOK.chapterStructure.slice(0, 4).map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
             </Prose>
 
-            <div className="mt-8 rounded-lg border border-chalk-dark bg-white p-5">
-              <p className="text-sm text-charcoal-muted">Price</p>
+            <ol className="mt-4 space-y-3">
+              {BOOK.chapterStructure.slice(0, 4).map((item, index) => (
+                <li key={item} className="flex items-center gap-3">
+                  <SealNumber value={index + 1} />
+                  <span className="text-sm leading-relaxed text-charcoal-muted">
+                    {item}
+                  </span>
+                </li>
+              ))}
+            </ol>
+
+            {/* The one place on this page where a decision is made, so it is
+                framed rather than being another white box among white boxes. */}
+            <div className="relative mt-8 rounded-lg border border-apricot-dark/40 bg-white p-6 shadow-sm">
+              <CornerMarks />
+              <p className="text-xs uppercase tracking-[0.18em] text-charcoal-muted">
+                Price
+              </p>
               <p className="mt-1 font-display text-3xl text-charcoal">
                 {formatNaira(BOOK.priceKobo)}
                 <span className="ms-2 align-middle text-base text-charcoal-muted">
