@@ -109,7 +109,7 @@ export default async function EmpowermentPage() {
             { icon: Stethoscope, title: "Emergency medical relief", body: "C-section and hospital bills, accident relief and urgent health crises." },
             { icon: LifeBuoy, title: "Crisis support", body: "Debt relief, food, shelter and support for vulnerable members." },
           ].map(({ icon: Icon, ...item }) => (
-            <Card key={item.title} variant="seal" className="reveal items-center">
+            <Card key={item.title} variant="seal" className="feature-card reveal items-center">
               <Medallion className="mx-auto">
                 <Icon aria-hidden="true" className="size-6" />
               </Medallion>

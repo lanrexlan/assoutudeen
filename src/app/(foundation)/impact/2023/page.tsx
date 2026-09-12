@@ -10,7 +10,7 @@ import { formatKobo } from "@/payload/fields/money";
 export const metadata: Metadata = {
   title: "Impact 2023",
   description:
-    "The 2023 annual report: ₦5,323,500 raised across 11 beneficiaries, itemised to the naira.",
+    "The 2023 annual report: ₦5,323,500 raised, itemised to the naira and reported by category.",
 };
 
 /**
@@ -66,7 +66,7 @@ export default async function Impact2023Page() {
         image="ourWork"
         eyebrow="Impact report"
         title="2023"
-        standfirst={`${formatKobo(5_323_500)} raised across 11 beneficiaries — the public-appeals year, published as historical record.`}
+        standfirst={`${formatKobo(5_323_500)} raised — the public-appeals year, published as historical record and reported by category.`}
       />
 
       <Section>

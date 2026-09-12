@@ -154,7 +154,7 @@ export default function PropheticMedicinePage() {
               body: "Ibn al-Qayyim's At-Tibb an-Nabawiyy, as quoted in the book, alongside composition and uses.",
             },
           ].map(({ icon: Icon, ...item }) => (
-            <Card key={item.title} variant="seal" className="reveal items-center">
+            <Card key={item.title} variant="seal" className="feature-card reveal items-center">
               <Medallion className="mx-auto">
                 <Icon aria-hidden="true" className="size-6" />
               </Medallion>

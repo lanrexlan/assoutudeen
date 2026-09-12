@@ -7,7 +7,7 @@ import type { Payload } from "payload";
  * docs/09, so the shapes can be inspected against actual data.
  *
  * Everything here is verified record, in kobo:
- *   2023 total ₦5,323,500 across 11 beneficiaries.
+ *   2023 total ₦5,323,500, reported by category.
  *
  * Idempotent — re-running updates rather than duplicating.
  *

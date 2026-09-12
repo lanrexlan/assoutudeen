@@ -19,7 +19,12 @@ import { StructureDiagram } from "@/components/site/structure-diagram";
 import { TestimonyWall } from "@/components/site/testimony-wall";
 import { getSiteContext } from "@/lib/site-context";
 import { REGISTRATION } from "@/lib/organisation";
-import { VERIFIED_TOTAL_KOBO, YEAR_TOTALS, YEARS_COVERED } from "@/lib/impact";
+import {
+  VERIFIED_TOTAL_KOBO,
+  YEAR_RANGE,
+  YEAR_TOTALS,
+  YEARS_COVERED,
+} from "@/lib/impact";
 import { VERSES } from "@/lib/verses";
 import { BOOK } from "@/lib/book";
 import { formatKobo } from "@/payload/fields/money";
@@ -75,9 +80,19 @@ export default async function FoundationHomePage() {
             {[
               {
                 value: formatKobo(VERIFIED_TOTAL_KOBO),
-                label: "Raised and accounted for, 2023–2025",
+                /* Derived from the data, never typed. This read "2023–2025"
+                   while showing the seven-year total — the label had been left
+                   behind when the earlier years were added, so the homepage's
+                   most prominent number sat under the wrong span of years. */
+                label: `Raised and accounted for, ${YEAR_RANGE.replace(" and ", "–")}`,
               },
-              { value: "11", label: "Beneficiaries in 2023 alone" },
+              {
+                /* Not a beneficiary count: the foundation reports by category
+                   and anonymously, and that figure was removed from the rest of
+                   the site. This is a fact the site does publish. */
+                value: `${BOOK.remedies}`,
+                label: "Remedies traced to their evidence",
+              },
               { value: "7", label: "Classes every week, Friday to Sunday" },
               {
                 value: REGISTRATION.incorporatedOnDisplay.slice(-4),
@@ -110,7 +125,7 @@ export default async function FoundationHomePage() {
 
         <div className="mt-8 grid sm:mt-12 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {work.map(({ icon: Icon, ...item }) => (
-            <Card key={item.title} variant="seal" className="reveal items-center">
+            <Card key={item.title} variant="seal" className="feature-card reveal items-center">
               <Medallion className="mx-auto">
                 <Icon aria-hidden="true" className="size-6" />
               </Medallion>
