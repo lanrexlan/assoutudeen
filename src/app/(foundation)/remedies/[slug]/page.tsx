@@ -109,7 +109,7 @@ export default async function RemedyPage({
 
       {/* --- The evidence, always in full ---------------------------------- */}
       {verse?.arabic || hadiths.length ? (
-        <Section tone="chalk" size="lg" ornament>
+        <Section band="top" tone="chalk" size="lg" ornament>
           <div className="mx-auto max-w-3xl space-y-6">
             {verse?.arabic ? (
               <ArabicQuote
@@ -153,7 +153,7 @@ export default async function RemedyPage({
       ) : null}
 
       {/* --- The chapter itself -------------------------------------------- */}
-      <Section tone="white" size="lg">
+      <Section band="top" tone="white" size="lg">
         <div className="mx-auto max-w-3xl">
           {gated ? (
             <div className="seal bg-chalk-dark p-px shadow-sm">
@@ -227,7 +227,7 @@ export default async function RemedyPage({
       </Section>
 
       {others.length ? (
-        <Section tone="chalk" size="lg">
+        <Section band="top" tone="chalk" size="lg">
           <h2 className="text-center font-display text-2xl text-charcoal">
             Other remedies
           </h2>

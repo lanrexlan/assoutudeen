@@ -37,7 +37,7 @@ export default async function RequestAssistancePage() {
         }
       />
 
-      <Section tone="chalk" size="lg">
+      <Section band="top" tone="chalk" size="lg">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="space-y-6">
             <IntakeNotice />

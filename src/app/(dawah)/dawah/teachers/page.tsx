@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { SealFrame } from "@/components/ui/ornament";
+import { SealFrame, StarGlyph } from "@/components/ui/ornament";
 import { TurbanBust } from "@/components/ui/illustration";
 import { PageHeader, Prose } from "@/components/ui/prose";
 import { Section, SectionHeading } from "@/components/ui/section";
@@ -32,9 +32,12 @@ export default async function TeachersPage() {
         return (
           <Section
             key={teacher.slug}
+            band="top"
+            ornament={index % 2 === 0}
             tone={index % 2 === 0 ? "chalk" : "white"}
             size="lg"
             id={teacher.slug}
+            className="scroll-mt-20"
           >
             <div className="grid gap-10 lg:grid-cols-[18rem_1fr] lg:items-start">
               <figure className="reveal mx-auto w-full max-w-xs">
@@ -65,17 +68,23 @@ export default async function TeachersPage() {
                 </Prose>
 
                 {classes.length ? (
-                  <div className="mt-8">
-                    <p className="text-sm font-semibold text-charcoal">
-                      Classes taken
+                  <div className="mt-8 border-t border-chalk-dark pt-6">
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-charcoal-muted">
+                      {/* No pronoun: this is a template over whoever teaches
+                          here, and it should not need editing the first time
+                          that is not a man. */}
+                      {classes.length === 1
+                        ? "One class taken"
+                        : `${classes.length} classes taken`}
                     </p>
-                    <ul className="mt-3 flex flex-wrap gap-2.5">
+                    <ul className="mt-4 flex flex-wrap gap-2.5">
                       {classes.map((programme) => (
                         <li key={programme.slug}>
                           <Link
                             href={href(`/programmes/${programme.slug}`)}
-                            className="inline-flex min-h-11 items-center rounded-full border border-chalk-deep bg-white px-4 text-sm text-charcoal hover:border-primary hover:text-primary-ink"
+                            className="lift inline-flex min-h-11 items-center gap-2 rounded-full border border-chalk-deep bg-white ps-3 pe-4 text-sm text-charcoal hover:border-primary"
                           >
+                            <StarGlyph className="size-3.5 text-apricot-dark" />
                             {programme.title}
                           </Link>
                         </li>
@@ -89,7 +98,7 @@ export default async function TeachersPage() {
         );
       })}
 
-      <Section tone="ink" size="md" ornament>
+      <Section band="top" bloom tone="ink" size="md" ornament>
         <SectionHeading
           tone="dark"
           kicker="One organisation"

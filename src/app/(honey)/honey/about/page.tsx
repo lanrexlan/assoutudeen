@@ -29,7 +29,7 @@ export default async function HoneyAboutPage() {
         standfirst={`${siteConfig.honey.name} trades so that ${FOUNDATION_NAME} depends a little less on donations. It began with the founder's own hives.`}
       />
 
-      <Section tone="chalk" size="lg">
+      <Section band="top" tone="chalk" size="lg">
         <div className="grid gap-10 lg:grid-cols-[1fr_18rem] lg:items-start">
           <Prose>
             <ProseHeading>Where it came from</ProseHeading>
@@ -101,7 +101,7 @@ export default async function HoneyAboutPage() {
         </div>
       </Section>
 
-      <Section tone="ink" size="md" ornament>
+      <Section band="top" bloom tone="ink" size="md" ornament>
         <SectionHeading
           tone="dark"
           kicker="One organisation"
@@ -120,7 +120,7 @@ export default async function HoneyAboutPage() {
         </div>
       </Section>
 
-      <Section tone="chalk" size="md">
+      <Section band="top" tone="chalk" size="md">
         <Disclaimer className="mx-auto max-w-3xl">
           Assoutudeen Honey Enterprise sells honey as a food product. Nothing on this
           site claims that honey treats, prevents or cures any disease.

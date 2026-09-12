@@ -29,7 +29,7 @@ export default async function HoneyContactPage() {
         standfirst="Prices are published on the shop page — message us with the litres you need and your town, and we will add the transport fare. Anything that went wrong with an order reaches the same people."
       />
 
-      <Section tone="chalk">
+      <Section band="top" tone="chalk">
         <ContactChannels
           whatsappMessage={siteConfig.honey.whatsappMessage}
           emailSubject="Honey order enquiry"
@@ -63,7 +63,7 @@ export default async function HoneyContactPage() {
         </div>
       </Section>
 
-      <Section tone="white" size="lg">
+      <Section band="top" tone="white" size="lg">
         <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-start">
           <div>
             <SectionHeading

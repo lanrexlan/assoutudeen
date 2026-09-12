@@ -47,7 +47,7 @@ export default async function LibraryPage({
         standfirst={`${LECTURES.length} published sessions. Nobody has to fall behind for missing an evening — and nobody has to take a claim on trust when they can hear it argued.`}
       />
 
-      <Section tone="chalk" size="lg" ornament>
+      <Section band="top" tone="chalk" size="lg" ornament>
         <nav aria-label="Filter by class" className="flex flex-wrap gap-2.5">
           <Link
             href={filterHref(null)}
@@ -125,7 +125,7 @@ export default async function LibraryPage({
         </p>
       </Section>
 
-      <Section tone="ink" size="md" ornament>
+      <Section band="top" bloom tone="ink" size="md" ornament>
         <SectionHeading
           tone="dark"
           kicker="Keep up"

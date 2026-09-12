@@ -29,7 +29,7 @@ export default async function DawahContactPage() {
         standfirst="Which class is on this Saturday, where to come, whether you have missed too much to start now — WhatsApp answers all three fastest."
       />
 
-      <Section tone="chalk">
+      <Section band="top" tone="chalk">
         <ContactChannels
           whatsappMessage={siteConfig.dawah.whatsappMessage}
           emailSubject="Question about a class at the Dawah Institute"
@@ -63,7 +63,7 @@ export default async function DawahContactPage() {
         </div>
       </Section>
 
-      <Section tone="white" size="lg">
+      <Section band="top" tone="white" size="lg">
         <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-start">
           <div>
             <SectionHeading

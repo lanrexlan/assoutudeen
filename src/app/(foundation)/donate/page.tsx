@@ -54,7 +54,7 @@ export default function DonatePage() {
       />
 
       {/* --- Amounts ------------------------------------------------------- */}
-      <Section tone="chalk" size="lg">
+      <Section band="top" tone="chalk" size="lg">
         <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr]">
           <div>
             <SectionHeading
@@ -122,7 +122,7 @@ export default function DonatePage() {
       </Section>
 
       {/* --- Purposes ------------------------------------------------------- */}
-      <Section tone="white" size="lg">
+      <Section band="top" tone="white" size="lg">
         <SectionHeading
           kicker="What you can give to"
           title="Three funds, kept apart"
@@ -143,13 +143,13 @@ export default function DonatePage() {
       </Section>
 
       {/* --- Verse ---------------------------------------------------------- */}
-      <Section tone="ink" size="lg" ornament>
+      <Section band="top" bloom tone="ink" size="lg" ornament>
         <div className="mx-auto max-w-3xl">
           <ArabicQuote tone="dark" className="reveal" {...VERSES.baqarah274} />
         </div>
       </Section>
 
-      <Section tone="chalk" size="md">
+      <Section band="top" tone="chalk" size="md">
         <Prose className="mx-auto">
           <ProseHeading>A note on receipts</ProseHeading>
           <p>

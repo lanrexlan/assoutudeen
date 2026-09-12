@@ -40,7 +40,7 @@ export default function FounderPage() {
         standfirst={`Known as ${FOUNDER.kunya}. ${FOUNDER.summary}`}
       />
 
-      <Section tone="chalk" size="lg">
+      <Section band="top" tone="chalk" size="lg">
         <div className="grid gap-10 lg:grid-cols-[1.6fr_1fr]">
           <div>
             <Prose>
@@ -98,7 +98,7 @@ export default function FounderPage() {
         </div>
       </Section>
 
-      <Section tone="white" size="lg">
+      <Section band="top" tone="white" size="lg">
         <SectionHeading
           kicker="Study with him"
           title="What he teaches, and where"

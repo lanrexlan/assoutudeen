@@ -46,7 +46,7 @@ export default function AccountabilityPage() {
       />
 
       {/* --- Registration card ------------------------------------------ */}
-      <Section tone="chalk" size="md">
+      <Section band="top" tone="chalk" size="md">
         <div className="reveal grid gap-6 lg:grid-cols-[1.2fr_1fr]">
           <Card className="border-oxblood/20">
             <div className="flex items-start gap-4">
@@ -127,7 +127,7 @@ export default function AccountabilityPage() {
       </Section>
 
       {/* --- The numbers -------------------------------------------------- */}
-      <Section tone="ink" size="lg" ornament>
+      <Section band="top" bloom tone="ink" size="lg" ornament>
         <SectionHeading
           tone="dark"
           kicker={`${YEARS_COVERED} years, verified`}
@@ -154,7 +154,7 @@ export default function AccountabilityPage() {
       </Section>
 
       {/* --- What the constitution binds us to ---------------------------- */}
-      <Section tone="white" size="lg">
+      <Section band="top" tone="white" size="lg">
         <SectionHeading
           kicker="The rules we signed up to"
           title="What the constitution binds us to"
@@ -180,7 +180,7 @@ export default function AccountabilityPage() {
       </Section>
 
       {/* --- Reports, spending, bank ------------------------------------- */}
-      <Section tone="chalk" size="lg">
+      <Section band="top" tone="chalk" size="lg">
         <Prose>
           <ProseHeading>Annual reports</ProseHeading>
           <p>

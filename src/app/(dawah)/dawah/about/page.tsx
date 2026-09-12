@@ -31,7 +31,7 @@ export default async function DawahAboutPage() {
         standfirst={`${siteConfig.dawah.name} is where ${FOUNDATION_NAME} teaches. Seven classes a week, free, open to anyone, and recorded.`}
       />
 
-      <Section tone="chalk" size="lg">
+      <Section band="top" tone="chalk" size="lg">
         <div className="grid gap-10 lg:grid-cols-[1fr_18rem] lg:items-start">
           <Prose>
             <ProseHeading>What the Institute is</ProseHeading>
@@ -106,7 +106,7 @@ export default async function DawahAboutPage() {
         </div>
       </Section>
 
-      <Section tone="ink" size="lg" ornament>
+      <Section band="top" bloom tone="ink" size="lg" ornament>
         <ArabicQuote
           arabic={VERSES.zumar9.arabic}
           translation={VERSES.zumar9.translation}
@@ -115,7 +115,7 @@ export default async function DawahAboutPage() {
         />
       </Section>
 
-      <Section tone="white" size="lg">
+      <Section band="top" tone="white" size="lg">
         <SectionHeading
           kicker="Start somewhere"
           title="Three ways in"
