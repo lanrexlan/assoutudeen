@@ -113,25 +113,30 @@ export function PriceHighlights({ className }: { className?: string }) {
     [1, 5, 25].includes(price.litres),
   );
 
+  /* Rows on a phone, cards from the small breakpoint up. Stacked cards spent
+     most of a 390px screen on three numbers; side by side they read at a
+     glance, but there is no width for that until the layout turns. */
   return (
-    <ul className={cn("grid gap-4 sm:grid-cols-3", className)}>
+    <ul className={cn("grid gap-3 sm:grid-cols-3 sm:gap-4", className)}>
       {headline.map((price) => (
         <li
           key={price.litres}
-          className="reveal rounded-lg border border-chalk-dark bg-white p-5 text-center"
+          className="reveal flex items-baseline justify-between gap-4 rounded-lg border border-chalk-dark bg-white px-5 py-4 sm:block sm:py-5 sm:text-center"
         >
           <p className="font-display text-lg text-charcoal">
             {formatLitres(price.litres)}
           </p>
-          {/* apricot-dark, not the honey site's plain apricot --site-primary:
-              #E0A06A on white is about 2:1, which fails even the large-text
-              rule (CLAUDE.md). A price is the one number on the page that
-              everyone has to be able to read. */}
-          <p className="mt-2 font-display text-2xl font-semibold text-apricot-dark">
-            {formatNaira(price.kobo)}
-          </p>
-          <p className="mt-1 text-sm text-charcoal-muted">
-            {formatNaira(perLitreKobo(price))} a litre
+          <p className="text-end sm:mt-2 sm:text-center">
+            {/* apricot-dark, not the honey site's plain apricot --site-primary:
+                #E0A06A on white is about 2:1, which fails even the large-text
+                rule (CLAUDE.md). A price is the one number on the page that
+                everyone has to be able to read. */}
+            <span className="block font-display text-xl font-semibold tabular-nums text-apricot-dark sm:text-2xl">
+              {formatNaira(price.kobo)}
+            </span>
+            <span className="block text-xs tabular-nums text-charcoal-muted sm:mt-1 sm:text-sm">
+              {formatNaira(perLitreKobo(price))} a litre
+            </span>
           </p>
         </li>
       ))}

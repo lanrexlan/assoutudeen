@@ -118,19 +118,51 @@ export function PageHeader({
  * chosen by hand for every page, and an unmatched heading simply renders
  * without one rather than falling back to something arbitrary.
  */
+/** "The evidence, in full" -> "the-evidence-in-full" */
+const slugify = (value: string): string =>
+  value
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[^\p{Letter}\p{Number}]+/gu, "-")
+    .replace(/^-+|-+$/g, "");
+
 export function ProseHeading({
   children,
   icon: Icon,
   className,
+  /**
+   * Give the heading its own anchor, so a section can be linked to directly.
+   * Worth it on a remedy chapter someone wants to send to one person; noise on
+   * a three-heading page, so it is opt-in.
+   */
+  anchor = false,
 }: {
   children: string;
   icon?: React.ComponentType<{ className?: string; "aria-hidden"?: boolean }>;
   className?: string;
+  anchor?: boolean;
 }) {
   const Resolved = Icon ?? iconForKicker(children);
+  const id = anchor ? slugify(children) : undefined;
 
   return (
-    <h2 className={cn("flex items-center gap-3", className)}>
+    <h2
+      id={id}
+      className={cn(
+        "flex items-center gap-3",
+        anchor && "anchored-heading scroll-mt-24",
+        className,
+      )}
+    >
+      {anchor ? (
+        <a
+          href={`#${id}`}
+          className="anchor-link"
+          aria-label={`Link to this section: ${children}`}
+        >
+          #
+        </a>
+      ) : null}
       <span
         aria-hidden="true"
         className="seal inline-flex size-8 shrink-0 items-center justify-center bg-apricot/18 text-apricot-dark [--c:0.5rem]"

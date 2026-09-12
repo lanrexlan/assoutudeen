@@ -129,7 +129,7 @@ export default function DonatePage() {
           standfirst="Zakat in particular is never pooled with anything else — it has its own ledger and its own eligibility rules."
         />
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-3">
+        <div className="mt-8 grid sm:mt-12 gap-6 sm:grid-cols-3">
           {PURPOSES.map(({ icon: Icon, ...purpose }) => (
             <Card key={purpose.title} variant="seal" className="reveal items-center">
               <Medallion className="mx-auto">

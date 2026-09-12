@@ -121,7 +121,7 @@ export default async function DawahAboutPage() {
           title="Three ways in"
           standfirst="You do not have to arrive on the right week or know the syllabus. Pick whichever of these is easiest."
         />
-        <div className="mt-12 grid gap-6 sm:grid-cols-3">
+        <div className="mt-8 grid sm:mt-12 gap-6 sm:grid-cols-3">
           {[
             {
               icon: BookOpen,

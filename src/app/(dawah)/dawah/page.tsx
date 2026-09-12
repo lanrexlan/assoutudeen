@@ -71,7 +71,7 @@ export default async function DawahHomePage() {
           standfirst={`Everything runs ${TEACHING_WINDOW.toLowerCase()}. The Saturday pair alternate, so each one falls every other week.`}
         />
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+        <div className="mt-8 grid sm:mt-12 gap-6 lg:grid-cols-3">
           {days.map(({ day, label }) => {
             const classes = PROGRAMMES.filter((p) => p.day === day);
             return (

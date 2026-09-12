@@ -48,7 +48,10 @@ export default async function HoneyShopPage() {
             <PriceList className="mt-8" />
           </div>
 
-          <figure className="reveal mx-auto w-full max-w-sm lg:sticky lg:top-24">
+          {/* Hidden on phones: beside the table it is a companion, but stacked
+              underneath it is a screen and a half of pure decoration between a
+              customer and the transport note. */}
+          <figure className="reveal mx-auto hidden w-full max-w-sm lg:sticky lg:top-24 lg:block">
             <SealFrame className="aspect-3/4 w-full">
               <ApiaryScene />
             </SealFrame>

@@ -9,6 +9,7 @@ import { Disclaimer } from "@/components/ui/disclaimer";
 import { ArabicQuote } from "@/components/ui/arabic-quote";
 import { Medallion } from "@/components/ui/ornament";
 import { PageHeader, Prose, ProseHeading } from "@/components/ui/prose";
+import { ReadingProgress } from "@/components/ui/reading-progress";
 import { Section } from "@/components/ui/section";
 import { getRemedy, listRemedies, remedySlugs } from "@/lib/remedies";
 import { BreadcrumbSchema, RemedySchema } from "@/components/site/structured-data";
@@ -74,6 +75,7 @@ export default async function RemedyPage({
 
   return (
     <>
+      <ReadingProgress />
       <RemedySchema
         name={remedy.name}
         description={schemaDescription}
@@ -184,31 +186,31 @@ export default async function RemedyPage({
               </div>
             </div>
           ) : (
-            <Prose className="max-w-none">
+            <Prose className="longread max-w-none">
               {hasRich(remedy.ibnQayyimCommentary) ? (
                 <>
-                  <ProseHeading>Ibn al-Qayyim&apos;s commentary</ProseHeading>
+                  <ProseHeading anchor>Ibn al-Qayyim&apos;s commentary</ProseHeading>
                   <Rich data={remedy.ibnQayyimCommentary} />
                 </>
               ) : null}
 
               {hasRich(remedy.composition) ? (
                 <>
-                  <ProseHeading>Composition</ProseHeading>
+                  <ProseHeading anchor>Composition</ProseHeading>
                   <Rich data={remedy.composition} />
                 </>
               ) : null}
 
               {hasRich(remedy.traditionalUses) ? (
                 <>
-                  <ProseHeading>Traditional uses</ProseHeading>
+                  <ProseHeading anchor>Traditional uses</ProseHeading>
                   <Rich data={remedy.traditionalUses} />
                 </>
               ) : null}
 
               {hasRich(remedy.precautions) ? (
                 <>
-                  <ProseHeading>Cautions</ProseHeading>
+                  <ProseHeading anchor>Cautions</ProseHeading>
                   <Rich data={remedy.precautions} />
                 </>
               ) : null}

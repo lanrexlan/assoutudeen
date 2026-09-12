@@ -161,7 +161,7 @@ export default function AccountabilityPage() {
           standfirst="These are not promises made on a website. They are the terms the trustees signed and the Commission registered in 2019."
         />
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2">
+        <div className="mt-8 grid sm:mt-12 gap-6 sm:grid-cols-2">
           {CONSTITUTION_RULES.map((rule) => (
             <Card key={rule.title} className="reveal">
               <div className="flex items-center gap-3">

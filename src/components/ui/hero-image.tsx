@@ -38,11 +38,16 @@ export function HeroImage({ image }: { image: HeroKey }) {
         fill
         priority
         sizes="100vw"
+        /* Printed, the photograph comes out as a grey slab with the black
+           heading unreadable on top of it. The header prints as text. */
+        data-hero=""
         /* A landscape photograph in a tall phone-sized box crops to a narrow
            vertical strip. Favouring the upper-middle keeps the subject of these
            pictures — hands, a book, a jar — inside that strip instead of
            slicing between them. */
-        className="object-cover object-[50%_35%] sm:object-center"
+        /* `hero-graded` walks every photograph towards one palette, so twenty
+           stock pictures read as a set rather than as twenty borrowings. */
+        className="hero-graded object-cover object-[50%_35%] sm:object-center"
       />
       {/* Two layers: a flat wash so the whole frame darkens, and a gradient
           weighted towards the text. Together they hold white text above 4.5:1
@@ -52,9 +57,10 @@ export function HeroImage({ image }: { image: HeroKey }) {
           A sideways gradient on a 390px viewport puts its dark end over the
           entire width, which hid the photograph completely — the picture was
           there, paid for and loading, and nobody could see it. */}
-      <div aria-hidden="true" className="absolute inset-0 bg-ink/45 sm:bg-ink/55" />
+      <div aria-hidden="true" data-hero="" className="absolute inset-0 bg-ink/45 sm:bg-ink/55" />
       <div
         aria-hidden="true"
+        data-hero=""
         className="absolute inset-0 bg-gradient-to-b from-ink via-ink/85 to-ink/40 sm:bg-gradient-to-r sm:from-ink sm:via-ink/75 sm:to-ink/25"
       />
       {meta.credit ? (
@@ -83,11 +89,14 @@ export function SlotImage({
   image,
   fallback,
   className = "object-cover",
+  graded = true,
 }: {
   image: HeroKey;
   fallback: React.ReactNode;
   /** `object-contain` where the whole picture matters, such as a book cover. */
   className?: string;
+  /** Off for artwork that is already on-palette — the book cover, a logo. */
+  graded?: boolean;
 }) {
   const src = findHeroFile(image);
   if (!src) return <>{fallback}</>;
@@ -99,7 +108,7 @@ export function SlotImage({
       fill
       priority
       sizes="(min-width: 1024px) 40vw, 90vw"
-      className={className}
+      className={graded ? `hero-graded ${className}` : className}
     />
   );
 }

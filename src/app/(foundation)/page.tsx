@@ -108,7 +108,7 @@ export default async function FoundationHomePage() {
           standfirst="To seek healing in what Allah has provided, and to carry the weight for those who cannot carry it alone."
         />
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid sm:mt-12 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {work.map(({ icon: Icon, ...item }) => (
             <Card key={item.title} variant="seal" className="reveal items-center">
               <Medallion className="mx-auto">
@@ -189,7 +189,7 @@ export default async function FoundationHomePage() {
           standfirst="Most of what we do runs through a monthly contribution fund that meets need as it arises. A public appeal is opened only now and then, when a case calls for more than the fund can carry."
         />
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+        <div className="mt-8 grid sm:mt-12 gap-6 lg:grid-cols-3">
           {[
             {
               icon: HandHeart,

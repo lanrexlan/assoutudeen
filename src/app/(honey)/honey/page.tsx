@@ -63,7 +63,7 @@ export default async function HoneyHomePage() {
           standfirst="Nigeria has a fake honey problem. Our answer is to tell you where ours comes from and how to test what you are given — including honey you did not buy from us."
         />
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-3">
+        <div className="mt-8 grid sm:mt-12 gap-6 sm:grid-cols-3">
           {[
             {
               icon: Droplets,

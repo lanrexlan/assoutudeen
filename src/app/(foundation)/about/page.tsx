@@ -83,7 +83,7 @@ export default function AboutPage() {
           standfirst="Each of these is a decision that costs us something. That is rather the point of writing them down."
         />
 
-        <ol className="mx-auto mt-12 grid max-w-4xl gap-5 sm:grid-cols-2">
+        <ol className="mx-auto mt-8 grid sm:mt-12 max-w-4xl gap-5 sm:grid-cols-2">
           {RULES.map((rule, index) => (
             <li
               key={rule.title}
@@ -135,7 +135,7 @@ export default function AboutPage() {
 
       <Section tone="chalk" size="lg" band="top">
         <SectionHeading kicker="Go deeper" title="More about the foundation" />
-        <div className="mt-12 grid gap-6 sm:grid-cols-3">
+        <div className="mt-8 grid sm:mt-12 gap-6 sm:grid-cols-3">
           <Card variant="seal">
             <CardTitle>
               <Link href="/about/founder" className="underline-offset-4 hover:underline">

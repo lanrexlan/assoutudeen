@@ -38,8 +38,11 @@ export default function ShopPage() {
           <figure className="reveal mx-auto w-full max-w-md">
             {/* 5:4, to match the cover artwork rather than letterbox it. */}
             <SealFrame className="aspect-5/4 w-full" innerClassName="bg-white">
+              {/* Ungraded: the cover is the author's own artwork, not a stock
+                  photograph that needs bringing onto the palette. */}
               <SlotImage
                 image="bookCover"
+                graded={false}
                 className="object-contain"
                 fallback={<BookScene title={BOOK.title} />}
               />
@@ -145,7 +148,7 @@ export default function ShopPage() {
           title="Honey, classes, and a question you can just ask"
         />
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-3">
+        <div className="mt-8 grid sm:mt-12 gap-6 sm:grid-cols-3">
           {[
             {
               icon: Sprout,

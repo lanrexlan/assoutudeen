@@ -40,7 +40,7 @@ export default function PropheticMedicinePage() {
           title="Two verses this work rests on"
           standfirst="Everything the foundation teaches about healing is downstream of these. They are quoted here first so nothing that follows has to be taken on trust."
         />
-        <div className="mt-12 grid gap-6 lg:grid-cols-2">
+        <div className="mt-8 grid sm:mt-12 gap-6 lg:grid-cols-2">
           <ArabicQuote className="reveal" {...VERSES.shuara80} />
           <ArabicQuote className="reveal" {...VERSES.isra82} />
         </div>
@@ -136,7 +136,7 @@ export default function PropheticMedicinePage() {
           standfirst="Around forty-five remedies, each one a page. It is being typeset from the book chapter by chapter, because the Arabic has to be copied from the source rather than retyped."
         />
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-3">
+        <div className="mt-8 grid sm:mt-12 gap-6 sm:grid-cols-3">
           {[
             {
               icon: Leaf,
