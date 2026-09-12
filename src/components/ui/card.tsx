@@ -24,7 +24,7 @@ export function Card({
         className={cn("lift seal relative bg-chalk-dark p-px shadow-sm", className)}
         {...props}
       >
-        <div className="seal flex h-full flex-col gap-4 bg-white p-6 text-center text-charcoal">
+        <div className="seal flex h-full flex-col gap-4 bg-white p-5 text-center text-charcoal sm:p-6">
           {children}
         </div>
       </div>
@@ -35,7 +35,7 @@ export function Card({
     <div
       data-slot="card"
       className={cn(
-        "lift relative flex flex-col gap-4 p-6 text-charcoal",
+        "lift relative flex flex-col gap-4 p-5 text-charcoal sm:p-6",
         variant === "plain" &&
           "rounded-lg border border-chalk-dark bg-white shadow-sm",
         variant === "ink" &&

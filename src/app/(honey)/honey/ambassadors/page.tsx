@@ -90,7 +90,7 @@ export default async function AmbassadorsPage() {
           standfirst="You do not buy stock, hold inventory or pay to join. You share a code and the orders it brings are credited to you."
         />
 
-        <ol className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <ol className="mt-8 grid sm:mt-12 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {STEPS.map(({ icon: Icon, title, body }, index) => (
             <li key={title} className="reveal seal bg-chalk-dark p-px shadow-sm">
               <div className="seal flex h-full flex-col gap-3 bg-white p-6">

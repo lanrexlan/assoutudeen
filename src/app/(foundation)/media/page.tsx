@@ -118,7 +118,7 @@ export default function MediaPage() {
               standfirst={category.blurb}
             />
 
-            <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <ul className="mt-8 grid sm:mt-12 gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {shown.map((lecture) => (
                 <li key={lecture.id}>
                   <a

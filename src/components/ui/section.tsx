@@ -34,10 +34,22 @@ const tones = {
   ink: "bg-ink text-chalk",
 } as const;
 
+/*
+ * Vertical rhythm, phone first.
+ *
+ * These used to start at the desktop figure and stay there: 80px of padding
+ * top and bottom on a 390px screen, for every section on the page. It made
+ * the honey shop eight and a half screens tall and the foundation homepage
+ * nearly fourteen — on the mid-range Android over patchy data that this site
+ * is supposed to be built for. A phone screen is 844px; spending a fifth of
+ * one on whitespace above a heading is a decision, and it was the wrong one.
+ *
+ * The desktop values are unchanged. Only the small end has come down.
+ */
 const sizes = {
-  sm: "py-10 sm:py-12",
-  md: "py-14 sm:py-20",
-  lg: "py-20 sm:py-28",
+  sm: "py-8 sm:py-12",
+  md: "py-11 sm:py-20",
+  lg: "py-14 sm:py-28",
 } as const;
 
 export function Section({

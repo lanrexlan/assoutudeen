@@ -115,7 +115,7 @@ export default function OurWorkPage() {
           standfirst="Every case is different, but nearly all of them fall into one of these. The fund is for Muslims in need wherever they are — the office is in Ede, the work is not."
         />
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid sm:mt-12 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {CATEGORIES.map(({ icon: Icon, ...item }) => (
             <Card key={item.title} variant="seal" className="reveal items-center">
               <Medallion className="mx-auto">
@@ -167,7 +167,7 @@ export default function OurWorkPage() {
             than as a generic statistics grid. Quieter than the Empowerment
             page's treatment on purpose: there these are the argument, here
             they are the evidence behind one. */}
-        <ul className="mx-auto mt-12 grid max-w-4xl gap-5 sm:grid-cols-3 lg:grid-cols-4">
+        <ul className="mx-auto mt-8 grid sm:mt-12 max-w-4xl gap-5 sm:grid-cols-3 lg:grid-cols-4">
           {YEAR_TOTALS.map((year) => (
             <li key={year.year} className="reveal seal bg-chalk-dark p-px shadow-sm">
               <div className="seal bg-white px-5 py-6 text-center">

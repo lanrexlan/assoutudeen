@@ -123,7 +123,7 @@ export default async function OurHoneyPage() {
           standfirst="Every honey seller in Nigeria will invite you to do one of these. Here is what each one actually measures — including when it fails us."
         />
 
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
+        <div className="mt-8 grid sm:mt-12 gap-6 md:grid-cols-2">
           {HOME_TESTS.map(({ icon: Icon, name, claim, truth }) => (
             <div
               key={name}

@@ -102,7 +102,7 @@ export default async function EmpowermentPage() {
           title="Four kinds of need"
           standfirst="Reported by category and anonymously, which is how it will always be reported."
         />
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid sm:mt-12 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {[
             { icon: HandHeart, title: "Orphan care & education", body: "Feeding, school and madrasah fees, books and welfare — 4 children in secondary school supported through 2024." },
             { icon: Sprout, title: "Widow empowerment", body: "Trade equipment and start-up support — grinding machines, sewing machines, training." },
@@ -177,7 +177,7 @@ export default async function EmpowermentPage() {
           title="Suggested monthly amounts"
           standfirst="Any amount works. These are only framed by what they actually do."
         />
-        <ul className="mt-12 grid list-none gap-5 sm:grid-cols-2">
+        <ul className="mt-8 grid sm:mt-12 list-none gap-5 sm:grid-cols-2">
           {tiers.map((tier) => (
             <li
               key={tier.amount}

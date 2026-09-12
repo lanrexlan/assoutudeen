@@ -155,6 +155,17 @@
     text-wrap: pretty;
   }
 
+  /*
+   * Figures line up.
+   *
+   * Petrona's default digits are proportional, so ₦5,323,500 and ₦560,918.28
+   * set at different widths and a column of years or amounts wandered. Money
+   * is the argument on half these pages; it should sit in a straight line.
+   */
+  .font-display {
+    font-variant-numeric: tabular-nums;
+  }
+
   ::selection {
     background: var(--apricot);
     color: var(--charcoal);
@@ -233,6 +244,103 @@
   /* Small surfaces need a shallower cut or the shape eats the content. */
   .seal-sm {
     --c: 0.625rem;
+  }
+
+  /* --- Loading placeholders ----------------------------------------------
+     A slow, low-contrast sweep. Under prefers-reduced-motion it holds still
+     and simply shows the tinted block: a loading state should not be the most
+     animated thing on a page built for calm.
+  ------------------------------------------------------------------------ */
+  .skeleton {
+    background: var(--chalk-dark);
+    border-radius: 0.25rem;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .skeleton {
+      background: linear-gradient(
+        90deg,
+        var(--chalk-dark) 0%,
+        var(--chalk) 40%,
+        var(--chalk-dark) 80%
+      );
+      background-size: 300% 100%;
+      animation: skeleton-sweep 1.8s ease-in-out infinite;
+    }
+  }
+  @keyframes skeleton-sweep {
+    from {
+      background-position: 150% 0;
+    }
+    to {
+      background-position: -50% 0;
+    }
+  }
+
+  /* --- Long-read typography ----------------------------------------------
+     For the remedy chapters, which are the closest thing this site has to
+     pages of a book — and are meant to be read, not skimmed.
+  ------------------------------------------------------------------------ */
+
+  /* An opening capital, set in the display face and sunk two lines. Only on
+     the first paragraph, and only where there is width for it: a drop cap on
+     a 390px screen eats a third of the first line. */
+  @media (min-width: 40rem) {
+    .longread > p:first-of-type::first-letter {
+      float: inline-start;
+      font-family: var(--font-display), serif;
+      font-size: 3.4em;
+      line-height: 0.82;
+      padding-inline-end: 0.08em;
+      padding-block-start: 0.06em;
+      color: var(--site-primary-ink);
+    }
+  }
+
+  /* Quotation marks hang into the margin, so the text edge stays straight. */
+  .longread blockquote {
+    hanging-punctuation: first last;
+  }
+
+  /* A heading you can link to. The mark only appears on hover or focus, so it
+     never competes with the heading itself. */
+  .anchored-heading {
+    position: relative;
+  }
+  .anchor-link {
+    position: absolute;
+    inset-inline-start: -1.25em;
+    opacity: 0;
+    text-decoration: none;
+    color: var(--apricot-dark);
+    transition: opacity 150ms ease;
+  }
+  .anchored-heading:hover .anchor-link,
+  .anchor-link:focus-visible {
+    opacity: 1;
+  }
+  /* No room to hang it outside the measure on a phone. */
+  @media (max-width: 40rem) {
+    .anchor-link {
+      display: none;
+    }
+  }
+
+  /* --- Hero photograph grade ----------------------------------------------
+     Twenty stock photographs by twenty photographers: different light,
+     different colour temperature, different decade. The dark scrim held them
+     together, but only just — side by side they still read as twenty pictures
+     borrowed from twenty places.
+
+     This grades them towards one palette before the scrim lands: saturation
+     pulled back, contrast lifted a touch, and a warm sepia bias that walks
+     everything towards the oxblood/apricot range the rest of the site lives
+     in. It is not a filter for its own sake; it is what makes a set.
+
+     It applies to the foundation's own photographs too, when they arrive —
+     which is the point. They will match without anyone editing them.
+  ------------------------------------------------------------------------ */
+  .hero-graded {
+    filter: saturate(0.72) contrast(1.06) sepia(0.18) brightness(0.98);
   }
 
   /* --- Zellij band --------------------------------------------------------
@@ -367,5 +475,97 @@
   to {
     transform: none;
     opacity: 1;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Print
+   ---------------------------------------------------------------------------
+   A charity whose whole argument is published accounts gets printed. Trustees
+   print the impact page for a meeting; somebody prints a remedy chapter for a
+   relative who is not online. Without this they got the navigation, the
+   floating WhatsApp button, and ink-dark backgrounds that empty a cartridge.
+
+   The rules: drop the chrome, put ink on white, spell out where a link goes,
+   and never break a quotation or a figure across two pages.
+--------------------------------------------------------------------------- */
+@media print {
+  /* Backgrounds cost ink and most printers drop them anyway; the dark bands
+     would come out as grey slabs with white text on them. */
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  body {
+    font-size: 11pt;
+    line-height: 1.45;
+  }
+
+  /* Navigation, floating controls and decoration: nothing to print. */
+  header,
+  footer,
+  nav,
+  .zellij-band,
+  .ornament-field,
+  .starfield,
+  [data-print="hide"],
+  /* Hero photographs: on paper they are a grey slab with the heading
+     unreadable on top. The header prints as text on white. */
+  [data-hero],
+  a[href^="https://wa.me"],
+  form,
+  button {
+    display: none !important;
+  }
+
+  /* Where a link actually went, since a printed page cannot be clicked. */
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+    word-break: break-all;
+  }
+  /* Internal links and anchors would print as noise. */
+  a[href^="/"]::after,
+  a[href^="#"]::after {
+    content: "";
+  }
+
+  /* Keep what must not be split: a verse, a figure, a rule. */
+  blockquote,
+  figure,
+  table,
+  li,
+  [data-print="keep"] {
+    break-inside: avoid;
+  }
+
+  h1,
+  h2,
+  h3 {
+    break-after: avoid;
+  }
+
+  section {
+    padding: 0.5rem 0 !important;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+
+  /* Arabic keeps its own face and its line height: a squashed ayah is worse
+     than no printout. */
+  [lang="ar"] {
+    font-family: var(--font-arabic), serif !important;
+    line-height: 2 !important;
+  }
+
+  @page {
+    margin: 18mm 16mm;
   }
 }

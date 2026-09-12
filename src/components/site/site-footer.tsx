@@ -40,10 +40,18 @@ export async function SiteFooter({ site }: { site: SiteKey }) {
         className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-apricot/60 to-transparent"
       />
 
-      <Container className="relative py-14">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+      <Container className="relative py-10 sm:py-14">
+        {/*
+         * Two columns on a phone, not one.
+         *
+         * Stacked, this footer ran to about 1,400px — a quarter of every page
+         * on the site, repeated on every page of all three. The "who we are"
+         * block keeps the full width because it carries a paragraph; the three
+         * short columns sit two-up beneath it.
+         */}
+        <div className="grid gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-4">
           {/* 1 — who we are */}
-          <div>
+          <div className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-3">
               <BrandMark tone="reversed" className="size-12 shrink-0" />
               <span className="leading-none">
@@ -80,7 +88,7 @@ export async function SiteFooter({ site }: { site: SiteKey }) {
           <nav aria-label="Footer">
             <h2 className="font-display text-base text-white">Explore</h2>
             <span aria-hidden="true" className="mt-2 block h-px w-10 bg-apricot" />
-            <ul className="mt-3">
+            <ul className="mt-3 grid grid-cols-2 gap-x-4 sm:grid-cols-1">
               {config.nav.map((item) => (
                 <li key={item.href}>
                   <Link

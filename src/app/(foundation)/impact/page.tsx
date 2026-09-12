@@ -55,7 +55,7 @@ export default async function ImpactIndexPage() {
           standfirst="Written reports exist from 2023 onward. The earlier years are published as figures — no report page is claimed where none is written."
         />
 
-        <ul className="mt-12 grid list-none gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-8 grid sm:mt-12 list-none gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {YEAR_TOTALS.map((year) => (
             <li key={year.year}>
               <Card variant="seal" className="h-full justify-between">
