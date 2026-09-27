@@ -36,7 +36,13 @@ export type Event = {
   enquiries: string[];
 };
 
-export const NEXT_EVENT: Event | null = {
+/**
+ * The September 2026 gathering, held on 26 September.
+ *
+ * Kept as a record — and as a template: copy it, change the details, and
+ * assign the copy to NEXT_EVENT to put the next gathering on the homepage.
+ */
+export const SEPTEMBER_2026: Event = {
   title: "September Empowerment 2026",
   date: "2026-09-26",
   time: "10:00am",
@@ -88,3 +94,12 @@ export function upcomingEvent(now: Date = new Date()): EventState {
     ? { status: "today", event: NEXT_EVENT, date, daysAway: 0 }
     : { status: "upcoming", event: NEXT_EVENT, date, daysAway };
 }
+
+/**
+ * The gathering currently advertised on the homepage and the empowerment page.
+ *
+ * Null: September 2026 has taken place and the foundation has closed it. With
+ * nothing here, the homepage banner and the empowerment page's event card both
+ * render nothing — no "coming soon" placeholder in their place.
+ */
+export const NEXT_EVENT: Event | null = null;
